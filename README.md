@@ -2,7 +2,7 @@
 
 <details open><summary>
 
-# [:link:Semester 1](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201)
+# [:link:Semester 1](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201 "Semester 1")
 </summary>
 
 <!---
