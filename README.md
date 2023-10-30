@@ -11,7 +11,7 @@ this is a comment
 --->
 
 - ## [Analysis :infinity:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis "Analysis")
-    - ### [Homeworks](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis/Homeworks)
+    - ### [Homeworks](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis/Homeworks "Homeworks")
 
 - ## [Fundamentals of Programming :snake:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming "Fundamentals of Programming")
     - ### [Extra Work](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Extra%20Work "Extra Work")
