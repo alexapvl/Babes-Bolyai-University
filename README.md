@@ -10,10 +10,10 @@ this is a comment
 (- ## [Algebra :heavy_plus_sign::heavy_multiplication_x:]())
 --->
 
-- ## [Analysis :infinity:]()
+- ## [Analysis :infinity:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis)
     - ### [Homeworks]()
 
-- ## [Fundamentals of Programming :snake:]()
+- ## [Fundamentals of Programming :snake:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming)
     - ### [Extra Work]()
     - ### [Seminars]()
     - ### [Labs]()
