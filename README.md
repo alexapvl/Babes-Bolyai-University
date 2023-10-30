@@ -10,13 +10,13 @@ this is a comment
 (- ## [Algebra :heavy_plus_sign::heavy_multiplication_x:]())
 --->
 
-- ## [Analysis :infinity:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis)
-    - ### [Homeworks]()
+- ## [Analysis :infinity:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis "Analysis")
+    - ### [Homeworks](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Analysis/Homeworks)
 
-- ## [Fundamentals of Programming :snake:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming)
-    - ### [Extra Work]()
-    - ### [Seminars]()
-    - ### [Labs]()
+- ## [Fundamentals of Programming :snake:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming "Fundamentals of Programming")
+    - ### [Extra Work](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Extra%20Work "Extra Work")
+    - ### [Labs](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Labs "Labs")
+    - ### [Seminars](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Seminars "Seminars")
 
 - ## [Computational Logic :spades::hearts:]()
     - ### [Extra Homeworks]()
