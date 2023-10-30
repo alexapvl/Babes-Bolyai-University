@@ -385,3 +385,6 @@ pyrightconfig.json
 
 #Ignore Icon?
 Icon?
+
+#selective ignores
+/Semester 1/Analysis/Homeworks/Homework 04/test.py
