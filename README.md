@@ -2,22 +2,25 @@
 
 <details open><summary>
 
-># [Semester 1](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201)
+# [:link:Semester 1](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201)
 </summary>
 
->## [Algebra]()
+<!---
+this is a comment
+(- ## [Algebra :heavy_plus_sign::heavy_multiplication_x:]())
+--->
 
->## [Analysis :infinity:]()
-- ### [Homeworks]()
+- ## [Analysis :infinity:]()
+    - ### [Homeworks]()
 
->## [Fundamentals of Programming :snake:]()
-- ### [Extra Work]()
-- ### [Seminars]()
-- ### [Labs]()
+- ## [Fundamentals of Programming :snake:]()
+    - ### [Extra Work]()
+    - ### [Seminars]()
+    - ### [Labs]()
 
->## [Computational Logic :spades::hearts:]()
-- ### [Extra Homeworks]()
+- ## [Computational Logic :spades::hearts:]()
+    - ### [Extra Homeworks]()
 
->## [Computer Systems Architecture :desktop_computer:]()
-- ### [Labs]()
+- ## [Computer Systems Architecture :desktop_computer:]()
+    - ### [Labs]()
 </details>
