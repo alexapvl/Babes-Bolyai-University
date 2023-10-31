@@ -21,6 +21,6 @@ this is a comment
 - ## [Computational Logic :spades::hearts:]()
     - ### [Extra Homeworks]()
 
-- ## [Computer Systems Architecture :desktop_computer:]()
-    - ### [Homeworks]()
+- ## [Computer Systems Architecture :desktop_computer:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Computer%20Systems%20Architecture "Computer Systems Architecture")
+    - ### [Homeworks](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Computer%20Systems%20Architecture/Homeworks "Homeworks")
 </details>
