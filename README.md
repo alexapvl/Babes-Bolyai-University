@@ -22,5 +22,5 @@ this is a comment
     - ### [Extra Homeworks]()
 
 - ## [Computer Systems Architecture :desktop_computer:]()
-    - ### [Labs]()
+    - ### [Homeworks]()
 </details>
