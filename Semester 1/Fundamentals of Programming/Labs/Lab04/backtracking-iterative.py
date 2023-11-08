@@ -1,3 +1,5 @@
+# Problem 6
+
 def backtracking_iterative(n: int):
     # The time complexity of this algorithm is O(2^n) and it is calculated in the same way as the recursive one
     list = []

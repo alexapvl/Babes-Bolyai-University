@@ -1,3 +1,5 @@
+# Problem 6
+
 """
 When backtracking, we need to check that at all times the number of open parantheses is greater or equal to
 the number of closed parantheses. If at the end the number of total parantheses is equal to n, the first 

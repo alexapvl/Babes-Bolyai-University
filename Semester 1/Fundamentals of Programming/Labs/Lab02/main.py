@@ -1,3 +1,5 @@
+# Cocktail Sort and Heap Sort
+
 """
 Cocktail Sort is a more efficient version of Bubble Sort that sorts the elements of the array by
 going in both directions (left -> right and right -> left) until the array is sorted.
