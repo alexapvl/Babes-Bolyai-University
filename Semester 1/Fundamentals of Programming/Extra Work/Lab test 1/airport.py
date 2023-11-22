@@ -6,17 +6,15 @@ def reroute(data: list, curr_dest: str, new_dest: str) -> list:
             flight["destination"] = new_dest
     return data
 
-def valid_code(data: list, code: int) -> bool:
+def valid_code(data: list, code: str) -> bool:
     for flight in data:
         if flight["code"] == code:
             return False
     return True
 
-def create_flight(code: str, duration: str, departure: str, destination: str) -> dict:
+def create_flight(code: str, duration: int, departure: str, destination: str) -> dict:
     return {"code": code, "duration": duration, "departure": departure, "destination": destination}
     
-    
-
 def to_str(flight: dict) -> str:
     return "Code: " + str(flight["code"]) + " | Duration: " + str(flight["duration"]) + " | Departure city: " + str(flight["departure"]) + " | Destination city: " + str(flight["destination"])
 
@@ -50,9 +48,11 @@ def main():
                         destination: str = input("Destination city: ")
                         if len(code) < 3 or duration < 20 or len(departure) < 3 or len(destination) < 3:
                             raise ValueError("Invalid input. Code, destination and departure need to be at least 3 characters long and duration greater than 20.")
+                        else:
+                            flights.append(create_flight(code, duration, departure, destination))
+                            break
                     else:
                         raise ValueError("Code provided for flight already exists. Try again")
-                        flights.append(create_flight(code, duration, departure, destination))
                 except ValueError as ve:
                     print(ve)
         elif option == "2":
@@ -63,8 +63,11 @@ def main():
                 for flight in flights:
                     if flight["code"] == code:
                         new_duration = int(input(f"Enter new duration for flight {code}: "))
-                        flight["duration"] = new_duration
-                        found = True
+                        if new_duration < 20:
+                            print("Duration needs to be greater than 20.")
+                        else:
+                            flight["duration"] = new_duration
+                            found = True
                 if found:
                     break
                 else:
@@ -75,7 +78,7 @@ def main():
                     print("Reroute all flights for a given destination")
                     curr_dest: str = input("Destination: ")
                     new_dest: str = input("New Destination: ")
-                    if len(new_dest) < 3:
+                    if len(new_dest) < 3 or len(curr_dest) < 3:
                         raise ValueError("Length less than 3 characters. Try again")
                     flights = reroute(flights, curr_dest, new_dest)
                     print("Flights have been rerouted with success.")
