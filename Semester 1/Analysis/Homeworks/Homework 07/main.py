@@ -1,3 +1,5 @@
+# Apavaloaiei Alexandru, group 911
+
 import numpy as np
 
 x = np.linspace(-5, 5, 1000)
