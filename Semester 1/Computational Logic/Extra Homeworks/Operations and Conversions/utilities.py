@@ -40,5 +40,3 @@ def base_p_to_base_10(number: str, p: int) -> int:
     for i in range(len(number)):
         result += char_to_digit(number[i]) * p ** (len(number) - i - 1)
     return result
-
-print(base_p_to_base_10("501BA", 16))

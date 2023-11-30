@@ -39,7 +39,7 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
         # commutativity
         return multiplication_by_one_digit_in_base_p(b, a, p)
     if len(b) != 1:
-        raise ValueError(Fore.RED + "Multiplicasion only by one digit!" + Style.RESET_ALL)
+        raise ValueError(Fore.RED + "Multiplicasion only by one digit! (second param. for multiplication needs to be asingle digit)" + Style.RESET_ALL)
     result = ""
     carry: int = 0
     for i in range(len(a) - 1, -1, -1):
@@ -51,7 +51,17 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
     result = remove_leading_zeros(result)
     return result
 
-def division_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
-    pass
-
-# print(subtraction_in_base_p("501BA", "32ED", 16))
+def division_by_one_digit_in_base_p(a: str, b: str, p: int) -> tuple:
+    #TODO: implement division by one digit in base p
+    digits = "0123456789ABCDEF"
+    if len(b) != 1:
+        raise ValueError(Fore.RED + "Division only by one digit! (second param. for division needs to be a single digit)" + Style.RESET_ALL)
+    result = ""
+    divisor: int = base_p_to_base_10(b, p) # divisor is converted in base 10, like in the algorithm
+    remainder: str = ""
+    for i in range(len(a)):
+        remainder = remainder + a[i]
+        result = result + digits[base_p_to_base_10(remainder, p) // divisor]
+        remainder = digits[base_p_to_base_10(remainder, p) % divisor]
+    result = remove_leading_zeros(result)
+    return result, remainder

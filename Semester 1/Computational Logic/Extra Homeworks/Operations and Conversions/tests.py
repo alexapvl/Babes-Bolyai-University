@@ -5,9 +5,13 @@ import operations as op
 import utilities as utils
 from colorama import Fore, Style
 
-#TODO: test base_p_to_base_10
 def base_p_to_base_10_test():
     assert utils.base_p_to_base_10("123", 10) == 123
+    assert utils.base_p_to_base_10("100", 2) == 4
+    assert utils.base_p_to_base_10("1000", 2) == 8
+    assert utils.base_p_to_base_10("123", 7) == 66
+    assert utils.base_p_to_base_10("23", 9) == 21
+    assert utils.base_p_to_base_10("123", 9) == 102
     assert utils.base_p_to_base_10("501BA", 16) == 328122
     assert utils.base_p_to_base_10("ABCDEF", 16) ==11259375
 
@@ -47,7 +51,7 @@ def char_to_digit_test():
     assert utils.char_to_digit("E") == 14
     assert utils.char_to_digit("F") == 15
 
-def verify_leading_zeros_test():
+def remove_leading_zeros_test():
     assert utils.remove_leading_zeros("00000") == "0"
     assert utils.remove_leading_zeros("00001") == "1"
     assert utils.remove_leading_zeros("00021") == "21"
@@ -94,12 +98,21 @@ def multiplication_by_one_digit_test():
     assert op.multiplication_by_one_digit_in_base_p("2", "72", 8) == op.multiplication_by_one_digit_in_base_p("72", "2", 8)
     assert op.multiplication_by_one_digit_in_base_p("2", "72", 7) == op.multiplication_by_one_digit_in_base_p("72", "2", 7)
 
+def division_by_one_digit_test():
+    assert op.division_by_one_digit_in_base_p("AF", "B", 16) == ("F", "A")
+    assert op.division_by_one_digit_in_base_p("1FED0205", "9", 16) == ("38C1CAB", "2")
+    assert op.division_by_one_digit_in_base_p("120456", "6", 7) == ("13421", "0")
+    assert op.division_by_one_digit_in_base_p("321023", "3", 5) == ("103322", "2")
+    assert op.division_by_one_digit_in_base_p("321023", "3", 4) == ("103003", "2")
+    assert op.division_by_one_digit_in_base_p("2A0F86", "E", 16) == ("3011B", "C")
+    assert op.division_by_one_digit_in_base_p("765433", "4", 8) == ("175306", "3")
+
 def test():
     try:
         base_p_to_base_10_test()
         digit_to_char_test()
         char_to_digit_test()
-        verify_leading_zeros_test()
+        remove_leading_zeros_test()
         verify_number_in_base_p_test()
         addition_test()
         subtraction_test()
