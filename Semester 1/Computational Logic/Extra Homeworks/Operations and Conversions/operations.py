@@ -1,5 +1,5 @@
-from utilities import *
 from colorama import Fore, Style
+from utilities import *
 
 def addition_in_base_p(a: str, b: str, p: int) -> str:
     a, b = make_same_length(a, b)
@@ -43,25 +43,26 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
     result = ""
     carry: int = 0
     for i in range(len(a) - 1, -1, -1):
-        digit: int = (int(a[i]) * int(b) + carry) % p
-        carry = (int(a[i]) * int(b) + carry) // p
-        result = str(digit) + result
+        digit: int = (base_p_to_base_10(a[i], p) * base_p_to_base_10(b, p) + carry) % p
+        carry = (base_p_to_base_10(a[i], p) * base_p_to_base_10(b, p) + carry) // p
+        result = digit_to_char(digit) + result
     if carry != 0:
-        result = str(carry) + result
+        result = digit_to_char(carry) + result
     result = remove_leading_zeros(result)
     return result
 
 def division_by_one_digit_in_base_p(a: str, b: str, p: int) -> tuple:
-    #TODO: implement division by one digit in base p
     digits = "0123456789ABCDEF"
     if len(b) != 1:
         raise ValueError(Fore.RED + "Division only by one digit! (second param. for division needs to be a single digit)" + Style.RESET_ALL)
-    result = ""
+    if b == "0":
+        raise ValueError(Fore.RED + "ERROR: Division by zero!" + Style.RESET_ALL)
+    quotient = ""
     divisor: int = base_p_to_base_10(b, p) # divisor is converted in base 10, like in the algorithm
     remainder: str = ""
     for i in range(len(a)):
         remainder = remainder + a[i]
-        result = result + digits[base_p_to_base_10(remainder, p) // divisor]
+        quotient = quotient + digits[base_p_to_base_10(remainder, p) // divisor]
         remainder = digits[base_p_to_base_10(remainder, p) % divisor]
-    result = remove_leading_zeros(result)
-    return result, remainder
+    quotient = remove_leading_zeros(quotient)
+    return quotient, remainder
