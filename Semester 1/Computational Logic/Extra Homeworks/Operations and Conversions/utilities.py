@@ -9,13 +9,15 @@ def verify_number_in_base_p(a: str, p: int):
     if (p < 2 or p > 10) and p != 16:
         raise ValueError(Fore.RED + "p must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
     digits = "0123456789ABCDEF"
+    if len(a) == 0:
+        raise ValueError(Fore.RED + "Number cannot be empty!" + Style.RESET_ALL)
     for i in range(len(a)):
         if a[i] not in digits:
             if a[i] == "-" and i == 0:
                 # in case a[i] is negative
                 raise ValueError(Fore.RED + "Only positive numbers are allowed!" + Style.RESET_ALL)
             # in case a[i] is not in digits
-            raise ValueError(Fore.RED + f"Character {a[i]} in number {a} is not valid!" + Style.RESET_ALL)
+            raise ValueError(Fore.RED + f"Number {a} is not in base {p}!" + Style.RESET_ALL)
         if digits.index(a[i]) >= p:
             # in case a[i] is not a digit in base p
             raise ValueError(Fore.RED + f"Number {a} is not in base {p}!" + Style.RESET_ALL)
@@ -24,6 +26,11 @@ def verify_number_in_base_p(a: str, p: int):
 def valid_base_p(p: int) -> bool:
     if (p < 2 or p > 10) and p != 16:
         raise ValueError(Fore.RED + "p must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
+    return True
+
+def valid_base_power_of_2(p: int) -> bool:
+    if p != 2 and p != 4 and p != 8 and p != 16:
+        return False
     return True
 
 def remove_leading_zeros(a: str) -> str:

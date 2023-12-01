@@ -17,8 +17,6 @@ def addition_in_base_p(a: str, b: str, p: int) -> str:
         result = "1" + result
     return result
 
-print(addition_in_base_p("123", "456", 10))
-
 def subtraction_in_base_p(a: str, b: str, p: int) -> str:
     a, b = make_same_length(a, b)
     if base_p_to_base_10(a, p) < base_p_to_base_10(b, p):
