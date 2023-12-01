@@ -1,5 +1,9 @@
 from colorama import Fore, Style
-from operations import *
+
+def make_same_length(a: str, b: str) -> tuple:
+   a = a.zfill(max(len(a), len(b)))
+   b = b.zfill(max(len(a), len(b)))
+   return a, b
 
 def verify_number_in_base_p(a: str, p: int):
     if (p < 2 or p > 10) and p != 16:
@@ -17,10 +21,10 @@ def verify_number_in_base_p(a: str, p: int):
             raise ValueError(Fore.RED + f"Number {a} is not in base {p}!" + Style.RESET_ALL)
     return True
 
-def make_same_length(a: str, b: str) -> tuple:
-   a = a.zfill(max(len(a), len(b)))
-   b = b.zfill(max(len(a), len(b)))
-   return a, b
+def valid_base_p(p: int) -> bool:
+    if (p < 2 or p > 10) and p != 16:
+        raise ValueError(Fore.RED + "p must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
+    return True
 
 def remove_leading_zeros(a: str) -> str:
     for i in range(len(a)):

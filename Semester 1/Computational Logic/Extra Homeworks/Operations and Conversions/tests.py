@@ -1,6 +1,3 @@
-# When importing, import as "import tests as t" to have more clarity
-# in the code
-
 import operations as op
 import utilities as utils
 import algorithms as alg
