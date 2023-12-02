@@ -2,11 +2,23 @@
 from colorama import Fore, Style
 
 def make_same_length(a: str, b: str) -> tuple:
-   a = a.zfill(max(len(a), len(b)))
-   b = b.zfill(max(len(a), len(b)))
-   return a, b
+    """
+    
+    @param a:
+    @param b:
+    @return:
+    """
+    a = a.zfill(max(len(a), len(b)))
+    b = b.zfill(max(len(a), len(b)))
+    return a, b
 
 def verify_number_in_base_p(a: str, p: int):
+    """
+
+    @param a:
+    @param p:
+    @return:
+    """
     if (p < 2 or p > 10) and p != 16:
         raise ValueError(Fore.RED + "Base must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
     digits = "0123456789ABCDEF"
@@ -25,36 +37,73 @@ def verify_number_in_base_p(a: str, p: int):
     return True
 
 def valid_base_p(p: int) -> bool:
+    """
+
+    @param p:
+    @return:
+    """
     if (p < 2 or p > 10) and p != 16:
         raise ValueError(Fore.RED + "Base must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
     return True
 
 def valid_base_power_of_2(p: int) -> bool:
+    """
+
+    @param p:
+    @return:
+    """
     if p != 2 and p != 4 and p != 8 and p != 16:
         return False
     return True
 
 def remove_leading_zeros(a: str) -> str:
+    """
+
+    @param a:
+    @return:
+    """
     for i in range(len(a)):
         if a[i] != "0":
             return a[i:]
     return "0"
 
 def digit_to_char(digit: int) -> str:
+    """
+
+    @param digit:
+    @return:
+    """
     digits = "0123456789ABCDEF"
     return digits[digit]
 
 def char_to_digit(a: str) -> int:
+    """
+
+    @param a:
+    @return:
+    """
     digits = "0123456789ABCDEF"
     return digits.index(a)
 
 def base_p_to_base_10(number: str, p: int) -> int:
+    """
+
+    @param number:
+    @param p:
+    @return:
+    """
     result: int = 0
     for i in range(len(number)):
         result += char_to_digit(number[i]) * p ** (len(number) - i - 1)
     return result
 
 def base_10_to_base_p(number: int, p: int) -> str:
+    """
+
+    @param number:
+    @param p:
+    @return:
+    """
     result = ""
     while number != 0:
         result = digit_to_char(number % p) + result
@@ -62,6 +111,12 @@ def base_10_to_base_p(number: int, p: int) -> str:
     return result
 
 def base_p_to_base_2(a: str, p: int):
+    """
+
+    @param a:
+    @param p:
+    @return:
+    """
     result = ""
     power2 = 1
     num_digits = 0
@@ -80,6 +135,12 @@ def base_p_to_base_2(a: str, p: int):
     return remove_leading_zeros(result)
 
 def base_2_to_base_p(a: str, p: int):
+    """
+
+    @param a:
+    @param p:
+    @return:
+    """
     result = ""
     power2 = 1
     num_digits = 0

@@ -3,6 +3,13 @@ from utilities import *
 from operations import *
 
 def rapid_conversion(number: str, sb: int, db: int) -> str:
+    """
+
+    @param number:
+    @param sb:
+    @param db:
+    @return:
+    """
     if sb == db == 2:
         # number is already in base 2
         return number
@@ -10,12 +17,26 @@ def rapid_conversion(number: str, sb: int, db: int) -> str:
     return base_2_to_base_p(number, db)
 
 def conversion_with_intermediary_base_10(number: str, sb: int, db: int) -> str:
+    """
+
+    @param number:
+    @param sb:
+    @param db:
+    @return:
+    """
     if sb == db == 10:
         # number is already in base 10
         return number
     return base_10_to_base_p(base_p_to_base_10(number, sb), db)
 
 def substitution_method(number: str, sb: int, db: int) -> str:
+    """
+
+    @param number:
+    @param sb:
+    @param db:
+    @return:
+    """
     list_of_products_in_dest_base = ["1"] * len(number)
     for i in range(len(number)):
         power = len(number) - i - 1
@@ -29,6 +50,13 @@ def substitution_method(number: str, sb: int, db: int) -> str:
     return result
 
 def successive_divisions_method(number: str, sb: int, db: int) -> str:
+    """
+
+    @param number:
+    @param sb:
+    @param db:
+    @return:
+    """
     result = ""
     while number != "0":
         quotient, remainder = division_by_one_digit_in_base_p(number, digit_to_char(db), sb)

@@ -3,6 +3,13 @@ from colorama import Fore, Style
 from utilities import *
 
 def addition_in_base_p(a: str, b: str, p: int) -> str:
+    """
+
+    @param a:
+    @param b:
+    @param p:
+    @return:
+    """
     a, b = make_same_length(a, b)
     result = ""
     carry: int = 0
@@ -19,6 +26,13 @@ def addition_in_base_p(a: str, b: str, p: int) -> str:
     return result
 
 def subtraction_in_base_p(a: str, b: str, p: int) -> str:
+    """
+
+    @param a:
+    @param b:
+    @param p:
+    @return:
+    """
     a, b = make_same_length(a, b)
     if base_p_to_base_10(a, p) < base_p_to_base_10(b, p):
         raise ValueError(Fore.RED + "First number must be greater than or equal to the second number!" + Style.RESET_ALL)
@@ -36,6 +50,13 @@ def subtraction_in_base_p(a: str, b: str, p: int) -> str:
     return result
 
 def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
+    """
+
+    @param a:
+    @param b:
+    @param p:
+    @return:
+    """
     if len(a) < len(b):
         # commutativity
         return multiplication_by_one_digit_in_base_p(b, a, p)
@@ -53,6 +74,13 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
     return result
 
 def division_by_one_digit_in_base_p(a: str, b: str, p: int) -> tuple:
+    """
+
+    @param a:
+    @param b:
+    @param p:
+    @return:
+    """
     digits = "0123456789ABCDEF"
     if len(b) != 1:
         raise ValueError(Fore.RED + "Division only by one digit!" + Style.RESET_ALL)
