@@ -1,3 +1,4 @@
+# Author: Apăvăloaiei Alexandru, group 911
 from colorama import Fore, Style
 
 def make_same_length(a: str, b: str) -> tuple:

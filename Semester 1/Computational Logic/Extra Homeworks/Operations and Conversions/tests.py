@@ -1,3 +1,4 @@
+# Author: Apăvăloaiei Alexandru, group 911
 import operations as op
 import utilities as utils
 import algorithms as alg

@@ -1,3 +1,4 @@
+# Author: Apăvăloaiei Alexandru, group 911
 from colorama import Fore, Style
 from utilities import *
 
