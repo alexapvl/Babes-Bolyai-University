@@ -7,7 +7,7 @@ def make_same_length(a: str, b: str) -> tuple:
 
 def verify_number_in_base_p(a: str, p: int):
     if (p < 2 or p > 10) and p != 16:
-        raise ValueError(Fore.RED + "p must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
+        raise ValueError(Fore.RED + "Base must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
     digits = "0123456789ABCDEF"
     if len(a) == 0:
         raise ValueError(Fore.RED + "Number cannot be empty!" + Style.RESET_ALL)
@@ -25,7 +25,7 @@ def verify_number_in_base_p(a: str, p: int):
 
 def valid_base_p(p: int) -> bool:
     if (p < 2 or p > 10) and p != 16:
-        raise ValueError(Fore.RED + "p must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
+        raise ValueError(Fore.RED + "Base must be between 2,3,...,10 or 16!" + Style.RESET_ALL)
     return True
 
 def valid_base_power_of_2(p: int) -> bool:
@@ -66,7 +66,7 @@ def base_p_to_base_2(a: str, p: int):
     num_digits = 0
     try:
         if p != 2 and p != 4 and p != 8 and p != 16:
-            raise ValueError(Fore.RED + "p must be 2, 4, 8 or 16!" + Style.RESET_ALL)
+            raise ValueError(Fore.RED + "Base must be 2, 4, 8 or 16!" + Style.RESET_ALL)
         if p == 2:
             return a
         while power2 < p:
@@ -84,7 +84,7 @@ def base_2_to_base_p(a: str, p: int):
     num_digits = 0
     try:
         if p != 2 and p != 4 and p != 8 and p != 16:
-            raise ValueError(Fore.RED + "p must be 2, 4, 8 or 16!" + Style.RESET_ALL)
+            raise ValueError(Fore.RED + "Base must be 2, 4, 8 or 16!" + Style.RESET_ALL)
         if p == 2:
             return a
         while power2 < p:

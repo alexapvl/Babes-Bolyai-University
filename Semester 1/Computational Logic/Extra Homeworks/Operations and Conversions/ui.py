@@ -12,7 +12,7 @@ def print_conversion_menu():
     print(Fore.YELLOW + "2. Conversion with intermediary base 10" + Style.RESET_ALL)
     print(Fore.YELLOW + "3. Substitution method (source base < destination base)" + Style.RESET_ALL)
     print(Fore.YELLOW + "4. Successive divisions method (source base > destination base)" + Style.RESET_ALL)
-    print(Fore.YELLOW + "0. Go back" + Style.RESET_ALL)
+    print(Fore.YELLOW + "0. Go back to main menu" + Style.RESET_ALL)
 
 def ui():
     print(Fore.CYAN + "Apăvăloaiei Alexandru, group 911" + Style.RESET_ALL)
@@ -47,35 +47,41 @@ def ui():
                                                     raise ValueError(Fore.RED + "Invalid base!" + Style.RESET_ALL)
                                                 if valid_base_p(int(db)):
                                                     while True:
+                                                        if break_out_flag:
+                                                            break
                                                         try:
                                                             print_conversion_menu()
-                                                            method = input(">>> ")
+                                                            method = input("Choose method of conversion: ")
                                                             if method == "1":
                                                                 if not valid_base_power_of_2(int(sb)) or not valid_base_power_of_2(int(db)):
-                                                                    print(Fore.RED + f"Current selected bases are {sb} and {db}.\nRapid conversion is intended for converting from and to bases which are powers of 2!" + Style.RESET_ALL)
                                                                     break_out_flag = True
-                                                                    break
+                                                                    raise ValueError(Fore.RED + f"Current selected bases are {sb} and {db}\nRapid conversion is intended for converting from and to bases which are powers of 2!" + Style.RESET_ALL)
                                                                 else:
-                                                                    print(rapid_conversion(number, int(sb), int(db)))
+                                                                    print(f"Number in base {sb}: {number}\nNumber in base {db}: {rapid_conversion(number, int(sb), int(db))}")
+                                                                    print(Fore.GREEN + "Converted using rapid conversions" + Style.RESET_ALL)
                                                                     break_out_flag = True
-                                                                    break
                                                             elif method == "2":
-                                                                print(conversion_with_intermediary_base_10(number, int(sb), int(db)))
-                                                                break
+                                                                print(f"Number in base {sb}: {number}\nNumber in base {db}: {conversion_with_intermediary_base_10(number, int(sb), int(db))}")
+                                                                print(Fore.GREEN + "Converted using intermediary base 10" + Style.RESET_ALL)
+                                                                break_out_flag = True
                                                             elif method == "3":
                                                                 if int(sb) <= int(db):
-                                                                    print(substitution_method(number, int(sb), int(db)))
-                                                                    break
+                                                                    print(f"Number in base {sb}: {number}\nNumber in base {db}: {substitution_method(number, int(sb), int(db))}")
+                                                                    print(Fore.GREEN + "Converted using substitution method" + Style.RESET_ALL)
+                                                                    break_out_flag = True
                                                                 else:
+                                                                    break_out_flag = True
                                                                     raise ValueError(Fore.RED + "Substitution method is intended for converting from a smaller base to a larger base!" + Style.RESET_ALL)
                                                             elif method == "4":
                                                                 if int(sb) >= int(db):
-                                                                    print(successive_divisions_method(number, int(sb), int(db)))
-                                                                    break
+                                                                    print(f"Number in base {sb}: {number}\nNumber in base {db}: {successive_divisions_method(number, int(sb), int(db))}")
+                                                                    print(Fore.GREEN + "Converted using successive divisions method" + Style.RESET_ALL)
+                                                                    break_out_flag = True
                                                                 else:
+                                                                    break_out_flag = True
                                                                     raise ValueError(Fore.RED + "Successive divisions method is intended for converting from a larger base to a smaller base!" + Style.RESET_ALL)
                                                             elif method == "0":
-                                                                break
+                                                                break_out_flag = True
                                                             else:
                                                                 raise ValueError(Fore.RED + "Choose a valid method!" + Style.RESET_ALL)
                                                         except ValueError as ve:

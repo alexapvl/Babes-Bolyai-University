@@ -183,6 +183,15 @@ def successive_divisions_method_test():
     assert alg.successive_divisions_method("BC0D", 16, 6) == "1010513"
 
 def conversion_with_intermediary_base_10_test():
+    # same tests as rapid conversion test
+    assert alg.conversion_with_intermediary_base_10("10000001101100", 2, 8) == "20154"
+    assert alg.conversion_with_intermediary_base_10("11110010000001001010", 2, 16) == "F204A"
+    assert alg.conversion_with_intermediary_base_10("11024", 8, 2) == "1001000010100"
+    assert alg.conversion_with_intermediary_base_10("BC13F", 16, 2) == "10111100000100111111"
+    assert alg.conversion_with_intermediary_base_10("1230", 4, 8) == "154"
+    assert alg.conversion_with_intermediary_base_10("AB650", 16, 8) == "2533120"
+    assert alg.conversion_with_intermediary_base_10("1C3D", 16, 4) == "1300331"
+    assert alg.conversion_with_intermediary_base_10("63401", 8, 16) == "6701"
     # same tests as substitution_method_test
     assert alg.conversion_with_intermediary_base_10("4321", 5, 8) == "1112"
     assert alg.conversion_with_intermediary_base_10("3210", 4, 10) == "228"

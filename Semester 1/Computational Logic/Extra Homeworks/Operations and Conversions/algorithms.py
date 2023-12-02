@@ -15,11 +15,6 @@ def conversion_with_intermediary_base_10(number: str, sb: int, db: int) -> str:
     return base_10_to_base_p(base_p_to_base_10(number, sb), db)
 
 def substitution_method(number: str, sb: int, db: int) -> str:
-    # if sb > db:
-    #     raise ValueError(Fore.RED + "Substitution method is intended for converting from a smaller base to a larger base!" + Style.RESET_ALL)
-    # if sb == db:
-    #     # number already in destination base
-    #     return a
     list_of_products_in_dest_base = ["1"] * len(number)
     for i in range(len(number)):
         power = len(number) - i - 1
