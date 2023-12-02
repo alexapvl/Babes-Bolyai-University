@@ -4,6 +4,7 @@ from algorithms import *
 
 def print_menu():
     print(Fore.YELLOW + "1. Convert a number from a base to another base" + Style.RESET_ALL)
+    print(Fore.YELLOW + "2. Perform an operation between two numbers in the same base" + Style.RESET_ALL)
     print(Fore.YELLOW + "0. Exit" + Style.RESET_ALL)
 
 def print_conversion_menu():
@@ -12,6 +13,14 @@ def print_conversion_menu():
     print(Fore.YELLOW + "2. Conversion with intermediary base 10" + Style.RESET_ALL)
     print(Fore.YELLOW + "3. Substitution method (source base < destination base)" + Style.RESET_ALL)
     print(Fore.YELLOW + "4. Successive divisions method (source base > destination base)" + Style.RESET_ALL)
+    print(Fore.YELLOW + "0. Go back to main menu" + Style.RESET_ALL)
+
+def print_operation_menu():
+    print(Fore.YELLOW + "Choose an operation:" + Style.RESET_ALL)
+    print(Fore.YELLOW + "1. Addition" + Style.RESET_ALL)
+    print(Fore.YELLOW + "2. Subtraction" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Multiplication by one digit" + Style.RESET_ALL)
+    print(Fore.YELLOW + "4. Division by one digit" + Style.RESET_ALL)
     print(Fore.YELLOW + "0. Go back to main menu" + Style.RESET_ALL)
 
 def ui():
@@ -84,6 +93,59 @@ def ui():
                                                                 break_out_flag = True
                                                             else:
                                                                 raise ValueError(Fore.RED + "Choose a valid method!" + Style.RESET_ALL)
+                                                        except ValueError as ve:
+                                                            print(ve)
+                                            except ValueError as ve:
+                                                print(ve)
+                                except ValueError as ve:
+                                    print(ve)
+                    except ValueError as ve:
+                        print(ve)
+            if user_input == "2":
+                while True:
+                    if break_out_flag:
+                        break
+                    try:
+                        base = input("Base in which operations will be performed: ").strip()
+                        base = remove_leading_zeros(base)
+                        if not base.isdigit():
+                            raise ValueError(Fore.RED + "Invalid base!" + Style.RESET_ALL)
+                        if valid_base_p(int(base)):
+                            while True:
+                                if break_out_flag:
+                                    break
+                                try:
+                                    number1 = input(f"First number in base {base}: ").strip().upper()
+                                    if verify_number_in_base_p(number1, int(base)):
+                                        while True:
+                                            if break_out_flag:
+                                                break
+                                            try:
+                                                number2 = input(f"Second number in base {base}: ").strip().upper()
+                                                if verify_number_in_base_p(number2, int(base)):
+                                                    while True:
+                                                        if break_out_flag:
+                                                            break
+                                                        try:
+                                                            print_operation_menu()
+                                                            operation = input(">>> ").strip()
+                                                            if operation == "1":
+                                                                print(f"{number1} + {number2} = {addition_in_base_p(number1, number2, int(base))}")
+                                                                print(Fore.GREEN + f"Addition performed in base {base}" + Style.RESET_ALL)
+                                                            elif operation == "2":
+                                                                print(f"{number1} - {number2} = {subtraction_in_base_p(number1, number2, int(base))}")
+                                                                print(Fore.GREEN + f"Subtraction performed in base {base}" + Style.RESET_ALL)
+                                                            elif operation == "3":
+                                                                print(f"{number1} x {number2} = {multiplication_by_one_digit_in_base_p(number1, number2, int(base))}")
+                                                                print(Fore.GREEN + f"Multiplication performed in base {base}" + Style.RESET_ALL)
+                                                            elif operation == "4":
+                                                                quotient, remainder = division_by_one_digit_in_base_p(number1, number2, int(base))
+                                                                print(f"{number1} / {number2} = {quotient}, remainder: {remainder}")
+                                                                print(Fore.GREEN + f"Division performed in base {base}" + Style.RESET_ALL)
+                                                            elif operation == "0":
+                                                                break_out_flag = True
+                                                            else:
+                                                                raise ValueError(Fore.RED + "Choose a valid operation!" + Style.RESET_ALL)
                                                         except ValueError as ve:
                                                             print(ve)
                                             except ValueError as ve:

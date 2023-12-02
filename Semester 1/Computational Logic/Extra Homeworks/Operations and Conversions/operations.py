@@ -39,7 +39,7 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
         # commutativity
         return multiplication_by_one_digit_in_base_p(b, a, p)
     if len(b) != 1:
-        raise ValueError(Fore.RED + "Multiplicasion only by one digit! (second param. for multiplication needs to be asingle digit)" + Style.RESET_ALL)
+        raise ValueError(Fore.RED + "Multiplicasion only by one digit!" + Style.RESET_ALL)
     result = ""
     carry: int = 0
     for i in range(len(a) - 1, -1, -1):
@@ -54,7 +54,7 @@ def multiplication_by_one_digit_in_base_p(a: str, b: str, p: int) -> str:
 def division_by_one_digit_in_base_p(a: str, b: str, p: int) -> tuple:
     digits = "0123456789ABCDEF"
     if len(b) != 1:
-        raise ValueError(Fore.RED + "Division only by one digit! (second param. for division needs to be a single digit)" + Style.RESET_ALL)
+        raise ValueError(Fore.RED + "Division only by one digit!" + Style.RESET_ALL)
     if b == "0":
         raise ValueError(Fore.RED + "ERROR: Division by zero!" + Style.RESET_ALL)
     quotient = ""
