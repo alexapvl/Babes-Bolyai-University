@@ -228,7 +228,7 @@ def test():
         test_utilities()
         test_operations()
         test_algorithms()
-        print(Fore.GREEN + "All tests passed!" + Style.RESET_ALL)
+        # print(Fore.GREEN + "All tests passed!" + Style.RESET_ALL)
     except AssertionError:
         print(Fore.RED + "Some tests failed!" + Style.RESET_ALL)
     except ValueError as ve:

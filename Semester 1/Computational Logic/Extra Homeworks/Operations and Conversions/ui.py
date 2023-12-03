@@ -64,7 +64,7 @@ def ui():
                                                             method = input("Choose method of conversion: ")
                                                             if method == "1":
                                                                 if not valid_base_power_of_2(int(sb)) or not valid_base_power_of_2(int(db)):
-                                                                    break_out_flag = True
+                                                                    # break_out_flag = True
                                                                     raise ValueError(Fore.RED + f"Current selected bases are {sb} and {db}\nRapid conversion is intended for converting from and to bases which are powers of 2!" + Style.RESET_ALL)
                                                                 else:
                                                                     print(f"Number in base {sb}: {number}\nNumber in base {db}: {rapid_conversion(number, int(sb), int(db))}")
@@ -80,7 +80,7 @@ def ui():
                                                                     print(Fore.GREEN + "Converted using substitution method" + Style.RESET_ALL)
                                                                     break_out_flag = True
                                                                 else:
-                                                                    break_out_flag = True
+                                                                    # break_out_flag = True
                                                                     raise ValueError(Fore.RED + "Substitution method is intended for converting from a smaller base to a larger base!" + Style.RESET_ALL)
                                                             elif method == "4":
                                                                 if int(sb) >= int(db):
@@ -88,7 +88,7 @@ def ui():
                                                                     print(Fore.GREEN + "Converted using successive divisions method" + Style.RESET_ALL)
                                                                     break_out_flag = True
                                                                 else:
-                                                                    break_out_flag = True
+                                                                    # break_out_flag = True
                                                                     raise ValueError(Fore.RED + "Successive divisions method is intended for converting from a larger base to a smaller base!" + Style.RESET_ALL)
                                                             elif method == "0":
                                                                 break_out_flag = True
@@ -134,8 +134,26 @@ def ui():
                                                                 print(f"{number1} + {number2} = {addition_in_base_p(number1, number2, int(base))}")
                                                                 print(Fore.GREEN + f"Addition performed in base {base}" + Style.RESET_ALL)
                                                             elif operation == "2":
-                                                                print(f"{number1} - {number2} = {subtraction_in_base_p(number1, number2, int(base))}")
-                                                                print(Fore.GREEN + f"Subtraction performed in base {base}" + Style.RESET_ALL)
+                                                                if base_p_to_base_10(number1, int(base)) < base_p_to_base_10(number2, int(base)):
+                                                                    while True:
+                                                                        try:
+                                                                            print(Fore.RED + "First number must be greater than or equal to the second number!\nDo you want to swap to numbers?(y/n)" + Style.RESET_ALL)
+                                                                            swap = input(">>> ").strip().lower()
+                                                                            if swap == "y":
+                                                                                number1, number2 = number2, number1
+                                                                                print(f"{number1} - {number2} = {subtraction_in_base_p(number1, number2, int(base))}")
+                                                                                print(Fore.GREEN + f"Subtraction performed in base {base}" + Style.RESET_ALL)
+                                                                                break
+                                                                            elif swap == "n":
+                                                                                print(Fore.RED + "ERROR: Subtrantion cannot be made...Returning to operations menu..." + Style.RESET_ALL)
+                                                                                break
+                                                                            else:
+                                                                                raise ValueError(Fore.RED + "Choose a valid option!(y/n)" + Style.RESET_ALL)
+                                                                        except ValueError as ve:
+                                                                            print(ve)
+                                                                else:
+                                                                    print(f"{number1} - {number2} = {subtraction_in_base_p(number1, number2, int(base))}")
+                                                                    print(Fore.GREEN + f"Subtraction performed in base {base}" + Style.RESET_ALL)
                                                             elif operation == "3":
                                                                 print(f"{number1} x {number2} = {multiplication_by_one_digit_in_base_p(number1, number2, int(base))}")
                                                                 print(Fore.GREEN + f"Multiplication performed in base {base}" + Style.RESET_ALL)
@@ -157,7 +175,7 @@ def ui():
                         print(ve)
             elif user_input == "0":
                 break
-            else:
+            elif user_input != "0" and user_input != "1" and user_input != "2":
                 raise ValueError(Fore.RED + "Invalid option!" + Style.RESET_ALL)
         except ValueError as ve:
             print(ve)
