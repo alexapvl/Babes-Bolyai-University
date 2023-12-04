@@ -4,11 +4,12 @@
 bits 32
 global start
 
-extern exit, fopen, fread, printf
+extern exit, fopen, fclose, fread, printf
 import exit msvcrt.dll
 import fopen msvcrt.dll
 import fread msvcrt.dll
 import printf msvcrt.dll
+import fclose msvcrt.dll
 
 segment data use32 class=data
     file db "input.txt", 0; name of file
@@ -74,6 +75,10 @@ start:
     push dword string
     call [printf]
     add esp, 4*3
+
+    push dword [file_desc]
+    call [fclose]
+    add esp, 4
 
     finish:
 	push dword 0 
