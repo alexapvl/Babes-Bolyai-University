@@ -23,8 +23,8 @@ this is a comment
     - ### [Seminars](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Computer%20Systems%20Architecture/Seminars "Seminars")
 
 - ## [Fundamentals of Programming :snake:](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming "Fundamentals of Programming")
-    <!-- - ### [Extra Work](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Extra%20Work "Extra Work") -->
     - ### [Labs](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Labs "Labs")
     - ### [Seminars](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Seminars "Seminars")
+    - ### [Extra Work](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Extra%20Work "Extra Work")
 
 </details>
