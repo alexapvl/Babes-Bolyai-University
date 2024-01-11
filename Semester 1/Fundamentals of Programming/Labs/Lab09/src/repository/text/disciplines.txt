@@ -1,0 +1,21 @@
+825|Marketing Content
+838|Consumer Behavior
+978|Computer Animation
+744|Business Intelligence
+928|Quantum Machine Learning
+651|Viral Marketing
+437|Operating Systems
+687|Information Visualization
+913|Human Centered Design
+445|Affiliate Marketing
+792|Cyber Physical Systems
+719|Natural Language Processing
+805|Augmented Reality
+890|Computer Architecture
+170|Entrepreneurship
+315|Corporate Finance
+286|Network Security
+592|Computer Ethics
+245|Computer Vision
+452|Information Visualization
+100|Info
