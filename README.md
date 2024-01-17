@@ -1,4 +1,4 @@
->***This is where I keep all of my lectures, seminars and labs from Bàbes Bolyai Univesity.***
+>***This is where I keep all of my work from Bàbes Bolyai Univesity.***
 
 <details open><summary>
 
