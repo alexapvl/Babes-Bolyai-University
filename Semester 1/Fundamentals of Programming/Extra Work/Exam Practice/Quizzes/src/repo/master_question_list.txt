@@ -1,0 +1,100 @@
+1;Name El Cid's horse;Bableca;Abu;Santiago;Santiago;hard
+2;Which is not a fish;Brazil;China;UK;China;hard
+3;Which number is the largest;11;13;17;11;easy
+4;Which number is the smallest;Bableca;Abu;Santiago;Bableca;easy
+5;Which Apollo mission did not make it to the moon;1;3;4;3;hard
+6;Which number is the smallest;654;546;476;476;medium
+7;The Western Roman Empire fell in;1;3;4;4;hard
+8;Name El Cid's horse;-3;3;0;0;easy
+9;Which number is prime;Brazil;China;UK;UK;easy
+10;Name El Cid's horse;654;546;476;654;hard
+11;Which country has the largest GPD;Apollo;Sputnik;Zaria;Zaria;easy
+12;Which country has the largest GPD;Brazil;China;UK;Brazil;hard
+13;A mole can be;carp;orca;eel;orca;easy
+14;A mole can be;11;13;17;13;hard
+15;A mole can be;2;32;9;9;medium
+16;Which number is the smallest;Apollo;Sputnik;Zaria;Zaria;hard
+17;The Western Roman Empire fell in;Apollo;Sputnik;Zaria;Zaria;medium
+18;Which number is the smallest;Bableca;Abu;Santiago;Bableca;easy
+19;Which is not a fish;Brazil;China;UK;Brazil;medium
+20;Which country has the largest GPD;1;3;4;1;easy
+21;Name El Cid's horse;Bableca;Abu;Santiago;Abu;easy
+22;Name El Cid's horse;654;546;476;546;hard
+23;Name El Cid's horse;-3;3;0;0;hard
+24;Which number is the smallest;1;3;4;3;easy
+25;A mole can be;-3;3;0;3;hard
+26;Which number is prime;Apollo;Sputnik;Zaria;Sputnik;hard
+27;Name El Cid's horse;654;546;476;654;medium
+28;Which number is the smallest;Bableca;Abu;Santiago;Bableca;medium
+29;Which number is the largest;Brazil;China;UK;China;easy
+30;Which country has the largest GPD;654;546;476;476;easy
+31;Which number is the smallest;Apollo;Sputnik;Zaria;Zaria;medium
+32;Name El Cid's horse;Bableca;Abu;Santiago;Bableca;easy
+33;The Western Roman Empire fell in;animal;quantity;both;quantity;medium
+34;Which Apollo mission did not make it to the moon;Bableca;Abu;Santiago;Santiago;hard
+35;Name El Cid's horse;Bableca;Abu;Santiago;Abu;easy
+36;Which is not a fish;-3;3;0;-3;medium
+37;Which number is prime;Brazil;China;UK;Brazil;easy
+38;Which number is the smallest;Apollo;Sputnik;Zaria;Apollo;hard
+39;Which number is the smallest;carp;orca;eel;orca;medium
+40;Which number is the smallest;-3;3;0;-3;hard
+41;Name El Cid's horse;2;32;9;32;hard
+42;Which number is the largest;carp;orca;eel;orca;medium
+43;Name the first satellite;Brazil;China;UK;Brazil;hard
+44;Which is not a fish;1;3;4;4;easy
+45;Which number is the largest;Brazil;China;UK;Brazil;medium
+46;A mole can be;Bableca;Abu;Santiago;Santiago;medium
+47;Which number is the smallest;654;546;476;654;medium
+48;The Western Roman Empire fell in;animal;quantity;both;quantity;easy
+49;Which number is the smallest;2;32;9;9;easy
+50;Which number is the smallest;Brazil;China;UK;UK;medium
+51;A mole can be;Brazil;China;UK;Brazil;easy
+52;Which number is the largest;654;546;476;476;hard
+53;Which number is prime;Brazil;China;UK;Brazil;hard
+54;Which number is the largest;1;3;4;4;medium
+55;Which is not a fish;11;13;17;17;medium
+56;Which country has the largest GPD;Bableca;Abu;Santiago;Santiago;medium
+57;Which Apollo mission did not make it to the moon;Bableca;Abu;Santiago;Santiago;easy
+58;Which number is the largest;Brazil;China;UK;China;medium
+59;Name El Cid's horse;-3;3;0;-3;easy
+60;Name El Cid's horse;Bableca;Abu;Santiago;Abu;easy
+61;Which number is prime;2;32;9;32;easy
+62;Which Apollo mission did not make it to the moon;Apollo;Sputnik;Zaria;Sputnik;medium
+63;Which number is prime;1;3;4;1;hard
+64;A mole can be;carp;orca;eel;orca;medium
+65;Which is not a fish;carp;orca;eel;eel;easy
+66;Which is not a fish;-3;3;0;3;medium
+67;Which number is the largest;Bableca;Abu;Santiago;Bableca;medium
+68;A mole can be;Brazil;China;UK;UK;medium
+69;Which number is the smallest;11;13;17;13;hard
+70;Name the first satellite;Bableca;Abu;Santiago;Abu;hard
+71;Which number is prime;654;546;476;654;easy
+72;The Western Roman Empire fell in;11;13;17;11;medium
+73;Which number is prime;-3;3;0;0;hard
+74;A mole can be;Bableca;Abu;Santiago;Bableca;easy
+75;Name the first satellite;2;32;9;2;easy
+76;Which number is the smallest;1;3;4;3;medium
+77;Which number is the smallest;-3;3;0;-3;easy
+78;Name El Cid's horse;animal;quantity;both;quantity;hard
+79;A mole can be;Brazil;China;UK;Brazil;medium
+80;Which number is the smallest;Bableca;Abu;Santiago;Bableca;hard
+81;Which number is the smallest;654;546;476;546;hard
+82;Which country has the largest GPD;Apollo;Sputnik;Zaria;Sputnik;medium
+83;Which country has the largest GPD;Brazil;China;UK;Brazil;medium
+84;Which number is prime;Apollo;Sputnik;Zaria;Sputnik;easy
+85;Which number is the largest;Bableca;Abu;Santiago;Bableca;medium
+86;The Western Roman Empire fell in;2;32;9;32;medium
+87;Which number is the smallest;654;546;476;654;medium
+88;Which number is the largest;11;13;17;11;hard
+89;A mole can be;-3;3;0;-3;medium
+90;The Western Roman Empire fell in;Bableca;Abu;Santiago;Bableca;easy
+91;Which number is the smallest;11;13;17;17;hard
+92;Which number is the largest;Brazil;China;UK;UK;easy
+93;Name El Cid's horse;animal;quantity;both;animal;hard
+94;Which number is the largest;2;32;9;9;easy
+95;Which number is prime;Bableca;Abu;Santiago;Santiago;hard
+96;Name the first satellite;2;32;9;32;medium
+97;Which number is the largest;carp;orca;eel;carp;easy
+98;Which number is the smallest;1;3;4;4;hard
+99;Which is not a fish;654;546;476;654;hard
+100;Name the first satellite;animal;quantity;both;both;hard
