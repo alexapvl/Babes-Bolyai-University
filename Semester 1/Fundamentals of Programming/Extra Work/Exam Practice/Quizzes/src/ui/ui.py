@@ -1,4 +1,4 @@
-from Quizzes.src.domain.question import Question
+from Quizzes.src.domain.question import (Question)
 from Quizzes.src.service.controller import Service, RepoError
 
 
