@@ -26,5 +26,6 @@ this is a comment
     - ### [Labs](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Labs "Labs")
     - ### [Seminars](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Seminars "Seminars")
     - ### [Extra Work](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Extra%20Work "Extra Work")
+    - ### [Exam](https://github.com/alexapvl/Babes-Bolyai-University/tree/master/Semester%201/Fundamentals%20of%20Programming/Exam%20-%20Snake%20Game "Exam")
 
 </details>
