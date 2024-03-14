@@ -19,7 +19,7 @@ class UI():
         while(True):
             try:
                 self.print_menu()
-                command = input("Enter command: ")
+                command = input(">> ")
                 if command == "1":
                     i = int(input("Enter vertex: "))
                     self.service.add_vertex(i)

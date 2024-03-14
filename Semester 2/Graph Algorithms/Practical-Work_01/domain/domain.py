@@ -14,12 +14,12 @@ class Graph():
         # outbounds
         string += "Outbounds:\n"
         for i in self.vertices:
-            string += f"{i} <- {self.dout[i]}\n"
+            string += f"{i} -> {self.dout[i]}\n"
         string += "\n"
         # inbounds
         string += "Inbounds:\n"
         for i in self.vertices:
-            string += f"{i} -> {self.din[i]}\n"
+            string += f"{i} <- {self.din[i]}\n"
         string += "\n"
         # edges
         string += "Edges:\n"
