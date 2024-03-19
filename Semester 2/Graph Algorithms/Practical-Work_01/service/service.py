@@ -1,59 +1,121 @@
 from domain.domain import Graph
-
-class GraphError(ValueError):
-    pass
+from repository.repository import Repository, RepoError
 
 class GraphService():
-    def __init__(self, graph: Graph) -> None:
-        self.graph = graph
+    def __init__(self, repository: Repository , file_name: str) -> None:
+        self.repo = repository
+        self.fileName = file_name
         
-    def add_vertex(self, i):
-        """Adds a vertex to the graph if it does not already exist
+    def read_file(self):
+        """
+        Reads a graph from a file and stores it in the repository
+        Args:
+            file_name : the name of the file
+        """
+        with open(self.fileName, "r") as file:
+            params = file.readline().strip().split()
+            numberOfVertices = int(params[0])
+            numberOfEdges = int(params[1])
+            self.repo.graph = Graph(numberOfVertices, numberOfEdges)
+            for line in file.readlines():
+                params = line.strip().split()
+                if len(params) == 3:
+                    i = int(params[0])
+                    j = int(params[1])
+                    cost = int(params[2])
+                    self.add_edge(i, j, cost)
+                else: # isolated vertices are written alone on a line just to mark them, they are already added when the graph is created
+                    continue
+                
+    def write_file(self):
+        """
+        Writes the whole graph to the file, overwriting the previous content
+        Args:
+            file_name : the name of the file
+        """
+        with open(self.fileName, "w") as file:
+            file.write(f"{len(self.repo.graph.vertices)} {self.repo.graph.numberOfEdges}\n")
+            for edge in self.repo.graph.edges.keys():
+                file.write(f"{edge[0]} {edge[1]} {self.repo.graph.edges[edge]}\n")
+            for isolatedVertex in self.get_isolated_vertices():
+                file.write(f"{isolatedVertex}\n")
 
+    def add_vertex(self, i):
+        """
+        Adds a vertex to the graph if it does not already exist
         Args:
             i : "name" of the vertex 
         """
-        if i in self.graph.vertices:
-            raise GraphError("\nVertex already exists in the graph\n")
-        self.graph.vertices.append(i)
-        
+        self.repo.add_vertex(i)
+        self.write_file()
+
+    def remove_vertex(self, i):
+        """
+        Removes a vertex from the graph if it exists
+        Args:
+            i : "name" of the vertex
+        """
+        self.repo.remove_vertex(i)
+        self.write_file()
+    
     def add_edge(self, i, j, cost):
-        """Adds an edge to the directed graph from i to j
+        """
+        Adds an edge to the directed graph from i to j
         First it checks if the edge already exists, then if not, 
         it adds it to the graph along with the cost of that edge
-
         Args:
             i : first vertex (out)
             j : second vertex (in)
             cost : the cost of the edge
         """
-        if (i, j) in self.graph.edges.keys():
-            raise GraphError("\nEdge already exists in the graph\n")
-        if type(cost) != int:
-            raise GraphError("\nCost must be an integer\n")
-        self.graph.edges[(i, j)] = cost
-        self.graph.dout[i].append(j)
-        self.graph.din[j].append(i)
-        
-        
-    def is_vertex(self, i) -> bool:
-        """Checks if a vertex exists in the graph
-
-        Args:
-            i : "name" of the vertex
+        self.repo.add_edge(i, j, cost)
+        self.write_file()
+    
+    def remove_edge(self, i, j):
         """
-        if i in self.graph.vertices:
-            return True
-        return False
-        
-    def is_edge(self, i, j) -> bool:
-        """Checks if an edge exists in the graph
-
+        Removes an edge from the graph
         Args:
             i : first vertex (out)
             j : second vertex (in)
         """
-        if (i, j) in self.graph.edges.keys():
-            return True
-        return False
+        self.repo.remove_edge(i, j)
+        self.write_file()
+    
+    def is_vertex(self, i) -> bool:
+        """
+        Checks if a vertex exists in the graph
+        Args:
+            i : "name" of the vertex
+        """
+        return self.repo.is_vertex(i)
+
+    def is_edge(self, i, j) -> bool:
+        """
+        Checks if an edge exists in the graph
+        Args:
+            i : first vertex (out)
+            j : second vertex (in)
+        """
+        return self.repo.is_edge(i, j)
+
+    def get_isolated_vertices(self) -> list:
+        """
+        Returns a list of isolated vertices
+        """
+        return self.repo.get_isolated_vertices()
         
+    @property
+    def repo(self) -> Repository:
+        return self.__repo
+    
+    @repo.setter
+    def repo(self, value: Repository):
+        self.__repo = value
+        
+    @property
+    def fileName(self) -> str:
+        return self.__fileName
+
+    @fileName.setter
+    def fileName(self, value: str):
+        self.__fileName = value
