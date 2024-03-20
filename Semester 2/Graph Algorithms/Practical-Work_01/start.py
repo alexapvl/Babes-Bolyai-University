@@ -6,7 +6,7 @@ from ui.ui import UI
 if __name__ == "__main__":
     graph = Graph()
     repo = Repository(graph)
-    service = GraphService(repo, "text_files/example.txt")
+    service = GraphService(repo, "text_files/graph1k.txt")
     ui = UI(service)
     ui.start()  
     
