@@ -82,7 +82,6 @@ class Repository():
                 graph.dout[j].append(i)
                 graph.edges[(i, j)] = cost
                 no_edges -= 1
-        
         return graph
 
     @property
