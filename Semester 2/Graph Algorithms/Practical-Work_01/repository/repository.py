@@ -1,3 +1,4 @@
+import random
 from domain.domain import Graph
 
 class RepoError(ValueError):
@@ -61,6 +62,28 @@ class Repository():
             if len(self.graph.din[i]) == 0 and len(self.graph.dout[i]) == 0:
                 isolated.append(i)
         return isolated
+
+    def copy_graph(self) -> Graph:
+        new_graph = Graph(len(self.graph.vertices), self.graph.numberOfEdges)
+        new_graph.vertices = self.graph.vertices.copy()
+        new_graph.edges = self.graph.edges.copy()
+        new_graph.din = self.graph.din.copy()
+        new_graph.dout = self.graph.dout.copy()
+        return new_graph
+
+    def generate_random_graph(self, no_vertices: int, no_edges: int) -> Graph:
+        graph = Graph(no_vertices, no_edges)
+        while no_edges > 0:
+            i = random.choice(range(no_vertices))
+            j = random.choice(range(no_vertices))
+            if i != j and (i, j) not in graph.edges.keys():
+                cost = random.choice(range(1, 100))
+                graph.din[i].append(j)
+                graph.dout[j].append(i)
+                graph.edges[(i, j)] = cost
+                no_edges -= 1
+        
+        return graph
 
     @property
     def graph(self) -> Graph:

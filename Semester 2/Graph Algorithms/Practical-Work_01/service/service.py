@@ -39,6 +39,21 @@ class GraphService():
                 file.write(f"{edge[0]} {edge[1]} {self.repo.graph.edges[edge]}\n")
             for isolatedVertex in self.get_isolated_vertices():
                 file.write(f"{isolatedVertex}\n")
+    
+    def write_randomly_generated_graph_to_file(self, graph: Graph, file_name: str):
+        """
+        Writes a randomly generated graph to a file
+        Args:
+            graph : the graph to be written
+            file_name : the name of the file
+        """
+        with open(file_name, "w") as file:
+            file.write(f"{len(graph.vertices)} {graph.numberOfEdges}\n")
+            for edge in graph.edges.keys():
+                file.write(f"{edge[0]} {edge[1]} {graph.edges[edge]}\n")
+            for isolatedVertex in graph.vertices:
+                if len(graph.din[isolatedVertex]) == 0 and len(graph.dout[isolatedVertex]) == 0:
+                    file.write(f"{isolatedVertex}\n")
 
     def add_vertex(self, i):
         """
@@ -103,6 +118,15 @@ class GraphService():
         Returns a list of isolated vertices
         """
         return self.repo.get_isolated_vertices()
+
+    def generate_random_graph(self, no_vertices: int, no_edges: int) -> Graph:
+        """
+        Generates a random graph with a given number of vertices and edges
+        Args:
+            no_vertices : number of vertices
+            no_edges : number of edges
+        """
+        return self.repo.generate_random_graph(no_vertices, no_edges)
         
     @property
     def repo(self) -> Repository:
