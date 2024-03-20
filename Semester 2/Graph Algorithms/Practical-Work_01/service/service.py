@@ -40,7 +40,7 @@ class GraphService():
             for isolatedVertex in self.get_isolated_vertices():
                 file.write(f"{isolatedVertex}\n")
     
-    def write_randomly_generated_graph_to_file(self, graph: Graph, file_name: str):
+    def write_given_graph_to_file(self, graph: Graph, file_name: str):
         """
         Writes a randomly generated graph to a file
         Args:
@@ -118,6 +118,12 @@ class GraphService():
         Returns a list of isolated vertices
         """
         return self.repo.get_isolated_vertices()
+    
+    def copy_graph(self) -> Graph:
+        """
+        Returns a copy of the current graph
+        """
+        return self.repo.copy_graph()
 
     def generate_random_graph(self, no_vertices: int, no_edges: int) -> Graph:
         """
