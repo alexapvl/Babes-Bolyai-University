@@ -133,6 +133,67 @@ class GraphService():
             no_edges : number of edges
         """
         return self.repo.generate_random_graph(no_vertices, no_edges)
+
+    def get_vertices(self) -> list:
+        """
+        Returns a list of vertices
+        """
+        return self.repo.get_vertices()
+
+    def update_edge_cost(self, i: int, j: int, cost: int):
+        """
+        Updates the cost of an edge
+        Args:
+            i : first vertex (out)
+            j : second vertex (in)
+            cost : the new cost
+        """
+        self.repo.update_edge_cost(i, j, cost)
+        self.write_file()
+    
+    def in_degree_of_vertex(self, i: int) -> int:
+        """
+        Returns the in-degree of a vertex
+        Args:
+            i : "name" of the vertex
+        """
+        return self.repo.in_degree_of_vertex(i)
+
+    def out_degree_of_vertex(self, i: int) -> int:
+        """
+        Returns the out-degree of a vertex
+        Args:
+            i : "name" of the vertex
+        """
+        return self.repo.out_degree_of_vertex(i)
+
+    def number_of_vertices(self) -> int:
+        """
+        Returns the number of vertices in the graph
+        """
+        return self.repo.number_of_vertices()
+
+    def get_vertices(self) -> list:
+        """
+        Returns a list of vertices
+        """
+        return self.repo.get_vertices()
+
+    def get_inbounds_of_vertex(self, i: int) -> list:
+        """
+        Returns a list of inbounds of a vertex
+        Args:
+            i : "name" of the vertex
+        """
+        return self.repo.get_inbounds_of_vertex(i)
+
+    def get_outbounds_of_vertex(self, i: int) -> list:
+        """
+        Returns a list of outbounds of a vertex
+        Args:
+            i : "name" of the vertex
+        """
+        return self.repo.get_outbounds_of_vertex(i)
         
     @property
     def repo(self) -> Repository:

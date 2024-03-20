@@ -83,6 +83,30 @@ class Repository():
                 graph.edges[(i, j)] = cost
                 no_edges -= 1
         return graph
+    
+    def get_vertices(self) -> list:
+        return self.graph.vertices
+    
+    def update_edge_cost(self, i: int, j: int, cost: int):
+        self.graph.edges[(i, j)] = cost
+
+    def in_degree_of_vertex(self, i: int) -> int:
+        return len(self.graph.din[i])
+
+    def out_degree_of_vertex(self, i: int) -> int:
+        return len(self.graph.dout[i])
+
+    def number_of_vertices(self) -> int:
+        return len(self.graph.vertices)
+
+    def get_vertices(self) -> list:
+        return self.graph.vertices
+
+    def get_inbounds_of_vertex(self, i: int) -> list:
+        return self.graph.din[i]
+
+    def get_outbounds_of_vertex(self, i: int) -> list:
+        return self.graph.dout[i]
 
     @property
     def graph(self) -> Graph:
