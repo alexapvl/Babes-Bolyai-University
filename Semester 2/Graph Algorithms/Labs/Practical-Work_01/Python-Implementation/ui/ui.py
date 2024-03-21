@@ -19,12 +19,13 @@ class UI():
         print("8. In degree of vertex")
         print("9. Out degree of vertex")
         print("10. Number of vertices")
-        print("11. Print vertices")
-        print("12. Print inbounds for specific vertex")
-        print("13. Print outbounds for specific vertex")
-        print("14. Print graph")
-        print("15. Create a copy of the current graph and write it into a separate file")
-        print("16. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
+        print("11. Number of edges")
+        print("12. Print vertices")
+        print("13. Print inbounds for specific vertex")
+        print("14. Print outbounds for specific vertex")
+        print("15. Print graph")
+        print("16. Create a copy of the current graph and write it into a separate file")
+        print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
         print("0. Exit\n")
     
     def start(self):
@@ -85,11 +86,13 @@ class UI():
                 elif command == "10":
                     print(f"\nThe graph has {self.service.number_of_vertices()} vertices\n")
                 elif command == "11":
+                    print(f"\nThe graph has {self.service.number_of_edges()} edges\n")
+                elif command == "12":
                     print("Vertices: ", end="")
                     for vertex in self.service.get_vertices():
                         print(vertex, end=" | ")
                     print()
-                elif command == "12":
+                elif command == "13":
                     i = int(input("Enter vertex: "))
                     if not self.service.is_vertex(i):
                         raise UIError(f"\nVertex {i} does not exist in the graph\n")
@@ -100,7 +103,7 @@ class UI():
                         for vertex in self.service.get_inbounds_of_vertex(i):
                             print(vertex, end=" | ")
                     print()
-                elif command == "13":
+                elif command == "14":
                     i = int(input("Enter vertex: "))
                     if not self.service.is_vertex(i):
                         raise UIError(f"\nVertex {i} does not exist in the graph\n")
@@ -111,13 +114,13 @@ class UI():
                         for vertex in self.service.get_outbounds_of_vertex(i):
                             print(vertex, end=" | ")
                     print()
-                elif command == "14":
-                    print(self.service.repo.graph)
                 elif command == "15":
+                    print(self.service.repo.graph)
+                elif command == "16":
                     copyGraph = self.service.copy_graph()
                     self.service.write_given_graph_to_file(copyGraph, "text_files/copy_graph.txt")
                     print("\nCopy of the graph was succesfully written to the file\n")
-                elif command == "16":
+                elif command == "17":
                     no_vertices = int(input("Enter number of vertices: "))
                     no_edges = int(input("Enter number of edges: "))
                     if no_edges > no_vertices ** 2:

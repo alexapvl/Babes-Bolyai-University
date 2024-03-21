@@ -13,17 +13,17 @@ class GraphService():
             file_name : the name of the file
         """
         with open(self.fileName, "r") as file:
-            params = file.readline().strip().split()
+            params = file.readline().split()
             numberOfVertices = int(params[0])
             numberOfEdges = int(params[1])
             self.repo.graph = Graph(numberOfVertices, numberOfEdges)
-            for line in file.readlines():
-                params = line.strip().split()
+            for line in file:
+                params = line.split()
                 if len(params) == 3:
                     i = int(params[0])
                     j = int(params[1])
                     cost = int(params[2])
-                    self.add_edge(i, j, cost)
+                    self.repo.add_edge(i, j, cost)
                 else: # isolated vertices are written alone on a line just to mark them, they are already added when the graph is created
                     continue
                 
@@ -172,6 +172,12 @@ class GraphService():
         Returns the number of vertices in the graph
         """
         return self.repo.number_of_vertices()
+    
+    def number_of_edges(self) -> int:
+        """
+        Returns the number of edges in the graph
+        """
+        return self.repo.number_of_edges()
 
     def get_vertices(self) -> list:
         """

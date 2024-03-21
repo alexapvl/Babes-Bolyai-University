@@ -99,6 +99,9 @@ class Repository():
     def number_of_vertices(self) -> int:
         return len(self.graph.vertices)
 
+    def number_of_edges(self) -> int:
+        return self.graph.numberOfEdges
+
     def get_vertices(self) -> list:
         return self.graph.vertices
 
