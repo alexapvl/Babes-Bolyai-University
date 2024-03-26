@@ -47,6 +47,10 @@ class GraphService():
             graph : the graph to be written
             file_name : the name of the file
         """
+        if graph is None:
+            with open(file_name, "w") as file:
+                file.write("The graph with the given number of vertices and edged is impossile to create.\nThe number of edges is greater than the maximum number of edges possible.\n")
+            return
         with open(file_name, "w") as file:
             file.write(f"{len(graph.vertices)} {graph.numberOfEdges}\n")
             for edge in graph.edges.keys():

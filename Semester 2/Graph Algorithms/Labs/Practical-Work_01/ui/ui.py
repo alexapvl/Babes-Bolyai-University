@@ -123,11 +123,14 @@ class UI():
                 elif command == "17":
                     no_vertices = int(input("Enter number of vertices: "))
                     no_edges = int(input("Enter number of edges: "))
+                    file_name = input("Enter file name: ")
                     if no_edges > no_vertices ** 2:
-                        raise UIError("\nInvalid number of edges, there are too many edges for the specified number of vertices\n")
-                    graph = self.service.generate_random_graph(no_vertices, no_edges)
-                    self.service.write_given_graph_to_file(graph, "text_files/random_graph.txt")
-                    print("\nRandom graph was succesfully written to the file\n")
+                        # create the file with the name and write the error message in it
+                        self.service.write_given_graph_to_file(None, file_name)
+                    else:
+                        graph = self.service.generate_random_graph(no_vertices, no_edges)
+                        self.service.write_given_graph_to_file(graph, file_name)
+                        print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "0":
                     break
                 else:
