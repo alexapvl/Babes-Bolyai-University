@@ -1,11 +1,12 @@
 class Graph():
     def __init__(self, no_vertices=0, no_edges=0) -> None:
-        self.vertices = []
+        self.vertices = [] # list of vertices
         self.edges = {} # (i, j): cost | where the tuple (i, j) is the key
-        self.din = {}
-        self.dout = {}
-        self.numberOfEdges = no_edges
+        self.din = {} # inbound
+        self.dout = {} # outbound
+        self.numberOfEdges = no_edges # number of edges
         for i in range(no_vertices):
+            # add each vertex to the list of vertices and create the inbounds and outbounds
             self.vertices.append(i)
             self.din[i] = []
             self.dout[i] = []
