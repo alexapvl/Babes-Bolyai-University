@@ -64,6 +64,8 @@ class GraphService():
         Adds a vertex to the graph if it does not already exist
         Args:
             i : "name" of the vertex 
+        Preconditions:
+            The vertex must not already exist in the graph
         """
         self.repo.add_vertex(i)
         self.write_file()
@@ -73,6 +75,8 @@ class GraphService():
         Removes a vertex from the graph if it exists
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         self.repo.remove_vertex(i)
         self.write_file()
@@ -86,6 +90,8 @@ class GraphService():
             i : first vertex (out)
             j : second vertex (in)
             cost : the cost of the edge
+        Preconditions:
+            The vertices must exist in the graph
         """
         self.repo.add_edge(i, j, cost)
         self.write_file()
@@ -96,6 +102,8 @@ class GraphService():
         Args:
             i : first vertex (out)
             j : second vertex (in)
+        Preconditions:
+            The edge must exist in the graph
         """
         self.repo.remove_edge(i, j)
         self.write_file()
@@ -105,6 +113,8 @@ class GraphService():
         Checks if a vertex exists in the graph
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         return self.repo.is_vertex(i)
 
@@ -114,6 +124,8 @@ class GraphService():
         Args:
             i : first vertex (out)
             j : second vertex (in)
+        Preconditions:
+            The edge must exist in the graph
         """
         return self.repo.is_edge(i, j)
 
@@ -135,6 +147,8 @@ class GraphService():
         Args:
             no_vertices : number of vertices
             no_edges : number of edges
+        Preconditions:
+            The number of edges must be less than or equal to the maximum number of edges possible
         """
         return self.repo.generate_random_graph(no_vertices, no_edges)
 
@@ -151,6 +165,8 @@ class GraphService():
             i : first vertex (out)
             j : second vertex (in)
             cost : the new cost
+        Preconditions:
+            The edge must exist in the graph
         """
         self.repo.update_edge_cost(i, j, cost)
         self.write_file()
@@ -160,6 +176,8 @@ class GraphService():
         Returns the in-degree of a vertex
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         return self.repo.in_degree_of_vertex(i)
 
@@ -168,6 +186,8 @@ class GraphService():
         Returns the out-degree of a vertex
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         return self.repo.out_degree_of_vertex(i)
 
@@ -194,6 +214,8 @@ class GraphService():
         Returns a list of inbounds of a vertex
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         return self.repo.get_inbounds_of_vertex(i)
 
@@ -202,6 +224,8 @@ class GraphService():
         Returns a list of outbounds of a vertex
         Args:
             i : "name" of the vertex
+        Preconditions:
+            The vertex must exist in the graph
         """
         return self.repo.get_outbounds_of_vertex(i)
         
