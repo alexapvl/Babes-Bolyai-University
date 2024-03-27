@@ -1,14 +1,14 @@
-#include "ExtendedTest.h"
-#include "ShortTest.h"
-#include "FixedCapBiMap.h"
-
 #include <iostream>
+
+#include "ExtendedTest.h"
+#include "FixedCapBiMap.h"
+#include "ShortTest.h"
 using namespace std;
 
 int main() {
-	testAll();
-	testAllExtended();
+  testAll();
+  testAllExtended();
 
-	cout << "That's all!" << endl;
-	return 0;
+  cout << "That's all!" << endl;
+  return 0;
 }
