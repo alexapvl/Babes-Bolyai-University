@@ -12,6 +12,7 @@ Matrix::Matrix(int nrLines, int nrCols) {
 
 Matrix::~Matrix() { delete[] this->triplets; }
 
+// Best case: Theta(size) | Worst case: Theta(size) | Average case: Theta(size)
 Matrix::Matrix(Matrix& m) {
   this->nrL = m.nrL;
   this->nrC = m.nrC;
@@ -21,6 +22,7 @@ Matrix::Matrix(Matrix& m) {
   for (int i = 0; i < this->size; ++i) this->triplets[i] = m.triplets[i];
 }
 
+// Best case: Theta(size) | Worst case: Theta(size) | Average case: Theta(size)
 Matrix& Matrix::operator=(Matrix& m) {
   if (this == &m) return *this;
   this->nrL = m.nrL;
@@ -33,10 +35,13 @@ Matrix& Matrix::operator=(Matrix& m) {
   return *this;
 }
 
+// Best case: Theta(1) | Worst case: Theta(1) | Average case: Theta(1)
 int Matrix::nrLines() const { return this->nrL; }
 
+// Best case: Theta(1) | Worst case: Theta(1) | Average case: Theta(1)
 int Matrix::nrColumns() const { return this->nrC; }
 
+// Best case: Theta(1) | Worst case: Theta(size) | Average case: O(size)
 TElem Matrix::element(int i, int j) const {
   if (i < 0 || i >= this->nrL || j < 0 || j >= this->nrC)
     throw std::exception();
@@ -48,6 +53,7 @@ TElem Matrix::element(int i, int j) const {
   }
 }
 
+// Best case: Theta(1) | Worst case: Theta(size) | Average case: O(size)
 int Matrix::tripleExists(int i, int j) const {
   for (int index = 0; index < this->size; ++index) {
     if (this->triplets[index].first.first == i &&
@@ -57,6 +63,7 @@ int Matrix::tripleExists(int i, int j) const {
   return -1;
 }
 
+// Best case: Theta(1) | Worst case: Theta(size) | Average case: O(size)
 TElem Matrix::modify(int i, int j, TElem e) {
   if (i < 0 || i >= this->nrL || j < 0 || j >= this->nrC)
     throw std::exception();
