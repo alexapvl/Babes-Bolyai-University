@@ -76,7 +76,7 @@ class Repository():
         while no_edges > 0:
             i = random.choice(range(no_vertices))
             j = random.choice(range(no_vertices))
-            if i != j and (i, j) not in graph.edges.keys():
+            if (i, j) not in graph.edges.keys():
                 cost = random.choice(range(1, 100))
                 graph.din[i].append(j)
                 graph.dout[j].append(i)
