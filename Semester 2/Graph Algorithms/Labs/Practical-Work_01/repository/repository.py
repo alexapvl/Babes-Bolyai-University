@@ -19,6 +19,10 @@ class Repository():
         if i not in self.graph.vertices:
             raise RepoError("\nVertex does not exist in the graph\n")
         # delete keys from the dictionaries
+        for inbound in self.graph.din[i]:
+            self.graph.dout[inbound].remove(i)
+        for outbound in self.graph.dout[i]:
+            self.graph.din[outbound].remove(i)
         del self.graph.din[i]
         del self.graph.dout[i]
         for edge in list(self.graph.edges.keys()):
@@ -39,7 +43,7 @@ class Repository():
             self.graph.numberOfEdges += 1
 
     def remove_edge(self, i, j):
-        if (i, j) not in self.graph.edges.keys():
+        if not self.is_edge(i, j):
             raise RepoError(f"\nEdge {i} -> {j} does not exist in the graph\n")
         del self.graph.edges[(i, j)]
         self.graph.dout[i].remove(j)
@@ -52,6 +56,8 @@ class Repository():
         return False
         
     def is_edge(self, i, j) -> bool:
+        if not (self.is_vertex(i) and self.is_vertex(j)):
+            return False
         if (i, j) in self.graph.edges.keys():
             return True
         return False
