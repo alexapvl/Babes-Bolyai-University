@@ -45,4 +45,6 @@ class Matrix {
   // returns the previous value from the position
   // throws exception if (i,j) is not a valid position in the Matrix
   TElem modify(int i, int j, TElem e);
+
+  void setMainDiagonal(TElem elem);
 };

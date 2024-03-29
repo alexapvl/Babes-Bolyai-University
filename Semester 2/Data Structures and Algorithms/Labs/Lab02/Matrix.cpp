@@ -63,7 +63,7 @@ int Matrix::tripleExists(int i, int j) const {
   return -1;
 }
 
-// Best case: Theta(1) | Worst case: Theta(size) | Average case: O(size)
+// Best case: Theta(1) | Worst case: Theta(1) | Average case: Theta(1)
 TElem Matrix::modify(int i, int j, TElem e) {
   if (i < 0 || i >= this->nrL || j < 0 || j >= this->nrC)
     throw std::exception();
@@ -79,4 +79,10 @@ TElem Matrix::modify(int i, int j, TElem e) {
     this->triplets[index].second = e;
   }
   return oldValue;
+}
+
+// Best case: Theta(1) | Worst case: Theta(size) | Average case: O(size)
+void Matrix::setMainDiagonal(TElem elem) {
+  if (this->nrL != this->nrC) throw std::exception();
+  for (int i = 0; i < this->nrL; i++) this->modify(i, i, elem);
 }

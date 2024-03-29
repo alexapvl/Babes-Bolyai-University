@@ -7,6 +7,7 @@
 int main() {
   testAll();
   testAllExtended();
+  testExtra();
 
   std::cout << "Test End" << std::endl;
 }
