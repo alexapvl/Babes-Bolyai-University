@@ -68,7 +68,6 @@ class GraphService():
             The vertex must not already exist in the graph
         """
         self.repo.add_vertex(i)
-        self.write_file()
 
     def remove_vertex(self, i):
         """
@@ -79,7 +78,6 @@ class GraphService():
             The vertex must exist in the graph
         """
         self.repo.remove_vertex(i)
-        self.write_file()
     
     def add_edge(self, i, j, cost):
         """
@@ -94,7 +92,6 @@ class GraphService():
             The vertices must exist in the graph
         """
         self.repo.add_edge(i, j, cost)
-        self.write_file()
     
     def remove_edge(self, i, j):
         """
@@ -106,7 +103,6 @@ class GraphService():
             The edge must exist in the graph
         """
         self.repo.remove_edge(i, j)
-        self.write_file()
     
     def is_vertex(self, i) -> bool:
         """
@@ -169,7 +165,6 @@ class GraphService():
             The edge must exist in the graph
         """
         self.repo.update_edge_cost(i, j, cost)
-        self.write_file()
     
     def in_degree_of_vertex(self, i: int) -> int:
         """

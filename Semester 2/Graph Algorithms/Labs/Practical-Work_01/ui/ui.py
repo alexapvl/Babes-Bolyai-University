@@ -29,6 +29,7 @@ class UI():
         print("0. Exit\n")
     
     def start(self):
+        self.service.fileName = input("Enter file name: ")
         self.service.read_file()
         while(True):
             try:
@@ -141,4 +142,11 @@ class UI():
                 print(ge)
             except ValueError as ve:
                 print("\nInvalid input\n")
-                
+
+    def askToSave(self):
+        choice = input("Do you want to save changes to a separate file? y/n >> ")
+        choice = choice.lower()
+        newFileName = self.service.fileName[:-4] + "-copy.txt"
+        if choice == "y":
+            self.service.write_given_graph_to_file(self.service.repo.graph, newFileName)
+            
