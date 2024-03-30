@@ -17,6 +17,10 @@ class Matrix {
   Triple* triplets;
   int capacity, size;
   int tripleExists(int i, int j) const;
+  void resize();
+  int getIndexAtWhichItShouldInsert(int i, int j);
+  void insertAtIndex(Triple& t, int index);
+  void removeAtIndex(int index);
 
  public:
   // constructor

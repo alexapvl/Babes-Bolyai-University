@@ -3,6 +3,9 @@ project(a)
 
 set(CMAKE_C_STANDARD 20)
 
+add_compile_options(-fprofile-arcs -ftest-coverage -g -Wall --coverage)
+add_link_options(-fprofile-arcs -ftest-coverage)
+
 include_directories(.)
 
 add_executable(main
@@ -12,6 +15,4 @@ add_executable(main
         ShortTest.cpp
         ShortTest.h
         ExtendedTest.cpp
-        ExtendedTest.h
-  )
-target_compile_options(main PRIVATE -g -Wall)
+        ExtendedTest.h) 
