@@ -1,0 +1,14 @@
+BEGIN {
+	no_lines = 0
+	sum = 0
+}
+
+{
+	print $1 + $(NF-1) + $NF
+	sum += $1
+	no_lines++
+}
+
+END {
+	print sum/no_lines
+}
