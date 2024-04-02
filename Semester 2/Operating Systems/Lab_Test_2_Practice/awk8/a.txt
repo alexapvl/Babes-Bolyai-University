@@ -1,0 +1,8 @@
+{
+	mean = ($3 + $4 + $5) / 3
+	print $1 " " $2 " " mean
+	if(mean > 8) {v[$1] = $2} 
+}
+END {
+	for (name in v) print name " " v[name]
+}

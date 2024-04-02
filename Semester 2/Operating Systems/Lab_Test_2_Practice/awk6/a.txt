@@ -1,0 +1,14 @@
+{
+	if(NF % 2 == 1)
+		print($(int(NF / 2) + 1))
+	if(NF > 2){
+		v[NR] = 1
+	}
+}
+
+END{
+	printf "Line numbers with at least 2 fields: "
+	for(number in v){
+		printf "%d ", number
+	} 
+}

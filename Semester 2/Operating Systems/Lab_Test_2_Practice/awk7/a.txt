@@ -1,0 +1,9 @@
+{
+	for(i = 1; i < NF; i++) {
+		v[$i]++
+	}
+}
+
+END {
+	for(word in v) {print word " -> " v[word]}
+}
