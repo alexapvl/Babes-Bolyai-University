@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22.4)
 project(a)
 
-set(CMAKE_C_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20)
 
 add_compile_options(-fprofile-arcs -ftest-coverage -g -Wall --coverage)
 add_link_options(-fprofile-arcs -ftest-coverage)
