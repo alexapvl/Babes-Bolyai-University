@@ -23,9 +23,9 @@ class SortedMultiMap {
   friend class SMMIterator;
 
  private:
-  Node* head;
-  Node* tail;
-  Relation rel;
+  Node* head;    // pointer to the first node
+  Node* tail;    // pointer to the last node
+  Relation rel;  // relation used to sort the SMM
 
  public:
   // constructor
@@ -61,8 +61,6 @@ class SortedMultiMap {
   // destructor
   ~SortedMultiMap();
 
-  // relation(will sort in ascending order based on key)
-  bool relation(TKey, TKey);
-
-  bool keyExists(TKey c) const;
+  // returns a string representation with [key, value] pairs(one on each line)
+  // string toString() const;
 };

@@ -7,12 +7,23 @@
 #include "SMMIterator.h"
 using namespace std;
 
+/*
+BC: θ(1)
+WC: θ(1)
+AC: θ(1)
+*/
 SortedMultiMap::SortedMultiMap(Relation r) {
   this->head = nullptr;
   this->tail = nullptr;
   this->rel = r;
 }
 
+/*
+BC: θ(1) - when the list is empty or the new node should be the first in
+the list
+WC: θ(size) - when the new node should be added at the end of the
+list AC: O(size)
+*/
 void SortedMultiMap::add(TKey c, TValue v) {
   // if the list is empty, add the new node at the beginning
   // or if the new node should be the first in the list based on the relation
@@ -48,6 +59,11 @@ void SortedMultiMap::add(TKey c, TValue v) {
   smmit.currentNode->prev = newNode;
 }
 
+/*
+BC: θ(1)
+WC: θ(1)
+AC: θ(1)
+*/
 void SortedMultiMap::addFirst(TKey c, TValue v) {
   Node* newNode = new Node;     // allocate the memory for the new node
   newNode->info = TElem(c, v);  // set the info of the new node
@@ -71,6 +87,11 @@ void SortedMultiMap::addFirst(TKey c, TValue v) {
   }
 }
 
+/*
+BC: θ(1)
+WC: θ(1)
+AC: θ(1)
+*/
 void SortedMultiMap::addLast(TKey c, TValue v) {
   Node* newNode = new Node;     // allocate the memory for the new node
   newNode->info = TElem(c, v);  // set the info of the new node
@@ -94,11 +115,13 @@ void SortedMultiMap::addLast(TKey c, TValue v) {
   }
 }
 
+/*
+BC: θ(number of elements with key 'c') - when the key is the first one in
+the SMM
+WC: θ(size) - when the key is the last one in the SMM
+AC: O(size)
+*/
 vector<TValue> SortedMultiMap::search(TKey c) const {
-  if (!this->keyExists(c)) {
-    // return an empty vector if the key does not exist
-    return vector<TValue>();
-  }
   vector<TValue> values;
   SMMIterator smmit = this->iterator();
   while (smmit.valid()) {
@@ -110,10 +133,14 @@ vector<TValue> SortedMultiMap::search(TKey c) const {
   return values;
 }
 
+/*
+BC: θ(1) - when the node to be removed is the head of the SMM
+WC: θ(size) - when the node to be removed is the tail of the SMM
+(practically it is θ(2*size) since we have to iterate through the SMM to
+find the key(it is the last one))
+AC: O(size * number of elements with key 'c')
+*/
 bool SortedMultiMap::remove(TKey c, TValue v) {
-  if (!this->keyExists(c)) {
-    return false;
-  }
   SMMIterator smmit = this->iterator();
   while (smmit.valid()) {
     if (smmit.getCurrent().first == c && smmit.getCurrent().second == v) {
@@ -148,6 +175,11 @@ bool SortedMultiMap::remove(TKey c, TValue v) {
   return false;
 }
 
+/*
+BC: θ(size)
+WC: θ(size)
+AC: θ(size)
+*/
 int SortedMultiMap::size() const {
   int size = 0;
   SMMIterator smmit = this->iterator();
@@ -158,10 +190,25 @@ int SortedMultiMap::size() const {
   return size;
 }
 
+/*
+BC: θ(1)
+WC: θ(1)
+AC: θ(1)
+*/
 bool SortedMultiMap::isEmpty() const { return this->head == nullptr; }
 
+/*
+BC: θ(1)
+WC: θ(1)
+AC: θ(1)
+*/
 SMMIterator SortedMultiMap::iterator() const { return SMMIterator(*this); }
 
+/*
+BC: θ(size)
+WC: θ(size)
+AC: θ(size)
+*/
 SortedMultiMap::~SortedMultiMap() {
   Node* currentNode = this->head;
   while (currentNode != nullptr) {
@@ -171,16 +218,13 @@ SortedMultiMap::~SortedMultiMap() {
   }
 }
 
-// sort in ascending order based on key
-bool SortedMultiMap::relation(TKey k1, TKey k2) { return k1 < k2; }
-
-bool SortedMultiMap::keyExists(TKey c) const {
-  SMMIterator smmit = this->iterator();
-  while (smmit.valid()) {
-    if (smmit.getCurrent().first == c) {
-      return true;
-    }
-    smmit.next();
-  }
-  return false;
-}
+// string SortedMultiMap::toString() const {
+//   string smmString = "";
+//   SMMIterator smmit = this->iterator();
+//   while (smmit.valid()) {
+//     smmString += "[" + to_string(smmit.getCurrent().first) + ", " +
+//                  to_string(smmit.getCurrent().second) + "]\n";
+//     smmit.next();
+//   }
+//   return smmString;
+// }
