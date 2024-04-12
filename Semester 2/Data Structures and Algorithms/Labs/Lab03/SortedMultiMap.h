@@ -26,6 +26,7 @@ class SortedMultiMap {
   Node* head;    // pointer to the first node
   Node* tail;    // pointer to the last node
   Relation rel;  // relation used to sort the SMM
+  int sizeSMM;   // number of elements in the SMM
 
  public:
   // constructor
@@ -60,6 +61,12 @@ class SortedMultiMap {
 
   // destructor
   ~SortedMultiMap();
+
+  // removes a key together with all its values
+  // returns a vector with the values that were associated with the key (and
+  // were removed)
+
+  vector<TValue> removeKey(TKey key);
 
   // returns a string representation with [key, value] pairs(one on each line)
   // string toString() const;

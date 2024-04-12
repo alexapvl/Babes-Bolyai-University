@@ -16,6 +16,7 @@ SortedMultiMap::SortedMultiMap(Relation r) {
   this->head = nullptr;
   this->tail = nullptr;
   this->rel = r;
+  this->sizeSMM = 0;
 }
 
 /*
@@ -57,6 +58,7 @@ void SortedMultiMap::add(TKey c, TValue v) {
   // update the links for the nodes to the left and the right
   smmit.currentNode->prev->next = newNode;
   smmit.currentNode->prev = newNode;
+  this->sizeSMM++;
 }
 
 /*
@@ -168,6 +170,7 @@ bool SortedMultiMap::remove(TKey c, TValue v) {
       smmit.currentNode->prev->next = smmit.currentNode->next;
       smmit.currentNode->next->prev = smmit.currentNode->prev;
       delete smmit.currentNode;
+      this->sizeSMM--;
       return true;
     }
     smmit.next();
@@ -189,6 +192,8 @@ int SortedMultiMap::size() const {
   }
   return size;
 }
+
+// int SortedMultiMap::size() const { return this->sizeSMM; }
 
 /*
 BC: θ(1)
@@ -216,6 +221,19 @@ SortedMultiMap::~SortedMultiMap() {
     delete currentNode;
     currentNode = nextNode;
   }
+}
+
+/*
+BC: θ(size * number of elements with key 'key')
+WC: θ(size * number of elements with key 'key')
+AC: θ(size * number of elements with key 'key')
+*/
+vector<TValue> SortedMultiMap::removeKey(TKey key) {
+  vector<TValue> result = this->search(key);
+  for (int i = 0; i < result.size(); i++) {
+    this->remove(key, result[i]);
+  }
+  return result;
 }
 
 // string SortedMultiMap::toString() const {

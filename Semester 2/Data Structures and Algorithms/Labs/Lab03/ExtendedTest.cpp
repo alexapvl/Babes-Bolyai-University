@@ -237,6 +237,33 @@ void testIterator(Relation r) {
   }
 }
 
+void testRemoveKey() {
+  cout << "Test remove key" << endl;
+  SortedMultiMap smm = SortedMultiMap(asc);
+  int key1 = 1;
+  int key2 = 2;
+  int key3 = 3;
+  int value1 = 1;
+  int value2 = 2;
+  int value3 = 3;
+  int value4 = 4;
+  smm.add(key1, value1);
+  smm.add(key1, value2);
+  smm.add(key2, value2);
+  smm.add(key2, value3);
+  smm.add(key2, value4);
+  vector<TValue> v = smm.removeKey(key2);
+  assert(v.size() == 3);
+  assert(v[0] == value2);
+  assert(v[1] == value3);
+  assert(v[2] == value4);
+  v = smm.removeKey(key1);
+  assert(v.size() == 2);
+  assert(v[0] == value1);
+  assert(v[1] == value2);
+  assert(smm.size() == 0);
+}
+
 void testIterator() {
   testIterator(asc);
   testIterator(desc);
@@ -248,4 +275,5 @@ void testAllExtended() {
   testRemove();
   testIterator();
   testRelations();
+  testRemoveKey();
 }
