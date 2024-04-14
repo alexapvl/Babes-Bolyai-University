@@ -9,31 +9,63 @@ class UI():
         self.service = service
     
     def print_menu(self):
-        print("\n1. Add vertex")
+        print("\n----- Choose lab number")
+        print("1. Lab 1")
+        print("2. Lab 2")
+        print("0. Exit\n")
+    
+    def print_lab1_menu(self):
+        print("\n----- Edit the graph")
+        print("1. Add vertex")
         print("2. Remove vertex")
         print("3. Add edge")
         print("4. Remove edge")
         print("5. Update cost of an edge")
+        print("\n----- Check the graph")
         print("6. Check if vertex exists")
         print("7. Check if edge exists")
         print("8. In degree of vertex")
         print("9. Out degree of vertex")
         print("10. Number of vertices")
         print("11. Number of edges")
+        print("\n----- Print")
         print("12. Print vertices")
         print("13. Print inbounds for specific vertex")
         print("14. Print outbounds for specific vertex")
         print("15. Print graph")
+        print("\n----- Other")
         print("16. Create a copy of the current graph and write it into a separate file")
         print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
         print("0. Exit\n")
     
     def start(self):
-        self.service.fileName = input("Enter file name: ")
+        self.service.fileName = "textFiles/" + input("Enter file name: ") + ".txt"
         self.service.read_file()
         while(True):
+            self.print_menu()
+            command = input("Enter lab number: ")
+            if command == "1":
+                self.start_lab1()
+            elif command == "2":
+                pass
+            elif command == "0":
+                break
+            else:
+                print("\nInvalid command\n")
+
+            
+
+    def askToSave(self):
+        choice = input("Do you want to save changes to a separate file? y/n >> ")
+        choice = choice.lower()
+        newFileName = self.service.fileName[:-4] + "-copy.txt"
+        if choice == "y":
+            self.service.write_given_graph_to_file(self.service.repo.graph, newFileName)
+
+    def start_lab1(self):
+        while(True):
             try:
-                self.print_menu()
+                self.print_lab1_menu()
                 command = input(">> ")
                 if command == "1":
                     i = int(input("Enter vertex: "))
@@ -133,6 +165,7 @@ class UI():
                         self.service.write_given_graph_to_file(graph, file_name)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "0":
+                    self.askToSave()
                     break
                 else:
                     raise UIError("\nInvalid command\n")
@@ -142,11 +175,4 @@ class UI():
                 print(ge)
             except ValueError as ve:
                 print("\nInvalid input\n")
-
-    def askToSave(self):
-        choice = input("Do you want to save changes to a separate file? y/n >> ")
-        choice = choice.lower()
-        newFileName = self.service.fileName[:-4] + "-copy.txt"
-        if choice == "y":
-            self.service.write_given_graph_to_file(self.service.repo.graph, newFileName)
             
