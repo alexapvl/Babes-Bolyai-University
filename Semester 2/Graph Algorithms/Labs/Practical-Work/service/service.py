@@ -1,5 +1,5 @@
 from domain.domain import Graph
-from repository.repository import Repository, RepoError
+from repository.repository import Repository
 
 class GraphService():
     def __init__(self, repository: Repository , file_name: str) -> None:
@@ -223,6 +223,23 @@ class GraphService():
             The vertex must exist in the graph
         """
         return self.repo.get_outbounds_of_vertex(i)
+    
+    def shortest_path_between_two_vertices_forward_breath_first_search(self, start: int, end: int) -> list:
+        """
+        Returns the shortest path between two vertices using forward breath first search
+        Args:
+            start : the starting vertex
+            end : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.shortest_path_between_two_vertices_forward_breath_first_search(start, end)
+
+    def shortest_path_wgc(self):
+        """
+        Returns the shortest path in the wolf, goat and cabbage problem
+        """
+        return self.repo.shortest_path_wgc()
         
     @property
     def repo(self) -> Repository:

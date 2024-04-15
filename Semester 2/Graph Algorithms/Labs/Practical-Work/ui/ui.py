@@ -1,3 +1,4 @@
+from domain.domain import WolfGoatCabbageGraph, VertexWolfGoatCabbage
 from repository.repository import RepoError
 from service.service import GraphService
 
@@ -7,6 +8,26 @@ class UIError(ValueError):
 class UI():
     def __init__(self, service: GraphService):
         self.service = service
+    
+    def start(self):
+        while(True): # will read a file until a valid file is given
+            try:
+                self.service.fileName = "textFiles/" + input("Enter file name: ") + ".txt"
+                self.service.read_file()
+                break
+            except FileNotFoundError:
+                print("File does not exist")
+        while(True):
+            self.print_menu()
+            command = input(">> ")
+            if command == "1":
+                self.start_lab1()
+            elif command == "2":
+                self.start_lab2()
+            elif command == "0":
+                break
+            else:
+                print("\nInvalid command\n")
     
     def print_menu(self):
         print("\n----- Choose lab number")
@@ -36,24 +57,13 @@ class UI():
         print("\n----- Other")
         print("16. Create a copy of the current graph and write it into a separate file")
         print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
-        print("0. Exit\n")
+        print("0. Back\n")
     
-    def start(self):
-        self.service.fileName = "textFiles/" + input("Enter file name: ") + ".txt"
-        self.service.read_file()
-        while(True):
-            self.print_menu()
-            command = input("Enter lab number: ")
-            if command == "1":
-                self.start_lab1()
-            elif command == "2":
-                pass
-            elif command == "0":
-                break
-            else:
-                print("\nInvalid command\n")
-
-            
+    def print_lab2_menu(self):
+        print("\n----- Choose the algorithm")
+        print("1. Breadth-first search")
+        print("2. Wolf, goat and cabbadge problem(bonus)")
+        print("0. Back\n")
 
     def askToSave(self):
         choice = input("Do you want to save changes to a separate file? y/n >> ")
@@ -166,6 +176,41 @@ class UI():
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "0":
                     self.askToSave()
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as ge:
+                print(ge)
+            except ValueError as ve:
+                print("\nInvalid input\n")
+
+    def start_lab2(self):
+        while(True):
+            try:
+                self.print_lab2_menu()
+                command = input(">> ")
+                if command == "1":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    path = self.service.shortest_path_between_two_vertices_forward_breath_first_search(start, end)
+                    if path is None:
+                        print("\nThere is no path between the two vertices\n")
+                    else:
+                        print("\nLength of the path: ", len(path) - 1) # length of the path is the number of edges
+                        print("Path: ", end="")
+                        for vertex in path[:-1]:
+                            print(vertex, end=" -> ")
+                        print(path[-1])
+                elif command == "2":
+                    path = self.service.shortest_path_wgc()
+                    print("\nLength of the path: ", len(path) - 1) # length of the path is the number of edges
+                    print("", end="")
+                    for vertex in path[:-1]:
+                        print(vertex, end=" -> ")
+                    print(path[-1])
+                elif command == "0":
                     break
                 else:
                     raise UIError("\nInvalid command\n")
