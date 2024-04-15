@@ -1,0 +1,5 @@
+Write a shell script that receives a list of strings as command line arguments.
+The script will on the screen the number of all executable files inside each directory received as a command line argument.
+The script will also create a file called report.txt that will contain the name of all the files received as commnad line arguments followed by the number of lines an characters in the set file.
+All input data must be validated.
+Apropriate messages will be displayed on the console in the case of invalid data or unexpected events.
