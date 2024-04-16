@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#stergem apritiile multiplu de 3 a unui cuvant dintr-un fisier
+# delete every third occurence of a given word from a file
 
 if [ ! -f $1 ]; then
 	echo "$1 is not a file"

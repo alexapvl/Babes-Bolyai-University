@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# se citest stringuri pana la string-ul "stop", numaram cate incep cu o vocala
+# the script reads until the string "stop" is provided, we count how many words begin with a vowel
 
-countzero=0
+count=0
 
 while true; do
-	read cuvant
-	if [ $cuvant == "stop" ]; then
+	read word
+	if [ $word == "stop" ]; then
 		break
 	fi
-	if [[ $cuvant =~ \<[aeiouAEIOU][a-zA-Z]*\> ]]; then
-		countzero=`expr $countzero + 1`
+	if [[ $word =~ \<[aeiouAEIOU].*\> ]] ; then
+		count=`expr $count + 1`
 	fi
 done
 
-echo "There are $countzero words which start with a vowel"
+echo "There are $count words which start with a vowel"
