@@ -1,3 +1,4 @@
+from domain.domain import WolfGoatCabbageGraph, VertexWolfGoatCabbage
 from repository.repository import RepoError
 from service.service import GraphService
 
@@ -8,32 +9,73 @@ class UI():
     def __init__(self, service: GraphService):
         self.service = service
     
+    def start(self):
+        while(True): # will read a file until a valid file is given
+            try:
+                self.service.fileName = "textFiles/" + input("Enter file name: ") + ".txt"
+                self.service.read_file()
+                break
+            except FileNotFoundError:
+                print("File does not exist")
+        while(True):
+            self.print_menu()
+            command = input(">> ")
+            if command == "1":
+                self.start_lab1()
+            elif command == "2":
+                self.start_lab2()
+            elif command == "0":
+                break
+            else:
+                print("\nInvalid command\n")
+    
     def print_menu(self):
-        print("\n1. Add vertex")
+        print("\n----- Choose lab number")
+        print("1. Lab 1")
+        print("2. Lab 2")
+        print("0. Exit\n")
+    
+    def print_lab1_menu(self):
+        print("\n----- Edit the graph")
+        print("1. Add vertex")
         print("2. Remove vertex")
         print("3. Add edge")
         print("4. Remove edge")
         print("5. Update cost of an edge")
+        print("\n----- Check the graph")
         print("6. Check if vertex exists")
         print("7. Check if edge exists")
         print("8. In degree of vertex")
         print("9. Out degree of vertex")
         print("10. Number of vertices")
         print("11. Number of edges")
+        print("\n----- Print")
         print("12. Print vertices")
         print("13. Print inbounds for specific vertex")
         print("14. Print outbounds for specific vertex")
         print("15. Print graph")
+        print("\n----- Other")
         print("16. Create a copy of the current graph and write it into a separate file")
         print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
-        print("0. Exit\n")
+        print("0. Back\n")
     
-    def start(self):
-        self.service.fileName = input("Enter file name: ")
-        self.service.read_file()
+    def print_lab2_menu(self):
+        print("\n----- Choose the algorithm")
+        print("1. Breadth-first search")
+        print("2. Wolf, goat and cabbadge problem(bonus)")
+        print("0. Back\n")
+
+    def askToSave(self):
+        choice = input("Do you want to save changes to a separate file? y/n >> ")
+        choice = choice.lower()
+        newFileName = self.service.fileName[:-4] + "-copy.txt"
+        if choice == "y":
+            self.service.write_given_graph_to_file(self.service.repo.graph, newFileName)
+
+    def start_lab1(self):
         while(True):
             try:
-                self.print_menu()
+                self.print_lab1_menu()
                 command = input(">> ")
                 if command == "1":
                     i = int(input("Enter vertex: "))
@@ -133,6 +175,7 @@ class UI():
                         self.service.write_given_graph_to_file(graph, file_name)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "0":
+                    self.askToSave()
                     break
                 else:
                     raise UIError("\nInvalid command\n")
@@ -143,10 +186,38 @@ class UI():
             except ValueError as ve:
                 print("\nInvalid input\n")
 
-    def askToSave(self):
-        choice = input("Do you want to save changes to a separate file? y/n >> ")
-        choice = choice.lower()
-        newFileName = self.service.fileName[:-4] + "-copy.txt"
-        if choice == "y":
-            self.service.write_given_graph_to_file(self.service.repo.graph, newFileName)
+    def start_lab2(self):
+        while(True):
+            try:
+                self.print_lab2_menu()
+                command = input(">> ")
+                if command == "1":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    path = self.service.shortest_path_between_two_vertices_forward_breath_first_search(start, end)
+                    if path is None:
+                        print("\nThere is no path between the two vertices\n")
+                    else:
+                        print("\nLength of the path: ", len(path) - 1) # length of the path is the number of edges
+                        print("Path: ", end="")
+                        for vertex in path[:-1]:
+                            print(vertex, end=" -> ")
+                        print(path[-1])
+                elif command == "2":
+                    path = self.service.shortest_path_wgc()
+                    print("\nLength of the path: ", len(path) - 1) # length of the path is the number of edges
+                    print("", end="")
+                    for vertex in path[:-1]:
+                        print(vertex, end=" -> ")
+                    print(path[-1])
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as ge:
+                print(ge)
+            except ValueError as ve:
+                print("\nInvalid input\n")
             

@@ -1,5 +1,6 @@
 import random
-from domain.domain import Graph
+from collections import deque
+from domain.domain import Graph, WolfGoatCabbageGraph
 
 class RepoError(ValueError):
     pass
@@ -7,6 +8,7 @@ class RepoError(ValueError):
 class Repository():
     def __init__(self, graph: Graph):
         self.graph = graph
+        self.wgcGrapf = WolfGoatCabbageGraph()
         
     def add_vertex(self, i):
         if i in self.graph.vertices:
@@ -116,6 +118,58 @@ class Repository():
 
     def get_outbounds_of_vertex(self, i: int) -> list:
         return self.graph.dout[i]
+
+    def shortest_path_between_two_vertices_forward_breath_first_search(self, start: int, end: int) -> list:
+        '''
+        This function calculates the shortest path between two vertices in a graph using a forward breadth-first search approach. 
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        To keep track of visited vertices, it utilizes a set, and employs a queue to maintain the current vertex and its associated path. 
+        Each vertex encountered during the search is marked as visited.
+        The algorithm then explores the neighbors of the current vertex, checking if any neighbor matches the end vertex; 
+        in such case, it returns the path. If a neighbor has not been visited before, it's added to the queue and marked as visited.
+        If the end vertex is not reached after exploring all possible paths, the function returns None.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
+        if start == end:
+            return [start]
+        visited = set()
+        queue = deque([(start, [start])])
+        while queue:
+            current, path = queue.popleft()
+            visited.add(current) # since we are using a set, we will not check for duplicates
+            for neighbor in self.graph.dout[current]:
+                if neighbor == end:
+                    return path + [neighbor]
+                if neighbor not in visited:
+                    queue.append((neighbor, path + [neighbor]))
+                    visited.add(neighbor)
+        return None
+
+    def shortest_path_wgc(self):
+        '''
+        Bonus problem: Wolf, Goat, Cabbage -> BFS algorithm
+        Uses operations on bits to represent the state of the wolf, goat, and cabbage.
+        0 means the object is on the left side of the river, 1 means the object is on the right side of the river.
+        '''
+        start = self.wgcGrapf.initial_state()
+        end = self.wgcGrapf.final_state()
+        q = [start]
+        pred = {start: None}
+        while len(q) > 0:
+            x = q.pop(0)
+            if x == end:
+                break
+            for y in self.wgcGrapf.dout(x):
+                if y not in pred:
+                    pred[y] = x
+                    q.append(y)
+        path = []
+        while x is not None:
+            path.append(x)
+            x = pred[x]
+        path.reverse()
+        return path
 
     @property
     def graph(self) -> Graph:

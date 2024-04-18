@@ -8,6 +8,5 @@ if __name__ == "__main__":
     repo = Repository(graph)
     service = GraphService(repo, "")
     ui = UI(service)
-    ui.start()  
-    ui.askToSave()
+    ui.start()  # start the program
     
