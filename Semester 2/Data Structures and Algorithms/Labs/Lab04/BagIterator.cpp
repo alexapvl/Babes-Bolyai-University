@@ -1,34 +1,31 @@
-#include <exception>
 #include "BagIterator.h"
 #include "Bag.h"
+#include <exception>
 
 using namespace std;
 
-
-BagIterator::BagIterator(const Bag& c): bag(c)
-{
-	//TODO - Implementation
+BagIterator::BagIterator(const Bag& c) : bag(c) {
+  this->first();
 }
 
 void BagIterator::first() {
-	//TODO - Implementation
+  this->currentElement = this->bag.head;
 }
-
 
 void BagIterator::next() {
-	//TODO - Implementation
+  if (this->currentElement == -1) {
+    throw exception();
+  }
+  this->currentElement = this->bag.nodes[this->currentElement].next;
 }
-
 
 bool BagIterator::valid() const {
-	//TODO - Implementation
-	return false;
+  return this->currentElement != -1;
 }
 
-
-
-TElem BagIterator::getCurrent() const
-{
-	//TODO - Implementation
-	return NULL_TELEM 
+TElem BagIterator::getCurrent() const {
+  if (this->currentElement == -1) {
+    throw exception();
+  }
+  return this->bag.nodes[this->currentElement].info.first;
 }
