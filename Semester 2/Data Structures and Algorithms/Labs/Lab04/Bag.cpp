@@ -12,24 +12,25 @@ Bag::Bag() {
 }
 
 void Bag::add(TElem elem) {
-  int indexOfElem = search_index(elem);     // search for the element in the bag
-  if (indexOfElem != -1) {                  // if the element is already in the bag
-    this->nodes[indexOfElem].info.second++; // increment the frequency of the existing node
-  } else {                                  // if the element is not in the bag
-    int index = this->allocate();           // get the position at which the new node will be added
-    if (index == -1) {                      // if there are no empty nodes available
-      this->resize();                       // resize the array of nodes
-      index = this->allocate();
-    }
-    this->nodes[index].info.first = elem; // add the element to the new node
-    this->nodes[index].info.second = 1;   // initialize the frequency of the new node
-    if (this->head == -1) {               // update the head and tail if the bag is empty
-      this->head = index;
-      this->tail = index;
-    } else { // update the tail if the bag is not empty
-      this->nodes[this->tail].next = index;
-      this->nodes[index].prev = this->tail;
-      this->tail = index;
+  int indexOfElem = this->search_index(elem);  // search for the element in the bag
+  if (indexOfElem != -1) {                     // if the element is already in the bag
+    this->nodes[indexOfElem].info.second++;    // increment the frequency of the existing node
+  } else {                                     // if the element is not in the bag
+    if (this->head == -1) {                    // if the bag is empty
+      this->head = this->allocate();           // allocate memory for the new element
+      this->tail = this->head;                 // update the tail
+      this->nodes[head].info.first = elem;     // add the element to the new node
+      this->nodes[head].info.second = 1;       // initialize the frequency of the new node
+      this->nodes[head].next = -1;             // initialize the next of the new node
+      this->nodes[head].prev = -1;             // initialize the prev of the new node
+    } else {                                   // if the bag is not empty
+      int newIndex = this->allocate();         // get the position at which the new node will be added
+      this->nodes[newIndex].info.first = elem; // add the element to the new node
+      this->nodes[newIndex].info.second = 1;   // initialize the frequency of the new node
+      // update links
+      this->nodes[tail].next = newIndex;
+      this->nodes[newIndex].prev = tail;
+      this->tail = newIndex;
     }
   }
   this->length++; // update the length of the bag
@@ -98,6 +99,16 @@ Bag::~Bag() {
   delete[] this->nodes;
 }
 
+std::string Bag::to_string() const {
+  std::string result = "";
+  int current = this->head;
+  while (current != -1) {
+    result += "prev: " + std::to_string(this->nodes[current].prev) + " " + "next: " + std::to_string(this->nodes[current].next) + " info: " + std::to_string(this->nodes[current].info.first) + "(" + std::to_string(this->nodes[current].info.second) + ") \n";
+    current = this->nodes[current].next;
+  }
+  return result;
+}
+
 // Private methods
 
 void Bag::resize() {
@@ -145,6 +156,7 @@ int Bag::search_index(TElem elem) const { // search for the element in the bag a
     }
     current = this->nodes[current].next; // move to the next node
   }
+  std::cout << "OFFFFFFFFFF\n";
   return -1; // return -1 if the element is not found
 }
 
@@ -176,7 +188,7 @@ void Bag::insert_position(TElem elem, int position) {
   } else {                                                        // update the nodes if the new node is added in the middle or at the end
     int currentNode = this->head;                                 // start from the head
     int currentPosition = 0;                                      // start from the first position
-    while (currentNode != -1 && currentPosition < position - 1) { // move to the position
+    while (currentNode != -1 || currentPosition < position - 1) { // move to the position
       currentNode = this->nodes[currentNode].next;
       currentPosition++;
     }
@@ -192,4 +204,5 @@ void Bag::insert_position(TElem elem, int position) {
       }
     }
   }
+  this->length++;
 }

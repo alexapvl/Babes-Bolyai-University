@@ -66,4 +66,7 @@ public:
 
   // destructor
   ~Bag();
+
+  // returns a string representation of the bag
+  std::string to_string() const;
 };
