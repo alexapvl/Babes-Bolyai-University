@@ -19,9 +19,9 @@ void Bag::add(TElem elem) {
   int index = this->getIndex(elem);
   if (index != -1) {
     this->nodes[index].info.second++;
-  } else if (this->head == -1 && this->tail == -1) // if the bag is empty
-    this->addFirst(elem);                          // if the bag is empty, add the first element to it
-  else {
+  } else if (this->head == -1) { // if the bag is empty
+    this->addFirst(elem);
+  } else { // if the bag is empty, add the first element to it
     int newElemIndex = this->allocate();
     if (newElemIndex == -1) {
       this->resize();
@@ -53,20 +53,8 @@ bool Bag::remove(TElem elem) {
     return false;
   }
   this->nodes[indexOfElem].info.second--;          // decrement the frequency of the existing node
-  if (this->nodes[indexOfElem].info.second == 0) { // if the frequency of the existing node is 0
-    if (indexOfElem == this->head) {               // if the node to be removed is the head
-      this->head = this->nodes[indexOfElem].next;
-      if (this->head != -1) { // if there are other nodes in the bag
-        this->nodes[this->head].prev = -1;
-      }
-    } else if (indexOfElem == this->tail) { // if the node to be removed is the tail
-      this->tail = this->nodes[indexOfElem].prev;
-      this->nodes[this->tail].next = -1;
-    } else { // if the node to be removed is in the middle of the bag
-      this->nodes[this->nodes[indexOfElem].prev].next = this->nodes[indexOfElem].next;
-      this->nodes[this->nodes[indexOfElem].next].prev = this->nodes[indexOfElem].prev;
-    }
-    this->deallocate(indexOfElem); // deallocate the node
+  if (this->nodes[indexOfElem].info.second == 0) { // if the frequency of the existing node is 0 we need to delete the element from the bag
+    this->deallocate(indexOfElem);                 // deallocate the node if the frequency is zero
   }
   this->length--; // update the length of the bag
   return true;
@@ -117,14 +105,11 @@ std::string Bag::to_string() const {
     result += "prev: " + std::to_string(this->nodes[current].prev) + " " + "next: " + std::to_string(this->nodes[current].next) + " info: " + std::to_string(this->nodes[current].info.first) + "(" + std::to_string(this->nodes[current].info.second) + ") \n";
     current = this->nodes[current].next;
   }
-  return result + "############################\n";
+  return "head: " + std::to_string(this->head) + "\n" + result + "tail: " + std::to_string(this->tail) + "\n############################\n";
 }
-
 // Private methods
 
 void Bag::resize() {
-  cout << this->capacity << "resizing"
-       << this->capacity * 2 << endl;
   DLAANode* newNodes = new DLAANode[this->capacity * 2]; // allocate a new array of nodes
   for (int i = 0; i < this->capacity; i++) {             // copy the old nodes into the new array
     newNodes[i] = this->nodes[i];
@@ -153,9 +138,22 @@ int Bag::allocate() {
 }
 
 void Bag::deallocate(int position) {
-  this->nodes[position].next = this->firstEmpty;   // update the next of the node to be deallocated
-  this->nodes[position].prev = -1;                 // update the prev of the node to be deallocated
-  if (this->firstEmpty != -1) {                    // if there are other empty nodes
+  if (position == this->head && position != this->tail) { // if the element is the first in the bag
+    this->head = this->nodes[position].next;
+    this->nodes[this->head].prev = -1;
+  } else if (position == this->tail && position != this->head) { // if the element is the last in the bag
+    this->tail = this->nodes[position].prev;
+    this->nodes[this->tail].next = -1;
+  } else if (position == this->head && position == this->tail) {
+    this->head = -1;
+    this->tail = -1;
+  } else { // if element is in between other elements in the bag
+    this->nodes[this->nodes[position].prev].next = this->nodes[position].next;
+    this->nodes[this->nodes[position].next].prev = this->nodes[position].prev;
+  }
+  this->nodes[position].next = this->firstEmpty;
+  this->nodes[position].prev = -1;
+  if (this->firstEmpty != -1) {                    // if there were other empty nodes before
     this->nodes[this->firstEmpty].prev = position; // update the prev of the new firstEmpty
   }
   this->firstEmpty = position; // update the firstEmpty index

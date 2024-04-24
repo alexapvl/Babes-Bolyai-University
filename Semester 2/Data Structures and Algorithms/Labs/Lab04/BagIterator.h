@@ -6,7 +6,8 @@ class BagIterator {
 
 private:
   const Bag& bag;
-  int currentElement;
+  int currentIndex;
+  int currentFrequency;
 
   BagIterator(const Bag& c);
 

@@ -5,30 +5,32 @@
 using namespace std;
 
 BagIterator::BagIterator(const Bag& c) : bag(c) {
-  this->currentElement = this->bag.head;
+  this->first();
 }
 
 void BagIterator::first() {
-  this->currentElement = this->bag.head;
+  this->currentFrequency = 1;
+  this->currentIndex = this->bag.head;
 }
 
 void BagIterator::next() {
-  if (this->currentElement == -1) {
+  if (this->currentIndex == -1)
     throw exception();
+  if (this->currentFrequency < this->bag.nodes[currentIndex].info.second)
+    this->currentFrequency++;
+  else {
+    this->currentIndex = this->bag.nodes[this->currentIndex].next;
+    this->currentFrequency = 1;
   }
-  this->currentElement = this->bag.nodes[this->currentElement].next;
 }
 
 bool BagIterator::valid() const {
-  if (this->currentElement == -1)
-    return false;
-  else
-    return true;
+  return this->currentIndex != -1;
 }
 
 TElem BagIterator::getCurrent() const {
-  if (this->currentElement == -1) {
+  if (this->currentIndex == -1) {
     throw exception();
   }
-  return this->currentElement;
+  return this->bag.nodes[this->currentIndex].info.first;
 }

@@ -55,8 +55,6 @@ void testAdd() {
   }
   assert(b.isEmpty() == false);
   assert(b.size() == 240);
-  cout << b.to_string();
-  exit(0);
   testIteratorSteps(b);
   for (int i = -200; i < 200; i++) {
     int count = b.nrOccurrences(i);

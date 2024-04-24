@@ -5,6 +5,14 @@
 
 void testAll() {
   Bag b;
+  b.add(5);
+  b.add(1);
+  b.add(10);
+  b.add(10);
+  b.remove(5);
+  b.remove(10);
+  b.remove(10);
+  b.remove(1);
   assert(b.isEmpty() == true);
   assert(b.size() == 0);
   b.add(5);
