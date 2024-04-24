@@ -5,7 +5,7 @@
 using namespace std;
 
 BagIterator::BagIterator(const Bag& c) : bag(c) {
-  this->first();
+  this->currentElement = this->bag.head;
 }
 
 void BagIterator::first() {
@@ -20,12 +20,15 @@ void BagIterator::next() {
 }
 
 bool BagIterator::valid() const {
-  return this->currentElement != -1;
+  if (this->currentElement == -1)
+    return false;
+  else
+    return true;
 }
 
 TElem BagIterator::getCurrent() const {
   if (this->currentElement == -1) {
     throw exception();
   }
-  return this->bag.nodes[this->currentElement].info.first;
+  return this->currentElement;
 }

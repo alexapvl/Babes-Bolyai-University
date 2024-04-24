@@ -31,8 +31,8 @@ private:
   void resize();
   int allocate();
   void deallocate(int position);
-  int search_index(TElem elem) const;
   void insert_position(TElem elem, int position);
+  int getIndex(TElem elem);
 
   // DO NOT CHANGE THIS PART
   friend class BagIterator;
@@ -42,18 +42,20 @@ public:
   Bag();
 
   // adds an element to the bag
-  void add(TElem e);
+  void add(TElem elem);
+
+  void addFirst(TElem elem);
 
   // removes one occurence of an element from a bag
   // returns true if an element was removed, false otherwise (if e was not part of the bag)
-  bool remove(TElem e);
+  bool remove(TElem elem);
 
   // checks if an element appears is the bag
-  bool search(TElem e) const;
+  bool search(TElem elem) const;
 
   // returns the number of occurrences for an element in the bag
   // will return the frequency of the element e in the bag
-  int nrOccurrences(TElem e) const;
+  int nrOccurrences(TElem elem) const;
 
   // returns the number of elements from the bag
   int size() const;

@@ -7,18 +7,13 @@ void testAll() {
   Bag b;
   assert(b.isEmpty() == true);
   assert(b.size() == 0);
-  std::cout << b.to_string();
   b.add(5);
-  std::cout << b.to_string();
   b.add(1);
-  std::cout << b.to_string();
   b.add(10);
-  std::cout << b.to_string();
   b.add(7);
   b.add(1);
   b.add(11);
   b.add(-3);
-  exit(0);
   assert(b.size() == 7);
   assert(b.search(10) == true);
   assert(b.search(16) == false);

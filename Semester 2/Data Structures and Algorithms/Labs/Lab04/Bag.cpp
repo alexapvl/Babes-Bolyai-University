@@ -5,6 +5,10 @@ using namespace std;
 Bag::Bag() {
   this->capacity = 5;
   this->nodes = new DLAANode[this->capacity];
+  for (int i = 0; i < 5 - 1; i++) {
+    this->nodes[i].next = i + 1;
+  }
+  this->nodes[4].next = -1;
   this->head = -1;
   this->tail = -1;
   this->firstEmpty = 0;
@@ -12,33 +16,40 @@ Bag::Bag() {
 }
 
 void Bag::add(TElem elem) {
-  int indexOfElem = this->search_index(elem);  // search for the element in the bag
-  if (indexOfElem != -1) {                     // if the element is already in the bag
-    this->nodes[indexOfElem].info.second++;    // increment the frequency of the existing node
-  } else {                                     // if the element is not in the bag
-    if (this->head == -1) {                    // if the bag is empty
-      this->head = this->allocate();           // allocate memory for the new element
-      this->tail = this->head;                 // update the tail
-      this->nodes[head].info.first = elem;     // add the element to the new node
-      this->nodes[head].info.second = 1;       // initialize the frequency of the new node
-      this->nodes[head].next = -1;             // initialize the next of the new node
-      this->nodes[head].prev = -1;             // initialize the prev of the new node
-    } else {                                   // if the bag is not empty
-      int newIndex = this->allocate();         // get the position at which the new node will be added
-      this->nodes[newIndex].info.first = elem; // add the element to the new node
-      this->nodes[newIndex].info.second = 1;   // initialize the frequency of the new node
-      // update links
-      this->nodes[tail].next = newIndex;
-      this->nodes[newIndex].prev = tail;
-      this->tail = newIndex;
+  int index = this->getIndex(elem);
+  if (index != -1) {
+    this->nodes[index].info.second++;
+  } else if (this->head == -1 && this->tail == -1) // if the bag is empty
+    this->addFirst(elem);                          // if the bag is empty, add the first element to it
+  else {
+    int newElemIndex = this->allocate();
+    if (newElemIndex == -1) {
+      this->resize();
+      newElemIndex = this->allocate();
     }
+    this->nodes[tail].next = newElemIndex;
+    this->nodes[newElemIndex].prev = this->tail;
+    this->tail = newElemIndex;
+    this->nodes[this->tail].info.first = elem;
+    this->nodes[this->tail].info.second = 1;
   }
-  this->length++; // update the length of the bag
+  this->length++;
+}
+
+void Bag::addFirst(TElem elem) {
+  // adds the element if the bag is empty, i.e. the head = -1 and tail = -1
+  this->head = this->firstEmpty;
+  this->tail = this->firstEmpty;
+  this->firstEmpty = this->nodes[this->firstEmpty].next;
+  this->nodes[this->head].prev = -1;
+  this->nodes[this->tail].next = -1;
+  this->nodes[head].info.first = elem;
+  this->nodes[head].info.second = 1;
 }
 
 bool Bag::remove(TElem elem) {
-  int indexOfElem = search_index(elem); // search for the element in the bag
-  if (indexOfElem == -1) {              // if the element is not in the bag
+  int indexOfElem = this->getIndex(elem);
+  if (indexOfElem == -1) { // if the element is not in the bag
     return false;
   }
   this->nodes[indexOfElem].info.second--;          // decrement the frequency of the existing node
@@ -62,23 +73,23 @@ bool Bag::remove(TElem elem) {
 }
 
 bool Bag::search(TElem elem) const {
-  int current = this->head;
-  while (current != -1) {
-    if (this->nodes[current].info.first == elem) {
+  int currentIndex = this->head;
+  while (currentIndex != -1) {
+    if (this->nodes[currentIndex].info.first == elem) {
       return true;
     }
-    current = this->nodes[current].next;
+    currentIndex = this->nodes[currentIndex].next;
   }
   return false;
 }
 
 int Bag::nrOccurrences(TElem elem) const {
-  int current = this->head;
-  while (current != -1) {
-    if (this->nodes[current].info.first == elem) {
-      return this->nodes[current].info.second;
+  int currentIndex = this->head;
+  while (currentIndex != -1) {
+    if (this->nodes[currentIndex].info.first == elem) {
+      return this->nodes[currentIndex].info.second;
     }
-    current = this->nodes[current].next;
+    currentIndex = this->nodes[currentIndex].next;
   }
   return 0;
 }
@@ -106,12 +117,14 @@ std::string Bag::to_string() const {
     result += "prev: " + std::to_string(this->nodes[current].prev) + " " + "next: " + std::to_string(this->nodes[current].next) + " info: " + std::to_string(this->nodes[current].info.first) + "(" + std::to_string(this->nodes[current].info.second) + ") \n";
     current = this->nodes[current].next;
   }
-  return result;
+  return result + "############################\n";
 }
 
 // Private methods
 
 void Bag::resize() {
+  cout << this->capacity << "resizing"
+       << this->capacity * 2 << endl;
   DLAANode* newNodes = new DLAANode[this->capacity * 2]; // allocate a new array of nodes
   for (int i = 0; i < this->capacity; i++) {             // copy the old nodes into the new array
     newNodes[i] = this->nodes[i];
@@ -148,26 +161,15 @@ void Bag::deallocate(int position) {
   this->firstEmpty = position; // update the firstEmpty index
 }
 
-int Bag::search_index(TElem elem) const { // search for the element in the bag and return its index
-  int current = this->head;               // start from the head
-  while (current != -1) {                 // move to the next node until the end of the bag or until the element is found
-    if (this->nodes[current].info.first == elem) {
-      return current; // return the index of the node if the element is found
-    }
-    current = this->nodes[current].next; // move to the next node
-  }
-  std::cout << "OFFFFFFFFFF\n";
-  return -1; // return -1 if the element is not found
-}
-
 void Bag::insert_position(TElem elem, int position) {
-  int elemIndex = this->search_index(elem); // search for the element in the bag
-  if (elemIndex != -1) {                    // if the element is already in the bag
-    this->nodes[elemIndex].info.second++;   // increment the frequency of the existing node
+  int index = this->getIndex(elem);   // search for the element in the bag
+  if (index != -1) {                  // if the element is already in the bag
+    this->nodes[index].info.second++; // increment the frequency of the existing node
+    this->length++;
     return;
   }
   if (position < 0 || position >= this->capacity) { // if the position is invalid
-    throw std::runtime_error("Invalid position");   // throw an exception
+    throw std::exception();                         // throw an exception
   }
   int newElemIndex = this->allocate(); // get the position at which the new node will be added
   if (newElemIndex == -1) {            // if there are no empty nodes available
@@ -205,4 +207,14 @@ void Bag::insert_position(TElem elem, int position) {
     }
   }
   this->length++;
+}
+
+int Bag::getIndex(TElem elem) {
+  int currentIndex = this->head;
+  while (currentIndex != -1) {
+    if (this->nodes[currentIndex].info.first == elem)
+      break;
+    currentIndex = this->nodes[currentIndex].next;
+  }
+  return currentIndex;
 }
