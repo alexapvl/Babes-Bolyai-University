@@ -160,47 +160,46 @@ void Bag::deallocate(int position) {
 }
 
 void Bag::insert_position(TElem elem, int position) {
-  int index = this->getIndex(elem);   // search for the element in the bag
-  if (index != -1) {                  // if the element is already in the bag
-    this->nodes[index].info.second++; // increment the frequency of the existing node
-    this->length++;
-    return;
+  int index = this->getIndex(elem); // search for the element in the bag
+  if (index != -1) {                // if the element is already in the bag
+    throw exception();
   }
   if (position < 0 || position >= this->capacity) { // if the position is invalid
-    throw std::exception();                         // throw an exception
+    throw exception();
   }
-  int newElemIndex = this->allocate(); // get the position at which the new node will be added
-  if (newElemIndex == -1) {            // if there are no empty nodes available
-    this->resize();                    // resize the array of nodes
-    newElemIndex = this->allocate();   // get the position at which the new node will be added
+  index = this->allocate();
+  if (index == -1) {
+    this->resize();
+    index = this->allocate();
   }
-  this->nodes[newElemIndex].info.first = elem; // add the element to the new node
-  this->nodes[newElemIndex].info.second = 1;   // initialize the frequency of the new node
-  if (position == 0) {                         // update the head if the new node is added at the beginning
-    if (this->head == -1) {                    // if the bag is empty
-      this->head = newElemIndex;
-      this->tail = newElemIndex;
-    } else { // if the bag is not empty
-      this->nodes[newElemIndex].next = this->head;
-      this->nodes[this->head].prev = newElemIndex;
-      this->head = newElemIndex;
+  this->nodes[index].info.first = elem;
+  this->nodes[index].info.second = 1;
+  if (position == 0) {
+    if (this->head == -1) { // if bag is empty
+      this->head = index;
+      this->tail = index;
+    } else {
+      this->nodes[this->head].prev = index;
+      this->nodes[index].next = this->head;
+      this->nodes[index].prev = -1;
+      this->head = index;
     }
-  } else {                                                        // update the nodes if the new node is added in the middle or at the end
-    int currentNode = this->head;                                 // start from the head
-    int currentPosition = 0;                                      // start from the first position
-    while (currentNode != -1 || currentPosition < position - 1) { // move to the position
+  } else {
+    int currentNode = this->head;
+    int currentPosition = 0;
+    while (currentNode != -1 && currentPosition < position - 1) {
       currentNode = this->nodes[currentNode].next;
       currentPosition++;
     }
-    if (currentNode != -1) {                        // this should always be true if the position is valid
-      int nextNode = this->nodes[currentNode].next; // get the next node
-      this->nodes[newElemIndex].next = nextNode;    // update the next of the new node
-      this->nodes[newElemIndex].prev = currentNode; // update the prev of the new node
-      this->nodes[currentNode].next = newElemIndex; // update the next of the current node
-      if (nextNode == -1) {                         // update the tail if the new node is added at the end
-        this->tail = newElemIndex;
-      } else { // update the prev of the next node if the new node is added in the middle
-        this->nodes[nextNode].prev = newElemIndex;
+    if (currentNode == -1) { // should never be -1 if position is valid from the beginning
+      int nextNode = this->nodes[currentNode].next;
+      this->nodes[index].next = nextNode;
+      this->nodes[index].prev = currentNode;
+      this->nodes[currentNode].next = index;
+      if (nextNode == -1) {
+        this->tail = index;
+      } else {
+        this->nodes[nextNode].prev = index;
       }
     }
   }

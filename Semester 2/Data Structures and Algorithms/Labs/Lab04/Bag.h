@@ -31,7 +31,6 @@ private:
   void resize();
   int allocate();
   void deallocate(int position);
-  void insert_position(TElem elem, int position);
   int getIndex(TElem elem);
 
   // DO NOT CHANGE THIS PART
@@ -65,6 +64,9 @@ public:
 
   // checks if the bag is empty
   bool isEmpty() const;
+
+  // inserts element at a certain position
+  void insert_position(TElem elem, int position);
 
   // destructor
   ~Bag();
