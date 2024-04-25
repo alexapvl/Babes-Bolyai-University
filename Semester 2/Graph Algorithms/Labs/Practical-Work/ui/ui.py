@@ -1,6 +1,7 @@
 from domain.domain import WolfGoatCabbageGraph, VertexWolfGoatCabbage
 from repository.repository import RepoError
 from service.service import GraphService
+from tabulate import tabulate
 
 class UIError(ValueError):
     pass
@@ -24,6 +25,8 @@ class UI():
                 self.start_lab1()
             elif command == "2":
                 self.start_lab2()
+            elif command == "3":
+                self.start_lab3()
             elif command == "0":
                 break
             else:
@@ -33,6 +36,7 @@ class UI():
         print("\n----- Choose lab number")
         print("1. Lab 1")
         print("2. Lab 2")
+        print("3. Lab 3")
         print("0. Exit\n")
     
     def print_lab1_menu(self):
@@ -57,12 +61,20 @@ class UI():
         print("\n----- Other")
         print("16. Create a copy of the current graph and write it into a separate file")
         print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
+        print("18. Clear the graph")
         print("0. Back\n")
     
     def print_lab2_menu(self):
         print("\n----- Choose the algorithm")
         print("1. Breadth-first search")
         print("2. Wolf, goat and cabbadge problem(bonus)")
+        print("0. Back\n")
+
+    def print_lab3_menu(self):
+        print("\n----- Choose the algorithm")
+        print("1. Floyd-Warshall algorithm")
+        print("2. Find the number of distinct minimum cost walks between a pair of vertices(bonus 1)")
+        print("3. Find the number of possible paths between two vertices(bonus 2)")
         print("0. Back\n")
 
     def askToSave(self):
@@ -161,7 +173,9 @@ class UI():
                     print(self.service.repo.graph)
                 elif command == "16":
                     copyGraph = self.service.copy_graph()
-                    self.service.write_given_graph_to_file(copyGraph, "text_files/copy_graph.txt")
+                    name_of_file = input("Enter the name of the file: ")
+                    name_of_file = "textFiles/" + name_of_file + ".txt"
+                    self.service.write_given_graph_to_file(copyGraph, name_of_file)
                     print("\nCopy of the graph was succesfully written to the file\n")
                 elif command == "17":
                     no_vertices = int(input("Enter number of vertices: "))
@@ -174,6 +188,9 @@ class UI():
                         graph = self.service.generate_random_graph(no_vertices, no_edges)
                         self.service.write_given_graph_to_file(graph, file_name)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
+                elif command == "18":
+                    self.service.clear_graph()
+                    print("\nGraph was cleared\n")
                 elif command == "0":
                     self.askToSave()
                     break
@@ -210,6 +227,68 @@ class UI():
                     for vertex in path[:-1]:
                         print(vertex, end=" -> ")
                     print(path[-1])
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as ge:
+                print(ge)
+            except ValueError as ve:
+                print("\nInvalid input\n")
+
+    def start_lab3(self):
+        while(True):
+            try:
+                self.print_lab3_menu()
+                command = input(">> ")
+                if command == "1":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    intermediate_matrices, path, cost = self.service.lowest_cost_walk_floyd_warshall(start, end)
+                    if cost == float('inf'):
+                        print("\nThere is no path between the two vertices\n")
+                    else:
+                        print("\nLength of the path: ", len(path) - 1)
+                        print("Cost of the path: ", cost)
+                        print("Path: ", end="")
+                        for vertex in path[:-1]:
+                            print(vertex, end=" -> ")
+                        print(path[-1])
+                        row_and_col_headers = [f"Vertex {vertex}" for vertex in self.service.get_vertices()]
+                        print("\nInitial matrices D and P:")
+                        print(f"-----D-----")
+                        print(tabulate(intermediate_matrices[0][0], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
+                        print(f"-----P-----")
+                        print(tabulate(intermediate_matrices[0][1], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
+                        index = 0
+                        for matrix in intermediate_matrices[1:]:
+                            print(f"\nIntermediate matrices D{index} and P{index}:")
+                            print(f"k = {index} -> using vertex {index} as an intermediate vertex")
+                            print(f"-----D{index}-----")
+                            print(tabulate(matrix[0], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
+                            print(f"-----P{index}-----")
+                            print(tabulate(matrix[1], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
+                            index += 1
+                    final_matrix = intermediate_matrices[-1][0]
+                    while(True):
+                        stop = input("\nDo you want to stop? y/n >> ")
+                        if stop == "y":
+                            break
+                        start = int(input("Enter start vertex: "))
+                        end = int(input("Enter end vertex: "))
+                        print(f"\nMinimum cost of the path between {start} and {end}: {final_matrix[start][end]}\n")
+                elif command == "2":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.find_min_cost_paths(start, end);
+                    print(f"\nNumber of minimum cost paths between {start} and {end}: {number_of_paths}")
+                elif command == "3":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.find_all_possible_paths(start, end);
+                    print(f"\nNumber of possible paths between {start} and {end}: {number_of_paths}")
                 elif command == "0":
                     break
                 else:

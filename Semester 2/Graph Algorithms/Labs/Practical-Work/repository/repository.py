@@ -41,8 +41,7 @@ class Repository():
         self.graph.edges[(i, j)] = cost
         self.graph.dout[i].append(j)
         self.graph.din[j].append(i)
-        if (len(self.graph.edges) - 1) == self.graph.numberOfEdges:
-            self.graph.numberOfEdges += 1
+        self.graph.numberOfEdges = len(self.graph.edges.keys())
 
     def remove_edge(self, i, j):
         if not self.is_edge(i, j):
@@ -92,6 +91,13 @@ class Repository():
                 no_edges -= 1
         return graph
     
+    def clear_graph(self):
+        self.graph.vertices = []
+        self.graph.edges = {}
+        self.graph.din = {}
+        self.graph.dout = {}
+        self.graph.numberOfEdges = 0
+    
     def get_vertices(self) -> list:
         return self.graph.vertices
     
@@ -138,7 +144,7 @@ class Repository():
         while queue:
             current, path = queue.popleft()
             visited.add(current) # since we are using a set, we will not check for duplicates
-            for neighbor in self.graph.dout[current]:
+            for neighbor in self.get_outbounds_of_vertex(current):
                 if neighbor == end:
                     return path + [neighbor]
                 if neighbor not in visited:
@@ -160,7 +166,7 @@ class Repository():
             x = q.pop(0)
             if x == end:
                 break
-            for y in self.wgcGrapf.dout(x):
+            for y in self.get_outbounds_of_vertex(x):
                 if y not in pred:
                     pred[y] = x
                     q.append(y)
@@ -178,4 +184,104 @@ class Repository():
     @graph.setter
     def graph(self, value: Graph):
         self.__graph = value
+    
+    def lowest_cost_walk_floyd_warshall(self, start: int, end: int) -> tuple:
+        '''
+        This function calculates the lowest cost walk between two vertices in a graph using the Floyd-Warshall algorithm, provided that
+        the given graph has no negative cost cycles.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
+        It then iterates through the matrix, updating the cost of a path if a shorter path is found.
+        The function returns a tuple consisting of a list with the intermediate matrices(as tuples), the path and the cost of the walk.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
         
+        no_vertices = self.number_of_vertices()
+        cost_matrix = [[float('inf')] * no_vertices for _ in range(no_vertices)] # initialize the matrix of costs
+        for i in range(no_vertices):
+            cost_matrix[i][i] = 0
+        next_vertex = [["None"] * no_vertices for _ in range(no_vertices)] # initialize the matrix for the lowest cost path between two vertices
+        intermediate_matrices = []
+        
+        for u in self.graph.vertices:
+            for v in self.get_outbounds_of_vertex(u):
+                cost_matrix[u][v] = self.graph.edges[(u, v)]
+                next_vertex[u][v] = v
+                
+        cost_copy_matrix = [row.copy() for row in cost_matrix]
+        next_vertex_copy_matrix = [row.copy() for row in next_vertex]
+        intermediate_matrices.append((cost_copy_matrix, next_vertex_copy_matrix))
+    
+        for k in self.graph.vertices:
+            for i in self.graph.vertices:
+                for j in self.graph.vertices:
+                    if k != i and k != j and i != j:
+                        if cost_matrix[i][j] > cost_matrix[i][k] + cost_matrix[k][j]:
+                            cost_matrix[i][j] = cost_matrix[i][k] + cost_matrix[k][j]
+                            next_vertex[i][j] = next_vertex[i][k]
+            cost_copy_matrix = [row.copy() for row in cost_matrix]
+            next_vertex_copy_matrix = [row.copy() for row in next_vertex]
+            intermediate_matrices.append((cost_copy_matrix, next_vertex_copy_matrix))
+        
+        if cost_matrix[start][end] == float('inf'):
+            return intermediate_matrices, [], float('inf')
+        path = [start]
+        cost = cost_matrix[start][end]
+        while start != end:
+            start = next_vertex[start][end]
+            path.append(start)
+        
+        return intermediate_matrices, path, cost
+    
+    def find_min_cost_paths(self, source: int, target: int) -> int:
+        '''
+        This function calculates the number of minimum cost paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
+        It then iterates through the matrix, updating the cost of a path if a shorter path is found.
+        The function returns a tuple consisting of the number of minimum cost paths and a list with the paths.
+        '''
+        n = self.number_of_vertices()
+        cost_matrix = [[float('inf')] * n for _ in range(n)]
+        num_paths = [[0] * n for _ in range(n)]
+
+        for u in range(n):
+            for v in range(n):
+                if self.is_edge(u, v):
+                    cost_matrix[u][v] = self.graph.edges[(u, v)] 
+                    num_paths[u][v] = 1
+
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    if cost_matrix[i][k] + cost_matrix[k][j] < cost_matrix[i][j]:
+                        cost_matrix[i][j] = cost_matrix[i][k] + cost_matrix[k][j]
+                        num_paths[i][j] = num_paths[i][k] * num_paths[k][j]
+                    elif cost_matrix[i][k] + cost_matrix[k][j] == cost_matrix[i][j]:
+                        num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
+
+        return num_paths[source][target]
+
+    def find_all_possible_paths(self, source: int, target: int) -> int:
+        '''
+        This function calculates the number of possible paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
+        It then iterates through the matrix, updating the cost of a path if a shorter path is found.
+        The function returns the number of possible paths between the two vertices.
+        '''
+        n = self.number_of_vertices()
+        num_paths = [[0] * n for _ in range(n)]
+
+        for u in range(n):
+            for v in range(n):
+                if self.is_edge(u, v):
+                    num_paths[u][v] = 1
+
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
+
+        return num_paths[source][target] 

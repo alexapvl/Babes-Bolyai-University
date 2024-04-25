@@ -24,6 +24,9 @@ class GraphService():
                     j = int(params[1])
                     cost = int(params[2])
                     self.repo.add_edge(i, j, cost)
+                elif len(params) == 1:
+                    i = int(params[0])
+                    self.repo.add_vertex(i)
                 else: # isolated vertices are written alone on a line just to mark them, they are already added when the graph is created
                     continue
                 
@@ -51,6 +54,11 @@ class GraphService():
             with open(file_name, "w") as file:
                 file.write("The graph with the given number of vertices and edged is impossile to create.\nThe number of edges is greater than the maximum number of edges possible.\n")
             return
+
+        with open(file_name, "w") as file:
+            # create the file if it does not exist
+            pass
+
         with open(file_name, "w") as file:
             file.write(f"{len(graph.vertices)} {graph.numberOfEdges}\n")
             for edge in graph.edges.keys():
@@ -147,6 +155,12 @@ class GraphService():
             The number of edges must be less than or equal to the maximum number of edges possible
         """
         return self.repo.generate_random_graph(no_vertices, no_edges)
+    
+    def clear_graph(self):
+        """
+        Clears the graph
+        """
+        self.repo.clear_graph()
 
     def get_vertices(self) -> list:
         """
@@ -240,6 +254,40 @@ class GraphService():
         Returns the shortest path in the wolf, goat and cabbage problem
         """
         return self.repo.shortest_path_wgc()
+    
+    def lowest_cost_walk_floyd_warshall(self, start: int, end: int) -> tuple:
+        """
+        Returns the lowest cost walk between two vertices using Floyd-Warshall algorithm
+        Args:
+            start : the starting vertex
+            end : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.lowest_cost_walk_floyd_warshall(start, end)
+    
+    def find_min_cost_paths(self, source: int, target: int) -> int:
+        """
+        Returns the number of minimum cost paths between two vertices
+        Args:
+            source : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.find_min_cost_paths(source, target)
+
+    def find_all_possible_paths(self, start: int, target: int) -> int:
+        """
+        Returns the number of all possible paths between two vertices
+        Args:
+            start : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.find_all_possible_paths(start, target)
+
         
     @property
     def repo(self) -> Repository:
