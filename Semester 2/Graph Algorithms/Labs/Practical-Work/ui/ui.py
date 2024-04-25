@@ -73,6 +73,8 @@ class UI():
     def print_lab3_menu(self):
         print("\n----- Choose the algorithm")
         print("1. Floyd-Warshall algorithm")
+        print("2. Find the number of distinct minimum cost walks between a pair of vertices(bonus 1)")
+        print("3. Find the number of possible paths between two vertices(bonus 2)")
         print("0. Back\n")
 
     def askToSave(self):
@@ -254,7 +256,6 @@ class UI():
                         for vertex in path[:-1]:
                             print(vertex, end=" -> ")
                         print(path[-1])
-
                         row_and_col_headers = [f"Vertex {vertex}" for vertex in self.service.get_vertices()]
                         print("\nInitial matrices D and P:")
                         print(f"-----D-----")
@@ -270,6 +271,16 @@ class UI():
                             print(f"-----P{index}-----")
                             print(tabulate(matrix[1], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
                             index += 1
+                elif command == "2":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.find_min_cost_paths(start, end);
+                    print(f"\nNumber of minimum cost paths between {start} and {end}: {number_of_paths}")
+                elif command == "3":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.find_all_possible_paths(start, end);
+                    print(f"\nNumber of possible paths between {start} and {end}: {number_of_paths}")
                 elif command == "0":
                     break
                 else:

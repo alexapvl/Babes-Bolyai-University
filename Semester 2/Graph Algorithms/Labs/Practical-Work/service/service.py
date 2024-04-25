@@ -265,6 +265,29 @@ class GraphService():
             Both vertices must exist in the graph
         """
         return self.repo.lowest_cost_walk_floyd_warshall(start, end)
+    
+    def find_min_cost_paths(self, source: int, target: int) -> int:
+        """
+        Returns the number of minimum cost paths between two vertices
+        Args:
+            source : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.find_min_cost_paths(source, target)
+
+    def find_all_possible_paths(self, start: int, target: int) -> int:
+        """
+        Returns the number of all possible paths between two vertices
+        Args:
+            start : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.find_all_possible_paths(start, target)
+
         
     @property
     def repo(self) -> Repository:

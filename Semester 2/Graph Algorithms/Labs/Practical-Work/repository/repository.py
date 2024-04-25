@@ -233,4 +233,48 @@ class Repository():
             path.append(start)
         
         return intermediate_matrices, path, cost
-        
+    
+    def find_min_cost_paths(self, source: int, target: int) -> int:
+        '''
+        This function calculates the number of minimum cost paths between two vertices in a graph using the Floyd-Warshall algorithm.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
+        It then iterates through the matrix, updating the cost of a path if a shorter path is found.
+        The function returns a tuple consisting of the number of minimum cost paths and a list with the paths.
+        '''
+        n = self.number_of_vertices()
+        cost_matrix = [[float('inf')] * n for _ in range(n)]
+        num_paths = [[0] * n for _ in range(n)]
+
+        for u in range(n):
+            for v in range(n):
+                if self.is_edge(u, v):
+                    cost_matrix[u][v] = self.graph.edges[(u, v)] 
+                    num_paths[u][v] = 1
+
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    if cost_matrix[i][k] + cost_matrix[k][j] < cost_matrix[i][j]:
+                        cost_matrix[i][j] = cost_matrix[i][k] + cost_matrix[k][j]
+                        num_paths[i][j] = num_paths[i][k] * num_paths[k][j]
+                    elif cost_matrix[i][k] + cost_matrix[k][j] == cost_matrix[i][j]:
+                        num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
+
+        return num_paths[source][target]
+
+    def find_all_possible_paths(self, source: int, target: int) -> int:
+        n = self.number_of_vertices()
+        num_paths = [[0] * n for _ in range(n)]
+
+        for u in range(n):
+            for v in range(n):
+                if self.is_edge(u, v):
+                    num_paths[u][v] = 1
+
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
+
+        return num_paths[source][target] 
