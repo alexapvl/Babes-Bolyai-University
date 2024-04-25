@@ -271,6 +271,14 @@ class UI():
                             print(f"-----P{index}-----")
                             print(tabulate(matrix[1], headers=row_and_col_headers, showindex=row_and_col_headers, tablefmt="fancy_grid"))
                             index += 1
+                    final_matrix = intermediate_matrices[-1][0]
+                    while(True):
+                        stop = input("\nDo you want to stop? y/n >> ")
+                        if stop == "y":
+                            break
+                        start = int(input("Enter start vertex: "))
+                        end = int(input("Enter end vertex: "))
+                        print(f"\nMinimum cost of the path between {start} and {end}: {final_matrix[start][end]}\n")
                 elif command == "2":
                     start = int(input("Enter start vertex: "))
                     end = int(input("Enter end vertex: "))
