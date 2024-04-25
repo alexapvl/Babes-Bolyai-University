@@ -236,7 +236,7 @@ class Repository():
     
     def find_min_cost_paths(self, source: int, target: int) -> int:
         '''
-        This function calculates the number of minimum cost paths between two vertices in a graph using the Floyd-Warshall algorithm.
+        This function calculates the number of minimum cost paths between two vertices in a graph.
         It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
         The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
         It then iterates through the matrix, updating the cost of a path if a shorter path is found.
@@ -264,6 +264,13 @@ class Repository():
         return num_paths[source][target]
 
     def find_all_possible_paths(self, source: int, target: int) -> int:
+        '''
+        This function calculates the number of possible paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The algorithm initializes a matrix of costs, where the cost of an edge is stored in the corresponding cell.
+        It then iterates through the matrix, updating the cost of a path if a shorter path is found.
+        The function returns the number of possible paths between the two vertices.
+        '''
         n = self.number_of_vertices()
         num_paths = [[0] * n for _ in range(n)]
 
