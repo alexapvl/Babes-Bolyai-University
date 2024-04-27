@@ -2,6 +2,7 @@
 #include "BagIterator.h"
 using namespace std;
 
+// BC: Theta(5) | WC: Theta(5) | AC: Theta(5)
 Bag::Bag() {
   this->capacity = 5;
   this->nodes = new DLAANode[this->capacity];
@@ -15,6 +16,7 @@ Bag::Bag() {
   this->length = 0;
 }
 
+// BC: Theta(1) | WC: Theta(n) | AC: O(n)
 void Bag::add(TElem elem) {
   int index = this->getIndex(elem);
   if (index != -1) {
@@ -36,6 +38,7 @@ void Bag::add(TElem elem) {
   this->length++;
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 void Bag::addFirst(TElem elem) {
   // adds the element if the bag is empty, i.e. the head = -1 and tail = -1
   this->head = this->firstEmpty;
@@ -47,6 +50,7 @@ void Bag::addFirst(TElem elem) {
   this->nodes[head].info.second = 1;
 }
 
+// BC: Theta(1) | WC: Theta(n) | AC: O(n)
 bool Bag::remove(TElem elem) {
   int indexOfElem = this->getIndex(elem);
   if (indexOfElem == -1) { // if the element is not in the bag
@@ -60,6 +64,7 @@ bool Bag::remove(TElem elem) {
   return true;
 }
 
+// BC: Theta(1) | WC: Theta(n) | AC: O(n)
 bool Bag::search(TElem elem) const {
   int currentIndex = this->head;
   while (currentIndex != -1) {
@@ -71,6 +76,7 @@ bool Bag::search(TElem elem) const {
   return false;
 }
 
+// BC: Theta(1) | WC: Theta(n) | AC: O(n)
 int Bag::nrOccurrences(TElem elem) const {
   int currentIndex = this->head;
   while (currentIndex != -1) {
@@ -82,22 +88,27 @@ int Bag::nrOccurrences(TElem elem) const {
   return 0;
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 int Bag::size() const {
   return this->length;
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 bool Bag::isEmpty() const {
   return this->length == 0;
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 BagIterator Bag::iterator() const {
   return BagIterator(*this);
 }
 
+// BC: Theta(1) | WC: Theta(n) | AC: O(n)
 Bag::~Bag() {
   delete[] this->nodes;
 }
 
+// BC: Theta(n) | WC: Theta(n) | AC: Theta(n)
 std::string Bag::to_string() const {
   std::string result = "";
   int current = this->head;
@@ -109,6 +120,7 @@ std::string Bag::to_string() const {
 }
 // Private methods
 
+// BC: Theta(n) | WC: Theta(n) | AC: Theta(n)
 void Bag::resize() {
   DLAANode* newNodes = new DLAANode[this->capacity * 2]; // allocate a new array of nodes
   for (int i = 0; i < this->capacity; i++) {             // copy the old nodes into the new array
@@ -124,6 +136,7 @@ void Bag::resize() {
   this->capacity *= 2;                           // update the capacity
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 int Bag::allocate() {
   int newElementIndex = this->firstEmpty;
   if (newElementIndex != -1) {                             // if there is an empty node available
@@ -137,6 +150,7 @@ int Bag::allocate() {
   return newElementIndex;
 }
 
+// BC: Theta(1) | WC: Theta(1) | AC: Theta(1)
 void Bag::deallocate(int position) {
   if (position == this->head && position != this->tail) { // if the element is the first in the bag
     this->head = this->nodes[position].next;
@@ -159,53 +173,7 @@ void Bag::deallocate(int position) {
   this->firstEmpty = position; // update the firstEmpty index
 }
 
-void Bag::insert_position(TElem elem, int position) {
-  int index = this->getIndex(elem); // search for the element in the bag
-  if (index != -1) {                // if the element is already in the bag
-    throw exception();
-  }
-  if (position < 0 || position >= this->capacity) { // if the position is invalid
-    throw exception();
-  }
-  index = this->allocate();
-  if (index == -1) {
-    this->resize();
-    index = this->allocate();
-  }
-  this->nodes[index].info.first = elem;
-  this->nodes[index].info.second = 1;
-  if (position == 0) {
-    if (this->head == -1) { // if bag is empty
-      this->head = index;
-      this->tail = index;
-    } else {
-      this->nodes[this->head].prev = index;
-      this->nodes[index].next = this->head;
-      this->nodes[index].prev = -1;
-      this->head = index;
-    }
-  } else {
-    int currentNode = this->head;
-    int currentPosition = 0;
-    while (currentNode != -1 && currentPosition < position - 1) {
-      currentNode = this->nodes[currentNode].next;
-      currentPosition++;
-    }
-    if (currentNode == -1) { // should never be -1 if position is valid from the beginning
-      int nextNode = this->nodes[currentNode].next;
-      this->nodes[index].next = nextNode;
-      this->nodes[index].prev = currentNode;
-      this->nodes[currentNode].next = index;
-      if (nextNode == -1) {
-        this->tail = index;
-      } else {
-        this->nodes[nextNode].prev = index;
-      }
-    }
-  }
-  this->length++;
-}
-
+// BC: Theta(n) | WC: Theta(n) | AC: Theta(n)
 int Bag::getIndex(TElem elem) {
   int currentIndex = this->head;
   while (currentIndex != -1) {
@@ -214,4 +182,24 @@ int Bag::getIndex(TElem elem) {
     currentIndex = this->nodes[currentIndex].next;
   }
   return currentIndex;
+}
+
+int Bag::removeOccurences(int nr, TElem elem) {
+  if (nr < 0) {
+    throw exception();
+  }
+  int index = getIndex(elem);
+  if (index == -1) {
+    throw exception();
+  }
+  if (this->nodes[index].info.second > nr) {
+    this->nodes[index].info.second -= nr;
+    this->length -= nr;
+    return nr;
+  } else {
+    int occ = this->nodes[index].info.second;
+    deallocate(index);
+    this->length -= occ;
+    return occ;
+  }
 }

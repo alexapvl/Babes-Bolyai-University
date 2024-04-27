@@ -37,4 +37,26 @@ void testAll() {
     TElem e = it.getCurrent();
     it.next();
   }
+
+  // test new function implementation for lab assignment
+  Bag test;
+  test.add(5);
+  test.add(1);
+  test.add(10);
+  test.add(10);
+  test.add(5);
+  test.add(1);
+  test.add(10);
+  test.add(10);
+  test.add(5);
+  test.add(1);
+  test.add(10);
+  test.add(10);
+  test.add(5);
+  test.add(1);
+  test.add(10);
+  test.add(10);
+  assert(test.removeOccurences(5, 5) == 4);
+  assert(test.getIndex(5) == -1);
+  assert(test.size() == 12);
 }

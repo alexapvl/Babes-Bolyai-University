@@ -31,12 +31,12 @@ private:
   void resize();
   int allocate();
   void deallocate(int position);
-  int getIndex(TElem elem);
 
   // DO NOT CHANGE THIS PART
   friend class BagIterator;
 
 public:
+  int getIndex(TElem elem);
   // constructor
   Bag();
 
@@ -65,12 +65,11 @@ public:
   // checks if the bag is empty
   bool isEmpty() const;
 
-  // inserts element at a certain position
-  void insert_position(TElem elem, int position);
-
   // destructor
   ~Bag();
 
   // returns a string representation of the bag
   std::string to_string() const;
+
+  int removeOccurences(int nr, TElem elem);
 };
