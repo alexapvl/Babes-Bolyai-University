@@ -285,3 +285,36 @@ class Repository():
                     num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
 
         return num_paths[source][target] 
+
+    def TopoSortDFS(self, vertex: int, sorted: list, fullyProcessed: set, inProcess: set) -> bool:
+        '''
+        This function performs a depth-first search on the graph, topologically sorting the vertices.
+        It verifies the existence of the provided vertex within the graph.
+        The function returns True if the graph is acyclic, False otherwise.
+        '''
+        inProcess.add(vertex)
+        for neighbor in self.get_inbounds_of_vertex(vertex):
+            if neighbor in inProcess:
+                return False
+            if neighbor not in fullyProcessed:
+                if not self.TopoSortDFS(neighbor, sorted, fullyProcessed, inProcess):
+                    return False
+        inProcess.remove(vertex)
+        sorted.append(vertex)
+        fullyProcessed.add(vertex)
+        return True
+
+    def topological_sort(self) -> list:
+        '''
+        This function performs a topological sort on the graph.
+        It verifies the existence of the provided vertices within the graph.
+        The function returns a list with the topologically sorted vertices.
+        '''
+        sorted = []
+        fullyProcessed = set()
+        inProcess = set()
+        for vertex in self.get_vertices():
+            if vertex not in fullyProcessed:
+                if not self.TopoSortDFS(vertex, sorted, fullyProcessed, inProcess):
+                    return None
+        return sorted

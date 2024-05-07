@@ -27,6 +27,8 @@ class UI():
                 self.start_lab2()
             elif command == "3":
                 self.start_lab3()
+            elif command == "4":
+                self.start_lab4()
             elif command == "0":
                 break
             else:
@@ -37,6 +39,7 @@ class UI():
         print("1. Lab 1")
         print("2. Lab 2")
         print("3. Lab 3")
+        print("4. Lab 4")
         print("0. Exit\n")
     
     def print_lab1_menu(self):
@@ -75,6 +78,11 @@ class UI():
         print("1. Floyd-Warshall algorithm")
         print("2. Find the number of distinct minimum cost walks between a pair of vertices(bonus 1)")
         print("3. Find the number of possible paths between two vertices(bonus 2)")
+        print("0. Back\n")
+
+    def print_lab4_menu(self):
+        print("\n----- Choose the algorithm")
+        print("1. Topological sort")
         print("0. Back\n")
 
     def askToSave(self):
@@ -181,12 +189,13 @@ class UI():
                     no_vertices = int(input("Enter number of vertices: "))
                     no_edges = int(input("Enter number of edges: "))
                     file_name = input("Enter file name: ")
+                    actual_file_path = "textFiles/" + file_name + ".txt"
                     if no_edges > no_vertices ** 2:
                         # create the file with the name and write the error message in it
                         self.service.write_given_graph_to_file(None, file_name)
                     else:
                         graph = self.service.generate_random_graph(no_vertices, no_edges)
-                        self.service.write_given_graph_to_file(graph, file_name)
+                        self.service.write_given_graph_to_file(graph, actual_file_path)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "18":
                     self.service.clear_graph()
@@ -289,6 +298,31 @@ class UI():
                     end = int(input("Enter end vertex: "))
                     number_of_paths = self.service.find_all_possible_paths(start, end);
                     print(f"\nNumber of possible paths between {start} and {end}: {number_of_paths}")
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as ge:
+                print(ge)
+            except ValueError as ve:
+                print("\nInvalid input\n")
+
+    def start_lab4(self):
+        while(True):
+            try:
+                self.print_lab4_menu()
+                command = input(">> ")
+                if command == "1":
+                    topological_order = self.service.topological_sort()
+                    if topological_order is None:
+                        print("\nGraph is not a DAG\n")
+                    else:
+                        print("\nTopological order: ", end="")
+                        for vertex in topological_order:
+                            print(vertex, end=" | ")
+                        print()
                 elif command == "0":
                     break
                 else:

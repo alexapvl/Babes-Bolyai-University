@@ -287,6 +287,12 @@ class GraphService():
             Both vertices must exist in the graph
         """
         return self.repo.find_all_possible_paths(start, target)
+    
+    def topological_sort(self) -> list:
+        """
+        Returns a topological sort of the graph
+        """
+        return self.repo.topological_sort()
 
         
     @property
