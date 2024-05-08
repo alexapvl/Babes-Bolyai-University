@@ -294,6 +294,28 @@ class GraphService():
         """
         return self.repo.topological_sort()
 
+    def count_paths(self, start: int, end: int) -> int:
+        """
+        Returns the number of paths between two vertices
+        Args:
+            start : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.count_paths(start, end)
+
+    def count_lowest_cost_paths(self, start: int, end: int) -> int:
+        """
+        Returns the number of lowest cost paths between two vertices
+        Args:
+            start : the starting vertex
+            target : the ending vertex
+        Preconditions:
+            Both vertices must exist in the graph
+        """
+        return self.repo.count_lowest_cost_paths(start, end)
+
         
     @property
     def repo(self) -> Repository:

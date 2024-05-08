@@ -10,6 +10,12 @@ class Graph():
             self.vertices.append(i)
             self.din[i] = []
             self.dout[i] = []
+        
+    def get_cost(self, i: int, j: int) -> int:
+        '''
+        Returns the cost of the edge (i, j)
+        '''
+        return self.edges[(i, j)]
 
     @property
     def vertices(self) -> list:

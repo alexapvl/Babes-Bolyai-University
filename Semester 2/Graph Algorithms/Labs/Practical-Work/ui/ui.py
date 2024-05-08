@@ -83,6 +83,8 @@ class UI():
     def print_lab4_menu(self):
         print("\n----- Choose the algorithm")
         print("1. Topological sort")
+        print("2. Count number of paths between two vertices(bonus 1)")
+        print("3. Count number of lowest cost paths between two vertices(bonus 2)")
         print("0. Back\n")
 
     def askToSave(self):
@@ -323,6 +325,16 @@ class UI():
                         for vertex in topological_order:
                             print(vertex, end=" | ")
                         print()
+                elif command == "2":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.count_paths(start, end)
+                    print(f"\nNumber of paths between {start} and {end} is: {number_of_paths}")
+                elif command == "3":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths, cost = self.service.count_lowest_cost_paths(start, end) 
+                    print(f"\nNumber of lowest cost paths between {start} and {end} is: {number_of_paths}\nAnd the cost of the path is: {cost}\n")
                 elif command == "0":
                     break
                 else:

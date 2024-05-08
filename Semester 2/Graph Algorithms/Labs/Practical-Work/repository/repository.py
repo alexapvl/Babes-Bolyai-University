@@ -125,6 +125,16 @@ class Repository():
     def get_outbounds_of_vertex(self, i: int) -> list:
         return self.graph.dout[i]
 
+    @property
+    def graph(self) -> Graph:
+        return self.__graph
+    
+    @graph.setter
+    def graph(self, value: Graph):
+        self.__graph = value
+
+    #--- lab 2 ---#
+
     def shortest_path_between_two_vertices_forward_breath_first_search(self, start: int, end: int) -> list:
         '''
         This function calculates the shortest path between two vertices in a graph using a forward breadth-first search approach. 
@@ -177,13 +187,7 @@ class Repository():
         path.reverse()
         return path
 
-    @property
-    def graph(self) -> Graph:
-        return self.__graph
-    
-    @graph.setter
-    def graph(self, value: Graph):
-        self.__graph = value
+    #--- lab 3 ---#
     
     def lowest_cost_walk_floyd_warshall(self, start: int, end: int) -> tuple:
         '''
@@ -285,12 +289,14 @@ class Repository():
                     num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
 
         return num_paths[source][target] 
+    
+    #--- lab 4 ---#
 
     def TopoSortDFS(self, vertex: int, sorted: list, fullyProcessed: set, inProcess: set) -> bool:
         '''
         This function performs a depth-first search on the graph, topologically sorting the vertices.
-        It verifies the existence of the provided vertex within the graph.
         The function returns True if the graph is acyclic, False otherwise.
+        A graph is DAG if and ony if there exists a topological sort of the vertices.
         '''
         inProcess.add(vertex)
         for neighbor in self.get_inbounds_of_vertex(vertex):
@@ -318,3 +324,60 @@ class Repository():
                 if not self.TopoSortDFS(vertex, sorted, fullyProcessed, inProcess):
                     return None
         return sorted
+    
+    def count_paths(self, start: int, end: int) -> int:
+        '''
+        This function calculates the number of paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The function returns the number of paths between the two vertices.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
+
+        if start == end:
+            return 1
+
+        sorted_vertices = self.topological_sort()
+        if sorted_vertices is None:
+            raise RepoError("\nGraph contains a cycle\n")
+
+        num_paths = [0] * self.number_of_vertices()
+        num_paths[start] = 1
+
+        for vertex in sorted_vertices:
+            for neighbor in self.get_outbounds_of_vertex(vertex):
+                num_paths[neighbor] += num_paths[vertex]
+
+        return num_paths[end]
+
+    def count_lowest_cost_paths(self, start: int, end: int) -> tuple:
+        '''
+        This function calculates the number of lowest cost paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The function returns a tuple consisting of the number of lowest cost paths and the lowest cost.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
+        
+        if start == end:
+            return 1, 0
+
+        sorted_vertices = self.topological_sort()
+        if sorted_vertices is None:
+            raise RepoError("\nGraph contains a cycle\n")
+
+        num_paths = [0] * self.number_of_vertices()
+        lowest_cost = [float('inf')] * self.number_of_vertices()
+        num_paths[start] = 1
+        lowest_cost[start] = 0
+
+        for vertex in sorted_vertices:
+            for neighbor in self.get_outbounds_of_vertex(vertex):
+                cost = self.graph.get_cost(vertex, neighbor)
+                if lowest_cost[vertex] + cost < lowest_cost[neighbor]:
+                    lowest_cost[neighbor] = lowest_cost[vertex] + cost
+                    num_paths[neighbor] = num_paths[vertex]
+                elif lowest_cost[vertex] + cost == lowest_cost[neighbor]:
+                    num_paths[neighbor] += num_paths[vertex]
+
+        return num_paths[end], lowest_cost[end]
