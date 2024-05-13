@@ -1,0 +1,10 @@
+Write a C program that receives as command line arguments pairs of strings and numbers.
+For each argument pair, create a new process that launches a C or Shell program that 
+calculates the number of vowels in the string and, if it is equal with the second argument 
+in the pair, it prints it together with the string on stdout.
+
+Example:
+/prog string 5 adventure 4 chocolate 4 elephant 3
+adventure 4
+chocolate 4
+elephant 3
