@@ -1,0 +1,8 @@
+Write a C program that creates a child process. The parent wprocess will read integers from standard input.
+After reading each integer N, the parent process will send it via pipe to the child process, 
+which will generate and send back to the parent the first N numbers from the Fibonacci sequence via pipe.
+The parent process will read and print the received numbers from the child process.
+The parent and child will terminate if the parent readsfrom standard input a number 
+less than or equal to zero.
+The program will perform error checks and handling.
+

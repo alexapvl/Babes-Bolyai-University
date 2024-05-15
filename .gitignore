@@ -3,6 +3,7 @@ build/
 /Semester 1/.idea
 textFiles/
 .vscode/
+*.dSYM/
 .DS_Store
 # Created by https://www.toptal.com/developers/gitignore/api/python,c++,assembler,pycharm+all,clion
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,c++,assembler,pycharm+all,clion

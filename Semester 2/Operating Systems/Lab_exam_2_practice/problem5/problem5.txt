@@ -1,0 +1,6 @@
+Parintele citeste siruri de caractere de la tastatura formate din litere mici pana da de sirul "x". 
+Pentru fiecare sir se creaza doi copii. Ambii copii vor avea doua siruri de lungime 26 initializate cu 0. 
+Primul copil primeste sirul citit de la parinte si calculeaza frecventa literelor sirului apoi transmite sirul de frecventa inapoi parintelui. 
+Cel de al doilea copil primeste sirul de frecvente si calculeaza suma acestuia apoi o trimite inapoi parintelui. 
+Parintele afiseaza pe ecran sirul de frecvente si suma primita pentru fiecare sir in parte. 
+Se folosesc pipes si trebuie facute validari la fiecare functie. Fiecare sir in parte nu o sa aiba o lungime mai mare de 250
