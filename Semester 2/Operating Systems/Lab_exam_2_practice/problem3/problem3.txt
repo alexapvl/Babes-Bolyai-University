@@ -1,0 +1,12 @@
+Scrieti 2 programe c, A si B. Programul A va citi de la tastatura un nume de
+fisier. Programul A va citi din fisier si va scrie in fifo toate cifrele din
+fisier.
+Probramul B va creea 2 procese P1 si P2. P1 va citi cifrele din fifo-ul
+mentionat anterior si va calcula suma acestora, pe care o va trimite prin
+pipe catre P2, care va afisa pe ecran divizorii numarului acestuia.
+Numele fifo-ului va fi dat ca argument in linia de comanda in ambele
+programe. Programul A va creea fifo-ul si programul B va sterge fifo-ul.
+Ambele programe terbuie compilate cu gcc -Wall -g fara erori sau warninguri.
+Ambele programe trebuie sa ruleze fara memory leaks, erori de context sau
+procese zombie.
+
