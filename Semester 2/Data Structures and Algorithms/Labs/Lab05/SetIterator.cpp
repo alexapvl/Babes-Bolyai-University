@@ -7,7 +7,7 @@ SetIterator::SetIterator(const Set& m) : set(m), current(0) { first(); }
 void SetIterator::first() {
   current = 0;
   while (current < set.capacity && (set.elements[current] == NULL_TELEM ||
-                                    set.elements[current] == DELETED_TELEM)) {
+                                    set.elements[current] == REMOVED_TELEM)) {
     current++;
   }
 }
@@ -18,7 +18,7 @@ void SetIterator::next() {
   }
   current++;
   while (current < set.capacity && (set.elements[current] == NULL_TELEM ||
-                                    set.elements[current] == DELETED_TELEM)) {
+                                    set.elements[current] == REMOVED_TELEM)) {
     current++;
   }
 }
@@ -32,5 +32,5 @@ TElem SetIterator::getCurrent() {
 
 bool SetIterator::valid() const {
   return current < set.capacity && set.elements[current] != NULL_TELEM &&
-         set.elements[current] != DELETED_TELEM;
+         set.elements[current] != REMOVED_TELEM;
 }

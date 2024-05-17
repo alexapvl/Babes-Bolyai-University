@@ -1,11 +1,12 @@
 #pragma once
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 // DO NOT INCLUDE SETITERATOR
 
 // DO NOT CHANGE THIS PART
 #define NULL_TELEM -111111
-#define DELETED_TELEM -111112
+#define REMOVED_TELEM -111112
 typedef int TElem;
 typedef bool (*Condition)(TElem);
 class SetIterator;
@@ -54,20 +55,25 @@ public:
   SetIterator iterator() const;
 
   int findNextPrime(int n) {
+    if (n <= 1)
+      return 2;
+    if (n == 2)
+      return n;
+    if (n % 2 == 0)
+      n++;
     while (true) {
       bool isPrime = true;
-      for (int i = 2; i <= n / 2; i++) {
+      int sqrt_n = std::sqrt(n);
+      for (int i = 3; i <= sqrt_n; i += 2) {
         if (n % i == 0) {
           isPrime = false;
           break;
         }
       }
-
       if (isPrime) {
         return n;
       }
-
-      n++;
+      n += 2;
     }
   }
 

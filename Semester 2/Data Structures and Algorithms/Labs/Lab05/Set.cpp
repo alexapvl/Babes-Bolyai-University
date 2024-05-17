@@ -17,11 +17,11 @@ void Set::resize() {
   std::fill(newElements, newElements + newCapacity, NULL_TELEM);
 
   for (int i = 0; i < capacity; i++) {
-    if (elements[i] != NULL_TELEM && elements[i] != DELETED_TELEM) {
+    if (elements[i] != NULL_TELEM && elements[i] != REMOVED_TELEM) {
       int index = hash(elements[i], newCapacity);
       int secondaryStep = hash2(elements[i], newCapacity);
       while (newElements[index] != NULL_TELEM &&
-             newElements[index] != DELETED_TELEM) {
+             newElements[index] != REMOVED_TELEM) {
         index = (index + secondaryStep) % newCapacity;
       }
       newElements[index] = elements[i];
@@ -43,7 +43,7 @@ bool Set::add(TElem elem) {
   int step = hash2(elem, capacity);
   int originalIndex = index;
 
-  while (elements[index] != NULL_TELEM && elements[index] != DELETED_TELEM) {
+  while (elements[index] != NULL_TELEM && elements[index] != REMOVED_TELEM) {
     if (elements[index] == elem) {
       return false; // element already exists
     }
@@ -88,7 +88,7 @@ bool Set::remove(TElem elem) {
   int originalIndex = index;
 
   while (elements[index] != NULL_TELEM && elements[index] != elem) {
-    if (elements[index] == DELETED_TELEM) {
+    if (elements[index] == REMOVED_TELEM) {
       index = (index + step) % capacity;
       continue;
     }
@@ -99,7 +99,7 @@ bool Set::remove(TElem elem) {
     return false;
   }
 
-  elements[index] = DELETED_TELEM; // mark as DELETED
+  elements[index] = REMOVED_TELEM; // mark as DELETED
   --length;
 
   return true;
@@ -124,7 +124,7 @@ bool Set::search(TElem elem) const {
                                          // element is not in the set
       return false;
     }
-    if (elements[index] == DELETED_TELEM) {
+    if (elements[index] == REMOVED_TELEM) {
       index = (index + secondaryStep) % capacity; // skip over deleted elements
       continue;
     }
@@ -151,8 +151,8 @@ bool Set::isEmpty() const { return length == 0; }
 
 void Set::filter(Condition cond) {
   for (int i = 0; i < capacity; i++) {
-    if (elements[i] != NULL_TELEM && elements[i] != DELETED_TELEM && !cond(elements[i])) {
-      elements[i] = DELETED_TELEM;
+    if (elements[i] != NULL_TELEM && elements[i] != REMOVED_TELEM && !cond(elements[i])) {
+      elements[i] = REMOVED_TELEM;
       --length;
     }
   }
