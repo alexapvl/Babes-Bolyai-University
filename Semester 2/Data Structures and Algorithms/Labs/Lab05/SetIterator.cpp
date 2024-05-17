@@ -1,33 +1,36 @@
 #include "SetIterator.h"
+
 #include "Set.h"
 
-
-SetIterator::SetIterator(const Set& m) : set(m)
-{
-	//TODO - Implementation
-}
-
+SetIterator::SetIterator(const Set& m) : set(m), current(0) { first(); }
 
 void SetIterator::first() {
-	//TODO - Implementation
+  current = 0;
+  while (current < set.capacity && (set.elements[current] == NULL_TELEM ||
+                                    set.elements[current] == DELETED_TELEM)) {
+    current++;
+  }
 }
-
 
 void SetIterator::next() {
-	//TODO - Implementation
+  if (!valid()) {
+    throw std::exception();
+  }
+  current++;
+  while (current < set.capacity && (set.elements[current] == NULL_TELEM ||
+                                    set.elements[current] == DELETED_TELEM)) {
+    current++;
+  }
 }
 
-
-TElem SetIterator::getCurrent()
-{
-	//TODO - Implementation
-	return NULL_TELEM;
+TElem SetIterator::getCurrent() {
+  if (!valid()) {
+    throw std::exception();
+  }
+  return set.elements[current];
 }
 
 bool SetIterator::valid() const {
-	//TODO - Implementation
-	return false;
+  return current < set.capacity && set.elements[current] != NULL_TELEM &&
+         set.elements[current] != DELETED_TELEM;
 }
-
-
-

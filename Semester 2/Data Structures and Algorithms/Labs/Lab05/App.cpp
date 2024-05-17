@@ -1,23 +1,15 @@
+#include "ExtendedTest.h"
 #include "Set.h"
 #include "SetIterator.h"
-#include "ExtendedTest.h"
 #include "ShortTest.h"
-#include <stack>
 #include <iostream>
+#include <stack>
 using namespace std;
-
-
-
 
 int main() {
 
-	testAll();
-	testAllExtended();
+  testAll();
+  testAllExtended();
 
-	cout << "That's all!" << endl;
-	system("pause");
-
+  cout << "That's all!" << endl;
 }
-
-
-
