@@ -64,7 +64,9 @@ class UI():
         print("\n----- Other")
         print("16. Create a copy of the current graph and write it into a separate file")
         print("17. Generate random graph given the number of vertices and edges. The graph will be written to a separate file.")
-        print("18. Clear the graph")
+        print("18. Generate a complete symetric graph with random cost edges (TSP). The graph will be written to a separate file.")
+        print("19. Generate a complete asymetric graph with random cost edged (TSP). The graph will be written to a separate file.")
+        print("20. Clear the graph")
         print("0. Back\n")
     
     def print_lab2_menu(self):
@@ -200,6 +202,18 @@ class UI():
                         self.service.write_given_graph_to_file(graph, actual_file_path)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "18":
+                    no_vertices = int(input("Enter number of vertices: "))
+                    file_name = input("Enter file name: ")
+                    graph = self.service.generate_complete_symetric_graph(no_vertices)
+                    self.service.write_given_graph_to_file(graph, file_name)
+                    print(f"\nSymetric complete graph was succesfully written to the file with the name: {file_name}\n")
+                elif command == "19":
+                    no_vertices = int(input("Enter number of vertices: "))
+                    file_name = input("Enter file name: ")
+                    graph = self.service.generate_complete_asymetric_graph(no_vertices)
+                    self.service.write_given_graph_to_file(graph, file_name)
+                    print(f"\nAsymetric complete graph was succesfully written to the file with the name: {file_name}\n")
+                elif command == "20":
                     self.service.clear_graph()
                     print("\nGraph was cleared\n")
                 elif command == "0":

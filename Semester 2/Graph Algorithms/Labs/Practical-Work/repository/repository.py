@@ -90,6 +90,32 @@ class Repository():
                 graph.edges[(i, j)] = cost
                 no_edges -= 1
         return graph
+
+    def generate_complete_symetric_graph(self, no_vertices: int) -> Graph:
+        graph = Graph(no_vertices, 0)
+        for i in range(no_vertices):
+            for j in range(i + 1, no_vertices):
+                cost = random.choice(range(1, 100))
+                graph.din[i].append(j)
+                graph.dout[j].append(i)
+                graph.edges[(i, j)] = cost
+                graph.din[j].append(i)
+                graph.dout[i].append(j)
+                graph.edges[(j, i)] = cost
+                graph.numberOfEdges += 2
+        return graph
+    
+    def generate_complete_asymetric_graph(self, no_vertices: int) -> Graph:
+        graph = Graph(no_vertices, 0)
+        for i in range(no_vertices):
+            for j in range(no_vertices):
+                if i != j:
+                    cost = random.choice(range(1, 100))
+                    graph.din[i].append(j)
+                    graph.dout[j].append(i)
+                    graph.edges[(i, j)] = cost
+                    graph.numberOfEdges += 1
+        return graph
     
     def clear_graph(self):
         self.graph.vertices = []
