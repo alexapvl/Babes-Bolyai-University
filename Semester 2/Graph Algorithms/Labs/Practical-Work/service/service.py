@@ -50,6 +50,7 @@ class GraphService():
             graph : the graph to be written
             file_name : the name of the file
         """
+        file_name = "textFiles/" + file_name + ".txt"
         if graph is None:
             with open(file_name, "w") as file:
                 file.write("The graph with the given number of vertices and edged is impossile to create.\nThe number of edges is greater than the maximum number of edges possible.\n")
@@ -155,6 +156,12 @@ class GraphService():
             The number of edges must be less than or equal to the maximum number of edges possible
         """
         return self.repo.generate_random_graph(no_vertices, no_edges)
+    
+    def generate_complete_symetric_graph(self, no_vertices: int) -> Graph:
+        return self.repo.generate_complete_symetric_graph(no_vertices)
+    
+    def generate_complete_asymetric_graph(self, no_vertices: int) -> Graph:
+        return self.repo.generate_complete_asymetric_graph(no_vertices)
     
     def clear_graph(self):
         """
