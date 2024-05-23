@@ -474,8 +474,9 @@ class Repository():
                 cycle.append(next_vertex)
                 visited[next_vertex] = True
                 total_cost += min_cost
-                current_vertex = next_vertex
-            cycle.append(start)
+                current = next_vertex
+            cycle.append(cycle[0])
+            total_cost += self.graph.get_cost(cycle[-2], cycle[-1])
             if total_cost < final_cost:
                 final_cost = total_cost
                 final_cycle = cycle
