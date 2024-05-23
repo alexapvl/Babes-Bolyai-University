@@ -29,6 +29,8 @@ class UI():
                 self.start_lab3()
             elif command == "4":
                 self.start_lab4()
+            elif command == "5":
+                self.start_lab5()
             elif command == "0":
                 break
             else:
@@ -40,6 +42,7 @@ class UI():
         print("2. Lab 2")
         print("3. Lab 3")
         print("4. Lab 4")
+        print("5. Lab 5")
         print("0. Exit\n")
     
     def print_lab1_menu(self):
@@ -88,6 +91,13 @@ class UI():
         print("2. Count number of paths between two vertices(bonus 1)")
         print("3. Count number of lowest cost paths between two vertices(bonus 2)")
         print("0. Back\n")
+
+    def print_lab5_menu(self):
+        print("\n----- Choose the method to solve the TSP")
+        print("1. Brute force")
+        print("2. Greedy method")
+        print("0. Back\n")
+        
 
     def askToSave(self):
         choice = input("Do you want to save changes to a separate file? y/n >> ")
@@ -223,9 +233,9 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
 
     def start_lab2(self):
@@ -258,9 +268,9 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
 
     def start_lab3(self):
@@ -320,9 +330,9 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
 
     def start_lab4(self):
@@ -355,8 +365,39 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
+
+    def start_lab5(self):
+        while(True):
+            try:
+                self.print_lab5_menu()
+                command = input(">> ")
+                if command == "1":
+                    min_cost, min_cycle = self.service.TSP_brute_force()
+                    print(f"\nMinimum cost: {min_cost}")
+                    print("Path: ", end="")
+                    for vertex in min_cycle:
+                        print(vertex, end=" -> ")
+                    print(min_cycle[0])
+                elif command == "2":
+                    min_cost, min_cycle = self.service.TSP_greedy()
+                    print(f"\nMinimum cost: {min_cost}")
+                    print("Path: ", end="")
+                    for vertex in min_cycle[:-1]:
+                        print(vertex, end=" -> ")
+                    print(min_cycle[-1])
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as re:
+                print(re)
+            except ValueError:
+                print("\nInvalid input\n")
+                
             
