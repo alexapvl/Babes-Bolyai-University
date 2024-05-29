@@ -49,31 +49,23 @@ double BillService::calculateTotal(string& companyName) {
     return sum;
 }
 
-vector<string> BillService::splitParams(const string& str, char delimiter) {
-  vector<string> tokens;
-  string token;
-  istringstream tokenStream(str);
-  while (getline(tokenStream, token, delimiter)) {
-    tokens.push_back(token);
-  }
-  return tokens;
-}
-
 void BillService::readFromFile() {
-  ifstream fi("../bills.txt");
+  ifstream fi("bills.txt");
   string line;
-  char delimiter = ';';
-
   while (getline(fi, line)) {
-    vector<string> tokens = BillService::splitParams(line, delimiter);
-    bool paid = false;
-    for (const auto& token : tokens) {
-      if (tokens[3] == "true")
-        paid = true;
-      else if (tokens[3] == "false")
-        paid = false;
-    }
-    Bill bill(tokens[0], tokens[1], stod(tokens[2]), paid);
-    bills.push_back(bill);
+    // we read all lines in the file and split them using getline with a delimiter
+    stringstream ss(line); // stream used as a string
+    string name, serialNo, sum, isPaid;
+    getline(ss, name, ';');
+    getline(ss, serialNo, ';');
+    getline(ss, sum, ';');
+    getline(ss, isPaid); // no delimiter because delimiter will be '\n'
+    double s = stod(sum);
+    bool p;
+    if (isPaid == "false")
+      p = false;
+    else
+      p = true;
+    bills.push_back(Bill(name, serialNo, s, p));
   }
 }

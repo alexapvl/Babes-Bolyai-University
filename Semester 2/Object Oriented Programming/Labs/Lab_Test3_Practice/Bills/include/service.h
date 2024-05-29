@@ -18,6 +18,5 @@ public:
   vector<Bill> getPaidBills();
   vector<Bill> getUnpaidBills();
   double calculateTotal(string& companyName);
-  static vector<string> splitParams(const string& str, char delimiter);
   void readFromFile();
 };
