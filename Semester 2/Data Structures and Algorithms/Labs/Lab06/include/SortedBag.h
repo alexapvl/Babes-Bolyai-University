@@ -1,4 +1,5 @@
 #pragma once
+#include <utility>
 /*
 ADT SortedBag - using BST with linked representation with dynamic allocation.
 In the BST(unique element, frequency) pairs are stored
@@ -13,11 +14,22 @@ typedef bool (*Relation)(TComp, TComp);
 
 class SortedBagIterator;
 
+typedef std::pair<TComp, int> TPair;
+struct TNode; // forward declaration
+struct TNode {
+  TPair data;
+  TNode* left;
+  TNode* right;
+  TNode* parent;
+};
+
 class SortedBag {
   friend class SortedBagIterator;
 
 private:
-  // TODO - Representation
+  TNode* root;
+  Relation r;
+  int sizeOfBag;
 
 public:
   // constructor
@@ -27,7 +39,7 @@ public:
   void add(TComp e);
 
   // removes one occurence of an element from a sorted bag
-  // returns true if an eleent was removed, false otherwise (if e was not part of the sorted bag)
+  // returns true if an element was removed, false otherwise (if e was not part of the sorted bag)
   bool remove(TComp e);
 
   // checks if an element appearch is the sorted bag
