@@ -1,11 +1,16 @@
 #include "../include/SortedBag.h"
 #include "../include/SortedBagIterator.h"
+#include <iostream>
+using namespace std;
+
+// h is the height of the binary search tree
 
 SortedBag::SortedBag(Relation r) : r(r) {
   root = NULL;
   sizeOfBag = 0;
+  distinctElements = 0;
 }
-
+// BC: theta(1) | WC: theta(h) | AC: O(h)
 void SortedBag::add(TComp e) {
   /*
     based on the relation, if the relation is true, we go left, otherwise we go right
@@ -21,19 +26,23 @@ void SortedBag::add(TComp e) {
   if (current == NULL) {
     root = newNode;
     sizeOfBag = 1;
+    distinctElements = 1;
     return;
   }
   while (current != NULL) {
     if (current->data.first == e) {
       current->data.second++; // element already exists in the tree and the frequency is updated
       delete newNode;
-      break;
+      sizeOfBag++;
+      return;
     }
     if (r(e, current->data.first)) { // go left
       if (current->left == NULL) {   // we insert
         current->left = newNode;
         newNode->parent = current;
-        break;
+        sizeOfBag++;
+        distinctElements++;
+        return;
       } else { // we go there and continue
         current = current->left;
       }
@@ -41,15 +50,17 @@ void SortedBag::add(TComp e) {
       if (current->right == NULL) { // we insert
         current->right = newNode;
         newNode->parent = current;
-        break;
+        sizeOfBag++;
+        distinctElements++;
+        return;
       } else { // we go there and continue
         current = current->right;
       }
     }
   }
-  sizeOfBag++;
 }
 
+// BC: theta(1) | WC: theta(h) | AC: O(h)
 bool SortedBag::remove(TComp e) {
   // TODO - Implementation
   // will need to redo links if the removed node has children(cases 0/1/2)
@@ -58,7 +69,7 @@ bool SortedBag::remove(TComp e) {
   while (current != NULL) {
     if (current->data.first == e) {
       if (current->data.second > 1) {
-        current->data.first--;
+        current->data.second--;
         sizeOfBag--;
         return true;
       } else {
@@ -66,75 +77,112 @@ bool SortedBag::remove(TComp e) {
           if (current->parent == NULL) {
             root = NULL;
             delete current;
-            sizeOfBag--;
+            sizeOfBag = 0;
+            distinctElements = 0;
             return true;
           }
           if (current->parent->left == current) {
             current->parent->left = NULL;
             delete current;
             sizeOfBag--;
+            distinctElements--;
             return true;
           } else {
             current->parent->right = NULL;
             delete current;
             sizeOfBag--;
+            distinctElements--;
             return true;
           }
-        } else if (numberOfDescendants(current) == 1) {
-          if (current->left != NULL) {
-            if (current->parent == NULL) {
+        } else if (numberOfDescendants(current) == 1) { // case in which we have 1 child
+          if (current->left != NULL) {                  // we have a left child
+            if (current->parent == NULL) {              // if we are at the root
               root = current->left;
+              current->left->parent = NULL;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
             }
-            if (current->parent->left == current) {
+            if (current->parent->left == current) { // if we are a left child
               current->parent->left = current->left;
+              current->left->parent = current->parent;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
-            } else {
+            } else { // if we are a right child
               current->parent->right = current->left;
+              current->left->parent = current->parent;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
             }
-          } else {
-            if (current->parent == NULL) {
+          } else {                         // we have a right child
+            if (current->parent == NULL) { // if we are at the root
               root = current->right;
+              current->right->parent = NULL;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
             }
-            if (current->parent->left == current) {
+            if (current->parent->left == current) { // if we are a left child
               current->parent->left = current->right;
+              current->right->parent = current->parent;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
             } else {
               current->parent->right = current->right;
+              current->right->parent = current->parent;
               delete current;
               sizeOfBag--;
+              distinctElements--;
               return true;
             }
           }
-        } else {
+        } else if (numberOfDescendants(current) == 2) { // case in which we have 2 children
           TNode* successor = current->right;
           while (successor->left != NULL) {
             successor = successor->left;
           }
           current->data = successor->data;
           if (successor->parent->left == successor) {
-            successor->parent->left = NULL;
-            delete successor;
-            sizeOfBag--;
-            return true;
+            if (successor->right != NULL) {
+              successor->parent->left = successor->right;
+              successor->right->parent = successor->parent;
+              delete successor;
+              sizeOfBag--;
+              distinctElements--;
+              return true;
+            } else {
+              successor->parent->left = NULL;
+              delete successor;
+              sizeOfBag--;
+              distinctElements--;
+              return true;
+            }
           } else {
-            successor->parent->right = NULL;
-            delete successor;
-            sizeOfBag--;
-            return true;
+            if (successor->right != NULL) {
+              successor->parent->right = successor->right;
+              successor->right->parent = successor->parent;
+              delete successor;
+              sizeOfBag--;
+              distinctElements--;
+              return true;
+            } else {
+              successor->parent->right = NULL;
+              delete successor;
+              sizeOfBag--;
+              distinctElements--;
+              return true;
+            }
           }
+        } else {
+          return false;
         }
       }
 
@@ -164,7 +212,6 @@ int SortedBag::nrOccurrences(TComp elem) const {
   while (current != NULL) {
     if (current->data.first == elem) {
       return current->data.second;
-      break;
     } else if (r(elem, current->data.first))
       current = current->left;
     else
@@ -186,5 +233,23 @@ SortedBagIterator SortedBag::iterator() const {
 }
 
 SortedBag::~SortedBag() {
-  // TODO - Implementation
+  // do it without using a stack or a queue
+  // we will use a stack
+}
+
+TNode* SortedBag::getNode(TComp elem) {
+  TNode* current = root;
+  while (current != NULL) {
+    if (current->data.first == elem) {
+      return current;
+    } else if (r(elem, current->data.first))
+      current = current->left;
+    else
+      current = current->right;
+  }
+  return NULL;
+}
+
+int SortedBag::distinctCount() const {
+  return distinctElements;
 }

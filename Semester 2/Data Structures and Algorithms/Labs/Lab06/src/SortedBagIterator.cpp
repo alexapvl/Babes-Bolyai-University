@@ -5,23 +5,42 @@
 using namespace std;
 
 SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
-  // TODO - Implementation
+  elements = new TNode[b.sizeOfBag];
+  first();
+  numberOfElements = 0;
+  DFS(b.root);
 }
 
 TComp SortedBagIterator::getCurrent() {
-  // TODO - Implementation
-  return NULL_TCOMP;
+  if (!valid())
+    throw exception();
+  return elements[currentIndex].data.first;
 }
 
 bool SortedBagIterator::valid() {
-  // TODO - Implementation
-  return false;
+  return currentIndex < numberOfElements;
 }
 
 void SortedBagIterator::next() {
-  // TODO - Implementation
+  if (!valid())
+    throw exception();
+  if (currentFrequency < elements[currentIndex].data.second) {
+    currentFrequency++;
+  } else {
+    currentIndex++;
+    currentFrequency = 1;
+  }
 }
 
 void SortedBagIterator::first() {
-  // TODO - Implementation
+  currentIndex = 0;
+  currentFrequency = 1;
+}
+
+void SortedBagIterator::DFS(TNode* node) {
+  if (node == NULL)
+    return;
+  DFS(node->left);
+  elements[numberOfElements++] = *node;
+  DFS(node->right);
 }

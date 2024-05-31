@@ -30,7 +30,19 @@ private:
   TNode* root;
   Relation r;
   int sizeOfBag;
+  int distinctElements;
 
+  // int numberOfDescendants(TNode* node) {
+  //   if (node->left == NULL && node->right == NULL)
+  //     return 0;
+  //   if ((node->left == NULL && node->right != NULL) || (node->left != NULL && node->right == NULL))
+  //     return 1;
+  //   if (node->left != NULL && node->right != NULL)
+  //     return 2;
+  //   return -1;
+  // }
+
+public:
   int numberOfDescendants(TNode* node) {
     if (node->left == NULL && node->right == NULL)
       return 0;
@@ -38,9 +50,8 @@ private:
       return 1;
     if (node->left != NULL && node->right != NULL)
       return 2;
+    return -1;
   }
-
-public:
   // constructor
   SortedBag(Relation r);
 
@@ -68,4 +79,8 @@ public:
 
   // destructor
   ~SortedBag();
+
+  TNode* getNode(TComp elem);
+
+  int distinctCount() const;
 };

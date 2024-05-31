@@ -34,4 +34,15 @@ void testAll() {
   assert(it.valid() == false);
   it.first();
   assert(it.valid() == true);
+
+  // test distinctCount
+  SortedBag sb2(relation1);
+  sb2.add(1);
+  sb2.add(1);
+  sb2.add(3);
+  sb2.add(3);
+  sb2.add(5);
+  sb2.add(6);
+  sb2.add(6);
+  assert(sb2.distinctCount() == 4);
 }
