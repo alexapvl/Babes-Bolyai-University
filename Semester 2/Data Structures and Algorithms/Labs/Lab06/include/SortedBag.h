@@ -31,6 +31,15 @@ private:
   Relation r;
   int sizeOfBag;
 
+  int numberOfDescendants(TNode* node) {
+    if (node->left == NULL && node->right == NULL)
+      return 0;
+    if ((node->left == NULL && node->right != NULL) || (node->left != NULL && node->right == NULL))
+      return 1;
+    if (node->left != NULL && node->right != NULL)
+      return 2;
+  }
+
 public:
   // constructor
   SortedBag(Relation r);

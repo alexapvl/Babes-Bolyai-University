@@ -54,7 +54,96 @@ bool SortedBag::remove(TComp e) {
   // TODO - Implementation
   // will need to redo links if the removed node has children(cases 0/1/2)
   // cases 0 and 1 are easy while in case 2 we will need to figure it out
-  return false;
+  TNode* current = root;
+  while (current != NULL) {
+    if (current->data.first == e) {
+      if (current->data.second > 1) {
+        current->data.first--;
+        sizeOfBag--;
+        return true;
+      } else {
+        if (numberOfDescendants(current) == 0) {
+          if (current->parent == NULL) {
+            root = NULL;
+            delete current;
+            sizeOfBag--;
+            return true;
+          }
+          if (current->parent->left == current) {
+            current->parent->left = NULL;
+            delete current;
+            sizeOfBag--;
+            return true;
+          } else {
+            current->parent->right = NULL;
+            delete current;
+            sizeOfBag--;
+            return true;
+          }
+        } else if (numberOfDescendants(current) == 1) {
+          if (current->left != NULL) {
+            if (current->parent == NULL) {
+              root = current->left;
+              delete current;
+              sizeOfBag--;
+              return true;
+            }
+            if (current->parent->left == current) {
+              current->parent->left = current->left;
+              delete current;
+              sizeOfBag--;
+              return true;
+            } else {
+              current->parent->right = current->left;
+              delete current;
+              sizeOfBag--;
+              return true;
+            }
+          } else {
+            if (current->parent == NULL) {
+              root = current->right;
+              delete current;
+              sizeOfBag--;
+              return true;
+            }
+            if (current->parent->left == current) {
+              current->parent->left = current->right;
+              delete current;
+              sizeOfBag--;
+              return true;
+            } else {
+              current->parent->right = current->right;
+              delete current;
+              sizeOfBag--;
+              return true;
+            }
+          }
+        } else {
+          TNode* successor = current->right;
+          while (successor->left != NULL) {
+            successor = successor->left;
+          }
+          current->data = successor->data;
+          if (successor->parent->left == successor) {
+            successor->parent->left = NULL;
+            delete successor;
+            sizeOfBag--;
+            return true;
+          } else {
+            successor->parent->right = NULL;
+            delete successor;
+            sizeOfBag--;
+            return true;
+          }
+        }
+      }
+
+    } else if (r(e, current->data.first))
+      current = current->left;
+    else
+      current = current->right;
+  }
+  return false; // element not found to remove
 }
 
 bool SortedBag::search(TComp elem) const {
@@ -62,7 +151,6 @@ bool SortedBag::search(TComp elem) const {
   while (current != NULL) {
     if (current->data.first == elem) {
       return true;
-      break;
     } else if (r(elem, current->data.first))
       current = current->left;
     else
