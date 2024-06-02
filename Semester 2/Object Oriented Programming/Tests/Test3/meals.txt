@@ -1,0 +1,5 @@
+18;19;Dinner;700;spaghetti with meatballs
+12;13;Dinner;600;grilled chicken salad
+15;15.30;Snack;200;protein shake
+7;8;Dinner;300;oatmeal with fruits
+21;21.30;Snack;150;yogurt with honey
