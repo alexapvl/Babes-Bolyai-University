@@ -1,0 +1,5 @@
+problem;open;Katia;-
+problem2;open;Alexia;-
+problem3;closed;Katia;Alex
+problem4;closed;Alexia;Robert
+yesssir;closed;Alexia;Robert
