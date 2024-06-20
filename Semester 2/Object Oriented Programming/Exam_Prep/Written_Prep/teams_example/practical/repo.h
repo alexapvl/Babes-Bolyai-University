@@ -56,7 +56,6 @@ public:
       getline(ss, status, ';');
       getline(ss, reporter, ';');
       getline(ss, solver);
-      cout << desc << endl;
       Issue* issue = new Issue(desc, status, reporter, solver);
       issues.push_back(issue);
     }
