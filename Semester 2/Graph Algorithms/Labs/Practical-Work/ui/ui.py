@@ -27,6 +27,10 @@ class UI():
                 self.start_lab2()
             elif command == "3":
                 self.start_lab3()
+            elif command == "4":
+                self.start_lab4()
+            elif command == "5":
+                self.start_lab5()
             elif command == "0":
                 break
             else:
@@ -37,6 +41,8 @@ class UI():
         print("1. Lab 1")
         print("2. Lab 2")
         print("3. Lab 3")
+        print("4. Lab 4")
+        print("5. Lab 5")
         print("0. Exit\n")
     
     def print_lab1_menu(self):
@@ -78,6 +84,20 @@ class UI():
         print("2. Find the number of distinct minimum cost walks between a pair of vertices(bonus 1)")
         print("3. Find the number of possible paths between two vertices(bonus 2)")
         print("0. Back\n")
+
+    def print_lab4_menu(self):
+        print("\n----- Choose the algorithm")
+        print("1. Topological sort")
+        print("2. Count number of paths between two vertices(bonus 1)")
+        print("3. Count number of lowest cost paths between two vertices(bonus 2)")
+        print("0. Back\n")
+
+    def print_lab5_menu(self):
+        print("\n----- Choose the method to solve the TSP")
+        print("1. Brute force")
+        print("2. Greedy method")
+        print("0. Back\n")
+        
 
     def askToSave(self):
         choice = input("Do you want to save changes to a separate file? y/n >> ")
@@ -183,12 +203,13 @@ class UI():
                     no_vertices = int(input("Enter number of vertices: "))
                     no_edges = int(input("Enter number of edges: "))
                     file_name = input("Enter file name: ")
+                    actual_file_path = "textFiles/" + file_name + ".txt"
                     if no_edges > no_vertices ** 2:
                         # create the file with the name and write the error message in it
                         self.service.write_given_graph_to_file(None, file_name)
                     else:
                         graph = self.service.generate_random_graph(no_vertices, no_edges)
-                        self.service.write_given_graph_to_file(graph, file_name)
+                        self.service.write_given_graph_to_file(graph, actual_file_path)
                         print(f"\nRandom graph was succesfully written to the file with the name: {file_name}\n")
                 elif command == "18":
                     no_vertices = int(input("Enter number of vertices: "))
@@ -212,9 +233,9 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
 
     def start_lab2(self):
@@ -247,9 +268,9 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
 
     def start_lab3(self):
@@ -309,8 +330,74 @@ class UI():
                     raise UIError("\nInvalid command\n")
             except UIError as ue:
                 print(ue)
-            except RepoError as ge:
-                print(ge)
-            except ValueError as ve:
+            except RepoError as re:
+                print(re)
+            except ValueError:
                 print("\nInvalid input\n")
+
+    def start_lab4(self):
+        while(True):
+            try:
+                self.print_lab4_menu()
+                command = input(">> ")
+                if command == "1":
+                    topological_order = self.service.topological_sort()
+                    if topological_order is None:
+                        print("\nGraph is not a DAG\n")
+                    else:
+                        print("\nTopological order: ", end="")
+                        for vertex in topological_order:
+                            print(vertex, end=" | ")
+                        print()
+                elif command == "2":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths = self.service.count_paths(start, end)
+                    print(f"\nNumber of paths between {start} and {end} is: {number_of_paths}")
+                elif command == "3":
+                    start = int(input("Enter start vertex: "))
+                    end = int(input("Enter end vertex: "))
+                    number_of_paths, cost = self.service.count_lowest_cost_paths(start, end) 
+                    print(f"\nNumber of lowest cost paths between {start} and {end} is: {number_of_paths}\nAnd the cost of the path is: {cost}\n")
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as re:
+                print(re)
+            except ValueError:
+                print("\nInvalid input\n")
+
+    def start_lab5(self):
+        while(True):
+            try:
+                self.print_lab5_menu()
+                command = input(">> ")
+                if command == "1":
+                    min_cost, min_cycle = self.service.TSP_brute_force()
+                    print(f"\nMinimum cost: {min_cost}")
+                    print("Path: ", end="")
+                    for vertex in min_cycle:
+                        print(vertex, end=" -> ")
+                    print(min_cycle[0])
+                elif command == "2":
+                    min_cost, min_cycle = self.service.TSP_greedy()
+                    print(f"\nMinimum cost: {min_cost}")
+                    print("Path: ", end="")
+                    for vertex in min_cycle[:-1]:
+                        print(vertex, end=" -> ")
+                    print(min_cycle[-1])
+                elif command == "0":
+                    break
+                else:
+                    raise UIError("\nInvalid command\n")
+            except UIError as ue:
+                print(ue)
+            except RepoError as re:
+                print(re)
+            except ValueError:
+                print("\nInvalid input\n")
+                
             

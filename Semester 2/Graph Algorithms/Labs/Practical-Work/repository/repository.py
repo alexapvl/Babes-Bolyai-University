@@ -1,4 +1,5 @@
 import random
+import itertools
 from collections import deque
 from domain.domain import Graph, WolfGoatCabbageGraph
 
@@ -151,6 +152,16 @@ class Repository():
     def get_outbounds_of_vertex(self, i: int) -> list:
         return self.graph.dout[i]
 
+    @property
+    def graph(self) -> Graph:
+        return self.__graph
+    
+    @graph.setter
+    def graph(self, value: Graph):
+        self.__graph = value
+
+    #--- lab 2 ---#
+
     def shortest_path_between_two_vertices_forward_breath_first_search(self, start: int, end: int) -> list:
         '''
         This function calculates the shortest path between two vertices in a graph using a forward breadth-first search approach. 
@@ -203,13 +214,7 @@ class Repository():
         path.reverse()
         return path
 
-    @property
-    def graph(self) -> Graph:
-        return self.__graph
-    
-    @graph.setter
-    def graph(self, value: Graph):
-        self.__graph = value
+    #--- lab 3 ---#
     
     def lowest_cost_walk_floyd_warshall(self, start: int, end: int) -> tuple:
         '''
@@ -311,3 +316,169 @@ class Repository():
                     num_paths[i][j] += num_paths[i][k] * num_paths[k][j]
 
         return num_paths[source][target] 
+    
+    #--- lab 4 ---#
+
+    def TopoSortDFS(self, vertex: int, sorted: list, fullyProcessed: set, inProcess: set) -> bool:
+        '''
+        This function performs a depth-first search on the graph, topologically sorting the vertices.
+        The function returns True if the graph is acyclic, False otherwise.
+        A graph is DAG if and ony if there exists a topological sort of the vertices.
+        '''
+        inProcess.add(vertex)
+        for neighbor in self.get_inbounds_of_vertex(vertex):
+            if neighbor in inProcess:
+                return False
+            if neighbor not in fullyProcessed:
+                if not self.TopoSortDFS(neighbor, sorted, fullyProcessed, inProcess):
+                    return False
+        inProcess.remove(vertex)
+        sorted.append(vertex)
+        fullyProcessed.add(vertex)
+        return True
+
+    def topological_sort(self) -> list:
+        '''
+        This function performs a topological sort on the graph.
+        It verifies the existence of the provided vertices within the graph.
+        The function returns a list with the topologically sorted vertices.
+        '''
+        sorted = []
+        fullyProcessed = set()
+        inProcess = set()
+        for vertex in self.get_vertices():
+            if vertex not in fullyProcessed:
+                if not self.TopoSortDFS(vertex, sorted, fullyProcessed, inProcess):
+                    return None
+        return sorted
+    
+    def count_paths(self, start: int, end: int) -> int:
+        '''
+        This function calculates the number of paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The function returns the number of paths between the two vertices.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
+
+        if start == end:
+            return 1
+
+        sorted_vertices = self.topological_sort()
+        if sorted_vertices is None:
+            raise RepoError("\nGraph contains a cycle\n")
+
+        num_paths = [0] * self.number_of_vertices()
+        num_paths[start] = 1
+
+        for vertex in sorted_vertices:
+            for neighbor in self.get_outbounds_of_vertex(vertex):
+                num_paths[neighbor] += num_paths[vertex]
+
+        return num_paths[end]
+
+    def count_lowest_cost_paths(self, start: int, end: int) -> tuple:
+        '''
+        This function calculates the number of lowest cost paths between two vertices in a graph.
+        It verifies the existence of the provided vertices within the graph and returns the starting vertex if both vertices are the same.
+        The function returns a tuple consisting of the number of lowest cost paths and the lowest cost.
+        '''
+        if not ((self.is_vertex(start) and self.is_vertex(end))):
+            raise RepoError("\nVertices do not exist in the graph\n")
+        
+        if start == end:
+            return 1, 0
+
+        sorted_vertices = self.topological_sort()
+        if sorted_vertices is None:
+            raise RepoError("\nGraph contains a cycle\n")
+
+        num_paths = [0] * self.number_of_vertices()
+        lowest_cost = [float('inf')] * self.number_of_vertices()
+        num_paths[start] = 1
+        lowest_cost[start] = 0
+
+        for vertex in sorted_vertices:
+            for neighbor in self.get_outbounds_of_vertex(vertex):
+                cost = self.graph.get_cost(vertex, neighbor)
+                if lowest_cost[vertex] + cost < lowest_cost[neighbor]:
+                    lowest_cost[neighbor] = lowest_cost[vertex] + cost
+                    num_paths[neighbor] = num_paths[vertex]
+                elif lowest_cost[vertex] + cost == lowest_cost[neighbor]:
+                    num_paths[neighbor] += num_paths[vertex]
+
+        return num_paths[end], lowest_cost[end]
+
+    #--- lab 5 ---#
+    # brute force method
+    def calculate_cycle_cost(self, cycle: list) -> int:
+        '''
+        This function calculates the cost of a cycle in a graph, provided that the graph is complete.
+        So, there will be no need to check if the edge exists.
+        Also, the cycle will always be valid.
+        The function returns the cost of the cycle.
+        '''
+        cost = 0
+        n = len(cycle)
+        for i in range(n):
+            cost += self.graph.get_cost(cycle[i], cycle[(i + 1) % n])
+        return cost
+    
+    def TSP_brute_force(self) -> tuple:
+        '''
+        Travelling salesman problem - brute force method
+        This function solves the TSP using a brute force method
+        The function returns a tuple consisting of the minimum cost and the cycle which 
+        generated that mininum cost
+        '''
+        if (self.number_of_edges() != self.number_of_vertices() * (self.number_of_vertices() - 1)):
+            raise RepoError("\nGraph is not complete\n")
+        vertices = self.get_vertices()
+        min_cycle = []
+        min_cost = float('inf')
+        for permutation in itertools.permutations(vertices):
+            current_cost = self.calculate_cycle_cost(permutation)
+            if current_cost < min_cost:
+                min_cost = current_cost
+                min_cycle = permutation
+        return min_cost, min_cycle
+
+    # greedy method
+    def TSP_greedy(self) -> tuple:
+        '''
+        Travelling salesman problem - greedy method
+        This function solves the TSP using a greedy method
+        The function returns a tuple consisting of the minimum cost and the cycle which
+        NOTE: that the greedy method does not always return the optimal solution!
+        It just returns a solution which is close to the optimal one in a much smaller time frame
+        '''
+        n = self.number_of_vertices()
+        final_cost = float('inf')
+        final_cycle = []
+        for start in range(n): 
+            # takes into consideration all possible starting vertices 
+            # to get a better approximation
+            visited = [False] * n
+            cycle = [start]
+            visited[start] = True
+            total_cost = 0
+            current = start
+            for _ in range(n - 1): 
+                # to ensure that we visit all other vertices exactly once
+                next_vertex = None
+                min_cost = float('inf')
+                for v in range(n):
+                    if not visited[v] and self.graph.get_cost(current, v) < min_cost:
+                        next_vertex = v
+                        min_cost = self.graph.get_cost(current, v)
+                cycle.append(next_vertex)
+                visited[next_vertex] = True
+                total_cost += min_cost
+                current = next_vertex
+            cycle.append(cycle[0])
+            total_cost += self.graph.get_cost(cycle[-2], cycle[-1])
+            if total_cost < final_cost:
+                final_cost = total_cost
+                final_cycle = cycle
+        return final_cost, final_cycle                
+        
