@@ -12,15 +12,15 @@ RO: Daţi cinci comenzi GREP care afişează toate liniile dintr-un fişier care
 EN: Give five GREP commands that display all the lines in a file that contain letter "a" uppercase or lowercase.
 grep -E "[aA]" a.txt
 grep -Ei "a" a.txt
-grep -Ev "^[b-zB-Z]*$" a.txt
-grep -Eiv "^[b-z]*$" a.txt
+grep -Ev "[b-zB-Z]*" a.txt
+grep -Eiv "[b-z]*" a.txt
 grep -Ei ".*a.*" a.txt
 
 3.
 RO: Scrieţi două comenzi SED care afişează dintr-un fişier doar liniile care nu conţin cifra 7.
 EN: Write two SED commands that display from a file only the lines that do not contain digit 7.
-sed -E "s/.*7.*//g"
-sed -E "s///" ????????????????
+sed -E '/.*7.*/d'
+sed -E '/7/!p'
 
 4.
 RO: Scrieţi o comandă AWK care afişează suma penultimului câmp al tuturor liniilor.
@@ -30,10 +30,15 @@ awk "BEGIN{sum = 0} {sum += $(NF-1)} END{print sum}"
 5.
 RO: Cum puteţi redirecta în linia de comanda ieşirea de eroare prin pipe înspre un alt program?
 EN: How can you redirect on the command line the standard error through pipe to another program?
+command 2>&1 | command2
 
 6.
 RO: Scrieţi un script Shell UNIX care afişează toate argumentele din linia de comandă fără a folosi FOR.
 EN: Write a UNIX Shell script that displays all command line arguments without using FOR
+while [ $# -gt 0 ] ; do
+	echo $1
+	shift
+done
 
 7.
 RO: Desenati ierarhia proceselor create de coduld e mai jos, incluzand procesul parinte.
@@ -43,24 +48,31 @@ EN: Draw the hierarchy of processes created by the code below, including the par
         fork();
         execlp("ls", "ls", "/", NULL);
     }
+P -> C1
 
 8.
 RO: Adăugaţi codul C necesar pentru ca fişierul b.txt să fie suprascris cu conţinutul fişierului a.txt din instrucţiunea de mai jos.
 EN: Add the necessary code so that file b.txt is overwritten with the content of file a.txt from the instruction below.
 
+		int fd = popen("b.txt", w);
+		dup2(fd, 1);
     execlp("cat", "cat", "a.txt", NULL);
 
 9.
 RO: De ce nu e recomandat sa comunicaţi bidirecţional printr-un singur FIFO?
 EN: Why is it not advisable to communicate bidirectionally through a single FIFO?
+data overriwing and corruption
+
 
 10.
 RO: Câte FIFO-uri poate deschide un process dacă nu sunt şi nici nu vor fi folosite vreodată de vreun alt proces?
 EN: How many FIFOs can a process open if they are not and will not ever be used by any other process?
+Only one, since they will wait indefinetly for another process to open the same FIFO in the opposing mode.
 
 11.
 RO: Când aţi folosi un process în locul unui thread?
 EN: When would you prefer using a process instead of a thread?
+We could use a process instead of a thread when we need to use pipes. Pipes are a good syncronisation method for processes.
 
 12.
 RO: Ce este o "secţiune critică"?
@@ -69,6 +81,9 @@ EN: What is a "critical section"?
 13.
 RO: De ce un thread trebuie să reverifice condiţia la ieşirea din apelul pthread_cond_wait?
 EN: Why should the thread recheck the condition after returning from the pthread_cond_wait call?
+The thread should recheck the condition after returning from pthread_cond_wait because the first, second, .... times
+it might check it and the signal for which it is waiting might have not been sent yet and only sent afterwards by 
+another thread. So the recheck is in order to ensure that the signal cannot be missed by any chance.
 
 14.
 RO: Care va fi efectul înlocuirii apelurilor la pthread_mutex_lock cu apeluri la pthread_rwlock_rdlock?
@@ -77,24 +92,30 @@ EN: What will be the effect of replacing calls to pthread_mutex_lock with calls 
 15.
 RO: Care e efectul apelului la pthread_barrier_wait pentru o barieră iniţializată cu 1?
 EN: What is the effect of calling pthread_barrier_wait on a barrier initialized with 1?
+Exact effect of that of a mutex, since a mutex is essentially a barrier with size 1.
 
 16.
 RO: Cum puteţi incrementa valoarea unui semafor?
 EN: How can you increment the value of a POSIX semaphore?
+using sem_post
 
 
 17.
 RO: Ce puteţi face ca programator pentru a preveni deadlock-urile?
 EN: What can you do as a software developer to prevent deadlocks?
 
-
 18.
 RO: Prin ce tranziţie de stare va trece un process când citeşte dintr-un fişier?
 EN: What state transition will a process undergo when reading from a file?
+The process will transition from RUN -> WAIT because the data from the file its reading might not be ready yet,
+so the process reading is waiting for the file to be populated by the processor.
 
 19.
 RO: Ce conţinue superblocul unui disc Linux?
 EN: What is the content of the superblock on a Linux disk?
+The Linux superblock is a critical structure that contains essential information about the file system.
+The content of the superblock contains various metadata which describes the file system's characteristics and status.
 
 20.RO: Se poate crea un link hard spre un fişier aflat pe o altă partiţie? Justificaţi răspunsul.
 EN: Can you create a hard link towards a file on a different partition? Justify your answer.
+No, you cannot because hard links are only possible on the same filesystem. Hard links are a new inode for the same data and they can only be created by the root
