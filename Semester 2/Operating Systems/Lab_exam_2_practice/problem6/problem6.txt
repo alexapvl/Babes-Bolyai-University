@@ -1,0 +1,2 @@
+Write a C program that creates n child processes. Each child process will print its PID and its parent PID. 
+The parent process will print its PID and the PID of each of the child processes.

@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
 	for (int i = 1; i <= argc; i+=2) {
 		pid_t pid = fork();
-		if (pid == 0) {
+		if (pid == 0) { // child process
 			int expected_vowels = atoi(argv[i + 1]);
 			int number_vowels = count_vowels(argv[i]);
 			if (expected_vowels == number_vowels) {
