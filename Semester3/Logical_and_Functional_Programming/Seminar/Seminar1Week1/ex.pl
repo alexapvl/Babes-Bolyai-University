@@ -32,11 +32,11 @@ sum([H|T], S):-
 % sum([1,2,3], R) => R = 6
 % sum([1,2,3], 5) => false
 
-% Compute the product of even elements in a list
+% Compute the product of EVEN elements in a list
 % flow model is (i, o)
 
 
-prode([], 1).
+prode([], 1). % this is the base case
 prode([H|T], R):-
     H mod 2 =:= 0,
     prode(T, TP),
