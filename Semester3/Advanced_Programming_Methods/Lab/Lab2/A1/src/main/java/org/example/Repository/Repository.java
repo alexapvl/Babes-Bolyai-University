@@ -43,7 +43,7 @@ public class Repository implements IRepo {
     public IEntity[] getAll() {
         IEntity[] result = new IEntity[currentPos];
 
-        for (int i = 0; i < currentPos; i++) {
+for (int i = 0; i < currentPos; i++) {
             result[i] = entities[i];
         }
 
