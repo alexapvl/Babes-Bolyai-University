@@ -20,7 +20,7 @@ create table team(
     teamName varchar(255) not null,
     teamCountry varchar(5) not null,
     constraint FK_Team foreign key(constructorId) references constructor(constructorId)
-		on delete cascade
+		on delete cascade -- upon deletion of the reference, all rows with this reference will be deleted(will likely not be used)
 );
 
 create table sponsor(
@@ -35,7 +35,7 @@ create table sponsorship(
     sponsorId int not null,
     constraint FK1_Sponsorship foreign key(teamId) references team(teamId),
     constraint FK2_Sponsorship foreign key(sponsorId) references sponsor(sponsorId),
-    unique(teamId, sponsorId)
+    unique(teamId, sponsorId) -- makes it so that there is no 'double' sponsorship for one team from the same sponsor
 );
 
 create table driver(
@@ -59,7 +59,7 @@ create table circuit(
     circuitName varchar(255) not null,
     circuitCountry varchar(5) not null,
     lapLength decimal(2,1) not null default 0, -- stores lengths up to 9.9 (km), default value is 0
-    constraint LapRange check (lapLength >= 0)
+    constraint LapRange check (lapLength >= 0) -- the distance should be a positive number
 );
 
 create table race(
@@ -68,7 +68,7 @@ create table race(
     raceDate date not null,
     numberOfLaps int not null default 0,
     constraint FK_Race foreign key(circuitId) references circuit(circuitId),
-    constraint DateRange check (YEAR(raceDate) = 2024)
+    constraint DateRange check (YEAR(raceDate) = 2024) -- date should be this year(2024) since the database is for the 2024 season
 );
 
 create table result(
@@ -77,14 +77,15 @@ create table result(
     driverId int not null,
     placement int not null,
     unique (raceId, placement),
-    constraint PlacementRange check (placement >= 1 and placement <= 20),
+    constraint PlacementRange check (placement >= 1 and placement <= 20), -- there are 20 drivers in a race, so placements range from 1..20
     constraint FK1_Result foreign key(raceId) references race(raceId),
-    constraint FK2_Result foreign key(driverId) references driver(driverId)
+    constraint FK2_Result foreign key(driverId) references driver(driverId),
+    unique (raceId, driverId) -- for a specific race, the driver should have only one result
 );
 
 create table dhlFastestLap(
 	dhlId int primary key,
     raceId int not null,
     driverId int not null,
-    fastestLapTime varchar(15) not null default '0:00.000'
+    fastestLapTime varchar(15) not null default '0:00.000' -- example '1:20.123'
 );
