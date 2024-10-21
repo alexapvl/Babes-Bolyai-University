@@ -1,5 +1,7 @@
-package org.example.Model;
+package org.example.Controller;
 
+import org.example.Model.IEntity;
+import org.example.Model.MyException;
 import org.example.Repository.IRepo;
 
 
