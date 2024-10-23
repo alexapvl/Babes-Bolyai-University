@@ -10,7 +10,6 @@
 int main() {
   int socket_file_desc;
   struct sockaddr_in server;
-  uint16_t a, b, suma;
 
   socket_file_desc = socket(AF_INET, SOCK_STREAM, 0);
   if (socket_file_desc < 0) {
@@ -19,27 +18,61 @@ int main() {
   }
 
   memset(&server, 0, sizeof(server));
-  server.sin_port = htons(3002);
+  server.sin_port = htons(8003);
   server.sin_family = AF_INET;
-  server.sin_addr.s_addr = inet_addr("172.30.245.235");
+  server.sin_addr.s_addr = inet_addr("172.30.253.213");
 
   if (connect(socket_file_desc, (struct sockaddr *) &server, sizeof(server)) < 0) {
     printf("Error when connecting to the server\n");
     return 1;
   }
 
-  char* string_to_send;
-  size_t string_length;
-
+  // Get input string
+  char *string_to_send = NULL;
+  size_t buffer_size = 0;
   printf("String: ");
-  getline(&string_to_send, &string_length, stdin);
-
-  size_t converted_length = htonl(string_length);
-  send(socket_file_desc, &converted_length, sizeof(converted_length), 0);
-
-  for(int i = 0; i < string_length; i++) {
-    send(socket_file_desc, string_to_send + i, sizeof(char), 0);
+  getline(&string_to_send, &buffer_size, stdin);
+  
+  // Remove newline character from input string if it exists
+  size_t length = strlen(string_to_send);
+  if (length > 0 && string_to_send[length - 1] == '\n') {
+      string_to_send[length - 1] = '\0';
+      --length;
   }
+
+  size_t converted_length = htonl(length);
+
+  if(send(socket_file_desc, &converted_length, sizeof(size_t), 0) < 0) {
+    printf("Error when sending the length\n");
+    close(socket_file_desc);
+    return 1;
+  }
+
+  if(send(socket_file_desc, string_to_send, length, 0) < 0) {
+    printf("Error when sending string\n");
+    close(socket_file_desc);
+    return 1;
+  }
+
+  char string_to_recieve[100];
+
+  size_t i = 0;
+  while(i < length) {
+    char letter;
+    int cod = recv(socket_file_desc, &letter, 1, 0);
+    if (cod < 1) {
+      printf("Error at recieving letter %zu\n", i);
+      return 1;
+    }
+    string_to_recieve[i] = letter;
+
+    ++i;
+  }
+  string_to_recieve[i] = '\0';
+
+  size_t length_recieved = strlen(string_to_recieve);
+
+  printf("Recieved string is:\n%s\nThe length is: %zu\n", string_to_recieve, length_recieved);
 
   close(socket_file_desc);
 
