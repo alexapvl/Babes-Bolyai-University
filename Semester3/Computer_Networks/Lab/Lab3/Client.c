@@ -20,7 +20,7 @@ int main() {
        memset(&server, 0, sizeof(server));
        server.sin_port = htons(3002);
        server.sin_family = AF_INET;
-       server.sin_addr.s_addr = inet_addr("172.30.254.79");
+       server.sin_addr.s_addr = inet_addr("172.0.0.1");
        if (connect(c, (struct sockaddr *) &server, sizeof(server)) < 0) {
           printf("Eroare la conectarea la server\n");
           return 1;
