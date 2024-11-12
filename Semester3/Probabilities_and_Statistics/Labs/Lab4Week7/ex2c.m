@@ -6,7 +6,7 @@ X = zeros(1, N); % at each index will be the number of failures at each simulati
 for i = 1:N
 	X(i) = 0;
 	while rand >= p
-		X(i) = X(i) + 1
+		X(i) = X(i) + 1;
 	endwhile
 endfor
 
