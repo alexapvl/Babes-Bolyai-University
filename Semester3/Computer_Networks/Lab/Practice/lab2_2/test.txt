@@ -1,0 +1,2 @@
+This is a test file used for the exercise.
+If you see this line this means that it works, YAY!

@@ -23,7 +23,7 @@ int main() {
 
   // Setup server address struct
   memset(&server_address, 0, sizeof(server_address));
-  server_address.sin_port = htons(8000); // Set port
+  server_address.sin_port = htons(8003); // Set port
   server_address.sin_family = AF_INET;
   server_address.sin_addr.s_addr = INADDR_ANY; // Accept any incoming
 
