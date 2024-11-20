@@ -60,5 +60,5 @@ FD_SET(int fd, fd_set *set) -- adds fd to the set
 FD_CLR(int fd, fd_set *set) -- removes fd from the set
 FD_ISSET(int fd, fd_set *set) -- tests to see if fd is in the set
 
-
+INADDR_ANY -> used for the server side for the sockets which need to be set up as a listener
 */
