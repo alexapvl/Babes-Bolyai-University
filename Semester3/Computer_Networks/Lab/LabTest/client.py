@@ -31,7 +31,7 @@ def unregister_with_server(server_ip, server_port, udp_port, tcp_port):
 # Listen for notifications (updated peer list) from the server via TCP
 def listen_for_notifications(tcp_port):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(("172.30.247.175", tcp_port))
+    server_socket.bind(("172.30.249.117", tcp_port))
     server_socket.listen(5)
     print(f"Listening for notifications on TCP:{tcp_port}")
 
@@ -72,7 +72,7 @@ def update_peer_list(peer_data):
 # UDP communication with other peers
 def udp_communication(udp_port):
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    udp_socket.bind(("172.30.247.175", udp_port))
+    udp_socket.bind(("172.30.249.117", udp_port))
     print(f"Listening for UDP messages on port {udp_port}")
 
     while True:
@@ -121,7 +121,7 @@ if __name__ == "__main__":
         print("Usage example: python3 client.py <udp_port> <tcp_port>")
         sys.exit(1)
 
-    server_ip = "172.30.247.175"
+    server_ip = "172.30.249.117"
     server_port = 5000
     udp_port = int(sys.argv[1])  # Client's UDP port
     tcp_port = int(sys.argv[2])  # Client's TCP port

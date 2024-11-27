@@ -69,7 +69,7 @@ def start_server():
     print("Starting server...")
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_socket.bind(("172.30.247.175", 5000))  # Server listens on port 5000
+    server_socket.bind(("172.30.249.117", 5000))  # Server listens on port 5000
     server_socket.listen(5)
     print("Server listening on port 5000")
 
