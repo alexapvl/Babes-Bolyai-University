@@ -2,16 +2,16 @@
 ;Example: for (10 20 30 40 50) and n=3 will produce (10 20 30 30 40 50).
 
 ; double-n-th-elem subr 3 (list, integer, integer - starts from 1): list
-(defun double-n-th-elem (L N &optional (I 1))
+(defun double-n-th-elem (L N I)
   (cond
     ((null L) L) ;checking for an empty list
     ((= N I) (cons (car L) (cons (car L) (double-n-th-elem (cdr L) N (+ I 1))))) ; Duplicate the N-th element
     (t (cons (car L) (double-n-th-elem (cdr L) N (1+ I)))))) ; Continue traversal
 
 ; Example usage:
-(print "Doubling the third element of the list (10 20 30 40 50):")
-(print (double-n-th-elem '(10 20 30 40 50) 3))
-(format t "~%"); print a new line in common lisp
+(format t "a) Doubling the third element of the list (10 20 30 40 50):")
+(print (double-n-th-elem '(10 20 30 40 50) 3 1))
+(format t "~%~%"); format t a new line in common lisp
 
 ;b) Write a function to return an association list with the two lists given as parameters.
 ; Example: (A B C) (X Y Z) --> ((A.X) (B.Y) (C.Z))
@@ -22,9 +22,9 @@
     (t (cons (cons (car L1) (car L2)) (association-list (cdr L1) (cdr L2))))
   )
 )
-(print "Association list for the lists (A B C) and (X Y Z) is:")
+(format t "b) Association list for the lists (A B C) and (X Y Z) is:")
 (print (association-list `(A B C) `(X Y Z)))
-(format t "~%")
+(format t "~%~%")
 
 ;c) Write a function to determine the number of all sublists of a given list, on any level.
 ; A sublist is either the list itself, or any element that is a list, at any level. Example:
@@ -41,17 +41,17 @@
     (t (+ (count-sublists-on-all-levels (cdr L)) (count-sublists-on-all-levels (car L))))
   )
 )
-(print "The number of sublists on all levels of the list (1 2 (3 (4 5) (6 7)) 8 (9 10)) is:")
+(format t "c) The number of sublists on all levels of the list (1 2 (3 (4 5) (6 7)) 8 (9 10)) is:")
 (print (count-sublists-on-all-levels `(1 2 (3 (4 5) (6 7)) 8 (9 10))))
-(format t "~%")
+(format t "~%~%")
 
 ;d) Write a function to return the number of all numerical atoms in a list at superficial level.
 (defun count-numerical-atoms (L)
   (cond
     ((null L) 0)
-    ((atom (car L)) (+ (count-numerical-atoms (cdr L)) 1))
+    ((numberp (car L)) (+ (count-numerical-atoms (cdr L)) 1))
     (t (count-numerical-atoms (cdr L)))
   )
 )
-(print "The number of numerical atoms at a superficial level of the list (1 2 (3 4) 5 (6 7 8) 9) is:")
-(print (count-numerical-atoms `(1 2 (3 4) 5 (6 7 8) 9)))
+(format t "d) The number of numerical atoms at a superficial level of the list (1 a (3 4) 5 (6 7 8) b) is:")
+(print (count-numerical-atoms `(1 a (3 4) 5 (6 7 8) b)))
