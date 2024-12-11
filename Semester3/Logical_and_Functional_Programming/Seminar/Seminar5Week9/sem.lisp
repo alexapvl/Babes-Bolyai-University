@@ -4,7 +4,7 @@
 
 (defun f (tree level aux)
   (cond
-    ((null tree) nil)
+    ((null tree) nil) ; if tree is null then we don't need to process any more nodes
     ((> (cadr tree) 0) (f (cddr tree) (- level 1) (cons (car tree) (cons (- (cadr tree) 1) aux))))
     ((= level 1) (cons (car tree)
       (cond
@@ -17,7 +17,7 @@
  )
 )
 
-(print (f '(a 2 b 1 c 0 d 0) 1 nil))
+(print (f '(a 2 b 1 c 0 d 0) 2 nil))
 
 ; Define a function which merges, without keeping duplicated elements, 
 ; two linear lists that are sorted in ascending order.
