@@ -1,12 +1,13 @@
 USE A5;
 
+
 CREATE TABLE Ta (
     aid INT PRIMARY KEY,
     a2 INT UNIQUE,
     a3 VARCHAR(10)
 );
 
-INSERT INTO Ta (aid, a2) VALUES
+INSERT INTO Ta (aid, a2, a3) VALUES
 (1, 100, 'a1'),
 (2, 200, 'a2'),
 (3, 300, 'a3');
