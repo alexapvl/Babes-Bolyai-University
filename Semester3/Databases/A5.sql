@@ -1,6 +1,5 @@
 USE A5;
 
-
 CREATE TABLE Ta (
     aid INT PRIMARY KEY,
     a2 INT UNIQUE,
