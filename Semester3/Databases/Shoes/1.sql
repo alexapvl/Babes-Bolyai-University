@@ -16,6 +16,9 @@ create table Shoes (
 insert into Shoes values 
 (100, 1)
 
+insert into Shoes values 
+(1000, 1)
+
 create table PresentationShops (
     psid int primary key identity(1,1),
     psname varchar(50),
@@ -25,6 +28,10 @@ create table PresentationShops (
 insert into PresentationShops values 
 ('Nike Shop', 'Cluj-Napoca')
 
+insert into PresentationShops values 
+('Zara', 'Cluj-Napoca'),
+('Buzz', 'Cluj-Napoca')
+
 create table AvailableStock (
     psid int foreign key references PresentationShops(psid),
     sid int foreign key references Shoes(sid),
@@ -32,11 +39,21 @@ create table AvailableStock (
     asQuantity int
 );
 
+insert into AvailableStock values 
+(2, 1, 1),
+(3, 1, 1),
+(1, 2, 1),
+(3, 2, 1)
+
 create table Women (
     wid int primary key identity(1,1),
     wname varchar(50),
     buget float
 );
+
+insert into Women values 
+('Alexandra', 3000),
+('Iulia', 5000)
 
 create table Orders (
     wid int foreign key references Women(wid),
@@ -46,3 +63,6 @@ create table Orders (
     oPrice float
 );
 
+insert into Orders values 
+(1, 1, 1, 100),
+(2, 1, 3, 300)
