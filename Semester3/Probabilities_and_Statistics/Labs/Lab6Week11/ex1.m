@@ -1,5 +1,5 @@
 % H0 : statistical parameter =  given value <- null hypothesis -> this is what is already known
-% H1 : statistical parameter (the same as above) <, > or different from out given value <- alternative hypothesis -> this is the new information that can be put to the test
+% H1 : statistical parameter (the same as above) <, > or different from our given value <- alternative hypothesis -> this is the new information that can be put to the test
 % usually stat param. = mean of population, variance of population, difference of means of 2 populations, ratio of 2 population variances
 x=[7,7,4,5,9,9,...
    4,12,8,1,8,7,...
@@ -9,7 +9,7 @@ x=[7,7,4,5,9,9,...
    3,5,12,6,10,7];
 
 n = length(x);
-alpha = input("Please give the signivficance level: "); % 0.05
+alpha = input("Please give the significance level: "); % 0.05; significance_level = 1 - confidance_level (that's why it is should be so small)
 
 % a)
 % H0: m = 8.5 <- null hypothesis
@@ -39,3 +39,4 @@ printf("The p-value of the test is %4.3f. \n", p);
 % for subpoint b) use ttest for tobs = stats.tstat (structure, check help ttest)
 % for exercise 2) a) you use vartest2 to decide if the variances are equal or not
 % 2) b) the test here depends on a) variances equal => one version(2nd minus of point 3)  / variances not equal => another(3rd minus of point 3)
+
