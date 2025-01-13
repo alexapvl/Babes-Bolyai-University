@@ -26,3 +26,17 @@
 )
 
 (print (pointB 1 '(2 3 4 (2 3 ((1))))))
+(format t "~%################")
+
+(defun pointC (L)
+  (cond
+    ((null L) nil)
+    ((atom L) nil)
+    ((listp L) 
+      (cons L (append (pointC (car L)) (pointC (cdr L))))
+    )
+    (t (pointC (cdr L)))
+  )
+)
+
+(print (pointC '(1 2 (3 (4 5) (6 7)) 8 (9 10))))
