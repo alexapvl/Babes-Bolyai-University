@@ -1,0 +1,61 @@
+p {
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: hotpink;
+}
+
+.nav-link:hover {
+  color: green;
+}
+
+.nav-link:visited {
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-shadow: 1px 0px #000;
+}
+
+.moon-landing-img:hover {
+  transform: rotate(360deg);
+}
+
+.svg-circle {
+  animation-name: change-color;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes change-color {
+  0% {
+    background-color: red;
+    border-radius: 10px;
+  }
+  50% {
+    background-color: blue;
+    border-radius: 75px;
+  }
+  100% {
+    background-color: green;
+    border-radius: 10px;
+  }
+}
