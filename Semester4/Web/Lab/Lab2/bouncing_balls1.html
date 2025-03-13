@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bouncing Balls</title>
+
+<style>
+  .ball {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #ff0000);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 20%;
+    animation: bounce 3s cubic-bezier(0.5, 0, 0.75, 0);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  }
+
+  .ball2 {
+    background: radial-gradient(circle at 30% 30%, #6b6bff, #0000ff);
+    left: 40%;
+    animation-delay: 0.2s;
+  }
+
+  .ball3 {
+    background: radial-gradient(circle at 30% 30%, #6b6bff, #0000ff);
+    left: 60%;
+    animation-delay: 0.4s;
+  }
+
+  .ball4 {
+    left: 80%;
+    animation-delay: 0.6s;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    10% {
+      transform: translateY(-300px);
+      animation-timing-function: ease-in;
+    }
+    20% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    30% {
+      transform: translateY(-200px);
+      animation-timing-function: ease-in;
+    }
+    40% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    50% {
+      transform: translateY(-120px);
+      animation-timing-function: ease-in;
+    }
+    60% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    70% {
+      transform: translateY(-60px);
+      animation-timing-function: ease-in;
+    }
+    80% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+    90% {
+      transform: translateY(-20px);
+      animation-timing-function: ease-in;
+    }
+    100% {
+      transform: translateY(0);
+      animation-timing-function: ease-out;
+    }
+  }
+</style>
+<body>
+  <div class="ball"></div>
+  <div class="ball ball2"></div>
+  <div class="ball ball3"></div>
+  <div class="ball ball4"></div>
+</body>

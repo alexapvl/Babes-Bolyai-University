@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Stairs</title>
+</head>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .steps-container {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform: rotateX(60deg) rotateZ(60deg);
+  }
+
+  .stairs {
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 70px;
+    background-color: blue;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .stairs::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    background-color: #357abd;
+    right: -25px;
+    transform: translateZ(-25px) rotateY(90deg);
+    transform-origin: top;
+  }
+
+  .stairs:nth-child(1){ transform: translateZ(50px); z-index: 1;}
+  .stairs:nth-child(2){ transform: translateZ(100px); z-index: 2; }
+  .stairs:nth-child(3){ transform: translateZ(150px); z-index: 3;}
+  .stairs:nth-child(4){ transform: translateZ(200px); z-index: 4;}
+
+  .stairs::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: #2d6da3; /* Darker blue for the side face */
+    transform: rotateX(90deg) translateZ(-45px) translateY(-23px);
+  }
+</style>
+
+<body>  
+  <div class="steps-container">
+    <div class="stairs"></div>
+    <div class="stairs"></div>
+    <div class="stairs"></div>
+    <div class="stairs"></div>
+  </div>
+</body>
