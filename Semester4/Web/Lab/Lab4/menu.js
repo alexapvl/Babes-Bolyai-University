@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { // the code runs when the page finishes loading
     // Menu data structure
     const menuData = [
         {
