@@ -16,7 +16,20 @@ namespace Setup_DBMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            string configurationType = AppConfig.GetConnectionString("ConfigurationType");
+            if (configurationType == "one")
+            {
+                Application.Run(new Form1());
+            }
+            else if (configurationType == "two")
+            {
+                Application.Run(new Form2());
+            }
+            else
+            {
+                MessageBox.Show("Invalid configuration type in appsettings.json");
+            }
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Setup_DBMS
 {
     public partial class Form1: Form
     {
-        string connectionString = @"Data Source=DESKTOP-55MRTN0;Initial Catalog=f1;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
+        string connectionString = AppConfig.GetConnectionString("MyLocalDb");
         SqlDataAdapter teamsAdapter, driversAdapter;
         DataSet teamsDataSet = new DataSet();
         DataSet driversDataSet = new DataSet();
