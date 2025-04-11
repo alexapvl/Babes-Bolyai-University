@@ -4,7 +4,7 @@ $(document).ready(function() {
     let dragDistance = 0;
     let startX = 0;
     let startY = 0;
-    let transitionSpeed = 0.3; // Default transition speed in seconds
+    let opacity = 0.05;
     
     // Update gradient center based on mouse position
     $(document).on('mousemove', function(e) {
@@ -25,17 +25,15 @@ $(document).ready(function() {
             dragDistance = newDistance;
             
             // Map drag distance to transition speed
-            // For longer drags, make transition slower (max 3s)
             // For shorter drags, make transition faster (min 0.05s)
-            transitionSpeed = Math.max(0.05, Math.min(3, dragDistance / 100));
+            opacity = Math.max(0.05, Math.min(1, dragDistance / 1000));
             
-            console.log("Dragging - Distance: " + dragDistance + ", Speed: " + transitionSpeed + "s");
+            console.log("Dragging - Distance: " + dragDistance + ", Opacity: " + opacity);
         }
         
         // Apply the transition speed and center position
         $container.css({
-            'transition': `background ${transitionSpeed}s ease`,
-            'background': `radial-gradient(circle at ${posX}% ${posY}%, rgb(255, 0, 0), rgb(0, 255, 238), rgb(0, 0, 0))`
+            'background': `radial-gradient(circle at ${posX}% ${posY}%, rgb(255, 0, 0), rgb(0, 0, 238, ${opacity}))`
         });
     });
     
