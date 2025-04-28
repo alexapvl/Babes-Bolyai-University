@@ -4,34 +4,31 @@ $(document).ready(function() {
     let dragDistance = 0;
     let startX = 0;
     let startY = 0;
-    let opacity = 0.05;
-    
+    let opacity = 0.2;
+
     // Update gradient center based on mouse position
     $(document).on('mousemove', function(e) {
         const mouseX = e.pageX;
         const mouseY = e.pageY;
         
-        // Calculate the position in percentage for the gradient
+        // Calculate the position in percentage for the gradient center position
         const posX = (mouseX / $(window).width()) * 100;
         const posY = (mouseY / $(window).height()) * 100;
         
-        // If dragging, calculate the distance and adjust transition speed
+        // If dragging, calculate the distance and adjust opacity of the secondary color of the gradient
         if (isDragging) {
             const dx = mouseX - startX;
             const dy = mouseY - startY;
             const newDistance = Math.sqrt(dx * dx + dy * dy);
-            
-            // Update drag distance - remove the min cap to make it more noticeable
             dragDistance = newDistance;
             
-            // Map drag distance to transition speed
-            // For shorter drags, make transition faster (min 0.05s)
-            opacity = Math.max(0.05, Math.min(1, dragDistance / 1000));
+            // Map drag distance to opacity
+            opacity = Math.max(0.2, Math.min(1, dragDistance / 1000));
             
             console.log("Dragging - Distance: " + dragDistance + ", Opacity: " + opacity);
         }
         
-        // Apply the transition speed and center position
+        // Apply the opacity and center position
         $container.css({
             'background': `radial-gradient(circle at ${posX}% ${posY}%, rgb(255, 0, 0), rgb(0, 0, 238, ${opacity}))`
         });
