@@ -1,0 +1,44 @@
+<div class="filter-section">
+  <mat-form-field>
+    <mat-label>Filter by Genre</mat-label>
+    <mat-select [(ngModel)]="selectedGenre" (selectionChange)="filterByGenre()">
+      <mat-option value="all">All Genres</mat-option>
+      <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div *ngIf="loading" class="loading">
+  Loading books...
+</div>
+
+<div *ngIf="!loading && books.length === 0" class="no-books">
+  No books found.
+</div>
+
+<div class="books-grid">
+  <mat-card *ngFor="let book of books" class="book-card">
+    <mat-card-header>
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="book.genre"><strong>Genre:</strong> {{ book.genre }}</p>
+      <p *ngIf="book.pages"><strong>Pages:</strong> {{ book.pages }}</p>
+      <div class="status" [ngClass]="book.lent_to ? 'lent' : 'available'">
+        <p *ngIf="book.lent_to">
+          <strong>Lent to:</strong> {{ book.lent_to }}<br>
+          <strong>Date:</strong> {{ book.lent_date }}
+        </p>
+        <p *ngIf="!book.lent_to">Available</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button [routerLink]="['/books', book.id]">VIEW</a>
+      <a mat-button [routerLink]="['/books/edit', book.id]">EDIT</a>
+      <button mat-button color="warn" (click)="deleteBook(book.id!)">DELETE</button>
+      <button mat-button color="primary" *ngIf="!book.lent_to" (click)="lendBook(book)">LEND</button>
+      <button mat-button color="accent" *ngIf="book.lent_to" (click)="returnBook(book.id!)">RETURN</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

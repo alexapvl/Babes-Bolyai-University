@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ book.title }}</mat-card-title>
+    <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p><strong>Pages:</strong> {{ book.pages }}</p>
+    
+    <mat-divider></mat-divider>
+    
+    <div class="status-section">
+      <h3>Status</h3>
+      <div class="status available">
+        <p>Available</p>
+      </div>
+    </div>
+  </mat-card-content>
+  
+  <mat-card-actions>
+    <a mat-button routerLink="/books">BACK</a>
+    <a mat-button [routerLink]="['/books/edit', book.id]">EDIT</a>
+    <button mat-button color="warn" (click)="deleteBook()">DELETE</button>
+  </mat-card-actions>
+</mat-card>
