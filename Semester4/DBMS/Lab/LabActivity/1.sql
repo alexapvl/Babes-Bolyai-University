@@ -61,7 +61,7 @@ create table race(
     raceDate date not null,
     numberOfLaps int not null default 0,
     constraint FK1_race_circuitId foreign key(circuitId) references circuit(circuitId) on delete cascade,
-    constraint DateRange check (YEAR(raceDate) = 2024) -- date should be this year(2024) since the database is for the 2024 season
+    constraint DateRange check (YEAR(raceDate) = 2025) -- date should be for the 2025 season
 );
 
 create table result(
