@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace Setup_DBMS
+namespace Lab2
 {
     public partial class Form1: Form
     {

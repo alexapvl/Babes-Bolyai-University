@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Setup_DBMS {
+namespace Lab2 {
     
     
     /// <summary>
@@ -4737,7 +4737,7 @@ namespace Setup_DBMS {
         }
     }
 }
-namespace Setup_DBMS.f1DataSetTableAdapters {
+namespace Lab2.f1DataSetTableAdapters {
     
     
     /// <summary>
@@ -4906,7 +4906,7 @@ SELECT circuitId, circuitName, circuitCountry, lapLength FROM circuit WHERE (cir
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5259,7 +5259,7 @@ SELECT constructorId, constructorName, constructorCountry FROM constructor WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5614,7 +5614,7 @@ SELECT dhlId, raceId, driverId, fastestLapTime FROM dhlFastestLap WHERE (dhlId =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5957,7 +5957,7 @@ SELECT driverId, driverName, teamId, nationality, dateOfBirth FROM driver WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6315,7 +6315,7 @@ SELECT dchampionshipId, driverId, points FROM driverChampionship WHERE (dchampio
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6630,7 +6630,7 @@ SELECT raceId, circuitId, raceDate, numberOfLaps FROM race WHERE (raceId = @race
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6949,7 +6949,7 @@ SELECT resultId, raceId, driverId, placement FROM result WHERE (resultId = @resu
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7263,7 +7263,7 @@ SELECT sponsorId, sponsorName, sponsorCountry FROM sponsor WHERE (sponsorId = @s
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7612,7 +7612,7 @@ SELECT sponsorshipId, teamId, sponsorId FROM sponsorship WHERE (sponsorshipId = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7927,7 +7927,7 @@ SELECT teamId, constructorId, teamName, teamCountry FROM team WHERE (teamId = @t
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Setup_DBMS.Properties.Settings.Default.f1ConnectionString;
+            this._connection.ConnectionString = global::Lab2.Properties.Settings.Default.f1ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

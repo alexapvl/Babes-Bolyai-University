@@ -1,4 +1,4 @@
-﻿namespace Setup_DBMS
+﻿namespace Lab2
 {
     using System;
     using System.Diagnostics;

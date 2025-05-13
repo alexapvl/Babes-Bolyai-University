@@ -1,4 +1,4 @@
-﻿namespace Setup_DBMS
+﻿namespace Lab2
 {
     partial class Form1
     {
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.f1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.f1DataSet = new Setup_DBMS.f1DataSet();
+            this.f1DataSet = new f1DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.f1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.f1DataSet)).BeginInit();
             this.SuspendLayout();

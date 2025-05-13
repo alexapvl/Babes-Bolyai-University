@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F3D527D7-97E7-4D25-A1D5-E3688F55AF7C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Setup_DBMS</RootNamespace>
-    <AssemblyName>Setup_DBMS</AssemblyName>
+    <RootNamespace>Lab2</RootNamespace>
+    <AssemblyName>Lab2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -126,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="appsettings.json" />
     <None Include="f1DataSet.xsc">
