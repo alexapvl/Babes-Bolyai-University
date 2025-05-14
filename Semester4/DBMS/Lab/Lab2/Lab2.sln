@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156
+VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2", "Setup_DBMS\Lab2.csproj", "{F3D527D7-97E7-4D25-A1D5-E3688F55AF7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2", "Lab2\Lab2.csproj", "{F3D527D7-97E7-4D25-A1D5-E3688F55AF7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {016A2EA8-6F29-41DF-BC64-39EDF52C6BE4}
+		SolutionGuid = {28203C3A-8CF2-431D-896F-9D36CE04258D}
 	EndGlobalSection
 EndGlobal
