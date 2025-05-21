@@ -41,7 +41,7 @@ This application is a personal library management system with authentication, bu
 
 3. Run the backend application:
    ```bash
-   dotnet run
+   dotnet watch run
    ```
    The API will be available at https://localhost:7268
 
@@ -56,12 +56,12 @@ This application is a personal library management system with authentication, bu
 2. Install the dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Run the frontend application:
    ```bash
-   npm start
+   pnpm start
    ```
    The application will be available at http://localhost:4200
 
