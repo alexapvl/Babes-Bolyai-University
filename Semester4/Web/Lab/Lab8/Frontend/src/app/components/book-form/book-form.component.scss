@@ -1,0 +1,45 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+mat-card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-style: italic;
+  color: #666;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #b71c1c;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  border-left: 4px solid #d32f2f;
+}

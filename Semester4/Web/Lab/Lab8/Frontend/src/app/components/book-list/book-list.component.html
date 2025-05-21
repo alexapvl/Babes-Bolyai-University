@@ -1,0 +1,60 @@
+<div class="page-header">
+  <div class="filter-section">
+    <div class="filter-row">
+      <mat-form-field>
+        <mat-label>Filter by Genre</mat-label>
+        <mat-select [(ngModel)]="selectedGenre" (selectionChange)="filterByGenre()">
+          <mat-option value="all">All Genres</mat-option>
+          <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-slide-toggle 
+        [(ngModel)]="showAllBooks" 
+        (change)="toggleBookView()" 
+        class="books-toggle">
+        {{ showAllBooks ? 'Showing all books' : 'Showing only my books' }}
+      </mat-slide-toggle>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" routerLink="/books/add" class="add-book-button">
+    Add New Book
+  </button>
+</div>
+
+<div *ngIf="loading" class="loading">
+  Loading books...
+</div>
+
+<div *ngIf="!loading && books.length === 0" class="no-books">
+  No books found.
+</div>
+
+<div class="books-grid">
+  <mat-card *ngFor="let book of books" class="book-card">
+    <mat-card-header>
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p *ngIf="book.genre"><strong>Genre:</strong> {{ book.genre }}</p>
+      <p *ngIf="book.pages"><strong>Pages:</strong> {{ book.pages }}</p>
+      <div class="status" [ngClass]="book.lentTo ? 'lent' : 'available'">
+        <p *ngIf="book.lentTo">
+          <strong>Lent to:</strong> {{ book.lentTo }}<br>
+          <strong>Date:</strong> {{ book.lentDate }}
+        </p>
+        <p *ngIf="!book.lentTo">Available</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button [routerLink]="['/books', book.id]">VIEW</a>
+      <ng-container *ngIf="isOwner(book)">
+        <a mat-button [routerLink]="['/books/edit', book.id]">EDIT</a>
+        <button mat-button color="warn" (click)="deleteBook(book.id!)">DELETE</button>
+        <button mat-button color="primary" *ngIf="!book.lentTo" (click)="lendBook(book)">LEND</button>
+        <button mat-button color="accent" *ngIf="book.lentTo" (click)="returnBook(book.id!)">RETURN</button>
+      </ng-container>
+    </mat-card-actions>
+  </mat-card>
+</div>

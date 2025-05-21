@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ editMode ? 'Edit' : 'Add' }} Book</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="loading" class="loading-indicator">
+      Loading...
+    </div>
+    
+    <div *ngIf="submitError" class="error-message">
+      {{ submitError }}
+    </div>
+    
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" *ngIf="!loading || editMode">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter book title">
+        <mat-error *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Genre</mat-label>
+        <input matInput formControlName="genre" placeholder="Enter book genre">
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Pages</mat-label>
+        <input matInput type="number" formControlName="pages" placeholder="Enter number of pages">
+      </mat-form-field>
+      
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid || loading">
+          {{ loading ? 'Saving...' : 'Save' }}
+        </button>
+        <a mat-button routerLink="/books">Cancel</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
