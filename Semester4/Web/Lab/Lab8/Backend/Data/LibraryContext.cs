@@ -14,23 +14,18 @@ namespace Backend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Book>()
-                .HasKey(b => b.Id);
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.HasKey(b => b.Id);
+                entity.Property(b => b.Id).ValueGeneratedOnAdd();
+            });
 
-            modelBuilder.Entity<User>()
-                .HasKey(u => u.Id);
-
-            modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)
-                .IsUnique();
-
-            modelBuilder.Entity<Book>()
-                .Property(b => b.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<User>()
-                .Property(u => u.Id)
-                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+                entity.HasIndex(u => u.Username).IsUnique();
+                entity.Property(u => u.Id).ValueGeneratedOnAdd();
+            });
         }
     }
 } 
