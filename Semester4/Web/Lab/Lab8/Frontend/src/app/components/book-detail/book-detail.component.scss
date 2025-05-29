@@ -1,0 +1,31 @@
+mat-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-section {
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.available {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.lent {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: #ef6c00;
+}
+
+mat-card-actions {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+}

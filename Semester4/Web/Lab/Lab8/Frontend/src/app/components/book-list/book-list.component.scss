@@ -1,0 +1,73 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-section {
+  flex-grow: 1;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.books-toggle {
+  margin-top: 15px;
+}
+
+.add-book-button {
+  margin-left: 20px;
+  height: 40px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.available {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.lent {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: #ef6c00;
+}
+
+.loading, .no-books {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.add-button-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+mat-card-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
