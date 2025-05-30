@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DatabaseUtil {
   private static final String DB_URL = "jdbc:mysql://localhost:3306/quiz_app?useSSL=false&serverTimezone=UTC";
   private static final String DB_USERNAME = "root";
-  private static final String DB_PASSWORD = ""; // Change this to your MySQL root password
+  private static final String DB_PASSWORD = "";
 
   private static HikariDataSource dataSource;
 

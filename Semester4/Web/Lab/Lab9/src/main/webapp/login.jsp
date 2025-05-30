@@ -48,12 +48,6 @@
                 <div style="margin-top: 20px; text-align: center;">
                     <p>Don't have an account? <a href="register">Register here</a></p>
                 </div>
-                
-                <div class="demo-account">
-                    <h4>Demo Account:</h4>
-                    <p><strong>Username:</strong> admin</p>
-                    <p><strong>Password:</strong> admin123</p>
-                </div>
             </div>
         </div>
     </div>
