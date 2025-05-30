@@ -74,3 +74,9 @@ begin transaction
 	update Posts set NoShares = 10 where PostId = 1;
 commit transaction
 
+-- A solution to this concurrency issue would be to use other isolation levels which do NOT
+-- permit non-repeatable reads such as 'REPEATABLE READ' or 'SERIALIZABLE'
+-- in this manner a shared lock would be aquired on the already read data until the transaction completes
+-- so in that manned what we know for a fact that what is read during a transaction at a given time,
+-- will stay consistent until that transaction commits
+
