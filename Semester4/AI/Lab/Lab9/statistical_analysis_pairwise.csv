@@ -1,0 +1,13 @@
+Function,Comparison,Test,P_Value,Significant,Cohens_D,Effect_Size
+drop_wave,Binary_1Point vs Binary_2Point,Mann-Whitney U,0.641423522520332,False,0.004912056426196199,Negligible
+drop_wave,Binary_1Point vs Real_Arithmetic,Mann-Whitney U,1.1395228623468352e-09,True,0.501998038095896,Medium
+drop_wave,Binary_1Point vs Real_BLX_Alpha,Mann-Whitney U,2.0086661308314672e-10,True,0.7988995546097459,Medium
+drop_wave,Binary_2Point vs Real_Arithmetic,Mann-Whitney U,1.2775604132690859e-08,True,0.37450457241751217,Small
+drop_wave,Binary_2Point vs Real_BLX_Alpha,Mann-Whitney U,1.6060123575302104e-09,True,0.6557679488875768,Medium
+drop_wave,Real_Arithmetic vs Real_BLX_Alpha,Mann-Whitney U,0.0034553214437800213,True,0.3357160118183953,Small
+cross_in_tray,Binary_1Point vs Binary_2Point,Mann-Whitney U,0.9234421319782358,False,-0.2847745766294237,Small
+cross_in_tray,Binary_1Point vs Real_Arithmetic,Mann-Whitney U,3.0198593591621564e-11,True,1.4228312166539332,Large
+cross_in_tray,Binary_1Point vs Real_BLX_Alpha,Mann-Whitney U,3.0198593591621564e-11,True,1.4228597170648767,Large
+cross_in_tray,Binary_2Point vs Real_Arithmetic,Mann-Whitney U,3.0198593591621564e-11,True,0.44595096022555103,Small
+cross_in_tray,Binary_2Point vs Real_BLX_Alpha,Mann-Whitney U,3.0198593591621564e-11,True,0.44595415271528344,Small
+cross_in_tray,Real_Arithmetic vs Real_BLX_Alpha,Mann-Whitney U,0.22823006680742364,False,0.23689706033679733,Small
