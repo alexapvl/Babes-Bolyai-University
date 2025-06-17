@@ -50,21 +50,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Password</mat-label>
-              <input
-                matInput
-                type="password"
-                formControlName="password"
-                placeholder="Enter your password"
-              />
-              <mat-error
-                *ngIf="loginForm.get('password')?.hasError('required')"
-              >
-                Password is required
-              </mat-error>
-            </mat-form-field>
-
             <div class="form-actions">
               <button
                 mat-raised-button
@@ -86,10 +71,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
               {{ error }}
             </div>
 
-            <div class="register-link">
+            <!-- THIS IS COMMENTED OUT -->
+            <!-- <div class="register-link">
               Don't have an account?
               <a routerLink="/register" mat-button color="primary">Register</a>
-            </div>
+            </div> -->
           </form>
         </mat-card-content>
       </mat-card>
@@ -154,7 +140,6 @@ export class LoginComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
     });
   }
 

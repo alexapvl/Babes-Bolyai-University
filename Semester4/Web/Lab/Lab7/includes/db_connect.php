@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = 'localhost';
-    private $db_name = 'personal_library';
+    private $db_name = 'personal_library_user_only';
     private $username = 'root';
     private $password = '';
     private $conn;

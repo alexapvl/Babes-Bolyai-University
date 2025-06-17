@@ -65,32 +65,26 @@ try {
 function handleLogin($db) {
     $input = json_decode(file_get_contents('php://input'), true);
     
-    if (!isset($input['username']) || !isset($input['password'])) {
+    if (!isset($input['username'])) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Username and password are required']);
+        echo json_encode(['success' => false, 'message' => 'Username is required']);
         return;
     }
     
     $username = $input['username'];
-    $password = $input['password'];
     
     // Find user by username
-    $stmt = $db->prepare("SELECT id, username, password FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id, username FROM users WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$user) {
-        http_response_code(401);
-        echo json_encode(['success' => false, 'message' => 'Invalid username or password']);
-        return;
-    }
-    
-    // Check password (plain text comparison as requested)
-    if ($password !== $user['password']) {
-        http_response_code(401);
-        echo json_encode(['success' => false, 'message' => 'Invalid username or password']);
+        // create a user if doesn't exist
+        handleRegister($db);
+        // http_response_code(401);
+        // echo json_encode(['success' => false, 'message' => 'Invalid username']);
         return;
     }
     
@@ -109,25 +103,18 @@ function handleLogin($db) {
 function handleRegister($db) {
     $input = json_decode(file_get_contents('php://input'), true);
     
-    if (!isset($input['username']) || !isset($input['password'])) {
+    if (!isset($input['username'])) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Username and password are required']);
+        echo json_encode(['success' => false, 'message' => 'Username is required']);
         return;
     }
     
     $username = $input['username'];
-    $password = $input['password'];
     
     // Validate input
     if (strlen($username) < 3) {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Username must be at least 3 characters']);
-        return;
-    }
-    
-    if (strlen($password) < 6) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Password must be at least 6 characters']);
         return;
     }
     
@@ -142,10 +129,8 @@ function handleRegister($db) {
         return;
     }
     
-    // Create new user (store password as plain text as requested)
-    $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    $stmt = $db->prepare("INSERT INTO users (username) VALUES (:username)");
     $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
     
     if ($stmt->execute()) {
         $userId = $db->lastInsertId();

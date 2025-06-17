@@ -96,7 +96,8 @@ export class BookListComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error deleting book:', error);
-          this.snackBar.open('Failed to delete book', 'Close', {
+          const message = 'Failed to delete book: ' + error;
+          this.snackBar.open(message, 'Close', {
             duration: 3000,
           });
         },
@@ -122,7 +123,8 @@ export class BookListComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error lending book:', error);
-          this.snackBar.open('Failed to lend book', 'Close', {
+          const message = 'Failed to lend book: ' + error;
+          this.snackBar.open(message, 'Close', {
             duration: 3000,
           });
         },

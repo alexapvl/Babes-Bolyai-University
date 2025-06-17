@@ -1,12 +1,11 @@
-CREATE DATABASE IF NOT EXISTS personal_library;
+CREATE DATABASE IF NOT EXISTS personal_library_user_only;
 
-USE personal_library;
+USE personal_library_user_only;
 
 -- Create users table for authentication (simple version)
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    username VARCHAR(50) NOT NULL UNIQUE
 );
 
 -- Create books table (modified to include user ownership)
@@ -22,6 +21,6 @@ CREATE TABLE IF NOT EXISTS books (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Insert a test user (password: "password" - plain text as requested)
-INSERT INTO users (username, password) VALUES 
-('testuser', 'password');
+-- Insert a test user
+INSERT INTO users (username) VALUES 
+('testuser');

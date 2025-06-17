@@ -4,8 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Book } from '../models/book.model';
 
 @Injectable({
@@ -40,7 +39,12 @@ export class BookService {
         catchError((error) => {
           console.error('Error adding book as JSON:', error);
 
-          // If JSON fails, try FormData as fallback
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // If JSON fails, try FormData as fallback for server errors only
           const formData = new FormData();
           formData.append('title', book.title);
           formData.append('author', book.author);
@@ -78,7 +82,14 @@ export class BookService {
         catchError((error) => {
           console.error('Error updating book as JSON:', error);
 
-          // Fall back to FormData
+          // Don't fall back to FormData for authorization errors (403) or client errors (4xx)
+          // Only fall back for server errors or network issues that might be JSON parsing related
+          if (error.status >= 400 && error.status < 500) {
+            // Client errors (400-499) should not trigger FormData fallback
+            return throwError(() => error.error.message);
+          }
+
+          // Fall back to FormData only for server errors or network issues
           const formData = new FormData();
 
           if (book.id) {
@@ -117,7 +128,12 @@ export class BookService {
       .post(`${this.apiUrl}/delete_book_handler.php`, payload, { headers })
       .pipe(
         catchError((error) => {
-          // Fallback to FormData
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // Fallback to FormData for server errors only
           const formData = new FormData();
           formData.append('bookId', id.toString());
 
@@ -145,7 +161,12 @@ export class BookService {
       .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
       .pipe(
         catchError((error) => {
-          // Fallback to FormData
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // Fallback to FormData for server errors only
           const formData = new FormData();
           formData.append('action', 'lend');
           formData.append('bookId', bookId.toString());
@@ -174,7 +195,12 @@ export class BookService {
       .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
       .pipe(
         catchError((error) => {
-          // Fallback to FormData
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // Fallback to FormData for server errors only
           const formData = new FormData();
           formData.append('action', 'return');
           formData.append('bookId', bookId.toString());

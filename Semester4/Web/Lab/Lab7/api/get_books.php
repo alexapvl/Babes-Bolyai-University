@@ -27,7 +27,7 @@ $user = requireAuth();
 // Get the genre filter from the query string, default to 'all'
 $genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'all';
 
-$query = "SELECT id, title, author, genre, pages, lent_to, lent_date FROM books WHERE user_id = :user_id";
+$query = "SELECT id, title, author, genre, pages, lent_to, lent_date FROM books";
 
 // Add genre filter if specified
 if ($genreFilter !== 'all') {
@@ -36,11 +36,6 @@ if ($genreFilter !== 'all') {
 $query .= " ORDER BY author ASC, title ASC";
 
 $stmt = $db->prepare($query);
-
-// Bind user_id parameter
-$stmt->bindParam(':user_id', $user['id']);
-// log the user id
-error_log("User ID: " . $user['id']);
 
 // Bind the genre parameter if filtering
 if ($genreFilter !== 'all') {
