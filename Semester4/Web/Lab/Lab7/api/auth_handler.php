@@ -74,7 +74,7 @@ function handleLogin($db) {
     $username = $input['username'];
     
     // Find user by username
-    $stmt = $db->prepare("SELECT id, username FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id, name FROM softwareDeveloper WHERE name = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     
@@ -89,14 +89,14 @@ function handleLogin($db) {
     }
     
     // Generate a simple token (user_id:username:timestamp)
-    $token = generateToken($user['id'], $user['username']);
+    $token = generateToken($user['id'], $user['name']);
     
     echo json_encode([
         'success' => true,
         'message' => 'Login successful',
         'token' => $token,
         'userId' => $user['id'],
-        'username' => $user['username']
+        'username' => $user['name']
     ]);
 }
 
@@ -119,7 +119,7 @@ function handleRegister($db) {
     }
     
     // Check if user already exists
-    $stmt = $db->prepare("SELECT id FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id FROM softwareDeveloper WHERE name = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     
@@ -129,7 +129,7 @@ function handleRegister($db) {
         return;
     }
     
-    $stmt = $db->prepare("INSERT INTO users (username) VALUES (:username)");
+    $stmt = $db->prepare("INSERT INTO softwareDeveloper (name) VALUES (:username)");
     $stmt->bindParam(':username', $username);
     
     if ($stmt->execute()) {
@@ -194,7 +194,7 @@ function handleValidateToken() {
 }
 
 function handleCheckUsername($db, $username) {
-    $stmt = $db->prepare("SELECT id FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id FROM softwareDeveloper WHERE name = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     

@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
-  <span>Personal Library</span>
+  <span>Software Developer Project Manager</span>
   <span class="toolbar-spacer"></span>
   
   <!-- Show navigation only when logged in -->
   <ng-container *ngIf="currentUser">
-    <a mat-button routerLink="/books">Browse Books</a>
-    <a mat-button routerLink="/books/add">Add Book</a>
+    <a mat-button routerLink="/projects">Browse Projects</a>
+    <!-- <a mat-button routerLink="/books/add">Add Book</a> -->
+    <a mat-button routerLink="/my-projects">My Projects</a>
+    <a mat-button routerLink="/developers">Browse Developers</a>
     
     <!-- User menu -->
     <button mat-button [matMenuTriggerFor]="userMenu">
