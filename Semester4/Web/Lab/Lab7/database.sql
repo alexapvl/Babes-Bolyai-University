@@ -1,26 +1,24 @@
-CREATE DATABASE IF NOT EXISTS personal_library_user_only;
+CREATE DATABASE IF NOT EXISTS web_practice_php_1;
 
-USE personal_library_user_only;
+USE web_practice_php_1;
 
 -- Create users table for authentication (simple version)
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS softwareDeveloper (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(255) NOT NULL,
+    age INT NULL,
+    skills VARCHAR(255) NULL
 );
 
 -- Create books table (modified to include user ownership)
-CREATE TABLE IF NOT EXISTS books (
+CREATE TABLE IF NOT EXISTS project (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    author VARCHAR(255) NOT NULL,
-    genre VARCHAR(100),
-    pages INT,
-    lent_to VARCHAR(255) DEFAULT NULL, -- Stores the name of the person the book is lent to, NULL if available
-    lent_date DATE DEFAULT NULL,      -- Stores the date the book was lent
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    projectManagerId INT NOT NULL,
+    FOREIGN KEY (projectManagerId) REFERENCES softwareDeveloper(id),
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NULL,
+    members VARCHAR(255) NULL
 );
 
 -- Insert a test user
-INSERT INTO users (username) VALUES 
-('testuser');
+insert into softwareDeveloper (name, age, skills) values ('alex', 20, 'Java,Python,SQL');
