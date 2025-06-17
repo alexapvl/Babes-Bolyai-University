@@ -1,5 +1,15 @@
 <?php
-require_once '../includes/db_connect.php'; // Adjust path as needed
+require_once '../includes/db_connect.php';
+require_once '../includes/auth_helper.php';
+
+header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0);
+}
 
 // Instantiate database connection
 $database = new Database();
@@ -12,7 +22,8 @@ if (!$pdo) {
     exit; // Stop script execution if connection failed
 }
 
-header('Content-Type: application/json');
+// Get user from token
+$user = requireAuth();
 
 // Check if the request method is POST (or DELETE, depending on your AJAX setup)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,10 +32,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookId = $data['bookId'] ?? null;
 
     if ($bookId && filter_var($bookId, FILTER_VALIDATE_INT)) {
+        // Check if the book belongs to the current user
         try {
-            $sql = "DELETE FROM books WHERE id = :id";
+            $checkSql = "SELECT user_id FROM books WHERE id = :id";
+            $checkStmt = $pdo->prepare($checkSql);
+            $checkStmt->bindParam(':id', $bookId, PDO::PARAM_INT);
+            $checkStmt->execute();
+            
+            $book = $checkStmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$book) {
+                http_response_code(404);
+                echo json_encode(['success' => false, 'message' => 'Book not found.']);
+                exit;
+            }
+            
+            if ($book['user_id'] != $user['id']) {
+                http_response_code(403);
+                echo json_encode(['success' => false, 'message' => 'You can only delete your own books.']);
+                exit;
+            }
+        } catch (PDOException $e) {
+            error_log("Database error during ownership check: " . $e->getMessage());
+            echo json_encode(['success' => false, 'message' => 'Database error occurred.']);
+            exit;
+        }
+
+        try {
+            $sql = "DELETE FROM books WHERE id = :id AND user_id = :user_id";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':id', $bookId, PDO::PARAM_INT);
+            $stmt->bindParam(':user_id', $user['id'], PDO::PARAM_INT);
 
             if ($stmt->execute()) {
                 // Check if any row was actually deleted

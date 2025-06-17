@@ -1,34 +1,49 @@
 <?php
-// Set header to return JSON content
+// Set headers
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-require_once '../includes/db_connect.php'; // Adjust path as needed
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0);
+}
+
+require_once '../includes/db_connect.php';
+require_once '../includes/auth_helper.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
 if(!$db) {
     echo json_encode(['error' => 'Database connection failed']);
-    http_response_code(500); // Internal Server Error
+    http_response_code(500);
     exit;
 }
+
+// Get user from token
+$user = requireAuth();
 
 // Get the genre filter from the query string, default to 'all'
 $genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'all';
 
-$query = "SELECT id, title, author, genre, pages, lent_to, lent_date FROM books";
+$query = "SELECT id, title, author, genre, pages, lent_to, lent_date FROM books WHERE user_id = :user_id";
 
-// Prepare the statement
+// Add genre filter if specified
 if ($genreFilter !== 'all') {
-    $query .= " WHERE genre = :genre";
+    $query .= " AND genre = :genre";
 }
 $query .= " ORDER BY author ASC, title ASC";
 
 $stmt = $db->prepare($query);
 
-// Bind the parameter if filtering
+// Bind user_id parameter
+$stmt->bindParam(':user_id', $user['id']);
+// log the user id
+error_log("User ID: " . $user['id']);
+
+// Bind the genre parameter if filtering
 if ($genreFilter !== 'all') {
-    // Sanitize genre input slightly - more robust validation could be added
     $safeGenre = htmlspecialchars(strip_tags($genreFilter));
     $stmt->bindParam(':genre', $safeGenre);
 }
@@ -41,9 +56,8 @@ try {
     }
     echo json_encode($books);
 } catch(PDOException $e) {
-    // Log error instead of echoing in production
     error_log("Get Books Error: " . $e->getMessage());
-    echo json_encode(['error' => 'Failed to retrieve books. ' . $e->getMessage()]); // Provide specific error in dev
+    echo json_encode(['error' => 'Failed to retrieve books. ' . $e->getMessage()]);
     http_response_code(500);
 }
 

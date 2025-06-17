@@ -1,14 +1,15 @@
 <?php
-require_once '../includes/db_connect.php'; // Corrected path for DB connection
+require_once '../includes/db_connect.php';
+require_once '../includes/auth_helper.php';
 
 // Set content type to JSON
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Check for preflight CORS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type');
     exit(0);
 }
 
@@ -25,6 +26,9 @@ if (!$pdo) {
     echo json_encode(['success' => false, 'message' => 'Database connection failed.']);
     exit;
 }
+
+// Get user from token
+$user = requireAuth();
 
 // Log the incoming data for debugging
 $input_data = file_get_contents('php://input');
@@ -67,14 +71,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pages = ($pages !== null && $pages > 0) ? $pages : null;
 
     try {
-        // Prepare SQL statement to prevent SQL injection
-        $sql = "INSERT INTO books (title, author, genre, pages) VALUES (:title, :author, :genre, :pages)";
+        // Prepare SQL statement to prevent SQL injection - include user_id
+        $sql = "INSERT INTO books (title, author, genre, pages, user_id) VALUES (:title, :author, :genre, :pages, :user_id)";
         $stmt = $pdo->prepare($sql);
 
         // Bind parameters
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':author', $author);
         $stmt->bindParam(':genre', $genre);
+        $stmt->bindParam(':user_id', $user['id']);
         
         // Bind pages as INT or NULL
         if ($pages === null) {
