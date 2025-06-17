@@ -37,17 +37,12 @@
                         <input type="text" id="username" name="username" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" required>
-                    </div>
-                    
                     <button type="submit" class="btn">Login</button>
                 </form>
                 
-                <div style="margin-top: 20px; text-align: center;">
+                <!-- <div style="margin-top: 20px; text-align: center;">
                     <p>Don't have an account? <a href="register">Register here</a></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

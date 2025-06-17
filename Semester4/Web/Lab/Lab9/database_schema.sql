@@ -1,14 +1,13 @@
 -- Quiz Application Database Schema
 -- Run this script in your MySQL database
 
-CREATE DATABASE IF NOT EXISTS quiz_app;
-USE quiz_app;
+CREATE DATABASE IF NOT EXISTS quiz_app_user;
+USE quiz_app_user;
 
 -- Users table for authentication
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -115,6 +114,6 @@ INSERT INTO answer_options (question_id, option_text, is_correct, option_order) 
 (5, 'A method to hide implementation details', FALSE, 3),
 (5, 'A technique to handle exceptions', FALSE, 4);
 
--- Create a default admin user (password: admin123)
-INSERT INTO users (username, password_hash) VALUES 
-('admin', '$2a$12$kLGkqS0XtaW.jvqD/rWzfOrQR7C8z8VQ8PqJ1YzjKhY8Jz6EXWVG6'); 
+-- Create a default admin user
+INSERT INTO users (username) VALUES 
+('testuser'); 

@@ -36,19 +36,17 @@ public class LoginServlet extends HttpServlet {
       throws ServletException, IOException {
 
     String username = request.getParameter("username");
-    String password = request.getParameter("password");
 
     // Validate input
-    if (username == null || username.trim().isEmpty() ||
-        password == null || password.trim().isEmpty()) {
+    if (username == null || username.trim().isEmpty()) {
 
-      request.setAttribute("error", "Username and password are required");
+      request.setAttribute("error", "Username is required");
       request.getRequestDispatcher("/login.jsp").forward(request, response);
       return;
     }
 
     // Authenticate user
-    if (userDAO.authenticate(username, password)) {
+    if (userDAO.authenticate(username)) {
       // Get user details
       Optional<User> userOpt = userDAO.findByUsername(username);
 
@@ -68,7 +66,7 @@ public class LoginServlet extends HttpServlet {
       }
     } else {
       // Authentication failed
-      request.setAttribute("error", "Invalid username or password");
+      request.setAttribute("error", "Invalid username");
       request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
   }

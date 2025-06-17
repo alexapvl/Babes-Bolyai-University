@@ -33,20 +33,6 @@
                         <small>Username must be between 3 and 50 characters</small>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" 
-                               required minlength="6">
-                        <small>Password must be at least 6 characters long</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
-                               required minlength="6">
-                        <small>Please confirm your password</small>
-                    </div>
-                    
                     <button type="submit" class="btn">Register</button>
                 </form>
                 
@@ -61,8 +47,6 @@
         // Client-side validation
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
             
             // Username validation
             if (username.length < 3 || username.length > 50) {
@@ -76,32 +60,6 @@
                 e.preventDefault();
                 alert('Username can only contain letters, numbers, and underscores');
                 return;
-            }
-            
-            // Password validation
-            if (password.length < 6) {
-                e.preventDefault();
-                alert('Password must be at least 6 characters long');
-                return;
-            }
-            
-            // Confirm password validation
-            if (password !== confirmPassword) {
-                e.preventDefault();
-                alert('Passwords do not match');
-                return;
-            }
-        });
-        
-        // Real-time password confirmation validation
-        document.getElementById('confirmPassword').addEventListener('input', function() {
-            const password = document.getElementById('password').value;
-            const confirmPassword = this.value;
-            
-            if (confirmPassword && password !== confirmPassword) {
-                this.setCustomValidity('Passwords do not match');
-            } else {
-                this.setCustomValidity('');
             }
         });
         

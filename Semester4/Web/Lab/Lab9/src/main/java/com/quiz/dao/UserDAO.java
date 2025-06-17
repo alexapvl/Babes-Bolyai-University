@@ -25,7 +25,6 @@ public class UserDAO {
         User user = new User();
         user.setId(rs.getInt("id"));
         user.setUsername(rs.getString("username"));
-        user.setPasswordHash(rs.getString("password_hash"));
         user.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
         return Optional.of(user);
       }
@@ -50,7 +49,6 @@ public class UserDAO {
         User user = new User();
         user.setId(rs.getInt("id"));
         user.setUsername(rs.getString("username"));
-        user.setPasswordHash(rs.getString("password_hash"));
         user.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
         return Optional.of(user);
       }
@@ -63,13 +61,12 @@ public class UserDAO {
   }
 
   public boolean create(User user) {
-    String sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+    String sql = "INSERT INTO users (username) VALUES (?)";
 
     try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
       stmt.setString(1, user.getUsername());
-      stmt.setString(2, user.getPasswordHash());
 
       int affectedRows = stmt.executeUpdate();
 
@@ -89,18 +86,22 @@ public class UserDAO {
     return false;
   }
 
-  public boolean authenticate(String username, String password) {
+  public boolean authenticate(String username) {
     Optional<User> userOpt = findByUsername(username);
 
     if (userOpt.isPresent()) {
-      User user = userOpt.get();
-      return BCrypt.checkpw(password, user.getPasswordHash());
+      return true;
+    } else {
+      User user = new User();
+      user.setUsername(username);
+      create(user);
+      return true;
     }
 
-    return false;
+    // return false;
   }
 
-  public String hashPassword(String plainPassword) {
-    return BCrypt.hashpw(plainPassword, BCrypt.gensalt(12));
-  }
+  // public String hashPassword(String plainPassword) {
+  // return BCrypt.hashpw(plainPassword, BCrypt.gensalt(12));
+  // }
 }

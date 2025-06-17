@@ -38,8 +38,6 @@ public class RegisterServlet extends HttpServlet {
       throws ServletException, IOException {
 
     String username = request.getParameter("username");
-    String password = request.getParameter("password");
-    String confirmPassword = request.getParameter("confirmPassword");
 
     // Validate input
     if (username == null || username.trim().isEmpty()) {
@@ -50,18 +48,6 @@ public class RegisterServlet extends HttpServlet {
 
     // Trim username
     username = username.trim();
-
-    if (password == null || password.trim().isEmpty()) {
-      request.setAttribute("error", "Password is required");
-      request.getRequestDispatcher("/register.jsp").forward(request, response);
-      return;
-    }
-
-    if (confirmPassword == null || !password.equals(confirmPassword)) {
-      request.setAttribute("error", "Passwords do not match");
-      request.getRequestDispatcher("/register.jsp").forward(request, response);
-      return;
-    }
 
     // Validate username length and format
     if (username.length() < 3 || username.length() > 50) {
@@ -77,13 +63,6 @@ public class RegisterServlet extends HttpServlet {
       return;
     }
 
-    // Validate password strength
-    if (password.length() < 6) {
-      request.setAttribute("error", "Password must be at least 6 characters long");
-      request.getRequestDispatcher("/register.jsp").forward(request, response);
-      return;
-    }
-
     // Check if username already exists
     Optional<User> existingUser = userDAO.findByUsername(username);
     if (existingUser.isPresent()) {
@@ -92,9 +71,7 @@ public class RegisterServlet extends HttpServlet {
       return;
     }
 
-    // Create new user
-    String hashedPassword = userDAO.hashPassword(password);
-    User newUser = new User(username, hashedPassword);
+    User newUser = new User(username);
 
     if (userDAO.create(newUser)) {
       // Registration successful
@@ -107,4 +84,3 @@ public class RegisterServlet extends HttpServlet {
     }
   }
 }
-
