@@ -37,7 +37,8 @@ import { CommonModule } from '@angular/common';
           </div>
         </div>
 
-        <div class="form-group">
+        <!-- Password is not used in this app -->
+        <!--<div class="form-group">
           <label for="password">Password</label>
           <input
             type="password"
@@ -55,7 +56,7 @@ import { CommonModule } from '@angular/common';
           >
             Password is required
           </div>
-        </div>
+        </div>-->
 
         <div class="form-group">
           <button
@@ -71,9 +72,9 @@ import { CommonModule } from '@angular/common';
           {{ error }}
         </div>
 
-        <div class="register-link">
+        <!-- <div class="register-link">
           Don't have an account? <a routerLink="/register">Register</a>
-        </div>
+        </div> -->
       </form>
     </div>
   `,
@@ -151,7 +152,6 @@ export class LoginComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
     });
   }
 

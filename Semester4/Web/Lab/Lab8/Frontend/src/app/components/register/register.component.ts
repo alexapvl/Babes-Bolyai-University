@@ -42,7 +42,8 @@ import { CommonModule } from '@angular/common';
           </div>
         </div>
 
-        <div class="form-group">
+        <!-- Password is not used in this app -->
+        <!--<div class="form-group">
           <label for="password">Password</label>
           <input
             type="password"
@@ -65,7 +66,7 @@ import { CommonModule } from '@angular/common';
               Password must be at least 6 characters
             </div>
           </div>
-        </div>
+        </div>-->
 
         <div class="form-group">
           <button
@@ -161,7 +162,6 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 

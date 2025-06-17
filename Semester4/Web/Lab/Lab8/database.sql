@@ -1,12 +1,11 @@
-CREATE DATABASE IF NOT EXISTS personal_library_auth;
+CREATE DATABASE IF NOT EXISTS personal_library_asp_user_only;
 
-USE personal_library_auth;
+USE personal_library_asp_user_only;
 
 -- Create users table for authentication
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     last_login DATETIME DEFAULT NULL
 );
@@ -24,6 +23,5 @@ CREATE TABLE IF NOT EXISTS books (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Insert a test user (password: "password")
-INSERT INTO users (username, password_hash) VALUES 
-('testuser', '$2a$11$ysf7DHI9LaGlJbm0Zg0F1uBvE8NBXhkiXUF.6VV8vBdPLI4huRwrm'); 
+-- Insert a test user
+INSERT INTO users (username) VALUES ('testuser');

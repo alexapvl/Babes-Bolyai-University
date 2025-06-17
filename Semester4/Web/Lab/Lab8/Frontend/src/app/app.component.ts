@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
           </ng-container>
           <ng-template #loginLinks>
             <a routerLink="/login" class="nav-link">Login</a>
-            <a routerLink="/register" class="nav-link">Register</a>
+            <!-- <a routerLink="/register" class="nav-link">Register</a> -->
           </ng-template>
         </nav>
       </div>

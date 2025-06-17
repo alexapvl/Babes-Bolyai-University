@@ -35,7 +35,6 @@ namespace Backend.Services
             var user = new User
             {
                 Username = model.Username,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password),
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -60,13 +59,25 @@ namespace Backend.Services
             // Find user by username
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == model.Username);
 
-            // Check if user exists and password is correct
-            if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
+            // Check if user exists
+            if (user == null)
             {
+                // if it does not exist, create it
+                var newUser = new User
+                {
+                    Username = model.Username,
+                    CreatedAt = DateTime.UtcNow,
+                    LastLogin = DateTime.UtcNow
+                };
+                _context.Users.Add(newUser);
+                await _context.SaveChangesAsync();
                 return new AuthResponse
                 {
-                    Success = false,
-                    Message = "Invalid username or password"
+                    Success = true,
+                    Message = "User created successfully",
+                    UserId = newUser.Id,
+                    Username = newUser.Username,
+                    Token = GenerateJwtToken(newUser)
                 };
             }
 
