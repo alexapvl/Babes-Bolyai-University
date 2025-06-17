@@ -28,7 +28,6 @@ export class BookService {
   addBook(book: Book): Observable<any> {
     console.log('Sending book data:', book);
 
-    // Try sending as JSON first
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -37,36 +36,12 @@ export class BookService {
       .post(`${this.apiUrl}/add_book_handler.php`, book, { headers })
       .pipe(
         tap((response) => console.log('Add book response:', response)),
-        catchError((error) => {
-          console.error('Error adding book as JSON:', error);
-
-          // If JSON fails, try FormData as fallback
-          const formData = new FormData();
-          formData.append('title', book.title);
-          formData.append('author', book.author);
-
-          if (book.genre) {
-            formData.append('genre', book.genre);
-          }
-
-          if (book.pages) {
-            formData.append('pages', book.pages.toString());
-          }
-
-          console.log('Trying FormData approach...');
-          return this.http
-            .post(`${this.apiUrl}/add_book_handler.php`, formData)
-            .pipe(
-              tap((response) => console.log('FormData response:', response)),
-              catchError(this.handleError)
-            );
-        })
+        catchError(this.handleError)
       );
   }
 
   // Update an existing book
   updateBook(book: Book): Observable<any> {
-    // Try with JSON first
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -75,34 +50,7 @@ export class BookService {
       .post(`${this.apiUrl}/edit_book_handler.php`, book, { headers })
       .pipe(
         tap((response) => console.log('Update book response:', response)),
-        catchError((error) => {
-          console.error('Error updating book as JSON:', error);
-
-          // Fall back to FormData
-          const formData = new FormData();
-
-          if (book.id) {
-            formData.append('id', book.id.toString());
-          }
-
-          formData.append('title', book.title);
-          formData.append('author', book.author);
-
-          if (book.genre) {
-            formData.append('genre', book.genre);
-          }
-
-          if (book.pages) {
-            formData.append('pages', book.pages.toString());
-          }
-
-          return this.http
-            .post(`${this.apiUrl}/edit_book_handler.php`, formData)
-            .pipe(
-              tap((response) => console.log('FormData response:', response)),
-              catchError(this.handleError)
-            );
-        })
+        catchError(this.handleError)
       );
   }
 
@@ -115,17 +63,7 @@ export class BookService {
 
     return this.http
       .post(`${this.apiUrl}/delete_book_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Fallback to FormData
-          const formData = new FormData();
-          formData.append('bookId', id.toString());
-
-          return this.http
-            .post(`${this.apiUrl}/delete_book_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   // Lend a book
@@ -143,20 +81,7 @@ export class BookService {
 
     return this.http
       .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Fallback to FormData
-          const formData = new FormData();
-          formData.append('action', 'lend');
-          formData.append('bookId', bookId.toString());
-          formData.append('lentTo', lentTo);
-          formData.append('lentDate', lentDate);
-
-          return this.http
-            .post(`${this.apiUrl}/lend_return_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   // Return a book
@@ -172,18 +97,7 @@ export class BookService {
 
     return this.http
       .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Fallback to FormData
-          const formData = new FormData();
-          formData.append('action', 'return');
-          formData.append('bookId', bookId.toString());
-
-          return this.http
-            .post(`${this.apiUrl}/lend_return_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   // Error handling method

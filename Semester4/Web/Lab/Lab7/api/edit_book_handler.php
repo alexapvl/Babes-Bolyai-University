@@ -27,15 +27,34 @@ $user = requireAuth();
 
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
-    $data = json_decode(file_get_contents('php://input'), true);
-
-    // --- Data Validation --- 
-    $book_id = $data['id'] ?? null;
-    $title = trim($data['title'] ?? '');
-    $author = trim($data['author'] ?? '');
-    $genre = trim($data['genre'] ?? '') ?: null; // Set to null if empty after trimming
-    $pages = $data['pages'] ?? null;
+    // Handle both JSON and FormData input
+    $book_id = null;
+    $title = null;
+    $author = null;
+    $genre = null;
+    $pages = null;
+    
+    // Check Content-Type to determine how to parse the data
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    
+    if (strpos($contentType, 'application/json') !== false) {
+        // Handle JSON input
+        $data = json_decode(file_get_contents('php://input'), true);
+        if ($data) {
+            $book_id = $data['id'] ?? null;
+            $title = trim($data['title'] ?? '');
+            $author = trim($data['author'] ?? '');
+            $genre = trim($data['genre'] ?? '') ?: null;
+            $pages = $data['pages'] ?? null;
+        }
+    } else {
+        // Handle FormData input (fallback)
+        $book_id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        $title = trim(filter_input(INPUT_POST, 'title', FILTER_UNSAFE_RAW) ?? '');
+        $author = trim(filter_input(INPUT_POST, 'author', FILTER_UNSAFE_RAW) ?? '');
+        $genre = trim(filter_input(INPUT_POST, 'genre', FILTER_UNSAFE_RAW) ?? '') ?: null;
+        $pages = filter_input(INPUT_POST, 'pages', FILTER_VALIDATE_INT);
+    }
 
     // Basic validation
     if (!$book_id || !filter_var($book_id, FILTER_VALIDATE_INT)) {

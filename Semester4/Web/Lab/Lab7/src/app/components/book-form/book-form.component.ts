@@ -130,14 +130,10 @@ export class BookFormComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error updating book:', error);
-          this.submitError = this.getErrorMessage(error);
-          this.snackBar.open(
-            'Error updating book: ' + this.submitError,
-            'Close',
-            {
-              duration: 5000,
-            }
-          );
+          this.submitError = 'Error updating book.';
+          this.snackBar.open('Error updating book.', 'Close', {
+            duration: 5000,
+          });
           this.loading = false;
         },
       });

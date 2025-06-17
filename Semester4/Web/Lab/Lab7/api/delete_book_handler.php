@@ -27,9 +27,20 @@ $user = requireAuth();
 
 // Check if the request method is POST (or DELETE, depending on your AJAX setup)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the book ID from the request body (assuming JSON payload)
-    $data = json_decode(file_get_contents('php://input'), true);
-    $bookId = $data['bookId'] ?? null;
+    // Handle both JSON and FormData input
+    $bookId = null;
+    
+    // Check Content-Type to determine how to parse the data
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    
+    if (strpos($contentType, 'application/json') !== false) {
+        // Handle JSON input
+        $data = json_decode(file_get_contents('php://input'), true);
+        $bookId = $data['bookId'] ?? null;
+    } else {
+        // Handle FormData input
+        $bookId = $_POST['bookId'] ?? null;
+    }
 
     if ($bookId && filter_var($bookId, FILTER_VALIDATE_INT)) {
         // Check if the book belongs to the current user

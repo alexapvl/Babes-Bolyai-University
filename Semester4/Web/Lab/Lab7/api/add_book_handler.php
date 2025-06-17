@@ -37,14 +37,17 @@ error_log("POST data: " . print_r($_POST, true));
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
-    $title = filter_input(INPUT_POST, 'title', FILTER_UNSAFE_RAW);
-    $author = filter_input(INPUT_POST, 'author', FILTER_UNSAFE_RAW);
-    $genre = filter_input(INPUT_POST, 'genre', FILTER_UNSAFE_RAW);
-    $pages = filter_input(INPUT_POST, 'pages', FILTER_VALIDATE_INT);
+    // Handle both JSON and FormData input
+    $title = null;
+    $author = null;
+    $genre = null;
+    $pages = null;
     
-    // If form data is not found, try to get from JSON input
-    if (empty($title) || empty($author)) {
+    // Check Content-Type to determine how to parse the data
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    
+    if (strpos($contentType, 'application/json') !== false) {
+        // Handle JSON input
         $json_data = json_decode($input_data, true);
         if ($json_data) {
             $title = $json_data['title'] ?? '';
@@ -52,6 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $genre = $json_data['genre'] ?? null;
             $pages = $json_data['pages'] ?? null;
         }
+    } else {
+        // Handle FormData input (fallback)
+        $title = filter_input(INPUT_POST, 'title', FILTER_UNSAFE_RAW);
+        $author = filter_input(INPUT_POST, 'author', FILTER_UNSAFE_RAW);
+        $genre = filter_input(INPUT_POST, 'genre', FILTER_UNSAFE_RAW);
+        $pages = filter_input(INPUT_POST, 'pages', FILTER_VALIDATE_INT);
     }
 
     // Basic validation

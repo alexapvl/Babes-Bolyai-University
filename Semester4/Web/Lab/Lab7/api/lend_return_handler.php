@@ -27,12 +27,25 @@ $user = requireAuth();
 
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
-    $data = json_decode(file_get_contents('php://input'), true);
-
-    // --- Data Validation & Processing ---
-    $action = $data['action'] ?? null;
-    $bookId = $data['bookId'] ?? null;
+    // Handle both JSON and FormData input
+    $action = null;
+    $bookId = null;
+    
+    // Check Content-Type to determine how to parse the data
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    
+    if (strpos($contentType, 'application/json') !== false) {
+        // Handle JSON input
+        $data = json_decode(file_get_contents('php://input'), true);
+        if ($data) {
+            $action = $data['action'] ?? null;
+            $bookId = $data['bookId'] ?? null;
+        }
+    } else {
+        // Handle FormData input (fallback)
+        $action = $_POST['action'] ?? null;
+        $bookId = $_POST['bookId'] ?? null;
+    }
 
     // Validate Book ID
     if (!$bookId || !filter_var($bookId, FILTER_VALIDATE_INT)) {
@@ -68,8 +81,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         if ($action === 'lend') {
-            $lentTo = trim($data['lentTo'] ?? '');
-            $lentDate = $data['lentDate'] ?? null;
+            // Get additional fields based on input type
+            if (strpos($contentType, 'application/json') !== false) {
+                $lentTo = trim($data['lentTo'] ?? '');
+                $lentDate = $data['lentDate'] ?? null;
+            } else {
+                $lentTo = trim($_POST['lentTo'] ?? '');
+                $lentDate = $_POST['lentDate'] ?? null;
+            }
 
             // Validate Lend Data
             if (empty($lentTo)) {
