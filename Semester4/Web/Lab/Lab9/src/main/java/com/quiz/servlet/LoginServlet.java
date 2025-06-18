@@ -1,7 +1,7 @@
 package com.quiz.servlet;
 
-import com.quiz.dao.UserDAO;
-import com.quiz.model.User;
+import com.quiz.dao.SoftwareDeveloperDAO;
+import com.quiz.model.SoftwareDeveloper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class LoginServlet extends HttpServlet {
 
-  private UserDAO userDAO = new UserDAO();
+  private SoftwareDeveloperDAO softwareDeveloperDAO = new SoftwareDeveloperDAO();
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
     HttpSession session = request.getSession(false);
     if (session != null && session.getAttribute("user") != null) {
       // User is already logged in, redirect to dashboard
-      response.sendRedirect(request.getContextPath() + "/dashboard");
+      response.sendRedirect(request.getContextPath() + "/projects");
       return;
     }
 
@@ -46,19 +46,19 @@ public class LoginServlet extends HttpServlet {
     }
 
     // Authenticate user
-    if (userDAO.authenticate(username)) {
+    if (softwareDeveloperDAO.authenticate(username)) {
       // Get user details
-      Optional<User> userOpt = userDAO.findByUsername(username);
+      Optional<SoftwareDeveloper> softwareDeveloperOpt = softwareDeveloperDAO.findByUsername(username);
 
-      if (userOpt.isPresent()) {
-        User user = userOpt.get();
+      if (softwareDeveloperOpt.isPresent()) {
+        SoftwareDeveloper softwareDeveloper = softwareDeveloperOpt.get();
 
         // Create session and add user
         HttpSession session = request.getSession(true);
-        session.setAttribute("user", user);
+        session.setAttribute("user", softwareDeveloper);
 
         // Redirect to dashboard
-        response.sendRedirect(request.getContextPath() + "/dashboard");
+        response.sendRedirect(request.getContextPath() + "/projects");
       } else {
         // This should not happen if authentication succeeded
         request.setAttribute("error", "An error occurred. Please try again.");

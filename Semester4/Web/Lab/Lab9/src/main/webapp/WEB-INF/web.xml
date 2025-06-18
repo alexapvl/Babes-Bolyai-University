@@ -5,7 +5,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
          
-    <display-name>Quiz Application</display-name>
+    <display-name>Project Manager</display-name>
     
     <!-- Session configuration -->
     <session-config>
@@ -21,6 +21,26 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.quiz.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ProjectsServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.ProjectsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MyProjectsServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.MyProjectsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SoftwareDeveloperServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.SoftwareDeveloperServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ManageProjectsServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.ManageProjectsServlet</servlet-class>
     </servlet>
     
     <servlet>
@@ -57,6 +77,26 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ProjectsServlet</servlet-name>
+        <url-pattern>/projects</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MyProjectsServlet</servlet-name>
+        <url-pattern>/my-projects</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SoftwareDeveloperServlet</servlet-name>
+        <url-pattern>/software-developers</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ManageProjectsServlet</servlet-name>
+        <url-pattern>/manage-projects</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
@@ -97,6 +137,10 @@
     
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/manage-projects</url-pattern>
+        <url-pattern>/software-developers</url-pattern>
+        <url-pattern>/my-projects</url-pattern>
+        <url-pattern>/projects</url-pattern>
         <url-pattern>/dashboard</url-pattern>
         <url-pattern>/quiz</url-pattern>
         <url-pattern>/quiz-config</url-pattern>
