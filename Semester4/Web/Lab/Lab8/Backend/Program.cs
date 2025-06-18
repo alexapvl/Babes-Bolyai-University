@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 
 // Configure database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<LibraryContext>(options =>
+builder.Services.AddDbContext<ProjectContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Configure authentication
@@ -49,7 +49,8 @@ builder.Services.AddCors(options =>
 
 // Register services
 builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<SoftwareDeveloperService>();
+builder.Services.AddScoped<ProjectService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
