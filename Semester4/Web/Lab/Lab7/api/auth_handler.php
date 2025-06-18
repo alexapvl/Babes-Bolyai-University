@@ -74,7 +74,7 @@ function handleLogin($db) {
     $username = $input['username'];
     
     // Find user by username
-    $stmt = $db->prepare("SELECT id, username FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id, username FROM User WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     
@@ -129,7 +129,7 @@ function handleRegister($db) {
         return;
     }
     
-    $stmt = $db->prepare("INSERT INTO users (username) VALUES (:username)");
+    $stmt = $db->prepare("INSERT INTO User (username) VALUES (:username)");
     $stmt->bindParam(':username', $username);
     
     if ($stmt->execute()) {
@@ -194,7 +194,7 @@ function handleValidateToken() {
 }
 
 function handleCheckUsername($db, $username) {
-    $stmt = $db->prepare("SELECT id FROM users WHERE username = :username");
+    $stmt = $db->prepare("SELECT id FROM User WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     

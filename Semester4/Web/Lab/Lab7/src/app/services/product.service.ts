@@ -1,0 +1,317 @@
+import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Product } from '../models/product.model';
+import { Order, OrderItem } from '../models/order.model';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductService {
+  // Base URL to the PHP API
+  private apiUrl = '/api';
+
+  constructor(private http: HttpClient) {}
+
+  // Get all books, optionally filtered by genre
+  getProducts(): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(`${this.apiUrl}/get_products.php`)
+      .pipe(catchError(this.handleError));
+  }
+
+  addOrder(order: Order) {
+    console.log('Sending order data:', order);
+
+    // Try sending as JSON first
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http
+      .post(`${this.apiUrl}/add_order_handler.php`, order, { headers })
+      .pipe(
+        tap((response) => console.log('Add order response:', response)),
+        catchError((error) => {
+          console.error('Error adding order as JSON:', error);
+
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // If JSON fails, try FormData as fallback for server errors only
+          const formData = new FormData();
+          formData.append('userId', String(order.userId));
+          formData.append('totalPrice', String(order.totalPrice));
+
+          console.log('Trying FormData approach...');
+          return this.http
+            .post(`${this.apiUrl}/add_order_handler.php`, formData)
+            .pipe(
+              tap((response) => console.log('FormData response:', response)),
+              catchError(this.handleError)
+            );
+        })
+      );
+  }
+
+  addOrderItem(orderItem: OrderItem) {
+    console.log('Sending order data:', orderItem);
+
+    // Try sending as JSON first
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http
+      .post(`${this.apiUrl}/add_order_item_handler.php`, orderItem, { headers })
+      .pipe(
+        tap((response) => console.log('Add order response:', response)),
+        catchError((error) => {
+          console.error('Error adding order as JSON:', error);
+
+          // Don't fall back to FormData for client errors (4xx)
+          if (error.status >= 400 && error.status < 500) {
+            return throwError(() => error.error.message);
+          }
+
+          // If JSON fails, try FormData as fallback for server errors only
+          const formData = new FormData();
+          formData.append('orderId', String(orderItem.orderId));
+          formData.append('productId', String(orderItem.productId));
+
+          console.log('Trying FormData approach...');
+          return this.http
+            .post(`${this.apiUrl}/add_order_handler.php`, formData)
+            .pipe(
+              tap((response) => console.log('FormData response:', response)),
+              catchError(this.handleError)
+            );
+        })
+      );
+  }
+
+  // Add a new book
+  // addBook(book: Book): Observable<any> {
+  //   console.log('Sending book data:', book);
+
+  //   // Try sending as JSON first
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http
+  //     .post(`${this.apiUrl}/add_book_handler.php`, book, { headers })
+  //     .pipe(
+  //       tap((response) => console.log('Add book response:', response)),
+  //       catchError((error) => {
+  //         console.error('Error adding book as JSON:', error);
+
+  //         // Don't fall back to FormData for client errors (4xx)
+  //         if (error.status >= 400 && error.status < 500) {
+  //           return throwError(() => error.error.message);
+  //         }
+
+  //         // If JSON fails, try FormData as fallback for server errors only
+  //         const formData = new FormData();
+  //         formData.append('title', book.title);
+  //         formData.append('author', book.author);
+
+  //         if (book.genre) {
+  //           formData.append('genre', book.genre);
+  //         }
+
+  //         if (book.pages) {
+  //           formData.append('pages', book.pages.toString());
+  //         }
+
+  //         console.log('Trying FormData approach...');
+  //         return this.http
+  //           .post(`${this.apiUrl}/add_book_handler.php`, formData)
+  //           .pipe(
+  //             tap((response) => console.log('FormData response:', response)),
+  //             catchError(this.handleError)
+  //           );
+  //       })
+  //     );
+  // }
+
+  // Update an existing book
+  // updateBook(book: Book): Observable<any> {
+  //   // Try with JSON first
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http
+  //     .post(`${this.apiUrl}/edit_book_handler.php`, book, { headers })
+  //     .pipe(
+  //       tap((response) => console.log('Update book response:', response)),
+  //       catchError((error) => {
+  //         console.error('Error updating book as JSON:', error);
+
+  //         // Don't fall back to FormData for authorization errors (403) or client errors (4xx)
+  //         // Only fall back for server errors or network issues that might be JSON parsing related
+  //         if (error.status >= 400 && error.status < 500) {
+  //           // Client errors (400-499) should not trigger FormData fallback
+  //           return throwError(() => error.error.message);
+  //         }
+
+  //         // Fall back to FormData only for server errors or network issues
+  //         const formData = new FormData();
+
+  //         if (book.id) {
+  //           formData.append('id', book.id.toString());
+  //         }
+
+  //         formData.append('title', book.title);
+  //         formData.append('author', book.author);
+
+  //         if (book.genre) {
+  //           formData.append('genre', book.genre);
+  //         }
+
+  //         if (book.pages) {
+  //           formData.append('pages', book.pages.toString());
+  //         }
+
+  //         return this.http
+  //           .post(`${this.apiUrl}/edit_book_handler.php`, formData)
+  //           .pipe(
+  //             tap((response) => console.log('FormData response:', response)),
+  //             catchError(this.handleError)
+  //           );
+  //       })
+  //     );
+  // }
+
+  // Delete a book
+  // deleteBook(id: number): Observable<any> {
+  //   const payload = { bookId: id };
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http
+  //     .post(`${this.apiUrl}/delete_book_handler.php`, payload, { headers })
+  //     .pipe(
+  //       catchError((error) => {
+  //         // Don't fall back to FormData for client errors (4xx)
+  //         if (error.status >= 400 && error.status < 500) {
+  //           return throwError(() => error.error.message);
+  //         }
+
+  //         // Fallback to FormData for server errors only
+  //         const formData = new FormData();
+  //         formData.append('bookId', id.toString());
+
+  //         return this.http
+  //           .post(`${this.apiUrl}/delete_book_handler.php`, formData)
+  //           .pipe(catchError(this.handleError));
+  //       })
+  //     );
+  // }
+
+  // Lend a book
+  // lendBook(bookId: number, lentTo: string, lentDate: string): Observable<any> {
+  //   const payload = {
+  //     action: 'lend',
+  //     bookId,
+  //     lentTo,
+  //     lentDate,
+  //   };
+
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http
+  //     .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
+  //     .pipe(
+  //       catchError((error) => {
+  //         // Don't fall back to FormData for client errors (4xx)
+  //         if (error.status >= 400 && error.status < 500) {
+  //           return throwError(() => error.error.message);
+  //         }
+
+  //         // Fallback to FormData for server errors only
+  //         const formData = new FormData();
+  //         formData.append('action', 'lend');
+  //         formData.append('bookId', bookId.toString());
+  //         formData.append('lentTo', lentTo);
+  //         formData.append('lentDate', lentDate);
+
+  //         return this.http
+  //           .post(`${this.apiUrl}/lend_return_handler.php`, formData)
+  //           .pipe(catchError(this.handleError));
+  //       })
+  //     );
+  // }
+
+  // Return a book
+  // returnBook(bookId: number): Observable<any> {
+  //   const payload = {
+  //     action: 'return',
+  //     bookId,
+  //   };
+
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http
+  //     .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
+  //     .pipe(
+  //       catchError((error) => {
+  //         // Don't fall back to FormData for client errors (4xx)
+  //         if (error.status >= 400 && error.status < 500) {
+  //           return throwError(() => error.error.message);
+  //         }
+
+  //         // Fallback to FormData for server errors only
+  //         const formData = new FormData();
+  //         formData.append('action', 'return');
+  //         formData.append('bookId', bookId.toString());
+
+  //         return this.http
+  //           .post(`${this.apiUrl}/lend_return_handler.php`, formData)
+  //           .pipe(catchError(this.handleError));
+  //       })
+  //     );
+  // }
+
+  // Error handling method
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred';
+
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+
+      // Try to parse error response if it's JSON
+      if (typeof error.error === 'object') {
+        try {
+          const errorObj = error.error;
+          errorMessage += `\nServer response: ${
+            errorObj.message || JSON.stringify(errorObj)
+          }`;
+        } catch (e) {
+          console.error('Could not parse error response:', e);
+        }
+      } else if (typeof error.error === 'string') {
+        errorMessage += `\nServer response: ${error.error}`;
+      }
+    }
+
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));
+  }
+}

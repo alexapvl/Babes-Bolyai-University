@@ -157,7 +157,7 @@ export class RegisterComponent {
 
     this.authService.register(this.registerForm.value).subscribe({
       next: () => {
-        this.router.navigate(['/books']);
+        this.router.navigate(['/products']);
       },
       error: (error) => {
         this.error =

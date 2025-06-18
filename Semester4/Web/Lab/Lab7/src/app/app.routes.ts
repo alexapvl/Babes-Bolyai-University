@@ -5,10 +5,12 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { authGuard } from './guards/auth.guard';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'products', component: ProductListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'books', component: BookListComponent, canActivate: [authGuard] },
   { path: 'books/add', component: BookFormComponent, canActivate: [authGuard] },
@@ -22,5 +24,5 @@ export const routes: Routes = [
     component: BookDetailComponent,
     canActivate: [authGuard],
   },
-  { path: '**', redirectTo: '/books' },
+  { path: '**', redirectTo: '/products' },
 ];

@@ -153,7 +153,7 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
-        this.router.navigate(['/books']);
+        this.router.navigate(['/products']);
       },
       error: (error) => {
         this.error =
