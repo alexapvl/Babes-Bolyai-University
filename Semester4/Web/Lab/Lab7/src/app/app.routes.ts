@@ -7,6 +7,7 @@ import { authGuard } from './guards/auth.guard';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { MyProjectListComponent } from './components/my-project-list/my-project-list.component';
 import { DeveloperListComponent } from './components/developer-list/developer-list.component';
+import { ManageProjectsFormComponent } from './components/manage-projects-form/manage-projects-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/projects', pathMatch: 'full' },
@@ -25,6 +26,11 @@ export const routes: Routes = [
   {
     path: 'developers',
     component: DeveloperListComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'manage-projects',
+    component: ManageProjectsFormComponent,
     canActivate: [authGuard],
   },
   { path: 'books/add', component: BookFormComponent, canActivate: [authGuard] },

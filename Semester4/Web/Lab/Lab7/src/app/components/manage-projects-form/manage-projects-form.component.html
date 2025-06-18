@@ -1,0 +1,19 @@
+<!-- <div class="filter-section">
+  <mat-form-field>
+    <mat-label>Filter by Genre</mat-label>
+    <mat-select [(ngModel)]="selectedGenre" (selectionChange)="filterByGenre()">
+      <mat-option value="all">All Genres</mat-option>
+      <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div> -->
+
+<div *ngIf="loading" class="loading">
+  Loading manaegr projects...
+</div>
+
+<div>
+  <input class="developer-name-input" type="text" [(ngModel)]="developerToAssign" placeholder="Developer name">
+  <input class="projects-list-input" type="text" [(ngModel)]="projectsList" placeholder="Projects list">
+  <button mat-button (click)="manageProjects()" [disabled]="loading">Manage Projects</button>
+</div>

@@ -34,135 +34,13 @@ export class ProjectService {
       .pipe(catchError(this.handleError));
   }
 
-  // -------------------------------
-  // Add a new book
-  // addProject(book: Book): Observable<any> {
-  //   console.log('Sending book data:', book);
-
-  //   // Try sending as JSON first
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   });
-
-  //   return this.http
-  //     .post(`${this.apiUrl}/add_book_handler.php`, book, { headers })
-  //     .pipe(
-  //       tap((response) => console.log('Add book response:', response)),
-  //       catchError((error) => {
-  //         console.error('Error adding book as JSON:', error);
-
-  //         // Don't fall back to FormData for client errors (4xx)
-  //         if (error.status >= 400 && error.status < 500) {
-  //           return throwError(() => error.error.message);
-  //         }
-
-  //         // If JSON fails, try FormData as fallback for server errors only
-  //         const formData = new FormData();
-  //         formData.append('title', book.title);
-  //         formData.append('author', book.author);
-
-  //         if (book.genre) {
-  //           formData.append('genre', book.genre);
-  //         }
-
-  //         if (book.pages) {
-  //           formData.append('pages', book.pages.toString());
-  //         }
-
-  //         console.log('Trying FormData approach...');
-  //         return this.http
-  //           .post(`${this.apiUrl}/add_book_handler.php`, formData)
-  //           .pipe(
-  //             tap((response) => console.log('FormData response:', response)),
-  //             catchError(this.handleError)
-  //           );
-  //       })
-  //     );
-  // }
-
-  // // Update an existing book
-  // updateBook(book: Book): Observable<any> {
-  //   // Try with JSON first
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   });
-
-  //   return this.http
-  //     .post(`${this.apiUrl}/edit_book_handler.php`, book, { headers })
-  //     .pipe(
-  //       tap((response) => console.log('Update book response:', response)),
-  //       catchError((error) => {
-  //         console.error('Error updating book as JSON:', error);
-
-  //         // Don't fall back to FormData for authorization errors (403) or client errors (4xx)
-  //         // Only fall back for server errors or network issues that might be JSON parsing related
-  //         if (error.status >= 400 && error.status < 500) {
-  //           // Client errors (400-499) should not trigger FormData fallback
-  //           return throwError(() => error.error.message);
-  //         }
-
-  //         // Fall back to FormData only for server errors or network issues
-  //         const formData = new FormData();
-
-  //         if (book.id) {
-  //           formData.append('id', book.id.toString());
-  //         }
-
-  //         formData.append('title', book.title);
-  //         formData.append('author', book.author);
-
-  //         if (book.genre) {
-  //           formData.append('genre', book.genre);
-  //         }
-
-  //         if (book.pages) {
-  //           formData.append('pages', book.pages.toString());
-  //         }
-
-  //         return this.http
-  //           .post(`${this.apiUrl}/edit_book_handler.php`, formData)
-  //           .pipe(
-  //             tap((response) => console.log('FormData response:', response)),
-  //             catchError(this.handleError)
-  //           );
-  //       })
-  //     );
-  // }
-
-  // Delete a book
-  deleteBook(id: number): Observable<any> {
-    const payload = { bookId: id };
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http
-      .post(`${this.apiUrl}/delete_book_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Don't fall back to FormData for client errors (4xx)
-          if (error.status >= 400 && error.status < 500) {
-            return throwError(() => error.error.message);
-          }
-
-          // Fallback to FormData for server errors only
-          const formData = new FormData();
-          formData.append('bookId', id.toString());
-
-          return this.http
-            .post(`${this.apiUrl}/delete_book_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
-  }
-
-  // Lend a book
-  lendBook(bookId: number, lentTo: string, lentDate: string): Observable<any> {
+  manageProjects(
+    projectsList: string,
+    developerToAssign: string
+  ): Observable<any> {
     const payload = {
-      action: 'lend',
-      bookId,
-      lentTo,
-      lentDate,
+      projectsList,
+      developerToAssign,
     };
 
     const headers = new HttpHeaders({
@@ -170,58 +48,8 @@ export class ProjectService {
     });
 
     return this.http
-      .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Don't fall back to FormData for client errors (4xx)
-          if (error.status >= 400 && error.status < 500) {
-            return throwError(() => error.error.message);
-          }
-
-          // Fallback to FormData for server errors only
-          const formData = new FormData();
-          formData.append('action', 'lend');
-          formData.append('bookId', bookId.toString());
-          formData.append('lentTo', lentTo);
-          formData.append('lentDate', lentDate);
-
-          return this.http
-            .post(`${this.apiUrl}/lend_return_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
-  }
-
-  // Return a book
-  returnBook(bookId: number): Observable<any> {
-    const payload = {
-      action: 'return',
-      bookId,
-    };
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http
-      .post(`${this.apiUrl}/lend_return_handler.php`, payload, { headers })
-      .pipe(
-        catchError((error) => {
-          // Don't fall back to FormData for client errors (4xx)
-          if (error.status >= 400 && error.status < 500) {
-            return throwError(() => error.error.message);
-          }
-
-          // Fallback to FormData for server errors only
-          const formData = new FormData();
-          formData.append('action', 'return');
-          formData.append('bookId', bookId.toString());
-
-          return this.http
-            .post(`${this.apiUrl}/lend_return_handler.php`, formData)
-            .pipe(catchError(this.handleError));
-        })
-      );
+      .post(`${this.apiUrl}/manage_projects_handler.php`, payload, { headers })
+      .pipe(catchError(this.handleError));
   }
 
   // Error handling method
