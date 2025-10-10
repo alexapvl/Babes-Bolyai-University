@@ -1,0 +1,42 @@
+<program> ::= <statement> <program_tail>
+<program_tail> ::= <statement> <program_tail> | epsilon
+
+<statement> ::= <var_stmt> | <load_stmt> | <filter_stmt> | <map_stmt> | <select_stmt> | <save_stmt> | <for_stmt> | <while_stmt>
+
+<var_stmt> ::= "VAR" <identifier> "=" <operand> ";"
+<load_stmt> ::= "LOAD" <string> ";"
+<filter_stmt> ::= "FILTER" <operand> <comparison_op> <operand> ";"
+<map_stmt> ::= "MAP" <operand> "=" <expression> ";"
+<select_stmt> ::= "SELECT" <identifier_list> ";"
+<save_stmt> ::= "SAVE" <string> ";"
+<for_stmt> ::= "FOR" <identifier> "IN" <range> "DO" <statement_list> "END" ";"
+<while_stmt> ::= "WHILE" <condition> "DO" <statement_list> "END" ";"
+
+<expression> ::= <term> <expression_tail>
+<expression_tail> ::= <arith_op> <term> <expression_tail> | epsilon
+<term> ::= <operand> | "(" <expression> ")"
+
+<statement_list> ::= <statement> <statement_list> | epsilon
+<range> ::= <number> "TO" <number>
+<condition> ::= <operand> <comparison_op> <operand>
+<operand> ::= <identifier> | <string> | <number>
+
+<identifier_list> ::= <identifier> <identifier_list_tail>
+<identifier_list_tail> ::= "," <identifier> <identifier_list_tail> | epsilon
+
+<comparison_op> ::= "==" | "!=" | ">" | "<" | ">=" | "<="
+<arith_op> ::= "+" | "-" | "*" | "/"
+
+<identifier> ::= <letter> <identifier_tail>
+<identifier_tail> ::= <letter_or_digit_or_underscore> <identifier_tail> | epsilon
+<letter_or_digit_or_underscore> ::= <letter> | <digit> | "_"
+
+<string> ::= '"' <string_characters> '"'
+<string_characters> ::= <string_character> <string_characters> | epsilon
+<string_character> ::= <letter> | <digit> | "_" | " " | "." | "/"
+
+<number> ::= <digit> <number_tail>
+<number_tail> ::= <digit> <number_tail> | epsilon
+
+<letter> ::= "a" | … | "z" | "A" | … | "Z"
+<digit> ::= "0" | … | "9"
