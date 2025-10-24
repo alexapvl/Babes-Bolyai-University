@@ -1,0 +1,37 @@
+VAR threshold = 50;
+VAR max_value = 200;
+VAR min_value = 10;
+
+LOAD "sales_data.csv";
+
+MAP sales_data = sales_data * 2;
+
+FILTER sales_data > threshold;
+
+MAP sales_data = sales_data + 100;
+
+FILTER sales_data < max_value;
+SELECT sales_data;
+LOAD "customer_data.csv";
+
+FOR i IN 1 TO 5 DO
+    MAP customer_data = customer_data + i;
+    FILTER customer_data > min_value;
+END;
+
+VAR multiplier = 3;
+VAR offset = 25;
+
+WHILE multiplier < 10 DO
+    MAP customer_data = customer_data * multiplier;
+    FILTER customer_data != 75;
+END;
+
+FOR j IN 0 TO 3 DO
+    FILTER customer_data >= min_value;
+    MAP customer_data = customer_data - j;
+END;
+
+SELECT customer_data, sales_data;
+
+SAVE "processed_output.csv";

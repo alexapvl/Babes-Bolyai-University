@@ -1,0 +1,8 @@
+VAR x = 10;
+VAR y = 20;
+LOAD "data.csv";
+FILTER x > 5;
+MAP y = y + x;
+SELECT x, y;
+SAVE "output.csv";
+
