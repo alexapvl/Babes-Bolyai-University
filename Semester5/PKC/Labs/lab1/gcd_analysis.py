@@ -44,7 +44,7 @@ def gcd_binary(a, b):
 
 if __name__ == "__main__":
     inputs = [
-        (192, 270),
+        (0, 270),
         (12345, 54321),
         (65537, 1),
         (9876543210, 1234567890),
@@ -75,9 +75,9 @@ if __name__ == "__main__":
         time_euclidean = (end_time - start_time) * 1000
         euclidean_result = f"{res_euclidean} ({time_euclidean:.4f} ms)"
 
-        # Subtractive
-        if a > 1000000 or b > 1000000:
-            subtractive_result = "Too slow to compute"
+        #Subtractive
+        if a > 1000000 or b > 1000000 or a == 0 or b == 0:
+            subtractive_result = "Too slow to compute or 0"
         else:
             start_time = time.perf_counter()
             res_subtractive = gcd_subtractive(a, b)
