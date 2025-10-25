@@ -1,0 +1,29 @@
+VAR x = 10;
+VAR @invalid = 20;
+VAR _underscore = 30;
+VAR 123number = 40;
+
+LOAD "data.csv";
+LOAD "file@error.csv";
+FILTER x > 5;
+
+VAR email = "test@email.com";
+
+MAP y = x + 10;
+MAP z$ = x * 2;
+
+SELECT x, y#, z;
+
+FILTER data >= 100%;
+
+SAVE "output.csv";
+
+FOR i IN 1 TO 5 DO
+    VAR temp& = i + 1;
+    FILTER temp > 0;
+END;
+
+WHILE x < 10 DO
+    MAP x = x ^ 2;
+END;
+
