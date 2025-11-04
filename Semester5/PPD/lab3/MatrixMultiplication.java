@@ -25,7 +25,7 @@ public class MatrixMultiplication {
         if (debug) {
             System.out.println("Thread " + threadId + " computing element (" + row + ", " + col + ")");
         }
-        
+
         int sum = 0;
         for (int k = 0; k < colsA; k++) {
             sum += matrixA[row][k] * matrixB[k][col];
@@ -40,12 +40,12 @@ public class MatrixMultiplication {
         Thread[] threads = new Thread[numThreads];
         int totalElements = rowsA * colsB;
         int elementsPerThread = totalElements / numThreads;
-        
+
         for (int t = 0; t < numThreads; t++) {
             final int threadId = t;
             final int startElement = t * elementsPerThread;
             final int endElement = (t == numThreads - 1) ? totalElements : (t + 1) * elementsPerThread;
-            
+
             threads[t] = new Thread(() -> {
                 for (int elem = startElement; elem < endElement; elem++) {
                     int row = elem / colsB;
@@ -55,25 +55,26 @@ public class MatrixMultiplication {
             });
             threads[t].start();
         }
-        
+
         for (Thread thread : threads) {
             thread.join();
         }
     }
 
     /**
-     * Strategy 2: Each thread computes consecutive elements, going column after column.
+     * Strategy 2: Each thread computes consecutive elements, going column after
+     * column.
      */
     public void multiplyColumnWise(int numThreads) throws InterruptedException {
         Thread[] threads = new Thread[numThreads];
         int totalElements = rowsA * colsB;
         int elementsPerThread = totalElements / numThreads;
-        
+
         for (int t = 0; t < numThreads; t++) {
             final int threadId = t;
             final int startElement = t * elementsPerThread;
             final int endElement = (t == numThreads - 1) ? totalElements : (t + 1) * elementsPerThread;
-            
+
             threads[t] = new Thread(() -> {
                 for (int elem = startElement; elem < endElement; elem++) {
                     // Column-major order: traverse column by column
@@ -84,23 +85,24 @@ public class MatrixMultiplication {
             });
             threads[t].start();
         }
-        
+
         for (Thread thread : threads) {
             thread.join();
         }
     }
 
     /**
-     * Strategy 3: Each thread takes every k-th element (where k is the number of threads),
+     * Strategy 3: Each thread takes every k-th element (where k is the number of
+     * threads),
      * going row by row.
      */
     public void multiplyKthElement(int numThreads) throws InterruptedException {
         Thread[] threads = new Thread[numThreads];
         int totalElements = rowsA * colsB;
-        
+
         for (int t = 0; t < numThreads; t++) {
             final int threadId = t;
-            
+
             threads[t] = new Thread(() -> {
                 for (int elem = threadId; elem < totalElements; elem += numThreads) {
                     int row = elem / colsB;
@@ -110,14 +112,14 @@ public class MatrixMultiplication {
             });
             threads[t].start();
         }
-        
+
         for (Thread thread : threads) {
             thread.join();
         }
     }
 
     /**
-     * Sequential multiplication for comparison.
+     * Sequential multiplication for comparison. No threads are used.
      */
     public void multiplySequential() {
         for (int i = 0; i < rowsA; i++) {
@@ -161,4 +163,3 @@ public class MatrixMultiplication {
         return true;
     }
 }
-

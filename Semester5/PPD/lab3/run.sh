@@ -14,4 +14,3 @@ else
     echo "Compilation failed!"
     exit 1
 fi
-
