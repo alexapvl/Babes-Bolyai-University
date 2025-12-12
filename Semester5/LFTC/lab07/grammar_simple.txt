@@ -1,0 +1,17 @@
+# Simple Grammar for Testing LL(1) Parser (Requirement 1)
+# This is a simple expression grammar: S -> a A, A -> b A | epsilon
+
+# Define terminals (lowercase letters in this simple case)
+TERMINALS: a b
+
+# Define non-terminals
+NONTERMINALS: S A
+
+# Start symbol
+START: S
+
+# Production rules
+# Format: LHS -> RHS1 RHS2 ... | ALT1 ALT2 ...
+
+S -> a A
+A -> b A | epsilon

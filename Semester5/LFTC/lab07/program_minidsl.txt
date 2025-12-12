@@ -1,0 +1,4 @@
+VAR VAR x = 5;
+VAR y = x + 10;
+LOAD "data.csv";
+SAVE "output.csv";

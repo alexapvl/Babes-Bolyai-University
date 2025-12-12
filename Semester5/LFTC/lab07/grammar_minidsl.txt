@@ -1,0 +1,68 @@
+# MiniDSL Grammar for LL(1) Parser (Requirement 2)
+# Based on lab01/bnf.txt - already in LL(1) compatible form (left-factored)
+
+# ============================================================================
+# TERMINALS
+# ============================================================================
+# Keywords: VAR, LOAD, FILTER, MAP, SELECT, SAVE, FOR, WHILE, IN, DO, END, TO
+# Operators: + - * / = == != > < >= <=
+# Delimiters: ; , ( )
+# Literals: IDENTIFIER, NUMBER, STRING
+
+TERMINALS: VAR LOAD FILTER MAP SELECT SAVE FOR WHILE IN DO END TO + - * / = == != > < >= <= ; , ( ) IDENTIFIER NUMBER STRING
+
+# ============================================================================
+# NON-TERMINALS
+# ============================================================================
+
+NONTERMINALS: program program_tail statement var_stmt load_stmt filter_stmt map_stmt select_stmt save_stmt for_stmt while_stmt expression expression_tail term term_tail factor operand statement_list range condition identifier_list identifier_list_tail comparison_op
+
+# ============================================================================
+# START SYMBOL
+# ============================================================================
+
+START: program
+
+# ============================================================================
+# PRODUCTION RULES
+# ============================================================================
+
+# Program structure
+program -> statement program_tail
+program_tail -> statement program_tail | epsilon
+
+# Statement types
+statement -> var_stmt | load_stmt | filter_stmt | map_stmt | select_stmt | save_stmt | for_stmt | while_stmt
+
+# Individual statements
+var_stmt -> VAR IDENTIFIER = expression ;
+load_stmt -> LOAD STRING ;
+filter_stmt -> FILTER expression comparison_op expression ;
+map_stmt -> MAP operand = expression ;
+select_stmt -> SELECT identifier_list ;
+save_stmt -> SAVE STRING ;
+for_stmt -> FOR IDENTIFIER IN range DO statement_list END ;
+while_stmt -> WHILE condition DO statement_list END ;
+
+# Expressions (left-factored for LL(1))
+expression -> term expression_tail
+expression_tail -> + term expression_tail | - term expression_tail | epsilon
+
+term -> factor term_tail
+term_tail -> * factor term_tail | / factor term_tail | epsilon
+
+factor -> operand | ( expression )
+
+operand -> IDENTIFIER | STRING | NUMBER
+
+# Control structures
+statement_list -> statement statement_list | epsilon
+range -> expression TO expression
+condition -> expression comparison_op expression
+
+# Lists
+identifier_list -> IDENTIFIER identifier_list_tail
+identifier_list_tail -> , IDENTIFIER identifier_list_tail | epsilon
+
+# Comparison operators
+comparison_op -> == | != | > | < | >= | <=

@@ -1,0 +1,18 @@
+# Seminar Grammar for Testing LL(1) Parser
+# S -> Bb | Cd
+# B -> aB | epsilon
+# C -> cC | epsilon
+
+# Define terminals
+TERMINALS: a b c d
+
+# Define non-terminals
+NONTERMINALS: S B C
+
+# Start symbol
+START: S
+
+# Production rules
+S -> B b | C d
+B -> a B | epsilon
+C -> c C | epsilon
