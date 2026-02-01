@@ -1,0 +1,30 @@
+# Node.js / Server
+server/node_modules/
+server/package-lock.json
+
+# Xcode User Data (machine-specific, should not be committed)
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+
+# Xcode Build Products
+DerivedData/
+build/
+*.app
+*.dSYM
+*.dSYM.zip
+
+# CocoaPods / SPM
+Pods/
+.build/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+*.code-workspace
