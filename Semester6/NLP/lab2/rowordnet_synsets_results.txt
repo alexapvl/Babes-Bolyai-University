@@ -1,0 +1,1640 @@
+
+============================================================
+carte (n) — 34 senses
+============================================================
+
+  Sense 1: ENG30-02962545-n
+    Definition  : Fiecare dintre cele 52 sau 32 de cartoane dreptunghiulare, diferențiate după culorile, semnele și figurile imprimate pe ele și întrebuințate la unele jocuri de noroc.
+    Literals    : ['carte', 'carte_de_joc']
+    Lit. senses : ['12', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> hârtie (ENG30-14974264-n)
+    hyponym                   -> carte (ENG30-03963982-n)
+    hyponym                   -> cartelă_perforată (ENG30-04023808-n)
+    hyponym                   -> carte_de_tarot (ENG30-04394821-n)
+    hyponym                   -> card_comercial (ENG30-04465795-n)
+    Path to root: carte -> hârtie -> materie -> compus -> materie
+
+  Sense 2: ENG30-06413020-n
+    Definition  : volum care conține indicații privind materiile prime, proporția, modul de preparare pentru obținerea unui anumit produs, a unei mâncări, a unei băuturi etc.
+    Literals    : ['carte_de_bucate']
+    Lit. senses : ['7']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte_fundamentală (ENG30-06417598-n)
+    Path to root: carte_de_bucate -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 3: ENG30-10199103-n
+    Definition  : Persoană care nu știe să scrie și să citească
+    Literals    : ['analfabet', 'neștiutor_de_carte']
+    Lit. senses : ['1.1', '1']
+    PNO         : P=0.00 N=0.50 O=0.50
+    hypernym                  -> ignorant (ENG30-10198958-n)
+    Path to root: analfabet -> ignorant -> persoană_necalifcată -> individ -> organism -> creatură -> ansamblu -> lucru
+
+  Sense 4: ENG30-06418146-n
+    Definition  : Carte ce conține o colecție de cântece
+    Literals    : ['carte_de_cântece', 'culegere_de_cântece']
+    Lit. senses : ['1', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte (ENG30-06410904-n)
+    hyponym                   -> carte_de_imnuri (ENG30-06418258-n)
+    Path to root: carte_de_cântece -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 5: ENG30-06423754-n
+    Definition  : Carte ce conține o listă alfabetică de abonați telefonici și numerele lor de telefon
+    Literals    : ['carte_de_telefon']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> repertoar (ENG30-06423619-n)
+    hyponym                   -> carte_de_telefon (ENG30-07251148-n)
+    hyponym                   -> pagini_aurii (ENG30-07251373-n)
+    Path to root: carte_de_telefon -> repertoar -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 6: ENG30-06418258-n
+    Definition  : Carte de cântece conținând o colecție de imnuri
+    Literals    : ['carte_de_imnuri', 'carte_de_cântece_religioase']
+    Lit. senses : ['1', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte_de_cântece (ENG30-06418146-n)
+    Path to root: carte_de_imnuri -> carte_de_cântece -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 7: ENG30-06415061-n
+    Definition  : Carte din seria manualelor pentru elevii ce învață să citească
+    Literals    : ['carte_de_citire']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> manual (ENG30-06414372-n)
+    Path to root: carte_de_citire -> manual -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 8: ENG30-06416946-n
+    Definition  : Carte ce conține rugăciuni
+    Literals    : ['carte_de_rugăciuni']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte (ENG30-06410904-n)
+    hyponym                   -> misal (ENG30-06417279-n)
+    hyponym                   -> psaltire (ENG30-06417467-n)
+    Path to root: carte_de_rugăciuni -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 9: ENG30-06633205-n
+    Definition  : Bucată de carton indicând numele (profesiunea, adresă etc.) unei persoane folosită cu scopul de a se prezenta
+    Literals    : ['carte_de_vizită']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> salut (ENG30-06630017-n)
+    Path to root: carte_de_vizită -> salut -> înștiințare -> conținut -> comunicare -> abstractizare -> entitate
+
+  Sense 10: ENG30-06627006-n
+    Definition  : Bilet, scrisoare, carte de vizită, ilustrată, special imprimate, prin care cineva este felicitat.;
+    Literals    : ['bilet', 'carte', 'carte_poștală']
+    Lit. senses : ['2.1', '11', '2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> corespondență (ENG30-06623614-n)
+    hyponym                   -> felicitare (ENG30-06627450-n)
+    hyponym                   -> carte_poștală (ENG30-06627938-n)
+    Path to root: bilet -> corespondență -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 11: ENG30-06410904-n
+    Definition  : Scriere publicată, cu un anumit subiect, ce a fost tipărită și legată sau broșată în volum.
+    Literals    : ['carte', 'volum']
+    Lit. senses : ['1', '7.1.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> publicație (ENG30-06589574-n)
+    hyponym                   -> opuscul (ENG30-06413889-n)
+    part_meronym              -> coală (ENG30-06256041-n)
+    hyponym                   -> autoritate (ENG30-06411592-n)
+    hyponym                   -> manual_farmaceutic (ENG30-06411883-n)
+    hyponym                   -> ediție_comercială (ENG30-06412350-n)
+    hyponym                   -> bestiar (ENG30-06412610-n)
+    hyponym                   -> catehism (ENG30-06412771-n)
+    hyponym                   -> ENG30-06413579-n (ENG30-06413579-n)
+    hyponym                   -> manual (ENG30-06414372-n)
+    hyponym                   -> caiet_de_exerciții (ENG30-06415791-n)
+    hyponym                   -> carnet_de_programări (ENG30-06416049-n)
+    hyponym                   -> catalog (ENG30-06416206-n)
+    hyponym                   -> dicționar_de_expresii (ENG30-06416452-n)
+    hyponym                   -> carte_de_rugăciuni (ENG30-06416946-n)
+    hyponym                   -> carte_fundamentală (ENG30-06417598-n)
+    hyponym                   -> ENG30-06418006-n (ENG30-06418006-n)
+    hyponym                   -> carte_de_cântece (ENG30-06418146-n)
+    hyponym                   -> ENG30-07282497-n (ENG30-07282497-n)
+    instance_hyponym          -> Utopia (ENG30-07283198-n)
+    Path to root: carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 12: ENG30-03963982-n
+    Definition  : Fiecare dintre cele 52 sau 32 de cartoane dreptunghiulare, diferențiate după culorile, semnele și figurile imprimate pe ele și întrebuințate la unele jocuri de noroc.
+    Literals    : ['carte']
+    Lit. senses : ['8.2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte (ENG30-02962545-n)
+    member_holonym            -> pachet_de_cărți (ENG30-07956721-n)
+    hyponym                   -> as (ENG30-02673291-n)
+    hyponym                   -> ghindă (ENG30-03053788-n)
+    hyponym                   -> caro (ENG30-03187972-n)
+    hyponym                   -> ENG30-03233246-n (ENG30-03233246-n)
+    part_meronym              -> față (ENG30-03313602-n)
+    hyponym                   -> figură (ENG30-03314028-n)
+    hyponym                   -> cupă (ENG30-03507048-n)
+    hyponym                   -> cărți_hole (ENG30-03527000-n)
+    hyponym                   -> ENG30-04286307-n (ENG30-04286307-n)
+    hyponym                   -> culoare (ENG30-04351233-n)
+    hyponym                   -> treiar (ENG30-04480415-n)
+    hyponym                   -> atu (ENG30-04491135-n)
+    part_meronym              -> punct (ENG30-07271942-n)
+    Path to root: carte -> carte -> hârtie -> materie -> compus -> materie
+
+  Sense 13: ENG30-06627938-n
+    Definition  : carton subțire, cu dimensiuni standard, folosit (fără plic) pentru a trimite mesaje prin poștă
+    Literals    : ['carte_poștală']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> bilet (ENG30-06627006-n)
+    hyponym                   -> vedere (ENG30-06628228-n)
+    Path to root: carte_poștală -> bilet -> corespondență -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 14: ENG30-06417598-n
+    Definition  : o carte cu autoritate într-un domeniu
+    Literals    : ['carte_fundamentală', 'carte_de_referință']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte (ENG30-06410904-n)
+    near_eng_derivat          -> consulta (ENG30-00877083-v)
+    hyponym                   -> carte_de_bucate (ENG30-06413020-n)
+    hyponym                   -> carte_tehnică (ENG30-06413130-n)
+    hyponym                   -> tezaur_de_documente (ENG30-06418558-n)
+    hyponym                   -> vocabular (ENG30-06418693-n)
+    hyponym                   -> memorator (ENG30-06421301-n)
+    hyponym                   -> repertoar (ENG30-06423619-n)
+    hyponym                   -> anuar (ENG30-06426468-n)
+    hyponym                   -> atlas (ENG30-06427086-n)
+    hyponym                   -> enciclopedie (ENG30-06427387-n)
+    Path to root: carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 15: ENG30-10266328-n
+    Definition  : Persoană care știe să citească și să scrie.
+    Literals    : ['literat', 'persoană_cu_carte', 'persoană_cultivată']
+    Lit. senses : ['x', '1', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> individ (ENG30-00007846-n)
+    hyponym                   -> alfabetizat (ENG30-10508862-n)
+    hyponym                   -> scriitor (ENG30-10801291-n)
+    Path to root: literat -> individ -> organism -> creatură -> ansamblu -> lucru
+
+  Sense 16: ENG30-06394865-n
+    Definition  : Diviziune mai mare decât un capitol a unei scrieri de proporții mari.
+    Literals    : ['carte']
+    Lit. senses : ['3']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> secțiune (ENG30-06392001-n)
+    part_holonym              -> text (ENG30-06387980-n)
+    instance_hyponym          -> geneză (ENG30-06432376-n)
+    instance_hyponym          -> Cartea_Exodul (ENG30-06432715-n)
+    instance_hyponym          -> Leviticul (ENG30-06433035-n)
+    instance_hyponym          -> Cartea_Numeri (ENG30-06433249-n)
+    instance_hyponym          -> Codul_Deuteronomic (ENG30-06433475-n)
+    instance_hyponym          -> Iosua (ENG30-06433923-n)
+    instance_hyponym          -> Cartea_Judecători (ENG30-06434165-n)
+    instance_hyponym          -> Cartea_lui_Ruth (ENG30-06434368-n)
+    instance_hyponym          -> Cartea_a_doua_a_lui_Samuel (ENG30-06434826-n)
+    instance_hyponym          -> Cartea_Întâi_a_Regilor (ENG30-06435004-n)
+    instance_hyponym          -> Cronici (ENG30-06435651-n)
+    instance_hyponym          -> Cartea_a_doua_Paralipomena (ENG30-06435916-n)
+    instance_hyponym          -> Cartea_Ezra (ENG30-06436183-n)
+    instance_hyponym          -> Neemia (ENG30-06436443-n)
+    instance_hyponym          -> Estera (ENG30-06436717-n)
+    instance_hyponym          -> Cartea_lui_Iov (ENG30-06436939-n)
+    instance_hyponym          -> Cartea_Psalmilor (ENG30-06437137-n)
+    instance_hyponym          -> Cartea_Proverbelor (ENG30-06437308-n)
+    instance_hyponym          -> Eclesiast (ENG30-06437531-n)
+    instance_hyponym          -> Cântarea_Cântărilor (ENG30-06437824-n)
+    instance_hyponym          -> Cartea_lui_Isaia (ENG30-06438126-n)
+    instance_hyponym          -> Cartea_lui_Ieremia (ENG30-06438290-n)
+    instance_hyponym          -> Cartea_Plângerile_lui_Ieremia (ENG30-06438477-n)
+    instance_hyponym          -> Ezechil (ENG30-06438748-n)
+    instance_hyponym          -> Cartea_lui_Daniel (ENG30-06438995-n)
+    instance_hyponym          -> Cartea_lui_Osea (ENG30-06439253-n)
+    instance_hyponym          -> Ioel (ENG30-06439408-n)
+    instance_hyponym          -> Amos (ENG30-06439560-n)
+    instance_hyponym          -> Iona (ENG30-06439924-n)
+    instance_hyponym          -> Cartea_lui_Mica (ENG30-06440102-n)
+    instance_hyponym          -> Cartea_lui_Naum (ENG30-06440313-n)
+    instance_hyponym          -> Cartea_lui_Habacuc (ENG30-06440489-n)
+    instance_hyponym          -> Cartea_lui_țefania (ENG30-06440663-n)
+    instance_hyponym          -> Agheu (ENG30-06440937-n)
+    instance_hyponym          -> Cartea_lui_Zaharia (ENG30-06441195-n)
+    instance_hyponym          -> Evanghelia_după_Matei (ENG30-06441607-n)
+    instance_hyponym          -> Evanghelia_după_Luca (ENG30-06441973-n)
+    instance_hyponym          -> Actele_Apostolilor (ENG30-06442405-n)
+    instance_hyponym          -> Cartea_Revelației (ENG30-06447897-n)
+    instance_hyponym          -> Adăugiri_la_Ester (ENG30-06458685-n)
+    instance_hyponym          -> Cartea_lui_Judith (ENG30-06459834-n)
+    instance_hyponym          -> 2_Esdras (ENG30-06460167-n)
+    instance_hyponym          -> Ben_Sira (ENG30-06460295-n)
+    instance_hyponym          -> Înțelepciunea_lui_Solomon (ENG30-06460524-n)
+    instance_hyponym          -> Cartea_a_doua_a_Macabeilor (ENG30-06460926-n)
+    Path to root: carte -> secțiune -> scriere -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 17: ENG30-06425404-n
+    Definition  : Bucată de carton moale pe care sunt înscrise numele unei persoane, afiliația și datele sale de contact
+    Literals    : ['carte_de_vizită']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> buletin_de_identitate (ENG30-06477371-n)
+    Path to root: carte_de_vizită -> buletin_de_identitate -> identificare_pozitivă -> identificare -> dovadă -> indicație -> comunicare -> abstractizare -> entitate
+
+  Sense 18: ENG30-06422144-n
+    Definition  : (la pl.) manual sau broșură care însoțește un aparat și care explică instalarea acestuia și modul de operare
+    Literals    : ['instrucțiune', 'carte_tehnică']
+    Lit. senses : ['3.x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> manual (ENG30-06421685-n)
+    Path to root: instrucțiune -> manual -> memorator -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 19: ENG30-05638486-n
+    Definition  : (figurativ) Cunoștințe de scriere și de citire
+    Literals    : ['carte']
+    Lit. senses : ['4.1']
+    PNO         : P=0.25 N=0.00 O=0.75
+    hypernym                  -> îndemânare (ENG30-05637558-n)
+    near_antonym              -> analfabetism (ENG30-05649256-n)
+    attribute                 -> analfabet (ENG30-01421679-a)
+    Path to root: carte -> îndemânare -> destoinicie -> înțelegere -> trăsătură_psihologică -> abstractizare -> entitate
+
+  Sense 20: ENG30-07251148-n
+    Definition  : Carte în care sunt listate numere de telefon
+    Literals    : ['carte_de_telefon']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte_de_telefon (ENG30-06423754-n)
+    Path to root: carte_de_telefon -> carte_de_telefon -> repertoar -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 21: ENG30-07219530-n
+    Definition  : Expresie : Carte albastră (sau albă, neagră etc.); publicație oficială a unui guvern care conține documentele justificative privitoare la o problemă politică
+    Literals    : ['carte']
+    Lit. senses : ['1.2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> lucrare (ENG30-07218470-n)
+    Path to root: carte -> lucrare -> înscris -> scriere -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 22: ENG30-06410655-n
+    Definition  : Articol critic despre o carte nou apărută
+    Literals    : ['recenzie', 'recenzie_de_carte']
+    Lit. senses : ['1.x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> critică (ENG30-06410391-n)
+    Path to root: recenzie -> critică -> critică -> scriere -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 23: ENG30-03071782-n
+    Definition  : carte cu desene realizate numai din linii de contur pentru a putea fi colorate de către copii
+    Literals    : ['carte_de_colorat']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> album_de_pictură (ENG30-03931651-n)
+    Path to root: carte_de_colorat -> album_de_pictură -> tom -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 24: ENG30-04394821-n
+    Definition  : oricare dintre cărțile mai lungi și cu alte figuri decât cele obișnuite, folosite mai ales în cartomanție
+    Literals    : ['carte_de_tarot']
+    Lit. senses : ['x']
+    PNO         : P=0.12 N=0.25 O=0.62
+    hypernym                  -> carte (ENG30-02962545-n)
+    Path to root: carte_de_tarot -> carte -> hârtie -> materie -> compus -> materie
+
+  Sense 25: ENG30-06502192-n
+    Definition  : registru oficial în care se inventariază toate proprietățile de pământ individuale din cuprinsul unei regiuni, menționându-se numele proprietarului, suprafața terenului și vecinătățile
+    Literals    : ['cadastru', 'registru_de_cadastru', 'carte_funciară', 'carte_funduară']
+    Lit. senses : ['2', 'x', 'x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> registru (ENG30-06507041-n)
+    Path to root: cadastru -> registru -> înregistrare_scrisă -> înregistrare -> dovadă -> indicație -> comunicare -> abstractizare -> entitate
+
+  Sense 26: ENG30-07219751-n
+    Definition  : raport conținând propuneri guvernamentale publicat pentru a fi supus dezbaterilor
+    Literals    : ['carte_verde']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> lucrare (ENG30-07218470-n)
+    domain_REGION             -> Marea_Britanie (ENG30-08860123-n)
+    Path to root: carte_verde -> lucrare -> înscris -> scriere -> comunicare_scrisă -> comunicare -> abstractizare -> entitate
+
+  Sense 27: ENG30-08228538-n
+    Definition  : club în care membrii beneficiază de reduceri de prețuri pentru anumite cărți
+    Literals    : ['club_de_carte']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> club (ENG30-08227214-n)
+    Path to root: club_de_carte -> club -> asociație -> organizație -> grup_social -> grup -> abstractizare -> entitate
+
+  Sense 28: ENG30-06413130-n
+    Definition  : manual care conține modul de utilizare a unui echipament
+    Literals    : ['carte_tehnică', 'instrucțiuni_de_folosire', 'manual_de_întreținere']
+    Lit. senses : ['x', 'x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte_fundamentală (ENG30-06417598-n)
+    Path to root: carte_tehnică -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 29: ENG30-03492391-n
+    Definition  : Carte legată în scoarțe de carton sau, (prin extensiune), de pânză, de piele etc.
+    Literals    : ['carte_cartonată', 'carte_legată']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> tom (ENG30-02870092-n)
+    near_eng_derivat          -> cartonat (ENG30-00200258-a)
+    Path to root: carte_cartonată -> tom -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 30: ENG30-03973170-n
+    Definition  : carte de dimensiunile unui buzunar
+    Literals    : ['carte_de_buzunar']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> carte_broșată (ENG30-03886432-n)
+    Path to root: carte_de_buzunar -> carte_broșată -> tom -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 31: ENG30-06427710-n
+    Definition  : enciclopedie de nivel elementar care cuprinde cunoștințe generale
+    Literals    : ['carte_de_științe']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> enciclopedie (ENG30-06427387-n)
+    Path to root: carte_de_științe -> enciclopedie -> carte_fundamentală -> carte -> publicație -> lucrare -> bun -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 32: ENG30-04386962-n
+    Definition  : înregistrare audio a unei persoane care citește o carte, pentru uzul persoanelor lipsite de vedere
+    Literals    : ['carte_audio', 'carte_vorbită']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> înregistrare_audio (ENG30-04262678-n)
+    Path to root: carte_audio -> înregistrare_audio -> recording -> memorie -> aparat -> instrument -> artifact -> ansamblu -> lucru
+
+  Sense 33: ENG30-03318707-n
+    Definition  : Carte fără file folosită pentru a umple rafturile oamenilor care vor să dea aparența erudiției
+    Literals    : ['carte_falsă']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> fals (ENG30-03318438-n)
+    Path to root: carte_falsă -> fals -> imitație -> copie -> înfățișare -> creație -> artifact -> ansamblu -> lucru
+
+  Sense 34: ENG30-03886432-n
+    Definition  : Carte cu colile sau foile așezate și legate împreună (într-o copertă moale).
+    Literals    : ['carte_broșată']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> tom (ENG30-02870092-n)
+    hyponym                   -> carte_de_buzunar (ENG30-03973170-n)
+    Path to root: carte_broșată -> tom -> bun -> creație -> artifact -> ansamblu -> lucru
+
+============================================================
+floare (n) — 5 senses
+============================================================
+
+  Sense 1: ENG30-11669335-n
+    Definition  : Parte a plantei care cuprinde organele de reproducere sexuală și care are de obicei o corolă frumoasă și variat colorată.
+    Literals    : ['floare']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> structură_de_reproducere (ENG30-11675842-n)
+    part_holonym              -> angiosperm (ENG30-11665372-n)
+    near_eng_derivat          -> înflori (ENG30-00294245-v)
+    hyponym                   -> floricică (ENG30-11669786-n)
+    hyponym                   -> inflorescență (ENG30-11674332-n)
+    hyponym                   -> boboc (ENG30-11674914-n)
+    part_meronym              -> stamină (ENG30-11675096-n)
+    part_meronym              -> gineceu (ENG30-11676500-n)
+    part_meronym              -> carpelă (ENG30-11677743-n)
+    part_meronym              -> ovar (ENG30-11678635-n)
+    part_meronym              -> sepală (ENG30-11690893-n)
+    part_meronym              -> periant (ENG30-11692265-n)
+    hyponym                   -> crizantemă (ENG30-11951271-n)
+    Path to root: floare -> structură_de_reproducere -> organ_al_plantei -> parte_a_plantei -> obiect_natural -> ansamblu -> lucru
+
+  Sense 2: ENG30-11669921-n
+    Definition  : orice plantă (erbacee) care face flori colorate
+    Literals    : ['floare']
+    Lit. senses : ['6']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> angiosperm (ENG30-11665372-n)
+    near_eng_derivat          -> înflori (ENG30-00294245-v)
+    hyponym                   -> bujor (ENG30-11719286-n)
+    hyponym                   -> grâușor (ENG30-11721337-n)
+    hyponym                   -> cocoșel_de_câmp (ENG30-11724660-n)
+    hyponym                   -> anemonă (ENG30-11725015-n)
+    hyponym                   -> delphinium (ENG30-11733054-n)
+    hyponym                   -> nigella (ENG30-11736694-n)
+    hyponym                   -> spathiphyllum (ENG30-11792341-n)
+    hyponym                   -> cală (ENG30-11793779-n)
+    hyponym                   -> garofiță (ENG30-11807979-n)
+    hyponym                   -> gypsophila_paniculata (ENG30-11810358-n)
+    hyponym                   -> arșinic (ENG30-11811473-n)
+    hyponym                   -> Moehringia_lateriflora (ENG30-11812910-n)
+    hyponym                   -> Moehringia_mucosa (ENG30-11813077-n)
+    hyponym                   -> săpunăriță (ENG30-11814584-n)
+    hyponym                   -> Vaccaria_hispanica (ENG30-11818636-n)
+    hyponym                   -> agurijoară (ENG30-11857696-n)
+    hyponym                   -> mixandră (ENG30-11883328-n)
+    hyponym                   -> micsandră-sălbatică (ENG30-11887119-n)
+    hyponym                   -> limba-mării (ENG30-11889619-n)
+    hyponym                   -> ENG30-11892637-n (ENG30-11892637-n)
+    hyponym                   -> mac (ENG30-11900569-n)
+    hyponym                   -> compozee (ENG30-11915214-n)
+    hyponym                   -> aster (ENG30-11931918-n)
+    hyponym                   -> mărgărită (ENG30-11939491-n)
+    hyponym                   -> albăstrea (ENG30-11947802-n)
+    hyponym                   -> crizantemă (ENG30-11950345-n)
+    hyponym                   -> pufuleți (ENG30-11955896-n)
+    hyponym                   -> dalie (ENG30-11960245-n)
+    hyponym                   -> floarea-soarelui (ENG30-11978233-n)
+    hyponym                   -> Leucanthemum_vulgare (ENG30-11989869-n)
+    hyponym                   -> crăiță (ENG30-12020507-n)
+    hyponym                   -> Tanacetum_coccineum (ENG30-12022054-n)
+    hyponym                   -> orhidee (ENG30-12041446-n)
+    hyponym                   -> ciclamă (ENG30-12093329-n)
+    hyponym                   -> țintaură (ENG30-12290748-n)
+    hyponym                   -> gențiană (ENG30-12293723-n)
+    hyponym                   -> begonie (ENG30-12360108-n)
+    hyponym                   -> Bessera_elegans (ENG30-12443736-n)
+    hyponym                   -> clopoței_de_Crăciun (ENG30-12444095-n)
+    hyponym                   -> narcisă_galbenă (ENG30-12475035-n)
+    hyponym                   -> chiparoasă (ENG30-12480456-n)
+    hyponym                   -> commelina (ENG30-12606438-n)
+    hyponym                   -> sipică (ENG30-12683407-n)
+    hyponym                   -> lânăriță (ENG30-12884260-n)
+    hyponym                   -> ventricea (ENG30-12890265-n)
+    hyponym                   -> petunie (ENG30-12909421-n)
+    hyponym                   -> verbină (ENG30-12914923-n)
+    hyponym                   -> valeriană (ENG30-12950126-n)
+    Path to root: floare -> angiosperm -> antofită -> vascular -> plantă -> organism -> creatură -> ansamblu -> lucru
+
+  Sense 3: ENG30-00432881-n
+    Definition  : o activitate plăcută și în care cineva este expert
+    Literals    : ['mezelic', 'floare_la_ureche']
+    Lit. senses : ['3', 'x']
+    PNO         : P=0.50 N=0.00 O=0.50
+    hypernym                  -> îndeletnicire (ENG30-00407535-n)
+    Path to root: mezelic -> îndeletnicire -> faptă -> event -> trăsătură_psihologică -> abstractizare -> entitate
+
+  Sense 4: ENG30-11536087-n
+    Definition  : Orice plantă (erbacee) care face flori colorate
+    Literals    : ['floare']
+    Lit. senses : ['3']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> plantă (ENG30-00017222-n)
+    near_eng_derivat          -> decorativ (ENG30-01091234-a)
+    Path to root: floare -> plantă -> organism -> creatură -> ansamblu -> lucru
+
+  Sense 5: ENG30-11915899-n
+    Definition  : Floare care poate fi uscată fără pierderea culorii sau a formei
+    Literals    : ['nemuritoare', 'floare_nemuritoare']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.38 O=0.62
+    hypernym                  -> compozee (ENG30-11915214-n)
+    member_holonym            -> Compositae (ENG30-11911591-n)
+    Path to root: nemuritoare -> compozee -> floare -> angiosperm -> antofită -> vascular -> plantă -> organism -> creatură -> ansamblu -> lucru
+
+============================================================
+oraș (n) — 6 senses
+============================================================
+
+  Sense 1: ENG30-08226335-n
+    Definition  : Populația, locuitorii unui oraș
+    Literals    : ['oraș']
+    Lit. senses : ['4']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> municipalitate (ENG30-08225581-n)
+    near_eng_derivat          -> [se] urbaniza (ENG30-00499642-v)
+    Path to root: oraș -> municipalitate -> adunare -> grup_social -> grup -> abstractizare -> entitate
+
+  Sense 2: ENG30-08226514-n
+    Definition  : Locuitorii unui oraș.
+    Literals    : ['oraș']
+    Lit. senses : ['4.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> municipalitate (ENG30-08225581-n)
+    Path to root: oraș -> municipalitate -> adunare -> grup_social -> grup -> abstractizare -> entitate
+
+  Sense 3: ENG30-08672199-n
+    Definition  : Formă complexă de așezare omenească cu dimensiuni variabile și dotări industriale, având de obicei funcție administrativă, industrială, comercială, politică și culturală; urbe.;
+    Literals    : ['oraș']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> district (ENG30-08491826-n)
+    near_eng_derivat          -> oraș (ENG30-08672199-n)
+    near_eng_derivat          -> oraș (ENG30-08665504-n)
+    Path to root: oraș -> district -> district -> ținut -> loc -> lucru
+
+  Sense 4: ENG30-08671509-n
+    Definition  : Oraș părăsit (mai ales în vestul SUA)
+    Literals    : ['oraș_fantomă']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> oraș (ENG30-08665504-n)
+    domain_REGION             -> Vest (ENG30-08682819-n)
+    Path to root: oraș_fantomă -> oraș -> municipiu -> arie_urbană -> arie_geografică -> ținut -> loc -> lucru
+
+  Sense 5: ENG30-08665504-n
+    Definition  : Formă complexă de așezare omenească cu dimensiuni variabile și dotări industriale, având de obicei funcție administrativă, industrială, comercială, politică și culturală 
+    Literals    : ['oraș', 'urbe']
+    Lit. senses : ['1.1', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> municipiu (ENG30-08626283-n)
+    near_eng_derivat          -> oraș (ENG30-08672199-n)
+    part_meronym              -> frontiera_orașului (ENG30-08541130-n)
+    hyponym                   -> târg (ENG30-08671168-n)
+    hyponym                   -> oraș_fantomă (ENG30-08671509-n)
+    instance_hyponym          -> Batna (ENG30-08706399-n)
+    instance_hyponym          -> Djanet (ENG30-08707035-n)
+    instance_hyponym          -> Reggane (ENG30-08707332-n)
+    instance_hyponym          -> Timimoun (ENG30-08707587-n)
+    instance_hyponym          -> Nogales (ENG30-08744626-n)
+    instance_hyponym          -> Pilsen (ENG30-08757791-n)
+    instance_hyponym          -> Austerlitz (ENG30-08758172-n)
+    instance_hyponym          -> Viborg (ENG30-08762380-n)
+    instance_hyponym          -> Massawa (ENG30-08777919-n)
+    instance_hyponym          -> Maarianhamina (ENG30-08780720-n)
+    instance_hyponym          -> Acre (ENG30-08793310-n)
+    instance_hyponym          -> Churchill (ENG30-08824323-n)
+    instance_hyponym          -> Kingston (ENG30-08827853-n)
+    instance_hyponym          -> Dawson (ENG30-08830256-n)
+    instance_hyponym          -> Blackpool (ENG30-08878367-n)
+    instance_hyponym          -> Hastings (ENG30-08883476-n)
+    instance_hyponym          -> Canterbury (ENG30-08883772-n)
+    instance_hyponym          -> Tara (ENG30-08889784-n)
+    instance_hyponym          -> Ayr (ENG30-08892327-n)
+    instance_hyponym          -> Sakkara (ENG30-08900047-n)
+    instance_hyponym          -> Calais (ENG30-08934868-n)
+    instance_hyponym          -> Chablis (ENG30-08935381-n)
+    instance_hyponym          -> Cherbourg (ENG30-08935674-n)
+    instance_hyponym          -> Dunkerque (ENG30-08935978-n)
+    instance_hyponym          -> Vichy (ENG30-08938819-n)
+    instance_hyponym          -> Thule (ENG30-08954443-n)
+    instance_hyponym          -> Monte_Carlo (ENG30-08968225-n)
+    instance_hyponym          -> Lubavitch (ENG30-09011922-n)
+    instance_hyponym          -> Interlaken (ENG30-09032843-n)
+    instance_hyponym          -> Antioch (ENG30-09040998-n)
+    instance_hyponym          -> Decatur (ENG30-09054110-n)
+    instance_hyponym          -> Gadsden (ENG30-09054233-n)
+    instance_hyponym          -> Selma (ENG30-09054616-n)
+    instance_hyponym          -> Falgstaff (ENG30-09057930-n)
+    instance_hyponym          -> Yuma (ENG30-09059125-n)
+    instance_hyponym          -> Fayetteville (ENG30-09059741-n)
+    instance_hyponym          -> Hot_Springs (ENG30-09060024-n)
+    instance_hyponym          -> Jonesboro (ENG30-09060176-n)
+    instance_hyponym          -> Texarkana (ENG30-09060615-n)
+    instance_hyponym          -> Palo_Alto (ENG30-09064468-n)
+    instance_hyponym          -> Boulder (ENG30-09067721-n)
+    instance_hyponym          -> Panama_City (ENG30-09074431-n)
+    instance_hyponym          -> Athens (ENG30-09076982-n)
+    instance_hyponym          -> Oxford (ENG30-09077681-n)
+    instance_hyponym          -> Hilo (ENG30-09078654-n)
+    instance_hyponym          -> Coeur_d'Alene (ENG30-09081688-n)
+    instance_hyponym          -> Idaho_Falls (ENG30-09081830-n)
+    instance_hyponym          -> Pocatello (ENG30-09082158-n)
+    instance_hyponym          -> Cairo (ENG30-09082988-n)
+    instance_hyponym          -> Lafayette (ENG30-09085830-n)
+    instance_hyponym          -> Muncie (ENG30-09085967-n)
+    instance_hyponym          -> Clinton (ENG30-09086894-n)
+    instance_hyponym          -> Ottumwa (ENG30-09087352-n)
+    instance_hyponym          -> Hays (ENG30-09088301-n)
+    instance_hyponym          -> Alexandria (ENG30-09091285-n)
+    instance_hyponym          -> Frederick (ENG30-09094791-n)
+    instance_hyponym          -> Lexington (ENG30-09097283-n)
+    instance_hyponym          -> Medford (ENG30-09097461-n)
+    instance_hyponym          -> Plymouth (ENG30-09098721-n)
+    instance_hyponym          -> Alpena (ENG30-09100080-n)
+    instance_hyponym          -> Houghton (ENG30-09100982-n)
+    instance_hyponym          -> Monroe (ENG30-09101639-n)
+    instance_hyponym          -> Bemidji (ENG30-09102415-n)
+    instance_hyponym          -> Biloxi (ENG30-09104474-n)
+    instance_hyponym          -> Natchez (ENG30-09105260-n)
+    instance_hyponym          -> Columbia (ENG30-09106502-n)
+    instance_hyponym          -> Poplar_Bluff (ENG30-09107305-n)
+    instance_hyponym          -> Bozeman (ENG30-09108586-n)
+    instance_hyponym          -> Great_Falls (ENG30-09109012-n)
+    instance_hyponym          -> Grand_Island (ENG30-09109771-n)
+    instance_hyponym          -> Portsmouth (ENG30-09112123-n)
+    instance_hyponym          -> Cooperstown (ENG30-09118639-n)
+    instance_hyponym          -> Saratoga_Springs (ENG30-09125727-n)
+    instance_hyponym          -> Medford (ENG30-09133775-n)
+    instance_hyponym          -> Aberdeen (ENG30-09139380-n)
+    instance_hyponym          -> Columbia (ENG30-09140674-n)
+    instance_hyponym          -> Jackson (ENG30-09140781-n)
+    instance_hyponym          -> Galveston (ENG30-09144484-n)
+    instance_hyponym          -> Paris (ENG30-09145751-n)
+    instance_hyponym          -> San_Angelo (ENG30-09145970-n)
+    instance_hyponym          -> Tyler (ENG30-09146584-n)
+    instance_hyponym          -> Victoria (ENG30-09146681-n)
+    instance_hyponym          -> Ogden (ENG30-09147504-n)
+    instance_hyponym          -> Rutland (ENG30-09148871-n)
+    instance_hyponym          -> Blacksburg (ENG30-09150284-n)
+    instance_hyponym          -> Aberdeen (ENG30-09153570-n)
+    instance_hyponym          -> Bellingham (ENG30-09153710-n)
+    instance_hyponym          -> Fayetteville (ENG30-09156095-n)
+    instance_hyponym          -> Eau_Claire (ENG30-09157657-n)
+    instance_hyponym          -> Jackson (ENG30-09159859-n)
+    Path to root: oraș -> municipiu -> arie_urbană -> arie_geografică -> ținut -> loc -> lucru
+
+  Sense 6: ENG30-08524735-n
+    Definition  : Formă complexă de așezare omenească cu dimensiuni variabile și dotări industriale, având de obicei funcție administrativă, industrială, comercială, politică și culturală
+    Literals    : ['oraș', 'metropolă', 'centru_urban']
+    Lit. senses : ['1.1.x', '1', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> municipiu (ENG30-08626283-n)
+    near_eng_derivat          -> [se] urbaniza (ENG30-00499642-v)
+    part_meronym              -> centru (ENG30-08524130-n)
+    part_meronym              -> centru_de_afaceri (ENG30-08543081-n)
+    part_meronym              -> orașul_vechi (ENG30-08543625-n)
+    hyponym                   -> capitală (ENG30-08691669-n)
+    hyponym                   -> capitală (ENG30-08695198-n)
+    hyponym                   -> reședință_de_județ (ENG30-08695539-n)
+    instance_hyponym          -> Herat (ENG30-08703972-n)
+    instance_hyponym          -> Mazar-i-Sharif (ENG30-08704554-n)
+    instance_hyponym          -> Durres (ENG30-08705251-n)
+    instance_hyponym          -> Oran (ENG30-08706663-n)
+    instance_hyponym          -> Cordova (ENG30-08713136-n)
+    instance_hyponym          -> Mandalay (ENG30-08715952-n)
+    instance_hyponym          -> Douala (ENG30-08717629-n)
+    instance_hyponym          -> Antofagasta (ENG30-08721145-n)
+    instance_hyponym          -> Punta_Arenas (ENG30-08721796-n)
+    instance_hyponym          -> Valparaiso (ENG30-08722084-n)
+    instance_hyponym          -> Vina_del_Mar (ENG30-08722270-n)
+    instance_hyponym          -> Chungking (ENG30-08725161-n)
+    instance_hyponym          -> Guangzhou (ENG30-08725454-n)
+    instance_hyponym          -> Luoyang (ENG30-08727230-n)
+    instance_hyponym          -> Lushun (ENG30-08727396-n)
+    instance_hyponym          -> Hangzhou (ENG30-08727606-n)
+    instance_hyponym          -> Nanchang (ENG30-08727806-n)
+    instance_hyponym          -> Nanning (ENG30-08727945-n)
+    instance_hyponym          -> Nanjing (ENG30-08728066-n)
+    instance_hyponym          -> Shanghai (ENG30-08728268-n)
+    instance_hyponym          -> Shenyang (ENG30-08728462-n)
+    instance_hyponym          -> Taiyuan (ENG30-08728595-n)
+    instance_hyponym          -> Tangshan (ENG30-08728749-n)
+    instance_hyponym          -> Tianjin (ENG30-08728882-n)
+    instance_hyponym          -> Wuhan (ENG30-08729283-n)
+    instance_hyponym          -> Xian (ENG30-08729452-n)
+    instance_hyponym          -> Hohhot (ENG30-08730218-n)
+    instance_hyponym          -> Taichung (ENG30-08731057-n)
+    instance_hyponym          -> Hong_Kong (ENG30-08731148-n)
+    instance_hyponym          -> Barranquilla (ENG30-08732807-n)
+    instance_hyponym          -> Cartagena (ENG30-08733415-n)
+    instance_hyponym          -> Goma (ENG30-08734853-n)
+    instance_hyponym          -> Abidjan (ENG30-08736779-n)
+    instance_hyponym          -> Merida (ENG30-08740367-n)
+    instance_hyponym          -> Campeche (ENG30-08740617-n)
+    instance_hyponym          -> Cancun (ENG30-08740729-n)
+    instance_hyponym          -> Acapulco (ENG30-08742205-n)
+    instance_hyponym          -> Chihuahua (ENG30-08742578-n)
+    instance_hyponym          -> Ciudad_Juarez (ENG30-08742743-n)
+    instance_hyponym          -> Guadalajara (ENG30-08743370-n)
+    instance_hyponym          -> Hermosillo (ENG30-08743557-n)
+    instance_hyponym          -> Leon (ENG30-08743691-n)
+    instance_hyponym          -> Mazatlan (ENG30-08743945-n)
+    instance_hyponym          -> Oaxaca (ENG30-08744750-n)
+    instance_hyponym          -> Orizaba (ENG30-08744871-n)
+    instance_hyponym          -> Heroica_Puebla_de_Zaragoza (ENG30-08745011-n)
+    instance_hyponym          -> Tampico (ENG30-08745901-n)
+    instance_hyponym          -> Tijuana (ENG30-08746147-n)
+    instance_hyponym          -> Tuxtla_Gutierrez (ENG30-08746363-n)
+    instance_hyponym          -> Veracruz (ENG30-08746475-n)
+    instance_hyponym          -> Santiago (ENG30-08750822-n)
+    instance_hyponym          -> Guantanamo (ENG30-08750986-n)
+    instance_hyponym          -> San_Juan (ENG30-08753294-n)
+    instance_hyponym          -> Montego_Bay (ENG30-08754388-n)
+    instance_hyponym          -> Cotonou (ENG30-08759852-n)
+    instance_hyponym          -> Alborg (ENG30-08762243-n)
+    instance_hyponym          -> Stavanger (ENG30-08765460-n)
+    instance_hyponym          -> Trondheim (ENG30-08765623-n)
+    instance_hyponym          -> Malmo (ENG30-08766455-n)
+    instance_hyponym          -> Lund (ENG30-08766571-n)
+    instance_hyponym          -> Goteborg (ENG30-08766667-n)
+    instance_hyponym          -> Dresda (ENG30-08770932-n)
+    instance_hyponym          -> Leipzig (ENG30-08771116-n)
+    instance_hyponym          -> Solingen (ENG30-08771277-n)
+    instance_hyponym          -> Weimar (ENG30-08771400-n)
+    instance_hyponym          -> Koln (ENG30-08772307-n)
+    instance_hyponym          -> Brunswick (ENG30-08772551-n)
+    instance_hyponym          -> Düsseldorf (ENG30-08772667-n)
+    instance_hyponym          -> Frankfurt (ENG30-08772922-n)
+    instance_hyponym          -> Halle (ENG30-08773098-n)
+    instance_hyponym          -> Hamburg (ENG30-08773336-n)
+    instance_hyponym          -> Hanovra (ENG30-08773679-n)
+    instance_hyponym          -> Lubeck (ENG30-08773880-n)
+    instance_hyponym          -> Mannheim (ENG30-08774073-n)
+    instance_hyponym          -> Munhen (ENG30-08774227-n)
+    instance_hyponym          -> Rostock (ENG30-08774704-n)
+    instance_hyponym          -> Wurzburg (ENG30-08775179-n)
+    instance_hyponym          -> Guayaquil (ENG30-08777130-n)
+    instance_hyponym          -> Tampere (ENG30-08780380-n)
+    instance_hyponym          -> Corint (ENG30-08786432-n)
+    instance_hyponym          -> Argos (ENG30-08786660-n)
+    instance_hyponym          -> Delfi (ENG30-08786855-n)
+    instance_hyponym          -> Mycenae (ENG30-08787049-n)
+    instance_hyponym          -> Sparta (ENG30-08787240-n)
+    instance_hyponym          -> Efes (ENG30-08788326-n)
+    instance_hyponym          -> Patras (ENG30-08788588-n)
+    instance_hyponym          -> Troia (ENG30-08788887-n)
+    instance_hyponym          -> Teba (ENG30-08789076-n)
+    instance_hyponym          -> Thesalonic (ENG30-08789605-n)
+    instance_hyponym          -> Sodoma (ENG30-08795654-n)
+    instance_hyponym          -> Gomora (ENG30-08795974-n)
+    instance_hyponym          -> Tel_Aviv (ENG30-08797840-n)
+    instance_hyponym          -> Haifa (ENG30-08798062-n)
+    instance_hyponym          -> Jaffa (ENG30-08798195-n)
+    instance_hyponym          -> Pompei (ENG30-08803883-n)
+    instance_hyponym          -> Herculaneum (ENG30-08804049-n)
+    instance_hyponym          -> Aquila (ENG30-08804319-n)
+    instance_hyponym          -> Bolzano (ENG30-08804662-n)
+    instance_hyponym          -> Brescia (ENG30-08804845-n)
+    instance_hyponym          -> Neapole (ENG30-08805565-n)
+    instance_hyponym          -> Messina (ENG30-08805801-n)
+    instance_hyponym          -> Brindisi (ENG30-08807894-n)
+    instance_hyponym          -> Genova (ENG30-08808452-n)
+    instance_hyponym          -> Cremona (ENG30-08808792-n)
+    instance_hyponym          -> La_Spezia (ENG30-08808979-n)
+    instance_hyponym          -> Milano (ENG30-08809165-n)
+    instance_hyponym          -> Pisa (ENG30-08809910-n)
+    instance_hyponym          -> Torino (ENG30-08810220-n)
+    instance_hyponym          -> Bari (ENG30-08810505-n)
+    instance_hyponym          -> Palermo (ENG30-08811473-n)
+    instance_hyponym          -> Florența (ENG30-08812166-n)
+    instance_hyponym          -> Padova (ENG30-08813156-n)
+    instance_hyponym          -> Veneția (ENG30-08813264-n)
+    instance_hyponym          -> Dubrovnik (ENG30-08818835-n)
+    instance_hyponym          -> Split (ENG30-08819016-n)
+    instance_hyponym          -> Banff (ENG30-08822427-n)
+    instance_hyponym          -> Calgary (ENG30-08822546-n)
+    instance_hyponym          -> Vancouver (ENG30-08823480-n)
+    instance_hyponym          -> Saint_John (ENG30-08824771-n)
+    instance_hyponym          -> Hamilton (ENG30-08827689-n)
+    instance_hyponym          -> Sudbury (ENG30-08828151-n)
+    instance_hyponym          -> Thunder_Bay (ENG30-08828296-n)
+    instance_hyponym          -> Montreal (ENG30-08829533-n)
+    instance_hyponym          -> Graz (ENG30-08846626-n)
+    instance_hyponym          -> Salzburg (ENG30-08846885-n)
+    instance_hyponym          -> Chittagong (ENG30-08849372-n)
+    instance_hyponym          -> Anvers (ENG30-08850741-n)
+    instance_hyponym          -> Bruges (ENG30-08851034-n)
+    instance_hyponym          -> Gent (ENG30-08851500-n)
+    instance_hyponym          -> Sucre (ENG30-08853612-n)
+    instance_hyponym          -> Belem (ENG30-08854855-n)
+    instance_hyponym          -> Joao_Pessoa (ENG30-08855609-n)
+    instance_hyponym          -> Natal (ENG30-08856037-n)
+    instance_hyponym          -> Recife (ENG30-08856475-n)
+    instance_hyponym          -> Santos (ENG30-08856630-n)
+    instance_hyponym          -> Sao_Paulo (ENG30-08857529-n)
+    instance_hyponym          -> Lancaster (ENG30-08873269-n)
+    instance_hyponym          -> Manchester (ENG30-08876975-n)
+    instance_hyponym          -> Hull (ENG30-08877208-n)
+    instance_hyponym          -> Liverpool (ENG30-08877382-n)
+    instance_hyponym          -> Birmingham (ENG30-08877613-n)
+    instance_hyponym          -> Oxford (ENG30-08877807-n)
+    instance_hyponym          -> Cambridge (ENG30-08878016-n)
+    instance_hyponym          -> Brighton (ENG30-08878533-n)
+    instance_hyponym          -> Bristol (ENG30-08878708-n)
+    instance_hyponym          -> Leeds (ENG30-08879028-n)
+    instance_hyponym          -> Leicester (ENG30-08879197-n)
+    instance_hyponym          -> Newcastle (ENG30-08879388-n)
+    instance_hyponym          -> Portsmouth (ENG30-08879680-n)
+    instance_hyponym          -> Gloucester (ENG30-08880083-n)
+    instance_hyponym          -> Reading (ENG30-08880223-n)
+    instance_hyponym          -> Winchester (ENG30-08880859-n)
+    instance_hyponym          -> Worcester (ENG30-08881017-n)
+    instance_hyponym          -> Galway (ENG30-08889521-n)
+    instance_hyponym          -> Limerick (ENG30-08889657-n)
+    instance_hyponym          -> Waterford (ENG30-08889944-n)
+    instance_hyponym          -> Aberdeen (ENG30-08892186-n)
+    instance_hyponym          -> Glasgow (ENG30-08892971-n)
+    instance_hyponym          -> Newport (ENG30-08895497-n)
+    instance_hyponym          -> Swansea (ENG30-08895771-n)
+    instance_hyponym          -> Alexandria (ENG30-08898187-n)
+    instance_hyponym          -> Memphis (ENG30-08899351-n)
+    instance_hyponym          -> Luxor (ENG30-08899577-n)
+    instance_hyponym          -> Delhi (ENG30-08903220-n)
+    instance_hyponym          -> Calcutta (ENG30-08903636-n)
+    instance_hyponym          -> Chennai (ENG30-08904392-n)
+    instance_hyponym          -> Mysore (ENG30-08904731-n)
+    instance_hyponym          -> Salem (ENG30-08904858-n)
+    instance_hyponym          -> Bandung (ENG30-08909933-n)
+    instance_hyponym          -> Medan (ENG30-08910106-n)
+    instance_hyponym          -> Semarang (ENG30-08910230-n)
+    instance_hyponym          -> Abadan (ENG30-08911602-n)
+    instance_hyponym          -> Rasht (ENG30-08912153-n)
+    instance_hyponym          -> Shiraz (ENG30-08912279-n)
+    instance_hyponym          -> Tabriz (ENG30-08912427-n)
+    instance_hyponym          -> Qum (ENG30-08912703-n)
+    instance_hyponym          -> Persepolis (ENG30-08913085-n)
+    instance_hyponym          -> Basra (ENG30-08914413-n)
+    instance_hyponym          -> Adrianopol (ENG30-08916111-n)
+    instance_hyponym          -> Babilon (ENG30-08916832-n)
+    instance_hyponym          -> Ur (ENG30-08918800-n)
+    instance_hyponym          -> Asur (ENG30-08919241-n)
+    instance_hyponym          -> Nineveh (ENG30-08919475-n)
+    instance_hyponym          -> Utica (ENG30-08920207-n)
+    instance_hyponym          -> Nagano (ENG30-08923586-n)
+    instance_hyponym          -> Nagoya (ENG30-08923755-n)
+    instance_hyponym          -> Omiya (ENG30-08923884-n)
+    instance_hyponym          -> Osaka (ENG30-08924023-n)
+    instance_hyponym          -> Yokohama (ENG30-08924238-n)
+    instance_hyponym          -> Naha (ENG30-08924560-n)
+    instance_hyponym          -> Kyoto (ENG30-08925093-n)
+    instance_hyponym          -> Hiroshima (ENG30-08925287-n)
+    instance_hyponym          -> Sapporo (ENG30-08925552-n)
+    instance_hyponym          -> Kitakyushu (ENG30-08925700-n)
+    instance_hyponym          -> Fukuoka (ENG30-08925830-n)
+    instance_hyponym          -> Nagasaki (ENG30-08925957-n)
+    instance_hyponym          -> Aqaba (ENG30-08927678-n)
+    instance_hyponym          -> Kisumu (ENG30-08928742-n)
+    instance_hyponym          -> Mombasa (ENG30-08928933-n)
+    instance_hyponym          -> Bordeaux (ENG30-08934532-n)
+    instance_hyponym          -> Brest (ENG30-08934694-n)
+    instance_hyponym          -> Cannes (ENG30-08935212-n)
+    instance_hyponym          -> Dijon (ENG30-08935848-n)
+    instance_hyponym          -> Le_Havre (ENG30-08936303-n)
+    instance_hyponym          -> Lille (ENG30-08936476-n)
+    instance_hyponym          -> Lyon (ENG30-08936647-n)
+    instance_hyponym          -> Marsilia (ENG30-08936833-n)
+    instance_hyponym          -> Nancy (ENG30-08936996-n)
+    instance_hyponym          -> Nantes (ENG30-08937109-n)
+    instance_hyponym          -> Orleans (ENG30-08937414-n)
+    instance_hyponym          -> Reims (ENG30-08937594-n)
+    instance_hyponym          -> Strasburg (ENG30-08937850-n)
+    instance_hyponym          -> Eindhoven (ENG30-08950649-n)
+    instance_hyponym          -> Rotterdam (ENG30-08950907-n)
+    instance_hyponym          -> Leiden (ENG30-08951077-n)
+    instance_hyponym          -> Utrecht (ENG30-08951278-n)
+    instance_hyponym          -> Thorshavn (ENG30-08953029-n)
+    instance_hyponym          -> Kwangju (ENG30-08956305-n)
+    instance_hyponym          -> Taegu (ENG30-08956461-n)
+    instance_hyponym          -> Pusan (ENG30-08956574-n)
+    instance_hyponym          -> Tripoli (ENG30-08957993-n)
+    instance_hyponym          -> Sur (ENG30-08958334-n)
+    instance_hyponym          -> Benghazi (ENG30-08960363-n)
+    instance_hyponym          -> Blantyre (ENG30-08962951-n)
+    instance_hyponym          -> Zomba (ENG30-08963244-n)
+    instance_hyponym          -> Timbuktu (ENG30-08966085-n)
+    instance_hyponym          -> Casablanca (ENG30-08969798-n)
+    instance_hyponym          -> Fez (ENG30-08970064-n)
+    instance_hyponym          -> Marrakesh (ENG30-08970189-n)
+    instance_hyponym          -> Tanger (ENG30-08970611-n)
+    instance_hyponym          -> Auckland (ENG30-08972920-n)
+    instance_hyponym          -> Ibadan (ENG30-08974330-n)
+    instance_hyponym          -> Katsina (ENG30-08974468-n)
+    instance_hyponym          -> Lagos (ENG30-08974604-n)
+    instance_hyponym          -> Maiduguri (ENG30-08974818-n)
+    instance_hyponym          -> Karachi (ENG30-08977211-n)
+    instance_hyponym          -> Lahore (ENG30-08977428-n)
+    instance_hyponym          -> Peshawar (ENG30-08977527-n)
+    instance_hyponym          -> Rawalpindi (ENG30-08977665-n)
+    instance_hyponym          -> Cebu (ENG30-08982037-n)
+    instance_hyponym          -> Bromberg (ENG30-08983274-n)
+    instance_hyponym          -> Gdansk (ENG30-08983742-n)
+    instance_hyponym          -> Setubal (ENG30-08986526-n)
+    instance_hyponym          -> Papeete (ENG30-08990203-n)
+    instance_hyponym          -> Medina (ENG30-08994339-n)
+    instance_hyponym          -> Jeddah (ENG30-08994834-n)
+    instance_hyponym          -> Cape_Town (ENG30-09000462-n)
+    instance_hyponym          -> Johannesburg (ENG30-09000665-n)
+    instance_hyponym          -> Durban (ENG30-09001007-n)
+    instance_hyponym          -> Bloemfontein (ENG30-09002325-n)
+    instance_hyponym          -> Soweto (ENG30-09002433-n)
+    instance_hyponym          -> Cherepovets (ENG30-09004495-n)
+    instance_hyponym          -> Groznîi (ENG30-09004992-n)
+    instance_hyponym          -> Kursk (ENG30-09005611-n)
+    instance_hyponym          -> Nizhni_Novgorod (ENG30-09008130-n)
+    instance_hyponym          -> Kazan (ENG30-09008333-n)
+    instance_hyponym          -> St._Petersburg (ENG30-09008454-n)
+    instance_hyponym          -> Murmansk (ENG30-09008723-n)
+    instance_hyponym          -> Perm (ENG30-09009372-n)
+    instance_hyponym          -> Rostov (ENG30-09009490-n)
+    instance_hyponym          -> Saratov (ENG30-09009693-n)
+    instance_hyponym          -> Ufa (ENG30-09009978-n)
+    instance_hyponym          -> Volgograd (ENG30-09010085-n)
+    instance_hyponym          -> Novosibirsk (ENG30-09010300-n)
+    instance_hyponym          -> Chelyabinsk (ENG30-09010453-n)
+    instance_hyponym          -> Omsk (ENG30-09010565-n)
+    instance_hyponym          -> Vladivostok (ENG30-09010670-n)
+    instance_hyponym          -> Tartu (ENG30-09012735-n)
+    instance_hyponym          -> Daugavpils (ENG30-09013724-n)
+    instance_hyponym          -> Klaipeda (ENG30-09014066-n)
+    instance_hyponym          -> Kaunas (ENG30-09014470-n)
+    instance_hyponym          -> Kharkov (ENG30-09016860-n)
+    instance_hyponym          -> Odessa (ENG30-09017005-n)
+    instance_hyponym          -> Sevastopol (ENG30-09017168-n)
+    instance_hyponym          -> Yalta (ENG30-09017301-n)
+    instance_hyponym          -> Samarkand (ENG30-09022667-n)
+    instance_hyponym          -> Barcelona (ENG30-09025189-n)
+    instance_hyponym          -> Cadiz (ENG30-09025451-n)
+    instance_hyponym          -> Cartagena (ENG30-09025584-n)
+    instance_hyponym          -> Cordoba (ENG30-09025728-n)
+    instance_hyponym          -> Jerez_de_la_Frontera (ENG30-09026204-n)
+    instance_hyponym          -> Leon (ENG30-09026360-n)
+    instance_hyponym          -> Malaga (ENG30-09026614-n)
+    instance_hyponym          -> San_Sebastian (ENG30-09026911-n)
+    instance_hyponym          -> Sevilia (ENG30-09027089-n)
+    instance_hyponym          -> Toledo (ENG30-09027292-n)
+    instance_hyponym          -> Zaragoza (ENG30-09027679-n)
+    instance_hyponym          -> Valencia (ENG30-09028477-n)
+    instance_hyponym          -> Port_Sudan (ENG30-09030467-n)
+    instance_hyponym          -> Omdurman (ENG30-09030596-n)
+    instance_hyponym          -> Geneva (ENG30-09032604-n)
+    instance_hyponym          -> Zurich (ENG30-09033117-n)
+    instance_hyponym          -> Alep (ENG30-09034286-n)
+    instance_hyponym          -> Tabora (ENG30-09035852-n)
+    instance_hyponym          -> Ehadhamen (ENG30-09038079-n)
+    instance_hyponym          -> Sfax (ENG30-09038272-n)
+    instance_hyponym          -> Sousse (ENG30-09038439-n)
+    instance_hyponym          -> Antalia (ENG30-09040839-n)
+    instance_hyponym          -> Istanbul (ENG30-09041785-n)
+    instance_hyponym          -> Izmir (ENG30-09042322-n)
+    instance_hyponym          -> Dubai (ENG30-09044714-n)
+    instance_hyponym          -> Mobile (ENG30-09054480-n)
+    instance_hyponym          -> Anchorage (ENG30-09055906-n)
+    instance_hyponym          -> Tucson (ENG30-09058841-n)
+    instance_hyponym          -> Bakersfield (ENG30-09062320-n)
+    instance_hyponym          -> Berkeley (ENG30-09062585-n)
+    instance_hyponym          -> Beverly_Hills (ENG30-09062791-n)
+    instance_hyponym          -> Fresno (ENG30-09063259-n)
+    instance_hyponym          -> Long_Beach (ENG30-09063477-n)
+    instance_hyponym          -> Oakland (ENG30-09064264-n)
+    instance_hyponym          -> Pasadena (ENG30-09064594-n)
+    instance_hyponym          -> San_Diego (ENG30-09065328-n)
+    instance_hyponym          -> San_Jose (ENG30-09066017-n)
+    instance_hyponym          -> Colorado_Springs (ENG30-09067878-n)
+    instance_hyponym          -> Bridgeport (ENG30-09068921-n)
+    instance_hyponym          -> New_Haven (ENG30-09069415-n)
+    instance_hyponym          -> Wilmington (ENG30-09070363-n)
+    instance_hyponym          -> Jacksonville (ENG30-09073258-n)
+    instance_hyponym          -> Miami_Beach (ENG30-09073938-n)
+    instance_hyponym          -> Orlando (ENG30-09074140-n)
+    instance_hyponym          -> St._Augustine (ENG30-09074834-n)
+    instance_hyponym          -> St._Petersburg (ENG30-09075007-n)
+    instance_hyponym          -> Tampa (ENG30-09075329-n)
+    instance_hyponym          -> Columbus (ENG30-09077410-n)
+    instance_hyponym          -> Savannah (ENG30-09077821-n)
+    instance_hyponym          -> Chicago (ENG30-09083390-n)
+    instance_hyponym          -> Evansville (ENG30-09085209-n)
+    instance_hyponym          -> Fort_Wayne (ENG30-09085334-n)
+    instance_hyponym          -> Davenport (ENG30-09086635-n)
+    instance_hyponym          -> Cedar_Rapids (ENG30-09086793-n)
+    instance_hyponym          -> Wichita (ENG30-09088989-n)
+    instance_hyponym          -> Louisville (ENG30-09089923-n)
+    instance_hyponym          -> New_Orleans (ENG30-09091909-n)
+    instance_hyponym          -> Portland (ENG30-09093472-n)
+    instance_hyponym          -> Baltimore (ENG30-09094381-n)
+    instance_hyponym          -> Salem (ENG30-09099264-n)
+    instance_hyponym          -> Duluth (ENG30-09102517-n)
+    instance_hyponym          -> Minneapolis (ENG30-09102883-n)
+    instance_hyponym          -> Independence (ENG30-09106770-n)
+    instance_hyponym          -> Saint_Louis (ENG30-09107626-n)
+    instance_hyponym          -> Billings (ENG30-09108728-n)
+    instance_hyponym          -> Reno (ENG30-09111168-n)
+    instance_hyponym          -> Manchester (ENG30-09111955-n)
+    instance_hyponym          -> Atlantic_City (ENG30-09112857-n)
+    instance_hyponym          -> Bayonne (ENG30-09113207-n)
+    instance_hyponym          -> Camden (ENG30-09113333-n)
+    instance_hyponym          -> Newark (ENG30-09113762-n)
+    instance_hyponym          -> Buffalo (ENG30-09118505-n)
+    instance_hyponym          -> Binghamton (ENG30-09124589-n)
+    instance_hyponym          -> Niagara_Falls (ENG30-09125016-n)
+    instance_hyponym          -> Schenectady (ENG30-09125354-n)
+    instance_hyponym          -> Utica (ENG30-09125629-n)
+    instance_hyponym          -> Charlotte (ENG30-09128372-n)
+    instance_hyponym          -> Durham (ENG30-09128536-n)
+    instance_hyponym          -> Greensboro (ENG30-09128947-n)
+    instance_hyponym          -> Winston-Salem (ENG30-09129324-n)
+    instance_hyponym          -> Fargo (ENG30-09129926-n)
+    instance_hyponym          -> Akron (ENG30-09130452-n)
+    instance_hyponym          -> Toledo (ENG30-09131428-n)
+    instance_hyponym          -> Portland (ENG30-09133895-n)
+    instance_hyponym          -> Allentown (ENG30-09134999-n)
+    instance_hyponym          -> Erie (ENG30-09135447-n)
+    instance_hyponym          -> Chester (ENG30-09135993-n)
+    instance_hyponym          -> Pittsburgh (ENG30-09136582-n)
+    instance_hyponym          -> Newport (ENG30-09137682-n)
+    instance_hyponym          -> Charleston (ENG30-09138538-n)
+    instance_hyponym          -> Sioux_Falls (ENG30-09139849-n)
+    instance_hyponym          -> Knoxville (ENG30-09140993-n)
+    instance_hyponym          -> Memphis (ENG30-09141119-n)
+    instance_hyponym          -> Arlington (ENG30-09142887-n)
+    instance_hyponym          -> Brownsville (ENG30-09143321-n)
+    instance_hyponym          -> El_Paso (ENG30-09144117-n)
+    instance_hyponym          -> Fort_Worth (ENG30-09144323-n)
+    instance_hyponym          -> Laredo (ENG30-09145083-n)
+    instance_hyponym          -> Lubbock (ENG30-09145217-n)
+    instance_hyponym          -> San_Antonio (ENG30-09146111-n)
+    instance_hyponym          -> Provo (ENG30-09147618-n)
+    instance_hyponym          -> Burlington (ENG30-09148662-n)
+    instance_hyponym          -> Newport_News (ENG30-09150662-n)
+    instance_hyponym          -> Norfolk (ENG30-09150863-n)
+    instance_hyponym          -> Lynchburg (ENG30-09151114-n)
+    instance_hyponym          -> Roanoke (ENG30-09151411-n)
+    instance_hyponym          -> Virginia_Beach (ENG30-09151516-n)
+    instance_hyponym          -> Seattle (ENG30-09154178-n)
+    instance_hyponym          -> Tacoma (ENG30-09154731-n)
+    instance_hyponym          -> Beckley (ENG30-09155692-n)
+    instance_hyponym          -> Clarksburg (ENG30-09155986-n)
+    instance_hyponym          -> Huntington (ENG30-09156241-n)
+    instance_hyponym          -> Morgantown (ENG30-09156666-n)
+    instance_hyponym          -> Parkersburg (ENG30-09156889-n)
+    instance_hyponym          -> Wheeling (ENG30-09157021-n)
+    instance_hyponym          -> Racine (ENG30-09158501-n)
+    instance_hyponym          -> Vatican (ENG30-09161452-n)
+    instance_hyponym          -> Cuidad_Bolivar (ENG30-09162414-n)
+    instance_hyponym          -> Cumana (ENG30-09162581-n)
+    instance_hyponym          -> Maracaibo (ENG30-09162803-n)
+    instance_hyponym          -> Valencia (ENG30-09163077-n)
+    instance_hyponym          -> Ho_și_Min (ENG30-09164241-n)
+    instance_hyponym          -> Haiphong (ENG30-09164417-n)
+    instance_hyponym          -> Aden (ENG30-09164903-n)
+    instance_hyponym          -> Mukalla (ENG30-09165294-n)
+    Path to root: oraș -> municipiu -> arie_urbană -> arie_geografică -> ținut -> loc -> lucru
+
+============================================================
+scrie (v) — 18 senses
+============================================================
+
+  Sense 1: ENG30-01744611-v
+    Definition  : a face să apară, a tipări cărți, articole, informații etc.
+    Literals    : ['publica', 'scrie']
+    Lit. senses : ['1.2', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> crea_cu_cuvinte (ENG30-01697816-v)
+    near_eng_derivat          -> autor (ENG30-10794014-n)
+    near_eng_derivat          -> publicație (ENG30-06589574-n)
+    verb_group                -> compune (ENG30-01698271-v)
+    Path to root: publica -> crea_cu_cuvinte -> crea
+
+  Sense 2: ENG30-01031966-v
+    Definition  : A trimite (cuiva) o scrisoare.
+    Literals    : ['scrie', 'coresponda']
+    Lit. senses : ['4.2', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> mărturisi (ENG30-00740577-v)
+    near_eng_derivat          -> scriitor (ENG30-10801291-n)
+    verb_group                -> scrie (ENG30-01007027-v)
+    Path to root: scrie -> mărturisi -> interacționa -> acționa
+
+  Sense 3: ENG30-01691057-v
+    Definition  : A acoperi ceva cu semne grafice sau, (prin generalizare), cu orice fel de semne, de figuri.
+    Literals    : ['contura', 'scrie', 'zugrăvi']
+    Lit. senses : ['1.x', '5', '2.3']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> trage (ENG30-01582645-v)
+    near_eng_derivat          -> scriitor (ENG30-10801291-n)
+    hyponym                   -> caligrafia (ENG30-01691660-v)
+    hyponym                   -> tăia (ENG30-01691798-v)
+    hyponym                   -> scrie (ENG30-01691927-v)
+    hyponym                   -> indica (ENG30-01692096-v)
+    hyponym                   -> scrie_cu_majuscule (ENG30-01692266-v)
+    hyponym                   -> nota (ENG30-01692443-v)
+    hyponym                   -> scrie_cu_litere_de_tipar (ENG30-01746715-v)
+    hyponym                   -> mâzgăli (ENG30-01747203-v)
+    hyponym                   -> copia (ENG30-01747374-v)
+    hyponym                   -> imprima (ENG30-01747945-v)
+    Path to root: contura -> trage -> însemna -> modifica
+
+  Sense 4: ENG30-01020731-v
+    Definition  : a completa (un formular) cu textul necesar
+    Literals    : ['scrie']
+    Lit. senses : ['1.6']
+    PNO         : P=0.00 N=0.00 O=1.00
+    entailment                -> pune_pe_hârtie (ENG30-01020356-v)
+    Path to root: scrie
+
+  Sense 5: ENG30-01746715-v
+    Definition  : a scrie cu litere ca cele de tipar, nelegate între ele
+    Literals    : ['scrie_cu_litere_de_tipar']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> contura (ENG30-01691057-v)
+    hyponym                   -> ENG30-01746839-v (ENG30-01746839-v)
+    Path to root: scrie_cu_litere_de_tipar -> contura -> trage -> însemna -> modifica
+
+  Sense 6: ENG30-00998886-v
+    Definition  : a înregistra date pe un computer
+    Literals    : ['scrie']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> imprima (ENG30-00998399-v)
+    domain_TOPIC              -> știința_calculatoarelor (ENG30-06128570-n)
+    hyponym                   -> suprascrie (ENG30-00999079-v)
+    Path to root: scrie -> imprima -> înregistra -> păstra -> ține -> avea
+
+  Sense 7: ENG30-01005548-v
+    Definition  : a scrie lăsând între rânduri un spațiu cât un alt rând
+    Literals    : ['scrie_la_două_rânduri']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> bate (ENG30-01004692-v)
+    Path to root: scrie_la_două_rânduri -> bate -> scrie -> mărturisi -> interacționa -> acționa
+
+  Sense 8: ENG30-01700326-v
+    Definition  : a împărți sau a lega prin cratimă
+    Literals    : ['scrie_cu_cratimă', 'scrie_cu_liniuță']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> ENG30-01699896-v (ENG30-01699896-v)
+    near_eng_derivat          -> cratimă (ENG30-06843148-n)
+    near_eng_derivat          -> despărțire (ENG30-00390735-n)
+    near_eng_derivat          -> despărți_în_silabe (ENG30-00390445-n)
+    Path to root: scrie_cu_cratimă -> ENG30-01699896-v
+
+  Sense 9: ENG30-01692266-v
+    Definition  : a scrie cu litere majuscule
+    Literals    : ['scrie_cu_majuscule']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> contura (ENG30-01691057-v)
+    near_eng_derivat          -> ENG30-06402425-n (ENG30-06402425-n)
+    near_eng_derivat          -> majuscul (ENG30-06824227-n)
+    Path to root: scrie_cu_majuscule -> contura -> trage -> însemna -> modifica
+
+  Sense 10: ENG30-01005209-v
+    Definition  : A scrie cu mâna
+    Literals    : ['scrie_de_mână']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> scrie (ENG30-00993014-v)
+    near_eng_derivat          -> manuscris (ENG30-06403393-n)
+    near_eng_derivat          -> scris_de_mână (ENG30-00614730-n)
+    Path to root: scrie_de_mână -> scrie -> mărturisi -> interacționa -> acționa
+
+  Sense 11: ENG30-00993453-v
+    Definition  : A scrie un mesaj, scrisoare, unei organizații
+    Literals    : ['scrie']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> scrie (ENG30-00993014-v)
+    Path to root: scrie -> scrie -> mărturisi -> interacționa -> acționa
+
+  Sense 12: ENG30-01756719-v
+    Definition  : a fi autorul unui scenariu de film
+    Literals    : ['scrie']
+    Lit. senses : ['2.2.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> compune (ENG30-01698271-v)
+    domain_TOPIC              -> scriere (ENG30-00929718-n)
+    near_eng_derivat          -> script (ENG30-07009946-n)
+    Path to root: scrie -> compune -> crea_cu_cuvinte -> crea
+
+  Sense 13: ENG30-01698271-v
+    Definition  : a produce o operă literară
+    Literals    : ['compune', 'crea', 'elabora', 'scrie']
+    Lit. senses : ['2.x', '2.x', '1.2.x', '2.2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    entailment                -> ENG30-01699896-v (ENG30-01699896-v)
+    verb_group                -> publica (ENG30-01744611-v)
+    hypernym                  -> crea_cu_cuvinte (ENG30-01697816-v)
+    near_eng_derivat          -> scriere (ENG30-00929718-n)
+    near_eng_derivat          -> pix (ENG30-03906997-n)
+    near_eng_derivat          -> autor (ENG30-10794014-n)
+    hyponym                   -> redacta (ENG30-01754576-v)
+    hyponym                   -> alcătui (ENG30-01690816-v)
+    hyponym                   -> compune (ENG30-01698916-v)
+    hyponym                   -> scrie (ENG30-01699172-v)
+    hyponym                   -> paragrafa (ENG30-01699700-v)
+    hyponym                   -> cărcăli (ENG30-01700655-v)
+    hyponym                   -> rescrie (ENG30-01700934-v)
+    hyponym                   -> ENG30-01701152-v (ENG30-01701152-v)
+    hyponym                   -> dramatiza (ENG30-01701311-v)
+    hyponym                   -> schița (ENG30-01701634-v)
+    hyponym                   -> versifica (ENG30-01702514-v)
+    hyponym                   -> fi_autor (ENG30-01704452-v)
+    hyponym                   -> adnota (ENG30-01704953-v)
+    hyponym                   -> cita (ENG30-01705257-v)
+    hyponym                   -> scrie (ENG30-01756719-v)
+    Path to root: compune -> crea_cu_cuvinte -> crea
+
+  Sense 14: ENG30-01691927-v
+    Definition  : a nota pe partea exterioară sau de sus
+    Literals    : ['scrie']
+    Lit. senses : ['1.1.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> contura (ENG30-01691057-v)
+    near_eng_derivat          -> superscriere (ENG30-06406177-n)
+    Path to root: scrie -> contura -> trage -> însemna -> modifica
+
+  Sense 15: ENG30-01754576-v
+    Definition  : a pune în formă scrisă
+    Literals    : ['redacta', 'scrie']
+    Lit. senses : ['1.x', '2.2.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> compune (ENG30-01698271-v)
+    domain_TOPIC              -> scriere (ENG30-00929718-n)
+    Path to root: redacta -> compune -> crea_cu_cuvinte -> crea
+
+  Sense 16: ENG30-01699172-v
+    Definition  : A scrie pe o anumită temă
+    Literals    : ['scrie']
+    Lit. senses : ['3']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> compune (ENG30-01698271-v)
+    domain_TOPIC              -> scriere (ENG30-00929718-n)
+    Path to root: scrie -> compune -> crea_cu_cuvinte -> crea
+
+  Sense 17: ENG30-00993014-v
+    Definition  : A relata, a descrie, a povesti ceva în scris.
+    Literals    : ['scrie']
+    Lit. senses : ['4.4']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> scrie (ENG30-01007027-v)
+    hypernym                  -> mărturisi (ENG30-00740577-v)
+    near_eng_derivat          -> scriitor (ENG30-10801291-n)
+    near_eng_derivat          -> redactare (ENG30-00614224-n)
+    hyponym                   -> scrie (ENG30-00993453-v)
+    hyponym                   -> ENG30-00993754-v (ENG30-00993754-v)
+    hyponym                   -> rescrie (ENG30-00995838-v)
+    hyponym                   -> iscăli (ENG30-00996485-v)
+    hyponym                   -> bate (ENG30-01004692-v)
+    hyponym                   -> scrie_de_mână (ENG30-01005209-v)
+    hyponym                   -> nota (ENG30-01006056-v)
+    hyponym                   -> mâzgăli (ENG30-01006239-v)
+    hyponym                   -> pune_pe_hârtie (ENG30-01020356-v)
+    hyponym                   -> emite (ENG30-01064799-v)
+    Path to root: scrie -> mărturisi -> interacționa -> acționa
+
+  Sense 18: ENG30-01007027-v
+    Definition  : A așterne pe hârtie un text, o scrisoare.
+    Literals    : ['scrie']
+    Lit. senses : ['4.2.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> scrie (ENG30-00993014-v)
+    verb_group                -> scrie (ENG30-01031966-v)
+    hypernym                  -> coresponda (ENG30-01006810-v)
+    near_eng_derivat          -> scriitor (ENG30-10801291-n)
+    Path to root: scrie -> coresponda
+
+============================================================
+alerga (v) — 11 senses
+============================================================
+
+  Sense 1: ENG30-01086103-v
+    Definition  : A participa la probele de alergări în cadrul unei competiții sportive.
+    Literals    : ['alerga']
+    Lit. senses : ['7']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> [se] înfrunta (ENG30-01072262-v)
+    near_eng_derivat          -> alergare (ENG30-07460104-n)
+    near_eng_derivat          -> alergător (ENG30-10542888-n)
+    near_eng_derivat          -> alergare (ENG30-00440039-n)
+    near_eng_derivat          -> cursă (ENG30-07458453-n)
+    near_eng_derivat          -> cursă (ENG30-07472657-n)
+    near_eng_derivat          -> mașină_de_curse (ENG30-04037443-n)
+    near_eng_derivat          -> animal_de_cursă (ENG30-02384858-n)
+    near_eng_derivat          -> cursă (ENG30-00449295-n)
+    hyponym                   -> ENG30-01086691-v (ENG30-01086691-v)
+    hyponym                   -> ENG30-01086854-v (ENG30-01086854-v)
+    hyponym                   -> concura (ENG30-01086965-v)
+    hyponym                   -> candida (ENG30-01094086-v)
+    Path to root: alerga -> [se] înfrunta
+
+  Sense 2: ENG30-01902405-v
+    Definition  : A se deplasa cu pași repezi, a se mișca iute într-o direcție, a merge în fugă
+    Literals    : ['alerga', 'fugi', '[se] grăbi']
+    Lit. senses : ['1', '1', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> alerga (ENG30-01926311-v)
+    near_eng_derivat          -> da_bir_cu_fugiții (ENG30-00556142-n)
+    Path to root: alerga -> alerga -> accelera -> |se| deplasa
+
+  Sense 3: ENG30-01914947-v
+    Definition  : a fugi pe o anumită distanță
+    Literals    : ['alerga']
+    Lit. senses : ['6.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> trece (ENG30-02050132-v)
+    near_eng_derivat          -> alergare (ENG30-00293916-n)
+    near_eng_derivat          -> alergare (ENG30-07460104-n)
+    verb_group                -> alerga (ENG30-01926311-v)
+    Path to root: alerga -> trece -> |se| deplasa
+
+  Sense 4: ENG30-02058994-v
+    Definition  : A acționa sau a face pe cineva să acționeze (mai) repede.
+    Literals    : ['goni', 'alerga']
+    Lit. senses : ['4.x', '4.1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> |se| deplasa (ENG30-01835496-v)
+    near_eng_derivat          -> viteză (ENG30-15282696-n)
+    near_eng_derivat          -> iuțeală (ENG30-05058140-n)
+    near_eng_derivat          -> grabă (ENG30-00330160-n)
+    near_also_see             -> accelera (ENG30-00438178-v)
+    near_eng_derivat          -> grabă (ENG30-00555648-n)
+    near_antonym              -> zăbovi (ENG30-02058590-v)
+    hyponym                   -> [se] grăbi (ENG30-01996574-v)
+    hyponym                   -> [se] năpusti (ENG30-02055267-v)
+    hyponym                   -> avânta (ENG30-02061495-v)
+    Path to root: goni -> |se| deplasa
+
+  Sense 5: ENG30-02073065-v
+    Definition  : (figurativ (Despre vreme sau despre unități de timp)) A trece repede, a se scurge rapid.
+    Literals    : ['alerga', 'fugi', 'goni', 'zbura']
+    Lit. senses : ['1.2.x', '6', '4.x', '4.4']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> [se] evapora (ENG30-00153061-v)
+    hypernym                  -> [se] scurge (ENG30-02072849-v)
+    Path to root: alerga -> [se] scurge -> înainta -> |se| deplasa
+
+  Sense 6: ENG30-02092309-v
+    Definition  : a determina un animal să se miște repede
+    Literals    : ['alerga', 'fugări', 'goni']
+    Lit. senses : ['3', '1.2', '1.2']
+    PNO         : P=0.00 N=0.12 O=0.88
+    hypernym                  -> ENG30-01850315-v (ENG30-01850315-v)
+    near_eng_derivat          -> alergare (ENG30-00293916-n)
+    near_eng_derivat          -> alergare (ENG30-07460104-n)
+    verb_group                -> vâna (ENG30-01143838-v)
+    Path to root: alerga -> ENG30-01850315-v
+
+  Sense 7: ENG30-01086965-v
+    Definition  : a participa la o cursă de cai
+    Literals    : ['concura', 'alerga']
+    Lit. senses : ['x', '7.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> alerga (ENG30-01086103-v)
+    Path to root: concura -> alerga -> [se] înfrunta
+
+  Sense 8: ENG30-02099829-v
+    Definition  : A umbla de colo până colo, fără o țintă precisă.
+    Literals    : ['alerga']
+    Lit. senses : ['5']
+    PNO         : P=0.00 N=0.50 O=0.50
+    verb_group                -> fugi (ENG30-01926984-v)
+    hypernym                  -> |se| deplasa (ENG30-01835496-v)
+    near_eng_derivat          -> conducere (ENG30-13995935-n)
+    verb_group                -> da_drumul (ENG30-02421921-v)
+    Path to root: alerga -> |se| deplasa
+
+  Sense 9: ENG30-01928390-v
+    Definition  : a face o alergare ușoară pentru întreținerea sănătății
+    Literals    : ['alerga', 'face_jogging']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> alerga (ENG30-01926311-v)
+    domain_TOPIC              -> atletism (ENG30-00523513-n)
+    near_eng_derivat          -> alergare_ușoară (ENG30-00294190-n)
+    near_eng_derivat          -> ENG30-10223459-n (ENG30-10223459-n)
+    near_eng_derivat          -> jogging (ENG30-00628390-n)
+    Path to root: alerga -> alerga -> accelera -> |se| deplasa
+
+  Sense 10: ENG30-01926311-v
+    Definition  : A se deplasa cu pași repezi, a se mișca iute într-o direcție, a merge în fugă;
+    Literals    : ['alerga', 'fugi']
+    Lit. senses : ['1.1', '1.2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> alerga (ENG30-01914947-v)
+    hypernym                  -> accelera (ENG30-02055649-v)
+    near_eng_derivat          -> alergare (ENG30-00293916-n)
+    near_eng_derivat          -> alergare (ENG30-07460104-n)
+    near_eng_derivat          -> alergător (ENG30-10542761-n)
+    near_also_see             -> |se| zbengui (ENG30-01883716-v)
+    near_also_see             -> fugi (ENG30-02075049-v)
+    hyponym                   -> |se| grăbi (ENG30-01901447-v)
+    hyponym                   -> alerga (ENG30-01902405-v)
+    hyponym                   -> alerga_sprinten (ENG30-01926878-v)
+    hyponym                   -> ENG30-01927330-v (ENG30-01927330-v)
+    hyponym                   -> ENG30-01927447-v (ENG30-01927447-v)
+    hyponym                   -> întrece (ENG30-01927608-v)
+    hyponym                   -> alerga (ENG30-01928390-v)
+    hyponym                   -> sprinta (ENG30-01928579-v)
+    hyponym                   -> ENG30-01928730-v (ENG30-01928730-v)
+    hyponym                   -> fi_la_balon (ENG30-02059770-v)
+    Path to root: alerga -> accelera -> |se| deplasa
+
+  Sense 11: ENG30-01926878-v
+    Definition  : A alerga ușor și relativ repde
+    Literals    : ['alerga_sprinten']
+    Lit. senses : ['x']
+    PNO         : P=0.12 N=0.00 O=0.88
+    hypernym                  -> alerga (ENG30-01926311-v)
+    near_eng_derivat          -> neastâmpărat (ENG30-10538154-n)
+    Path to root: alerga_sprinten -> alerga -> accelera -> |se| deplasa
+
+============================================================
+citi (v) — 8 senses
+============================================================
+
+  Sense 1: ENG30-00626428-v
+    Definition  : A rosti, a urmări un text cu glas tare pentru a comunica cuiva conținutul lui.;
+    Literals    : ['citi']
+    Lit. senses : ['2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> spune (ENG30-00941990-v)
+    near_eng_derivat          -> alfabetizat (ENG30-10508862-n)
+    near_eng_derivat          -> cititor (ENG30-10508710-n)
+    near_eng_derivat          -> declamare (ENG30-07234881-n)
+    verb_group                -> citi (ENG30-00625119-v)
+    hyponym                   -> dicta (ENG30-00626890-v)
+    hyponym                   -> striga (ENG30-01067995-v)
+    Path to root: citi -> spune -> mărturisi -> interacționa -> acționa
+
+  Sense 2: ENG30-00625119-v
+    Definition  : A parcurge un text (pronunțând cuvintele sau nu) pentru a lua cunoștință de cele scrise.
+    Literals    : ['citi']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> citi (ENG30-00626428-v)
+    verb_group                -> [se] citi (ENG30-02730813-v)
+    hypernym                  -> interpreta (ENG30-00623151-v)
+    near_eng_derivat          -> lectură (ENG30-06590065-n)
+    near_eng_derivat          -> alfabetizat (ENG30-10508862-n)
+    near_eng_derivat          -> cititor (ENG30-10508710-n)
+    near_eng_derivat          -> citit (ENG30-05808794-n)
+    hyponym                   -> anagrama (ENG30-00625518-v)
+    hyponym                   -> reciti (ENG30-00625723-v)
+    hyponym                   -> citi_pe_diagonală (ENG30-00625841-v)
+    hyponym                   -> descifra (ENG30-00626130-v)
+    hyponym                   -> frunzări (ENG30-00627824-v)
+    Path to root: citi -> interpreta -> înțelege
+
+  Sense 3: ENG30-00627091-v
+    Definition  : Expresie : A citi (cuiva) în palmă
+    Literals    : ['citi']
+    Lit. senses : ['5.2']
+    PNO         : P=0.00 N=0.00 O=1.00
+    verb_group                -> lua (ENG30-00624476-v)
+    hypernym                  -> anticipa (ENG30-00917772-v)
+    Path to root: citi -> anticipa -> speculație -> specula -> raționa -> chibzui
+
+  Sense 4: ENG30-00607114-v
+    Definition  : A învăța, a studia (parcurgând scrieri, izvoare etc.).
+    Literals    : ['citi', 'învăța', 'studia', '[se] pune_cu_burta_pe_carte']
+    Lit. senses : ['3', '3.2.x', '1.2', 'x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    entailment                -> citi (ENG30-00625119-v)
+    hypernym                  -> deprinde (ENG30-00597915-v)
+    near_eng_derivat          -> învățare (ENG30-05755883-n)
+    near_eng_derivat          -> lectură_atentă (ENG30-06598445-n)
+    hyponym                   -> memora (ENG30-00604576-v)
+    hyponym                   -> toci (ENG30-00605783-v)
+    Path to root: citi -> deprinde
+
+  Sense 5: ENG30-00625841-v
+    Definition  : A citi un text pe sărite
+    Literals    : ['citi_pe_diagonală']
+    Lit. senses : ['x']
+    PNO         : P=0.25 N=0.00 O=0.75
+    hypernym                  -> citi (ENG30-00625119-v)
+    Path to root: citi_pe_diagonală -> citi -> interpreta -> înțelege
+
+  Sense 6: ENG30-00621504-v
+    Definition  : A citi un text pentru semnificațiile ascunse
+    Literals    : ['citi_printre_rânduri']
+    Lit. senses : ['x']
+    PNO         : P=0.25 N=0.12 O=0.62
+    hypernym                  -> interpreta (ENG30-00623151-v)
+    Path to root: citi_printre_rânduri -> interpreta -> înțelege
+
+  Sense 7: ENG30-01718755-v
+    Definition  : a participa la o audiție pentru un rol pe scenă prin citirea unei părți din rol
+    Literals    : ['citi']
+    Lit. senses : ['x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> audiție (ENG30-01718535-v)
+    domain_TOPIC              -> artele_spectacolului (ENG30-06157326-n)
+    Path to root: citi -> audiție -> interpreta -> recrea -> crea
+
+  Sense 8: ENG30-00627520-v
+    Definition  : a obține date folosind suporturi magnetice
+    Literals    : ['citi', 'scana']
+    Lit. senses : ['10', '1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    hypernym                  -> interpreta (ENG30-00623151-v)
+    Path to root: citi -> interpreta -> înțelege
+
+============================================================
+rapid (a) — 5 senses
+============================================================
+
+  Sense 1: ENG30-00874226-a
+    Definition  : care se mișcă repede și energic
+    Literals    : ['trepidant', 'rapid']
+    Lit. senses : ['x', 'x']
+    PNO         : P=0.38 N=0.00 O=0.62
+    similar_to                -> dinamic (ENG30-00873603-a)
+    near_eng_derivat          -> energie (ENG30-05035961-n)
+    near_eng_derivat          -> însuflețire (ENG30-04632157-n)
+    near_eng_derivat          -> vioiciune (ENG30-04632963-n)
+    Path to root: trepidant
+
+  Sense 2: ENG30-01144230-a
+    Definition  : Care se mișcă, se desfășoară, se execută cu repeziciune.
+    Literals    : ['accelerat', 'rapid']
+    Lit. senses : ['1.1', '1.x']
+    PNO         : P=0.00 N=0.25 O=0.75
+    Path to root: accelerat
+
+  Sense 3: ENG30-00979366-a
+    Definition  : realizat repede, fără întârziere
+    Literals    : ['rapid']
+    Lit. senses : ['1.x']
+    PNO         : P=0.00 N=0.00 O=1.00
+    similar_to                -> rapid (ENG30-00976508-a)
+    near_eng_derivat          -> iuțeală (ENG30-05059132-n)
+    near_eng_derivat          -> iuțeală (ENG30-05058140-n)
+    Path to root: rapid
+
+  Sense 4: ENG30-00976508-a
+    Definition  : Care se mișcă, se desfășoară, se execută cu repeziciune.
+    Literals    : ['rapid']
+    Lit. senses : ['1']
+    PNO         : P=0.00 N=0.00 O=1.00
+    near_eng_derivat          -> iuțeală (ENG30-05058140-n)
+    near_antonym              -> agale (ENG30-00980527-a)
+    similar_to                -> ENG30-00977372-a (ENG30-00977372-a)
+    similar_to                -> ENG30-00978059-a (ENG30-00978059-a)
+    similar_to                -> agil (ENG30-00978199-a)
+    similar_to                -> expeditiv (ENG30-00978754-a)
+    similar_to                -> instantaneu (ENG30-00979031-a)
+    similar_to                -> rapid (ENG30-00979366-a)
+    similar_to                -> repede (ENG30-00979697-a)
+    similar_to                -> rapid (ENG30-00979862-a)
+    Path to root: rapid
+
+  Sense 5: ENG30-00979862-a
+    Definition  : care are viteză mare
+    Literals    : ['rapid']
+    Lit. senses : ['1.x']
+    PNO         : P=0.50 N=0.00 O=0.50
+    similar_to                -> rapid (ENG30-00976508-a)
+    near_eng_derivat          -> iuțeală (ENG30-05059132-n)
+    near_eng_derivat          -> viteză (ENG30-15282696-n)
+    near_eng_derivat          -> grabă (ENG30-00330160-n)
+    Path to root: rapid
+
+============================================================
+blând (a) — 8 senses
+============================================================
+
+  Sense 1: ENG30-00711831-a
+    Definition  : Care nu este strict
+    Literals    : ['blând', 'indulgent']
+    Lit. senses : ['x', '1.1']
+    PNO         : P=0.25 N=0.25 O=0.50
+    near_eng_derivat          -> indulgență (ENG30-01071213-n)
+    near_eng_derivat          -> indulgență (ENG30-04638585-n)
+    Path to root: blând
+
+  Sense 2: ENG30-01455412-a
+    Definition  : tăcut și tandru
+    Literals    : ['blând']
+    Lit. senses : ['x']
+    PNO         : P=0.38 N=0.25 O=0.38
+    similar_to                -> încet (ENG30-01454636-a)
+    near_eng_derivat          -> gentilețe (ENG30-04910973-n)
+    Path to root: blând
+
+  Sense 3: ENG30-01144571-a
+    Definition  : (Despre drumuri, pante etc.) Cu înclinație mică, ușor de urcat sau de străbătut
+    Literals    : ['blând', 'lin', 'ușor']
+    Lit. senses : ['5.x', '3.2', 'x']
+    PNO         : P=0.25 N=0.38 O=0.38
+    near_eng_derivat          -> ușurință (ENG30-04708113-n)
+    Path to root: blând
+
+  Sense 4: ENG30-01372773-a
+    Definition  : Care este omenos, pașnic, prietenos
+    Literals    : ['blajin', 'blând']
+    Lit. senses : ['1', '1.1']
+    PNO         : P=0.50 N=0.00 O=0.50
+    similar_to                -> drăguț (ENG30-01372049-a)
+    near_eng_derivat          -> amabilitate (ENG30-04840981-n)
+    Path to root: blajin
+
+  Sense 5: ENG30-00438332-a
+    Definition  : senin și plăcut
+    Literals    : ['blând']
+    Lit. senses : ['5.x']
+    PNO         : P=1.00 N=0.00 O=0.00
+    near_eng_derivat          -> vreme_dulce (ENG30-14522408-n)
+    Path to root: blând
+
+  Sense 6: ENG30-01509262-a
+    Definition  : (Despre oameni și despre manifestările lor) Moderat, cumpătat, potolit.
+    Literals    : ['blând']
+    Lit. senses : ['1.1.x']
+    PNO         : P=0.62 N=0.25 O=0.12
+    similar_to                -> blând (ENG30-01508719-a)
+    Path to root: blând
+
+  Sense 7: ENG30-01509066-a
+    Definition  : Care este plăcut, nu este aspru, sever
+    Literals    : ['blând']
+    Lit. senses : ['5.x']
+    PNO         : P=0.25 N=0.75 O=0.00
+    similar_to                -> blând (ENG30-01508719-a)
+    near_eng_derivat          -> gentilețe (ENG30-04910973-n)
+    Path to root: blând
+
+  Sense 8: ENG30-01508719-a
+    Definition  : Care nu este aspru, care nu este excesiv, care este plăcut.
+    Literals    : ['blând']
+    Lit. senses : ['5']
+    PNO         : P=0.12 N=0.12 O=0.75
+    also_see                  -> potrivit (ENG30-01531375-a)
+    also_see                  -> temperat (ENG30-02401590-a)
+    attribute                 -> nivel (ENG30-05093890-n)
+    near_eng_derivat          -> gentilețe (ENG30-04910973-n)
+    near_antonym              -> intens (ENG30-01509527-a)
+    similar_to                -> blând (ENG30-01509066-a)
+    similar_to                -> blând (ENG30-01509262-a)
+    similar_to                -> moderat (ENG30-01509367-a)
+    Path to root: blând
