@@ -3,20 +3,20 @@ from pathlib import Path
 from gensim.models import KeyedVectors
 
 MODEL_PATH = "word2vec-corola-300.vec"
-OUTPUT = Path(__file__).resolve().parent.parent / "corola_embeddings_results.txt"
+OUTPUT = Path(__file__).resolve().parent.parent / "lab2/corola_embeddings_results.txt"
 
 model = KeyedVectors.load_word2vec_format(MODEL_PATH, binary=False)
 
 WORDS = ["carte", "oras", "munte", "prieten", "citi", "scrie", "merge", "frumos", "puternic", "bun"]
 
 ANALOGIES = [
-    ("barbat", "femeie", "rege"),
-    ("franta", "paris", "italia"),
-    ("romania", "bucuresti", "germania"),
-    ("medic", "spital", "scoala"),
-    ("pilot", "avion", "corabie"),
+    ("rege", "barbat", "femeie"),
+    ("franța", "paris", "italia"),
+    ("românia", "bucurești", "germania"),
+    ("medic", "spital", "școală"),
+    ("pilot", "avion", "barcă"),
     ("poet", "poezie", "tablou"),
-    ("casa", "oras", "sat"),
+    ("casă", "oraș", "sat"),
 ]
 
 with open(OUTPUT, "w", encoding="utf-8") as out:

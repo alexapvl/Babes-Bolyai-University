@@ -120,40 +120,40 @@ Vocab: 250942, Dim: 300
    9. harnic                         0.5420
   10. folositor                      0.5377
 
-barbat - femeie + rege = ?
-  1. regele                         0.6151
-  2. principe                       0.6080
-  3. împărat                        0.5901
-  4. regel                          0.5842
-  5. regelui                        0.5733
+rege - barbat + femeie = ?
+  1. regină                         0.6802
+  2. regele                         0.6472
+  3. regelui                        0.6339
+  4. prințesă                       0.6072
+  5. împărăteasă                    0.6059
 
-franta - paris + italia = ?
-  1. portugalia                     0.5939
-  2. spania                         0.5925
-  3. croația                        0.5759
-  4. olanda                         0.5746
-  5. austria                        0.5726
+franța - paris + italia = ?
+  1. spania                         0.7588
+  2. portugalia                     0.7219
+  3. olanda                         0.6966
+  4. belgia                         0.6906
+  5. grecia                         0.6732
 
-romania - bucuresti + germania = ?
-  1. austria                        0.6976
-  2. ungaria                        0.6100
-  3. suedia                         0.5980
-  4. italia                         0.5906
-  5. românia                        0.5891
+românia - bucurești + germania = ?
+  1. austria                        0.7124
+  2. ungaria                        0.6087
+  3. suedia                         0.6048
+  4. cehia                          0.5956
+  5. cehoslovacia                   0.5851
 
-medic - spital + scoala = ?
-  1. școala                         0.5250
-  2. învățâmântul                   0.4639
-  3. gimnazială                     0.4616
-  4. profesor-pedagog               0.4591
-  5. profesor                       0.4537
+medic - spital + școală = ?
+  1. școala                         0.6077
+  2. învățător                      0.5839
+  3. profesor                       0.5477
+  4. dascăl                         0.5462
+  5. învățători                     0.5290
 
-pilot - avion + corabie = ?
-  1. corabia                        0.5213
-  2. caravelă                       0.4973
-  3. aspirant                       0.4916
-  4. corabiei                       0.4898
-  5. timonier                       0.4719
+pilot - avion + barcă = ?
+  1. barca                          0.5338
+  2. timonier                       0.4968
+  3. vâslea                         0.4874
+  4. aspirant                       0.4843
+  5. vâsle                          0.4795
 
 poet - poezie + tablou = ?
   1. tabloul                        0.6111
@@ -162,10 +162,10 @@ poet - poezie + tablou = ?
   4. portret                        0.5370
   5. portretist                     0.5370
 
-casa - oras + sat = ?
-  1. casă                           0.5847
-  2. casele                         0.5557
-  3. casei                          0.5292
-  4. asigurări                      0.4732
-  5. bătrânească                    0.4588
+casă - oraș + sat = ?
+  1. ogradă                         0.5762
+  2. prispă                         0.5447
+  3. bătrânească                    0.5422
+  4. cumătrie                       0.5317
+  5. curătură                       0.5301
 
