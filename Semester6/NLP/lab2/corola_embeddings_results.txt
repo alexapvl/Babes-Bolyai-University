@@ -1,171 +1,67 @@
-Vocab: 250942, Dim: 300
+Loaded corola_lemma: path=corola_lemma.300.50.vec, vocab=109359, dim=300
+Loaded corola_words: path=corola_words.300.20.vec, vocab=250942, dim=300
 
-'carte':
-   1. cartea                         0.7809
-   2. cărțile                        0.6761
-   3. cărți                          0.6596
-   4. cărțulie                       0.6471
-   5. cărticică                      0.6361
-   6. cărții                         0.6284
-   7. cărțulia                       0.5980
-   8. librărie                       0.5900
-   9. copertă                        0.5764
-  10. cărticica                      0.5763
+======================================================================================================================================================
+WORD NEIGHBORS (corola_lemma)                                        | WORD NEIGHBORS (corola_words)
+======================================================================================================================================================
+carte/NOUN                                                           | carte/NOUN
+token=Nc_carte; top3=Nc_eseu (0.660), Nc_roman (0.653), Nc_tom (0.636) | token=carte; top3=cartea (0.781), cărțile (0.676), cărți (0.660)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+oras/NOUN                                                            | oras/NOUN
+token=Nc_oraș; top3=Nc_oras (0.768), Nc_orășel (0.767), Nc_sat (0.763) | token=oras; top3=orasul (0.706), orase (0.663), orasului (0.637)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+munte/NOUN                                                           | munte/NOUN
+token=Nc_munte; top3=Nc_deal (0.792), Nc_pisc (0.782), Nc_vale (0.767) | token=munte; top3=muntele (0.700), muntelui (0.689), deal (0.675)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+prieten/NOUN                                                         | prieten/NOUN
+token=Nc_prieten; top3=Nc_amic (0.839), Af_prieten (0.833), Nc_prietenă (0.818) | token=prieten; top3=prietenul (0.739), amic (0.705), prietenu (0.703)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+citi/VERB                                                            | citi/VERB
+token=Vm_citi; top3=Vm_reciti (0.728), Af_citit (0.694), Vm_răsfoi (0.680) | token=citi; top3=reciti (0.704), citit (0.628), citească (0.623)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+scrie/VERB                                                           | scrie/VERB
+token=Vm_scrie; top3=Vm_comenta (0.644), Vm_scri (0.627), Vm_citi (0.551) | token=scrie; top3=scria (0.735), citește (0.719), scriu (0.715)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+merge/VERB                                                           | merge/VERB
+token=Vm_merge; top3=Vm_îmerge (0.687), Vm_plimba (0.622), Vm_pleca (0.605) | token=merge; top3=merg (0.771), meargă (0.761), pleca (0.749)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+frumos/ADJ                                                           | frumos/ADJ
+token=Af_frumos; top3=Rg_frumos (0.808), Af_minunat (0.792), Af_încântător (0.782) | token=frumos; top3=frumosă (0.785), minunat (0.748), plăcut (0.707)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+puternic/ADJ                                                         | puternic/ADJ
+token=Af_puternic; top3=Rg_puternic (0.785), Af_slab (0.669), Af_viguros (0.654) | token=puternic; top3=slab (0.706), puternicul (0.701), puternice (0.700)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+bun/ADJ                                                              | bun/ADJ
+token=Af_bun; top3=Af_prost (0.656), Rg_bun (0.599), Af_excelent (0.560) | token=bun; top3=augur (0.604), excelent (0.587), rău (0.575)
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
-'oras':
-   1. orasul                         0.7057
-   2. orase                          0.6630
-   3. orasului                       0.6373
-   4. oraș                           0.6372
-   5. orașul                         0.5837
-   6. oran                           0.5666
-   7. adoras                         0.5578
-   8. municipium                     0.5457
-   9. orasenesc                      0.5350
-  10. marasesti                      0.5312
+======================================================================================================================================================
+ANALOGIES (corola_lemma)                                             | ANALOGIES (corola_words)
+======================================================================================================================================================
+rege/NOUN - barbat/NOUN + femeie/NOUN                                | rege/NOUN - barbat/NOUN + femeie/NOUN
+Nc_regină (0.825), Nc_tron (0.784), Nc_monarh (0.776)                | regele (0.650), regină (0.649), regelui (0.636)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+franta/PROPN - paris/PROPN + italia/PROPN                            | franta/PROPN - paris/PROPN + italia/PROPN
+Np_Spania (0.724), Np_Portugalia (0.691), Np_Germania (0.690)        | portugalia (0.594), spania (0.592), olanda (0.576)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+romania/PROPN - bucuresti/PROPN + germania/PROPN                     | romania/PROPN - bucuresti/PROPN + germania/PROPN
+Np_Austria (0.678), Np_Cehia (0.554), Np_Ungaria (0.552)             | austria (0.706), ungaria (0.617), suedia (0.607)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+medic/NOUN - spital/NOUN + scoala/NOUN                               | medic/NOUN - spital/NOUN + scoala/NOUN
+Nc_dentist (0.541), Nc_farmacist (0.507), Nc_învățător (0.471)       | școala (0.491), profesor-pedagog (0.470), profesor-sociolog (0.468)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+pilot/NOUN - avion/NOUN + corabie/NOUN                               | pilot/NOUN - avion/NOUN + corabie/NOUN
+Nc_corăbier (0.552), Nc_cârmaci (0.529), Nc_catarg (0.525)           | corabia (0.525), caravelă (0.505), aspirant (0.500)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+poet/NOUN - poezie/NOUN + tablou/NOUN                                | poet/NOUN - poezie/NOUN + tablou/NOUN
+Nc_pictor (0.609), Nc_portret (0.547), Nc_vază (0.545)               | tabloul (0.569), pictor (0.500), portretul (0.498)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+casa/NOUN - oras/NOUN + sat/NOUN                                     | casa/NOUN - oras/NOUN + sat/NOUN
+Nc_prispă (0.534), Nc_ogradă (0.529), Nc_tat (0.529)                 | casă (0.559), casele (0.557), casei (0.531)
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
-'munte':
-   1. muntele                        0.6996
-   2. muntelui                       0.6886
-   3. deal                           0.6753
-   4. munți                          0.6664
-   5. șes                            0.6638
-   6. stâncărie                      0.6583
-   7. munții                         0.6496
-   8. stâncă                         0.6464
-   9. rarăului                       0.6430
-  10. munților                       0.6414
-
-'prieten':
-   1. prietenul                      0.7390
-   2. amic                           0.7055
-   3. prietenu                       0.7025
-   4. coleg                          0.6742
-   5. prietenului                    0.6592
-   6. fii                            0.6465
-   7. tovarăș                        0.6421
-   8. frate                          0.6350
-   9. camarad                        0.6241
-  10. amicul                         0.6219
-
-'citi':
-   1. reciti                         0.7037
-   2. citit                          0.6284
-   3. citească                       0.6230
-   4. citind                         0.6051
-   5. citești                        0.6034
-   6. scrie                          0.6010
-   7. citesc                         0.5995
-   8. descifra                       0.5906
-   9. citite                         0.5876
-  10. recitite                       0.5824
-
-'scrie':
-   1. scria                          0.7347
-   2. citește                        0.7188
-   3. scriu                          0.7154
-   4. scriind                        0.7107
-   5. scrii                          0.6917
-   6. citească                       0.6829
-   7. recitește                      0.6804
-   8. spune                          0.6703
-   9. scrisese                       0.6615
-  10. citit                          0.6558
-
-'merge':
-   1. merg                           0.7708
-   2. meargă                         0.7613
-   3. pleca                          0.7487
-   4. mergi                          0.7376
-   5. întoarce                       0.7288
-   6. mergem                         0.7256
-   7. departe                        0.6927
-   8. ajunge                         0.6874
-   9. pleacă                         0.6814
-  10. mergea                         0.6687
-
-'frumos':
-   1. frumosă                        0.7846
-   2. minunat                        0.7483
-   3. plăcut                         0.7070
-   4. frumoasă                       0.7003
-   5. superb                         0.6988
-   6. splendid                       0.6936
-   7. adorabil                       0.6851
-   8. frumosul                       0.6836
-   9. drag                           0.6820
-  10. preafrumos                     0.6728
-
-'puternic':
-   1. slab                           0.7061
-   2. puternicul                     0.7009
-   3. puternice                      0.7004
-   4. puternică                      0.6952
-   5. viguros                        0.6734
-   6. puternicului                   0.6728
-   7. profund                        0.6316
-   8. intens                         0.6191
-   9. puternicile                    0.6163
-  10. violent                        0.6148
-
-'bun':
-   1. augur                          0.6037
-   2. excelent                       0.5866
-   3. rău                            0.5747
-   4. înțelept                       0.5746
-   5. deștept                        0.5720
-   6. bunu                           0.5510
-   7. bunul                          0.5473
-   8. valoros                        0.5447
-   9. harnic                         0.5420
-  10. folositor                      0.5377
-
-rege - barbat + femeie = ?
-  1. regină                         0.6802
-  2. regele                         0.6472
-  3. regelui                        0.6339
-  4. prințesă                       0.6072
-  5. împărăteasă                    0.6059
-
-franța - paris + italia = ?
-  1. spania                         0.7588
-  2. portugalia                     0.7219
-  3. olanda                         0.6966
-  4. belgia                         0.6906
-  5. grecia                         0.6732
-
-românia - bucurești + germania = ?
-  1. austria                        0.7124
-  2. ungaria                        0.6087
-  3. suedia                         0.6048
-  4. cehia                          0.5956
-  5. cehoslovacia                   0.5851
-
-medic - spital + școală = ?
-  1. școala                         0.6077
-  2. învățător                      0.5839
-  3. profesor                       0.5477
-  4. dascăl                         0.5462
-  5. învățători                     0.5290
-
-pilot - avion + barcă = ?
-  1. barca                          0.5338
-  2. timonier                       0.4968
-  3. vâslea                         0.4874
-  4. aspirant                       0.4843
-  5. vâsle                          0.4795
-
-poet - poezie + tablou = ?
-  1. tabloul                        0.6111
-  2. pictor                         0.5535
-  3. portretul                      0.5486
-  4. portret                        0.5370
-  5. portretist                     0.5370
-
-casă - oraș + sat = ?
-  1. ogradă                         0.5762
-  2. prispă                         0.5447
-  3. bătrânească                    0.5422
-  4. cumătrie                       0.5317
-  5. curătură                       0.5301
-
+======================================================================================================================================================
+COMPARISON SUMMARY
+======================================================================================================================================================
+corola_lemma: analogy SKIP count = 0/7
+corola_words: analogy SKIP count = 0/7
