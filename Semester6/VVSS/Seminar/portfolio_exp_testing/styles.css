@@ -1,0 +1,166 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #1b1f2a;
+}
+
+.container {
+  width: min(940px, 92vw);
+  margin: 2rem auto 3rem;
+}
+
+.hero {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2 {
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  margin: 0 0 0.75rem;
+  color: #4d5a75;
+}
+
+.warning-note {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: #fff7de;
+  border: 1px solid #f2d98a;
+  border-radius: 8px;
+  color: #6f5403;
+}
+
+.info-card,
+.form-card,
+.preview-card {
+  background: #ffffff;
+  border: 1px solid #dbe2f1;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin-top: 1rem;
+}
+
+.info-card ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #c7d3ea;
+  background: #fff;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #95b3ff;
+  border-color: #95b3ff;
+}
+
+button {
+  justify-self: start;
+  border: none;
+  border-radius: 8px;
+  background: #2055db;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1b4ac1;
+}
+
+.validation-message {
+  margin: 0;
+  font-size: 0.9rem;
+  min-height: 1.2rem;
+}
+
+.validation-error {
+  color: #b62424;
+}
+
+.validation-ok {
+  color: #1f6d1f;
+}
+
+.validation-warning {
+  color: #9f5400;
+}
+
+.preview-hint {
+  margin: 0 0 0.7rem;
+  color: #4d5a75;
+}
+
+.preview-content.empty {
+  color: #5d6883;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.45rem 0.85rem;
+  align-items: start;
+}
+
+.preview-label {
+  font-weight: 600;
+  color: #2a3550;
+}
+
+.preview-value {
+  background: #f4f7ff;
+  border: 1px solid #d4def5;
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+}
+
+.accepted-invalid {
+  border-color: #f2c66c;
+  background: #fff2d8;
+}
+
+.name-value {
+  white-space: nowrap;
+}
+
+.comments-preview {
+  min-height: 2rem;
+}

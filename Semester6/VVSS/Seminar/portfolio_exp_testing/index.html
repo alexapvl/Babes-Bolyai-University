@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1>Student Registration Form</h1>
+        <p class="subtitle">Demo app for exploratory testing</p>
+        <p class="warning-note">
+          This app intentionally contains validation defects for testing purposes.
+        </p>
+      </header>
+
+      <section class="info-card">
+        <h2>Testing Mission</h2>
+        <p>
+          Explore the registration form using Bug Magnet. Focus on invalid emails, special
+          characters, long inputs, weak passwords, unusual phone numbers, and boundary values for
+          age.
+        </p>
+      </section>
+
+      <section class="info-card">
+        <h2>Expected Findings</h2>
+        <ul>
+          <li>Weak email validation</li>
+          <li>Missing max length for full name</li>
+          <li>Unsafe reflection of comments</li>
+          <li>Permissive phone validation</li>
+          <li>Weak password rules</li>
+          <li>Incorrect age validation</li>
+        </ul>
+      </section>
+
+      <section class="form-card">
+        <form id="registration-form" novalidate>
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" />
+            <p class="validation-message" id="fullName-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="text" autocomplete="email" />
+            <p class="validation-message" id="email-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" />
+            <p class="validation-message" id="password-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="text" autocomplete="tel" />
+            <p class="validation-message" id="phone-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="text" inputmode="numeric" />
+            <p class="validation-message" id="age-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="studentId">Student ID</label>
+            <input id="studentId" name="studentId" type="text" />
+            <p class="validation-message" id="studentId-message"></p>
+          </div>
+
+          <div class="field">
+            <label for="comments">Comments / motivation</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+            <p class="validation-message" id="comments-message"></p>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <section class="preview-card" id="preview-panel" aria-live="polite">
+        <h2>Submitted Data Preview</h2>
+        <p class="preview-hint">
+          Values shown below come from the latest submission. Accepted invalid values are highlighted.
+        </p>
+        <div id="preview-content" class="preview-content empty">
+          No submission yet.
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
